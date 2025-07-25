@@ -591,6 +591,39 @@ body {
     background: linear-gradient(135deg, #fd63a7, #e55656);
 }
 
+/* Modal Loading State */
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: #333;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #2c5aa0;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Ensure loading state is visible */
+.loading-state,
+.loading-spinner {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hamburger {
@@ -711,4 +744,14 @@ html {
 /* Hide body system layers, show only human body outline */
 .body-layers .layer {
     display: none !important;
+}
+/* Force hero text and CTA always visible, disable animations */
+.hero-title,
+.hero-subtitle,
+.hero-description,
+.cta-button {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
 }
