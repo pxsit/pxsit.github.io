@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <!-- Circulatory System Diagram -->
+  <rect width="400" height="300" fill="#f8f9ff"/>
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2c5aa0">ระบบไหลเวียนเลือด</text>
+  
+  <!-- Body outline and circulatory system -->
+  <g transform="translate(150, 50)">
+    <!-- Body outline -->
+    <ellipse cx="50" cy="120" rx="35" ry="75" fill="none" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+    
+    <!-- Heart (detailed) -->
+    <g transform="translate(40, 90)">
+      <!-- Heart chambers -->
+      <path d="M5,10 Q0,5 5,5 Q10,5 15,10 Q20,5 25,5 Q30,5 25,10 L15,25 L5,10 Z" 
+            fill="#fd63a7" stroke="#e55656" stroke-width="2"/>
+      
+      <!-- Heart chambers detail -->
+      <line x1="15" y1="8" x2="15" y2="20" stroke="#e55656" stroke-width="1"/>
+      <line x1="10" y1="12" x2="20" y2="12" stroke="#e55656" stroke-width="1"/>
+      
+      <text x="35" y="15" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#2c5aa0">หัวใจ</text>
+    </g>
+    
+    <!-- Major blood vessels -->
+    <!-- Aorta (main artery) -->
+    <path d="M55,100 Q45,80 35,60 Q30,50 35,45" 
+          fill="none" stroke="#ff4757" stroke-width="4"/>
+    <text x="25" y="70" font-family="Arial, sans-serif" font-size="8" fill="#ff4757">หลอดเลือดแดงใหญ่</text>
+    
+    <!-- Vena Cava (main vein) -->
+    <path d="M45,100 Q55,80 65,60 Q70,50 65,45" 
+          fill="none" stroke="#3742fa" stroke-width="4"/>
+    <text x="70" y="70" font-family="Arial, sans-serif" font-size="8" fill="#3742fa">หลอดเลือดดำใหญ่</text>
+    
+    <!-- Pulmonary circulation -->
+    <!-- To lungs -->
+    <path d="M45,95 Q35,85 25,80" fill="none" stroke="#3742fa" stroke-width="3"/>
+    <path d="M55,95 Q65,85 75,80" fill="none" stroke="#3742fa" stroke-width="3"/>
+    <!-- From lungs -->
+    <path d="M25,85 Q35,90 45,98" fill="none" stroke="#ff4757" stroke-width="3"/>
+    <path d="M75,85 Q65,90 55,98" fill="none" stroke="#ff4757" stroke-width="3"/>
+    
+    <!-- Lungs (simplified) -->
+    <ellipse cx="25" cy="80" rx="8" ry="15" fill="rgba(116, 185, 255, 0.3)" stroke="#74b9ff" stroke-width="1"/>
+    <ellipse cx="75" cy="80" rx="8" ry="15" fill="rgba(116, 185, 255, 0.3)" stroke="#74b9ff" stroke-width="1"/>
+    <text x="5" y="105" font-family="Arial, sans-serif" font-size="8" fill="#2c5aa0">ปอด</text>
+    
+    <!-- Systemic circulation -->
+    <!-- Arteries to body -->
+    <path d="M50,105 Q30,120 20,140 Q15,160 20,180" 
+          fill="none" stroke="#ff4757" stroke-width="3"/>
+    <path d="M50,105 Q70,120 80,140 Q85,160 80,180" 
+          fill="none" stroke="#ff4757" stroke-width="3"/>
+    
+    <!-- Veins from body -->
+    <path d="M25,180 Q20,160 25,140 Q35,120 50,108" 
+          fill="none" stroke="#3742fa" stroke-width="3"/>
+    <path d="M75,180 Q80,160 75,140 Q65,120 50,108" 
+          fill="none" stroke="#3742fa" stroke-width="3"/>
+    
+    <!-- Capillaries (simplified) -->
+    <circle cx="20" cy="160" r="3" fill="#ff6b6b"/>
+    <circle cx="80" cy="160" r="3" fill="#ff6b6b"/>
+    <text x="5" y="175" font-family="Arial, sans-serif" font-size="7" fill="#666">เส้นเลือดฝอย</text>
+    
+    <!-- Blood flow arrows -->
+    <defs>
+      <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#ff4757"/>
+      </marker>
+      <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#3742fa"/>
+      </marker>
+    </defs>
+    
+    <!-- Flow direction indicators -->
+    <line x1="40" y1="75" x2="35" y2="70" stroke="#ff4757" stroke-width="2" marker-end="url(#arrowRed)"/>
+    <line x1="60" y1="75" x2="65" y2="70" stroke="#3742fa" stroke-width="2" marker-end="url(#arrowBlue)"/>
+    <line x1="25" y1="130" x2="22" y2="135" stroke="#ff4757" stroke-width="2" marker-end="url(#arrowRed)"/>
+    <line x1="75" y1="130" x2="78" y2="135" stroke="#3742fa" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(280, 80)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2c5aa0">สัญลักษณ์:</text>
+    
+    <line x1="0" y1="20" x2="20" y2="20" stroke="#ff4757" stroke-width="4"/>
+    <text x="25" y="24" font-family="Arial, sans-serif" font-size="9" fill="#666">เลือดแดง (มี O₂)</text>
+    
+    <line x1="0" y1="35" x2="20" y2="35" stroke="#3742fa" stroke-width="4"/>
+    <text x="25" y="39" font-family="Arial, sans-serif" font-size="9" fill="#666">เลือดดำ (มี CO₂)</text>
+    
+    <circle cx="10" cy="55" r="3" fill="#ff6b6b"/>
+    <text x="25" y="59" font-family="Arial, sans-serif" font-size="9" fill="#666">เส้นเลือดฝอย</text>
+    
+    <text x="0" y="80" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#2c5aa0">การไหลเวียน:</text>
+    <text x="0" y="95" font-family="Arial, sans-serif" font-size="8" fill="#666">1. หัวใจ → ปอด</text>
+    <text x="0" y="108" font-family="Arial, sans-serif" font-size="8" fill="#666">2. ปอด → หัวใจ</text>
+    <text x="0" y="121" font-family="Arial, sans-serif" font-size="8" fill="#666">3. หัวใจ → ร่างกาย</text>
+    <text x="0" y="134" font-family="Arial, sans-serif" font-size="8" fill="#666">4. ร่างกาย → หัวใจ</text>
+  </g>
+  
+  <!-- Heart rate info -->
+  <g transform="translate(20, 220)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#2c5aa0">ข้อมูลหัวใจ:</text>
+    <text x="0" y="15" font-family="Arial, sans-serif" font-size="9" fill="#666">• เต้น: 60-100 ครั้ง/นาที</text>
+    <text x="0" y="28" font-family="Arial, sans-serif" font-size="9" fill="#666">• ปั๊มเลือด: 5 ลิตร/นาที</text>
+    <text x="0" y="41" font-family="Arial, sans-serif" font-size="9" fill="#666">• เลือดไหลครบรอบ: 1 นาที</text>
+  </g>
+</svg>

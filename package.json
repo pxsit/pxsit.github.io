@@ -1,0 +1,41 @@
+{
+    "name": "outside-in-fixed",
+    "version": "1.0.0",
+    "description": "เว็บไซต์เพื่อการศึกษาระบบร่างกายมนุษย์แบบ Interactive (เวอร์ชันแก้ไขแล้ว)",
+    "main": "index.html",
+    "scripts": {
+        "start": "python -m http.server 8000",
+        "serve": "npx serve .",
+        "dev": "npx live-server ."
+    },
+    "keywords": [
+        "education",
+        "anatomy",
+        "thai",
+        "interactive",
+        "learning",
+        "body-systems",
+        "fixed"
+    ],
+    "authors": [
+        "พสิษฐ์ แสงประชาธนารักษ์",
+        "ดุษาร์กร พะณะงาม",
+        "รมณ ชูทรัพย์"
+    ],
+    "advisor": "ธีระพล พฤฑฒิกุล",
+    "license": "MIT",
+    "dependencies": {
+        "gsap": "^3.12.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "local"
+    },
+    "bugs": {
+        "url": "https://github.com/issues"
+    },
+    "homepage": ".",
+    "browser": {
+        "main": "index.html"
+    }
+}

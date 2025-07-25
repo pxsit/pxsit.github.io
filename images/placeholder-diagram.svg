@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <!-- Placeholder Diagram -->
+  <rect width="400" height="300" fill="#f8f9ff"/>
+  
+  <!-- Background pattern -->
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e6e9ff" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#grid)"/>
+  
+  <!-- Main content -->
+  <g transform="translate(200, 150)">
+    <!-- Central icon -->
+    <circle cx="0" cy="0" r="50" fill="rgba(44, 90, 160, 0.1)" stroke="#2c5aa0" stroke-width="3"/>
+    <circle cx="0" cy="0" r="30" fill="rgba(44, 90, 160, 0.2)" stroke="#2c5aa0" stroke-width="2"/>
+    <circle cx="0" cy="0" r="15" fill="#2c5aa0"/>
+    
+    <!-- Surrounding elements -->
+    <circle cx="-70" cy="-50" r="8" fill="#667eea" opacity="0.7"/>
+    <circle cx="70" cy="-50" r="8" fill="#667eea" opacity="0.7"/>
+    <circle cx="-70" cy="50" r="8" fill="#667eea" opacity="0.7"/>
+    <circle cx="70" cy="50" r="8" fill="#667eea" opacity="0.7"/>
+    
+    <!-- Connecting lines -->
+    <line x1="-70" y1="-50" x2="-35" y2="-25" stroke="#667eea" stroke-width="2" opacity="0.5"/>
+    <line x1="70" y1="-50" x2="35" y2="-25" stroke="#667eea" stroke-width="2" opacity="0.5"/>
+    <line x1="-70" y1="50" x2="-35" y2="25" stroke="#667eea" stroke-width="2" opacity="0.5"/>
+    <line x1="70" y1="50" x2="35" y2="25" stroke="#667eea" stroke-width="2" opacity="0.5"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="200" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2c5aa0">แผนภาพระบบร่างกาย</text>
+  
+  <!-- Description -->
+  <text x="200" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#666">กำลังโหลดแผนภาพ...</text>
+  
+  <!-- Loading indicator -->
+  <g transform="translate(200, 270)">
+    <circle cx="-15" cy="0" r="3" fill="#2c5aa0">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite" begin="0s"/>
+    </circle>
+    <circle cx="0" cy="0" r="3" fill="#2c5aa0">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite" begin="0.2s"/>
+    </circle>
+    <circle cx="15" cy="0" r="3" fill="#2c5aa0">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite" begin="0.4s"/>
+    </circle>
+  </g>
+</svg>

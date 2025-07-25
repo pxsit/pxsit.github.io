@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 500" fill="none">
+  <!-- Human Body Outline -->
+  <path d="M150 20C130 20 120 30 120 50C120 60 125 70 130 75L125 100L120 150L115 200L110 250L105 300L100 350L95 400L90 450L85 480L150 480L215 480L210 450L205 400L200 350L195 300L190 250L185 200L180 150L175 100L170 75C175 70 180 60 180 50C180 30 170 20 150 20Z" 
+        fill="rgba(44, 90, 160, 0.1)" 
+        stroke="rgba(44, 90, 160, 0.3)" 
+        stroke-width="2"/>
+  
+  <!-- Head -->
+  <circle cx="150" cy="40" r="25" fill="rgba(255, 255, 255, 0.8)" stroke="rgba(44, 90, 160, 0.5)" stroke-width="1"/>
+  
+  <!-- Body sections for layering -->
+  <rect x="125" y="70" width="50" height="80" rx="10" fill="rgba(255, 255, 255, 0.6)" stroke="rgba(44, 90, 160, 0.3)" stroke-width="1"/>
+  <rect x="120" y="150" width="60" height="100" rx="15" fill="rgba(255, 255, 255, 0.6)" stroke="rgba(44, 90, 160, 0.3)" stroke-width="1"/>
+  <rect x="115" y="250" width="70" height="120" rx="20" fill="rgba(255, 255, 255, 0.6)" stroke="rgba(44, 90, 160, 0.3)" stroke-width="1"/>
+  
+  <!-- Arms -->
+  <ellipse cx="105" cy="120" rx="15" ry="60" fill="rgba(255, 255, 255, 0.6)" stroke="rgba(44, 90, 160, 0.3)" stroke-width="1"/>
+  <ellipse cx="195" cy="120" rx="15" ry="60" fill="rgba(255, 255, 255, 0.6)" stroke="rgba(44, 90, 160, 0.3)" stroke-width="1"/>
+  
+  <!-- Legs -->
+  <ellipse cx="130" cy="400" rx="20" ry="80" fill="rgba(255, 255, 255, 0.6)" stroke="rgba(44, 90, 160, 0.3)" stroke-width="1"/>
+  <ellipse cx="170" cy="400" rx="20" ry="80" fill="rgba(255, 255, 255, 0.6)" stroke="rgba(44, 90, 160, 0.3)" stroke-width="1"/>
+</svg>
