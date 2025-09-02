@@ -8,7 +8,11 @@
 body {
     font-family: 'Kanit', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #e6e6f0;
+    background: radial-gradient(1200px 600px at 20% -10%, rgba(255, 0, 102, 0.15), transparent 60%),
+                radial-gradient(1000px 500px at 120% 0%, rgba(0, 123, 255, 0.15), transparent 60%),
+                radial-gradient(800px 400px at 50% 120%, rgba(255, 99, 132, 0.12), transparent 60%),
+                #0b1020;
     overflow-x: hidden;
 }
 
@@ -24,11 +28,12 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(5, 10, 25, 0.7);
+    backdrop-filter: blur(12px);
     z-index: 1000;
     padding: 1rem 0;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     transition: all 0.3s ease;
 }
 
@@ -42,13 +47,13 @@ body {
 }
 
 .nav-brand h2 {
-    color: #2c5aa0;
+    color: #e6e6f0;
     font-size: 1.8rem;
     font-weight: 700;
 }
 
 .nav-brand span {
-    color: #666;
+    color: #a6b0cf;
     font-size: 0.9rem;
     font-weight: 300;
 }
@@ -61,14 +66,14 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: #333;
+    color: #c7cbe6;
     font-weight: 500;
     transition: color 0.3s ease;
     position: relative;
 }
 
 .nav-link:hover {
-    color: #2c5aa0;
+    color: #ff6b9a;
 }
 
 .nav-link::after {
@@ -78,7 +83,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: #2c5aa0;
+    background: #ff6b9a;
     transition: width 0.3s ease;
 }
 
@@ -95,7 +100,7 @@ body {
 .hamburger span {
     width: 25px;
     height: 3px;
-    background: #333;
+    background: #e6e6f0;
     margin: 3px 0;
     transition: 0.3s;
 }
@@ -117,7 +122,9 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: radial-gradient(60% 80% at 10% 10%, rgba(0, 102, 204, 0.35), transparent 60%),
+                radial-gradient(60% 60% at 90% 20%, rgba(255, 51, 102, 0.35), transparent 60%),
+                linear-gradient(135deg, #0b1020 0%, #0c1633 100%);
     padding: 100px 20px 50px;
     position: relative;
     overflow: hidden;
@@ -136,7 +143,7 @@ body {
 
 .hero-content {
     flex: 1;
-    color: white;
+    color: #f2f4ff;
     z-index: 2;
     position: relative;
 }
@@ -145,8 +152,11 @@ body {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+    text-shadow: 0 8px 30px rgba(255, 0, 102, 0.25);
 }
+.hero-title.mega { font-size: 4rem; }
+.hero-subtitle.minor { font-size: 1.25rem; text-transform: lowercase; opacity: 0.9; }
 
 .hero-subtitle {
     font-size: 1.5rem;
@@ -163,7 +173,7 @@ body {
 }
 
 .cta-button {
-    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    background: linear-gradient(45deg, #ff6b9a, #e63b5b);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -175,7 +185,7 @@ body {
     align-items: center;
     gap: 10px;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    box-shadow: 0 10px 30px rgba(255, 0, 102, 0.35);
 }
 
 /* DEBUG OVERRIDES: keep CTA button visible */
@@ -187,7 +197,7 @@ body {
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+    box-shadow: 0 18px 40px rgba(255, 0, 102, 0.5);
 }
 
 .hero-visual {
@@ -198,307 +208,36 @@ body {
     position: relative;
 }
 
-.human-body-container {
-    position: relative;
-    width: 300px;
-    height: 500px;
-}
+/* New 3D-like hero visuals */
+.hero-3d { position: relative; width: 100%; height: 420px; }
+.orb { position: absolute; width: 140px; height: 140px; border-radius: 50%; filter: blur(0.5px); opacity: 0.9; mix-blend-mode: screen; }
+.orb-blue { background: radial-gradient(circle at 30% 30%, #66a3ff, #0044cc); top: 20%; left: 10%; animation: float 6s ease-in-out infinite; }
+.orb-pink { background: radial-gradient(circle at 30% 30%, #ff8dc7, #e1006a); top: 40%; right: 15%; animation: float 7s ease-in-out infinite 0.2s; }
+.orb-red { background: radial-gradient(circle at 30% 30%, #ff7a7a, #cc0033); bottom: 10%; left: 40%; animation: float 5.5s ease-in-out infinite 0.4s; }
+.ring { position: absolute; border: 2px solid rgba(255,255,255,0.1); border-radius: 50%; animation: rotate 18s linear infinite; }
+.ring-1 { width: 320px; height: 320px; top: 15%; left: 20%; }
+.ring-2 { width: 420px; height: 420px; top: 10%; left: 10%; animation-duration: 24s; }
+/* Menu */
+.menu-section { padding: 100px 0; background: transparent; }
+.center { text-align: center; }
+ .section-title { text-align: center; font-size: 2.5rem; color: #e6e6f0; margin-bottom: 1rem; font-weight: 700; }
+ .section-description { text-align: center; font-size: 1.1rem; color: #a6b0cf; margin-bottom: 4rem; }
 
-/* DEBUG: Force show human body outline container */
-.human-body-container {
-    opacity: 1 !important;
-    transform: none !important;
-}
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+.menu-card { position: relative; border: none; border-radius: 16px; padding: 0; cursor: pointer; overflow: hidden; height: 160px; background: rgba(255,255,255,0.03); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.menu-card:hover { transform: translateY(-6px); box-shadow: 0 18px 50px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.12); }
+.menu-bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: saturate(1.2) contrast(1.05) brightness(0.9); opacity: 0.45; }
+.menu-bg.circulatory { background-image: url('../images/circulatory-diagram.svg'); }
+.menu-bg.respiratory { background-image: url('../images/placeholder-diagram.svg'); }
+.menu-bg.lymphatic { background-image: url('../images/placeholder-diagram.svg'); }
+.menu-bg.nervous { background-image: url('../images/placeholder-diagram.svg'); }
+.menu-text { position: relative; z-index: 2; padding: 16px; display: flex; flex-direction: column; gap: 4px; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(11,16,32,0.6) 55%, rgba(11,16,32,0.95) 100%); height: 100%; justify-content: flex-end; }
+.menu-text h3 { color: #fff; font-size: 1.1rem; letter-spacing: 0.5px; }
+.menu-text span { color: #ff9fc2; font-size: 0.95rem; opacity: 0.9; }
 
-.human-body-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
-}
-
-.body-layers {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.layer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.8 !important;
-    transition: all 0.5s ease;
-    cursor: pointer;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    pointer-events: auto;
-    border: 3px solid #ff0000 !important; /* BRIGHT RED BORDER for debugging */
-    border-radius: 10px;
-    /* Add a bright background to make sure layers are visible */
-    background-color: rgba(255, 255, 0, 0.3) !important; /* Yellow background */
-}
-
-.layer:hover {
-    opacity: 1 !important;
-    transform: scale(1.02);
-    z-index: 10 !important;
-    border: 3px solid #2c5aa0 !important;
-}
-
-.layer.active {
-    opacity: 0.6;
-}
-
-/* Fixed layer stacking - make all layers visible */
-.skin-layer {
-    background-image: url('../images/skin-diagram.svg');
-    z-index: 5;
-    background-color: rgba(255, 0, 0, 0.5) !important; /* BRIGHT RED for debugging */
-}
-
-.skin-layer::before {
-    content: "SKIN LAYER - CLICK ME!";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: red;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 14px;
-    pointer-events: none;
-}
-
-.muscle-layer {
-    background-image: url('../images/muscles-diagram.svg');
-    z-index: 4;
-    background-color: rgba(0, 255, 0, 0.5) !important; /* BRIGHT GREEN for debugging */
-}
-
-.muscle-layer::before {
-    content: "MUSCLE LAYER - CLICK ME!";
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: green;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 14px;
-    pointer-events: none;
-}
-
-.bone-layer {
-    background-image: url('../images/bones-diagram.svg');
-    z-index: 3;
-    background-color: rgba(0, 0, 255, 0.5) !important; /* BRIGHT BLUE for debugging */
-}
-
-.bone-layer::before {
-    content: "BONE LAYER - CLICK ME!";
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: blue;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 14px;
-    pointer-events: none;
-}
-
-.organ-layer {
-    background-image: url('../images/organs-diagram.svg');
-    z-index: 2;
-    background-color: rgba(255, 0, 255, 0.5) !important; /* BRIGHT PURPLE for debugging */
-}
-
-.organ-layer::before {
-    content: "ORGAN LAYER - CLICK ME!";
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: purple;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 14px;
-    pointer-events: none;
-}
-
-.circulatory-layer {
-    background-image: url('../images/circulatory-diagram.svg');
-    z-index: 1;
-    background-color: rgba(255, 165, 0, 0.5) !important; /* BRIGHT ORANGE for debugging */
-}
-
-.circulatory-layer::before {
-    content: "CIRCULATORY LAYER - CLICK ME!";
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: orange;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 14px;
-    pointer-events: none;
-}
-
-.layer-content {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.9);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 600;
-    color: #333;
-    font-size: 0.9rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    opacity: 1; /* Always visible for debugging */
-    transition: opacity 0.3s ease;
-    pointer-events: none; /* Don't block clicks */
-}
-
-.layer:hover .layer-content {
-    opacity: 1;
-    background: rgba(44, 90, 160, 0.9);
-    color: white;
-}
-
-/* Systems Section */
-.systems-section {
-    padding: 100px 0;
-    background: #f8f9ff;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #2c5aa0;
-    margin-bottom: 1rem;
-    font-weight: 700;
-}
-
-.section-description {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #666;
-    margin-bottom: 4rem;
-}
-
-.systems-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.system-card {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-/* DEBUG OVERRIDES: keep system cards visible */
-.system-card {
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-}
-
-.system-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: left 0.5s;
-}
-
-.system-card:hover::before {
-    left: 100%;
-}
-
-.system-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.card-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 1.5rem;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: white;
-}
-
-.system-card h3 {
-    font-size: 1.4rem;
-    color: #2c5aa0;
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.system-card p {
-    color: #666;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-}
-
-.card-button {
-    background: linear-gradient(45deg, #2c5aa0, #667eea);
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.card-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(44, 90, 160, 0.4);
-}
 
 /* About Section */
-.about-section {
-    padding: 100px 0;
-    background: white;
-}
+.about-section { padding: 100px 0; background: transparent; }
 
 .about-content {
     display: grid;
@@ -520,7 +259,7 @@ body {
 }
 
 .about-text li {
-    color: #666;
+    color: #c7cbe6;
     margin-bottom: 1rem;
     padding-left: 2rem;
     position: relative;
@@ -530,12 +269,12 @@ body {
     content: '✓';
     position: absolute;
     left: 0;
-    color: #4caf50;
+    color: #6ee7b7;
     font-weight: bold;
 }
 
 .project-info h3 {
-    color: #2c5aa0;
+    color: #e6e6f0;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     font-weight: 600;
@@ -547,15 +286,10 @@ body {
     gap: 1rem;
 }
 
-.info-item {
-    background: #f8f9ff;
-    padding: 1rem;
-    border-radius: 10px;
-    border-left: 4px solid #2c5aa0;
-}
+.info-item { background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 10px; border-left: 4px solid #3b82f6; }
 
 .info-item strong {
-    color: #2c5aa0;
+    color: #a5b4fc;
     display: block;
     margin-bottom: 0.5rem;
 }
@@ -566,30 +300,59 @@ body {
 }
 
 .info-item li {
-    color: #666;
+    color: #c7cbe6;
     margin: 0.25rem 0;
 }
+/* Lesson section */
+.lesson-section { position: relative; padding: 100px 0; }
+.lesson-bg { position: absolute; inset: 0; background: radial-gradient(600px 300px at 20% 10%, rgba(0, 102, 204, 0.2), transparent), radial-gradient(700px 300px at 80% 20%, rgba(255, 51, 102, 0.2), transparent); opacity: 0.7; }
+.lesson-container { position: relative; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.lesson-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.lesson-header h2 { font-size: 2rem; color: #fff; }
+.lesson-progress { color: #a6b0cf; font-weight: 600; }
+.lesson-content { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; min-height: 360px; box-shadow: 0 18px 50px rgba(0,0,0,0.35); }
+.lesson-content > * { position: relative; z-index: 1; }
+.lesson-actions { display: flex; justify-content: space-between; margin-top: 1rem; }
+.btn { padding: 12px 20px; border-radius: 12px; border: none; font-weight: 700; letter-spacing: 0.3px; cursor: pointer; }
+.btn.primary { background: linear-gradient(45deg, #ff6b9a, #e63b5b); color: #fff; }
+.btn.ghost { background: transparent; color: #c7cbe6; border: 1px solid rgba(255,255,255,0.18); }
 
-/* System-specific colors */
-.system-card[data-system="skin"] .card-icon {
-    background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
-}
+/* Animated blood flow */
+.blood-flow { position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index: 0; }
+.cell { position:absolute; left:-60px; width:36px; height:36px; border-radius:50%; opacity:0.75; filter:blur(0.2px); animation: drift linear infinite; }
+.cell.rbc { background: radial-gradient(circle at 35% 35%, #ff7a7a, #b91c1c); box-shadow: inset 0 6px 12px rgba(0,0,0,0.35); }
+.cell.wbc { width:28px; height:28px; background: radial-gradient(circle at 40% 40%, #e5e7eb, #9ca3af); opacity:0.7; }
+.cell.platelet { width:16px; height:16px; background: radial-gradient(circle, #fde68a, #f59e0b); opacity:0.8; }
+@keyframes drift { from { transform: translateX(0) translateY(0) scale(1); } to { transform: translateX(calc(100% + 120px)) translateY(10px) scale(0.95); } }
 
-.system-card[data-system="muscles"] .card-icon {
-    background: linear-gradient(135deg, #fd79a8, #e84393);
-}
+/* Respiratory subtle breathing animation */
+.breath-anim { animation: breath 6s ease-in-out infinite; }
+@keyframes breath { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
 
-.system-card[data-system="bones"] .card-icon {
-    background: linear-gradient(135deg, #81ecec, #74b9ff);
-}
+/* Content widgets */
+.panel { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px; }
+.h3 { color: #a5b4fc; font-size: 1.25rem; margin-bottom: 8px; }
+.muted { color: #a6b0cf; overflow-wrap: break-word; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.list-dot { list-style: disc; margin-left: 1.25rem; }
 
-.system-card[data-system="organs"] .card-icon {
-    background: linear-gradient(135deg, #a29bfe, #6c5ce7);
-}
+/* Simple animated backgrounds for topic pages */
+.bg-circulatory { background-image: url('../images/circulatory-diagram.svg'); background-size: contain; background-repeat: no-repeat; background-position: right center; opacity: 0.15; }
+.bg-respiratory { background-image: url('../images/placeholder-diagram.svg'); background-size: cover; opacity: 0.12; }
+.bg-lymphatic { background-image: url('../images/placeholder-diagram.svg'); background-size: cover; opacity: 0.12; }
+.bg-nervous { background-image: url('../images/placeholder-diagram.svg'); background-size: cover; opacity: 0.12; }
 
-.system-card[data-system="circulatory"] .card-icon {
-    background: linear-gradient(135deg, #fd63a7, #e55656);
-}
+/* Quiz pages */
+.quiz-section { position: relative; padding: 100px 0; }
+.quiz-bg { position: absolute; inset: 0; background: radial-gradient(800px 300px at 30% 10%, rgba(59,130,246,0.18), transparent), radial-gradient(600px 300px at 70% 20%, rgba(236,72,153,0.20), transparent); }
+.quiz-container { position: relative; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.quiz-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 20px; box-shadow: 0 18px 50px rgba(0,0,0,0.35); }
+.quiz-choices { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 12px; }
+.quiz-choice { background: rgba(255,255,255,0.06); border: 1px solid transparent; padding: 12px; border-radius: 10px; cursor: pointer; transition: 0.2s; }
+.quiz-choice:hover { border-color: rgba(255,255,255,0.2); }
+.quiz-feedback { margin-top: 10px; min-height: 28px; font-weight: 700; }
+.pill { display: inline-block; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,0.08); color: #ff9fc2; font-weight: 700; font-size: 0.85rem; }
 
 /* Modal Loading State */
 .loading-state {
@@ -635,7 +398,7 @@ body {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background-color: white;
+        background-color: #0b1020;
         width: 100%;
         text-align: center;
         transition: 0.3s;
@@ -657,20 +420,14 @@ body {
         font-size: 2.5rem;
     }
     
-    .human-body-container {
-        width: 250px;
-        height: 400px;
-        margin-top: 2rem;
-    }
+    .hero-3d { height: 300px; }
     
     .about-content {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
     
-    .systems-grid {
-        grid-template-columns: 1fr;
-    }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
@@ -741,17 +498,5 @@ html {
     }
 }
 
-/* Hide body system layers, show only human body outline */
-.body-layers .layer {
-    display: none !important;
-}
-/* Force hero text and CTA always visible, disable animations */
-.hero-title,
-.hero-subtitle,
-.hero-description,
-.cta-button {
-    opacity: 1 !important;
-    transform: none !important;
-    animation: none !important;
-    transition: none !important;
-}
+/* Force hero text visible */
+.hero-title, .hero-subtitle, .hero-description, .cta-button { opacity: 1; }

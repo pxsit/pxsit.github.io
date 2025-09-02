@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Outside In - ระบบร่างกายมนุษย์</title>
+        <title>Outside In - Body System</title>
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/animations.css" />
         <link rel="stylesheet" href="css/modal.css" />
@@ -22,14 +22,12 @@
             <nav class="navbar">
                 <div class="nav-brand">
                     <h2>Outside In</h2>
-                    <span>ระบบร่างกายมนุษย์</span>
+                    <span>Body System</span>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link">หน้าแรก</a></li>
-                    <li><a href="#systems" class="nav-link">ระบบร่างกาย</a></li>
-                    <li>
-                        <a href="#about" class="nav-link">เกี่ยวกับโครงงาน</a>
-                    </li>
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#menu" class="nav-link">Menu</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
                 </ul>
                 <div class="hamburger">
                     <span></span>
@@ -42,128 +40,84 @@
         <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1 class="hero-title">สำรวจร่างกายมนุษย์</h1>
-                <p class="hero-subtitle">จากภายนอกสู่ภายใน</p>
-                <p class="hero-description">
-                    เรียนรู้กายวิภาคศาสตร์ด้วยวิธีที่เข้าใจง่าย สนุก และน่าสนใจ
-                </p>
-                <button class="cta-button" onclick="scrollToSystems()">
+                <h1 class="hero-title mega">Outside In</h1> 
+                <button class="cta-button" onclick="goToMenu()">
                     <i class="fas fa-play"></i>
-                    เริ่มการสำรวจ
+                    Start
                 </button>
             </div>
             <div class="hero-visual">
-                <div class="human-body-container">
-                    <img
-                        src="images/human-body-outline.svg"
-                        alt="Human Body"
-                        class="human-body-image"
-                    />
-                    <div class="body-layers">
-                        <div class="layer skin-layer active" data-system="skin">
-                            <div class="layer-content">ผิวหนัง</div>
-                        </div>
-                        <div class="layer muscle-layer" data-system="muscles">
-                            <div class="layer-content">กล้ามเนื้อ</div>
-                        </div>
-                        <div class="layer bone-layer" data-system="bones">
-                            <div class="layer-content">กระดูก</div>
-                        </div>
-                        <div class="layer organ-layer" data-system="organs">
-                            <div class="layer-content">อวัยวะภายใน</div>
-                        </div>
-                        <div
-                            class="layer circulatory-layer"
-                            data-system="circulatory"
-                        >
-                            <div class="layer-content">ระบบไหลเวียน</div>
-                        </div>
-                    </div>
+                <div class="hero-3d">
+                    <div class="orb orb-blue"></div>
+                    <div class="orb orb-pink"></div>
+                    <div class="orb orb-red"></div>
+                    <div class="ring ring-1"></div>
+                    <div class="ring ring-2"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Page Loader -->
-        <div id="page-loader" class="page-loader">
-            <div class="loader"></div>
-        </div>
-        <!-- Body Systems Section -->
-        <section id="systems" class="systems-section">
+        <!-- Menu Section -->
+        <section id="menu" class="menu-section">
             <div class="container">
-                <h2 class="section-title">ระบบร่างกายมนุษย์</h2>
-                <p class="section-description">เลือกระบบที่ต้องการเรียนรู้</p>
+                <h2 class="section-title center">Menu</h2>
+                <p class="section-description center">เลือกเนื้อหาที่ต้องการเรียนรู้</p>
 
-                <div class="systems-grid">
-                    <div class="system-card" data-system="skin">
-                        <div class="card-icon">
-                            <i class="fas fa-hand-paper"></i>
+                <div class="menu-grid">
+                    <button class="menu-card" onclick="startLesson('circulatory')">
+                        <div class="menu-bg circulatory"></div>
+                        <div class="menu-text">
+                            <h3>CIRCULATORY SYSTEM</h3>
+                            <span>ระบบหมุนเวียนเลือด</span>
                         </div>
-                        <h3>ระบบผิวหนัง</h3>
-                        <p>เรียนรู้เกี่ยวกับผิวหนังและหน้าที่ป้องกันร่างกาย</p>
-                        <button
-                            class="card-button"
-                            onclick="openSystemModal('skin')"
-                        >
-                            สำรวจ <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-
-                    <div class="system-card" data-system="muscles">
-                        <div class="card-icon">
-                            <i class="fas fa-dumbbell"></i>
+                    </button>
+                    <button class="menu-card" onclick="startLesson('respiratory')">
+                        <div class="menu-bg respiratory"></div>
+                        <div class="menu-text">
+                            <h3>RESPIRATORY SYSTEM</h3>
+                            <span>ระบบหายใจ</span>
                         </div>
-                        <h3>ระบบกล้ามเนื้อ</h3>
-                        <p>ทำความเข้าใจกล้ามเนื้อและการเคลื่อนไหว</p>
-                        <button
-                            class="card-button"
-                            onclick="openSystemModal('muscles')"
-                        >
-                            สำรวจ <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-
-                    <div class="system-card" data-system="bones">
-                        <div class="card-icon">
-                            <i class="fas fa-bone"></i>
+                    </button>
+                    <button class="menu-card" onclick="startLesson('lymphatic')">
+                        <div class="menu-bg lymphatic"></div>
+                        <div class="menu-text">
+                            <h3>LYMPHATICS SYSTEM</h3>
+                            <span>ระบบน้ำเหลือง</span>
                         </div>
-                        <h3>ระบบกระดูก</h3>
-                        <p>ศึกษาโครงสร้างกระดูกและข้อต่อ</p>
-                        <button
-                            class="card-button"
-                            onclick="openSystemModal('bones')"
-                        >
-                            สำรวจ <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-
-                    <div class="system-card" data-system="organs">
-                        <div class="card-icon">
-                            <i class="fas fa-heart"></i>
+                    </button>
+                    <button class="menu-card" onclick="startLesson('nervous')">
+                        <div class="menu-bg nervous"></div>
+                        <div class="menu-text">
+                            <h3>NERVOUS SYSTEM</h3>
+                            <span>ระบบประสาท</span>
                         </div>
-                        <h3>อวัยวะภายใน</h3>
-                        <p>เรียนรู้อวัยวะสำคัญภายในร่างกาย</p>
-                        <button
-                            class="card-button"
-                            onclick="openSystemModal('organs')"
-                        >
-                            สำรวจ <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-
-                    <div class="system-card" data-system="circulatory">
-                        <div class="card-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <h3>ระบบไหลเวียนเลือด</h3>
-                        <p>ทำความเข้าใจการไหลเวียนของเลือด</p>
-                        <button
-                            class="card-button"
-                            onclick="openSystemModal('circulatory')"
-                        >
-                            สำรวจ <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
+                    </button>
                 </div>
+            </div>
+        </section>
+
+        <!-- Lesson Section (dynamic pages) -->
+        <section id="lesson" class="lesson-section" style="display:none;">
+            <div class="lesson-bg" id="lesson-bg"></div>
+            <div class="lesson-container">
+                <div class="lesson-header">
+                    <h2 id="lesson-title"></h2>
+                    <div class="lesson-progress"><span id="lesson-step"></span></div>
+                </div>
+                <div id="lesson-content" class="lesson-content"></div>
+                <div class="lesson-actions">
+                    <button class="btn ghost" onclick="backToMenu()"><i class="fas fa-bars"></i> Menu</button>
+                    <button id="lesson-next" class="btn primary" onclick="nextPage()">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Quiz Section -->
+        <section id="final-quiz" class="quiz-section" style="display:none;">
+            <div class="quiz-bg"></div>
+            <div class="quiz-container">
+                <h2 class="section-title center">Quiz</h2>
+                <div id="quiz-stage"></div>
             </div>
         </section>
 
@@ -224,21 +178,17 @@
             </div>
         </section>
 
-        <!-- System Modal -->
-        <div id="systemModal" class="modal">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <div id="modalContent">
-                    <!-- Dynamic content will be loaded here -->
-                </div>
-            </div>
-        </div>
+        <!-- Legacy modal removed in new lesson flow -->
 
         <!-- Scripts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-        <script src="js/systems.js"></script>
-        <script src="js/animations.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/lessons.js"></script>
+        <script src="js/quiz-handler.js"></script>
+        <script src="js/quiz-circulatory.js"></script>
+        <script src="js/quiz-respiratory.js"></script>
+        <script src="js/quiz-lymphatic.js"></script>
+        <script src="js/quiz-nervous.js"></script>
     </body>
 </html>

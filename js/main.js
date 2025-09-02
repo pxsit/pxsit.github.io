@@ -1,17 +1,12 @@
 // Main JavaScript functionality - Fixed Version
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOM loaded, initializing application...");
-
     try {
         initNavigation();
         initAnimations();
-        initBodyLayers();
-        initModal();
         initScrollEffects();
         createParticles();
-        console.log("Application initialized successfully");
     } catch (error) {
-        console.error("Error initializing application:", error);
+        console.error("Init error", error);
     }
 });
 
@@ -46,12 +41,9 @@ function initNavigation() {
             e.preventDefault();
             const targetId = link.getAttribute("href");
             const targetSection = document.querySelector(targetId);
-
             if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                });
+                if (targetId === '#menu') { if (window.goToMenu) window.goToMenu(); }
+                targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
             }
         });
     });
@@ -88,11 +80,6 @@ function initAnimations() {
             .from(
                 ".cta-button",
                 { duration: 0.8, y: 30, opacity: 0, ease: "power3.out" },
-                "-=0.3"
-            )
-            .from(
-                ".human-body-container",
-                { duration: 1, scale: 0.8, opacity: 0, ease: "back.out(1.7)" },
                 "-=0.5"
             );
 
@@ -100,18 +87,18 @@ function initAnimations() {
         if (gsap.registerPlugin && typeof ScrollTrigger !== "undefined") {
             gsap.registerPlugin(ScrollTrigger);
 
-            // Animate system cards on scroll
-            gsap.from(".system-card", {
+            // Animate menu cards on scroll
+            gsap.from(".menu-card", {
                 scrollTrigger: {
-                    trigger: ".systems-grid",
+                    trigger: ".menu-grid",
                     start: "top 80%",
                     end: "bottom 20%",
                     toggleActions: "play none none reverse",
                 },
                 duration: 0.8,
-                y: 50,
+                y: 40,
                 opacity: 0,
-                stagger: 0.2,
+                stagger: 0.15,
                 ease: "power3.out",
             });
         } else {
@@ -141,269 +128,7 @@ function initFallbackAnimations() {
     });
 }
 
-// Body layers functionality - FIXED VERSION with better debugging
-function initBodyLayers() {
-    const layers = document.querySelectorAll(".layer");
-    const systemCards = document.querySelectorAll(".system-card");
-
-    console.log("Initializing body layers - Found layers:", layers.length);
-
-    if (layers.length === 0) {
-        console.warn("No body layers found");
-        return;
-    }
-
-    // Test image loading for each layer
-    const imageTests = {
-        skin: "images/skin-diagram.svg",
-        muscles: "images/muscles-diagram.svg",
-        bones: "images/bones-diagram.svg",
-        organs: "images/organs-diagram.svg",
-        circulatory: "images/circulatory-diagram.svg",
-    };
-
-    // Test if images can be loaded
-    Object.entries(imageTests).forEach(([system, imagePath]) => {
-        const img = new Image();
-        img.onload = () =>
-            console.log(`✅ Image loaded successfully: ${imagePath}`);
-        img.onerror = () =>
-            console.error(`❌ Failed to load image: ${imagePath}`);
-        img.src = imagePath;
-    });
-
-    // Initialize all layers to be visible
-    layers.forEach((layer, index) => {
-        // Set initial styles
-        layer.style.opacity = "0.6";
-        layer.style.pointerEvents = "auto";
-        layer.style.zIndex = layers.length - index; // Stack from back to front
-        layer.classList.add("active"); // Ensure active class
-
-        // Add debug border to make layers visible
-        layer.style.border = "2px solid rgba(255, 255, 255, 0.3)";
-        layer.style.borderRadius = "10px";
-
-        // Add a center indicator for debugging
-        if (!layer.querySelector(".center-indicator")) {
-            const indicator = document.createElement("div");
-            indicator.className = "center-indicator";
-            indicator.style.cssText = `
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 20px;
-                height: 20px;
-                background: rgba(44, 90, 160, 0.7);
-                border-radius: 50%;
-                pointer-events: none;
-                transition: all 0.3s ease;
-            `;
-            layer.appendChild(indicator);
-        }
-
-        console.log(
-            `Initialized layer ${index} (${layer.dataset.system}): opacity=0.6, zIndex=${layer.style.zIndex}`
-        );
-    });
-
-    // Add hover interactions for system cards
-    systemCards.forEach((card, index) => {
-        const systemType = card.dataset.system;
-        const correspondingLayer = document.querySelector(
-            `[data-system="${systemType}"]`
-        );
-
-        if (!correspondingLayer) {
-            console.warn(
-                `No corresponding layer found for system: ${systemType}`
-            );
-            return;
-        }
-
-        card.addEventListener("mouseenter", () => {
-            console.log(`Hovering over ${systemType} card`);
-
-            // Fade all layers except the hovered one
-            layers.forEach((layer) => {
-                const indicator = layer.querySelector(".center-indicator");
-                if (layer.dataset.system === systemType) {
-                    layer.style.opacity = "1";
-                    layer.style.zIndex = "100"; // Bring to front
-                    layer.style.transform = "scale(1.02)";
-                    layer.style.border = "3px solid #2c5aa0"; // Highlight border
-                    if (indicator)
-                        indicator.style.background = "rgba(255, 107, 107, 0.9)";
-                } else {
-                    layer.style.opacity = "0.2";
-                    layer.style.border = "2px solid rgba(255, 255, 255, 0.1)";
-                    if (indicator)
-                        indicator.style.background = "rgba(128, 128, 128, 0.5)";
-                }
-            });
-        });
-
-        card.addEventListener("mouseleave", () => {
-            console.log(`Stopped hovering over ${systemType} card`);
-
-            // Restore all layers to default state
-            layers.forEach((layer, layerIndex) => {
-                const indicator = layer.querySelector(".center-indicator");
-                layer.style.opacity = "0.6";
-                layer.style.zIndex = layers.length - layerIndex;
-                layer.style.transform = "scale(1)";
-                layer.style.border = "2px solid rgba(255, 255, 255, 0.3)";
-                if (indicator)
-                    indicator.style.background = "rgba(44, 90, 160, 0.7)";
-            });
-        });
-    });
-
-    // Add click interactions for layers
-    layers.forEach((layer) => {
-        layer.addEventListener("click", () => {
-            const systemType = layer.dataset.system;
-            console.log(`Clicked on layer: ${systemType}`);
-            openSystemModal(systemType);
-        });
-
-        // Add hover effect for layers themselves
-        layer.addEventListener("mouseenter", () => {
-            if (!layer.style.transform.includes("scale")) {
-                layer.style.transform = "scale(1.02)";
-                layer.style.opacity = "1";
-                layer.style.border = "3px solid #2c5aa0";
-                const indicator = layer.querySelector(".center-indicator");
-                if (indicator)
-                    indicator.style.background = "rgba(255, 107, 107, 0.9)";
-            }
-        });
-
-        layer.addEventListener("mouseleave", () => {
-            if (!document.querySelector(".system-card:hover")) {
-                layer.style.transform = "scale(1)";
-                layer.style.opacity = "0.6";
-                layer.style.border = "2px solid rgba(255, 255, 255, 0.3)";
-                const indicator = layer.querySelector(".center-indicator");
-                if (indicator)
-                    indicator.style.background = "rgba(44, 90, 160, 0.7)";
-            }
-        });
-    });
-}
-
-// Modal functionality - FIXED VERSION
-function initModal() {
-    const modal = document.getElementById("systemModal");
-
-    if (!modal) {
-        console.error("Modal element not found during initialization!");
-        return;
-    }
-
-    // Use event delegation for close button
-    modal.addEventListener("click", (e) => {
-        if (e.target.classList.contains("close-modal")) {
-            closeModal();
-        }
-    });
-
-    // Close modal when clicking outside content
-    window.addEventListener("click", (e) => {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
-
-    // Escape key to close modal
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal.classList.contains("show")) {
-            closeModal();
-        }
-    });
-
-    console.log("Modal initialized successfully");
-}
-
-// Helper function to close modal
-function closeModal() {
-    const modal = document.getElementById("systemModal");
-    if (modal) {
-        modal.classList.remove("show");
-        setTimeout(() => {
-            modal.style.display = "none";
-        }, 300);
-        console.log("Modal closed");
-    }
-}
-
-// System modal functionality - FIXED VERSION
-window.openSystemModal = function (systemType) {
-    console.log(`Opening system modal for: ${systemType}`);
-
-    const modal = document.getElementById("systemModal");
-    const modalContent = document.getElementById("modalContent");
-
-    if (!modal || !modalContent) {
-        console.error("Modal elements not found!");
-        showErrorMessage("ไม่สามารถเปิดหน้าต่างได้ กรุณาลองใหม่อีกครั้ง");
-        return;
-    }
-
-    // Show loading state
-    modalContent.innerHTML = `
-        <div class="loading-state">
-            <div class="loading-spinner"></div>
-            <p>กำลังโหลดข้อมูลระบบ...</p>
-        </div>
-    `;
-
-    // Open modal first
-    modal.style.display = "flex";
-    setTimeout(() => {
-        modal.classList.add("show");
-    }, 10);
-
-    // Load content with animation
-    setTimeout(() => {
-        try {
-            if (typeof getSystemContent === "function") {
-                const content = getSystemContent(systemType);
-                modalContent.innerHTML = content;
-
-                // Initialize system-specific interactions
-                if (typeof initSystemInteractions === "function") {
-                    initSystemInteractions(systemType);
-                }
-
-                // Trigger animations
-                const animatedElements = modalContent.querySelectorAll(
-                    '[class*="animate-"]'
-                );
-                animatedElements.forEach((el, index) => {
-                    setTimeout(() => {
-                        el.classList.add("animate-active");
-                    }, index * 100);
-                });
-            } else {
-                throw new Error("getSystemContent function not found");
-            }
-        } catch (error) {
-            console.error("Error loading system content:", error);
-            modalContent.innerHTML = `
-                <div class="error-state">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <h3>เกิดข้อผิดพลาด</h3>
-                    <p>ไม่สามารถโหลดข้อมูลระบบได้ กรุณาลองใหม่อีกครั้ง</p>
-                    <button class="retry-button" onclick="openSystemModal('${systemType}')">
-                        <i class="fas fa-redo"></i> ลองใหม่
-                    </button>
-                </div>
-            `;
-        }
-    }, 500);
-};
+// Remove legacy body layers and modal code (replaced by lesson flow)
 
 // Scroll effects
 function initScrollEffects() {
@@ -434,11 +159,11 @@ function initScrollEffects() {
             const header = document.querySelector(".header");
             if (header) {
                 if (window.scrollY > 100) {
-                    header.style.background = "rgba(255, 255, 255, 0.98)";
-                    header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.15)";
+                    header.style.background = "rgba(5, 10, 25, 0.9)";
+                    header.style.boxShadow = "0 10px 30px rgba(0,0,0,0.35)";
                 } else {
-                    header.style.background = "rgba(255, 255, 255, 0.95)";
-                    header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+                    header.style.background = "rgba(5, 10, 25, 0.7)";
+                    header.style.boxShadow = "0 10px 30px rgba(0,0,0,0.25)";
                 }
             }
         }, 100)
@@ -464,16 +189,8 @@ function createParticles() {
     }
 }
 
-// Scroll to systems section
-function scrollToSystems() {
-    const systemsSection = document.getElementById("systems");
-    if (systemsSection) {
-        systemsSection.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-        });
-    }
-}
+// Scroll to menu helper (proxy)
+function goToMenuProxy(){ if (window.goToMenu) window.goToMenu(); }
 
 // Error handling and user feedback
 function showErrorMessage(message) {
@@ -499,6 +216,13 @@ function showErrorMessage(message) {
     setTimeout(() => {
         toast.remove();
     }, 5000);
+}
+
+// Final quiz trigger
+function triggerFinalQuiz() {
+    // This function is now deprecated, as quizzes are topic-specific.
+    // You can leave it for now or remove it.
+    showErrorMessage("โปรดเลือกบทเรียนและทำแบบทดสอบท้ายบทเรียน");
 }
 
 // Utility functions
@@ -550,5 +274,4 @@ if ("performance" in window) {
 }
 
 // Make functions globally available
-window.closeModal = closeModal;
-window.scrollToSystems = scrollToSystems;
+// Do not re-export; lessons.js provides goToMenu
