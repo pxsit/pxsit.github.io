@@ -3,7 +3,8 @@
     let currentQuestions = [];
     let i = 0;
     let score = 0;
-    let answered = false;
+    let selectedAnswer = null;
+    let submitted = false;
     let currentTopic = '';
 
     function getStage() { return document.getElementById('quiz-stage'); }
@@ -14,6 +15,9 @@
             setTimeout(render, 50);
             return;
         }
+
+        submitted = false;
+        selectedAnswer = null;
 
         if (i >= currentQuestions.length) {
             stage.innerHTML = `
@@ -41,34 +45,58 @@
                 <div class="quiz-choices" id="choices"></div>
                 <div class="quiz-feedback" id="fb"></div>
                 <div style="margin-top:8px; display:flex; justify-content:flex-end; gap:8px;">
-                    <button class="btn ghost" onclick="nextQuizPage()">Next</button>
+                    <button id="quiz-next-btn" class="btn ghost" onclick="nextQuizPage()">ข้าม</button>
                 </div>
             </div>`;
 
-        const choices = document.getElementById('choices');
-        answered = false;
+        const choicesEl = document.getElementById('choices');
         q.choices.forEach((c, idx) => {
             const div = document.createElement('div');
             div.className = 'quiz-choice';
-            div.textContent = c;
-            div.onclick = () => select(idx);
-            choices.appendChild(div);
+            div.innerHTML = `<div class="quiz-choice-checkbox"></div><span>${c}</span>`;
+            div.onclick = () => select(idx, div);
+            choicesEl.appendChild(div);
         });
     }
 
-    function select(idx) {
-        if (answered) return;
+    function select(idx, el) {
+        if (submitted) return;
+
+        selectedAnswer = idx;
+        
+        // Update button text
+        const nextBtn = document.getElementById('quiz-next-btn');
+        if (nextBtn) nextBtn.textContent = 'ส่งคำตอบ';
+
+        // Update visuals
+        const allChoices = document.querySelectorAll('.quiz-choice');
+        allChoices.forEach(c => c.classList.remove('selected'));
+        el.classList.add('selected');
+    }
+
+    function submit() {
+        if (submitted || selectedAnswer === null) return;
+        submitted = true;
+
         const q = currentQuestions[i];
         const fb = document.getElementById('fb');
-        answered = true;
-        if (idx === q.ans) {
+        const allChoices = document.querySelectorAll('.quiz-choice');
+        const selectedEl = allChoices[selectedAnswer];
+
+        if (selectedAnswer === q.ans) {
             fb.textContent = 'ถูกต้อง! ' + q.why;
             fb.style.color = '#34d399';
+            selectedEl.classList.add('correct');
             score++;
         } else {
             fb.textContent = 'ผิด: ' + q.why;
             fb.style.color = '#f87171';
+            selectedEl.classList.add('incorrect');
+            allChoices[q.ans].classList.add('correct'); // Highlight correct answer
         }
+        
+        const nextBtn = document.getElementById('quiz-next-btn');
+        if (nextBtn) nextBtn.textContent = 'ข้อต่อไป';
     }
 
     window.startTopicQuiz = function(topic, questions) {
@@ -83,8 +111,16 @@
     };
 
     window.nextQuizPage = function() {
-        if (!answered) return;
-        i++;
-        render();
+        if (!submitted) {
+            if (selectedAnswer !== null) {
+                submit();
+            } else { // Skip question
+                i++;
+                render();
+            }
+        } else {
+            i++;
+            render();
+        }
     };
 })();

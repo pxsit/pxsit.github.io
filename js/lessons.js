@@ -13,6 +13,7 @@
   const contentEl = document.getElementById('lesson-content');
   const bgEl = document.getElementById('lesson-bg');
   const nextBtn = document.getElementById('lesson-next');
+  const backBtn = document.getElementById('lesson-back');
 
   const state = { topic: null, index: 0 };
   const completed = new Set();
@@ -392,11 +393,16 @@
     const page = t.pages[state.index];
     titleEl.textContent = `${t.name}`;
     stepEl.textContent = `หน้า ${state.index+1} / ${t.pages.length}`;
-    contentEl.innerHTML = `<h3 class=\"h3\" style=\"margin-bottom:8px;\">${page.title}</h3>` + page.html;
+    contentEl.innerHTML = `<h3 class="h3" style="margin-bottom:8px;">${page.title}</h3>` + page.html;
     // Reset any dynamic bg
     clearBloodFlow();
     if (page.bgAnim === 'flow') mountBloodFlow();
     if (typeof page.after === 'function') setTimeout(page.after, 0);
+
+    // Show/hide back button
+    if (backBtn) {
+      backBtn.style.display = state.index > 0 ? 'inline-flex' : 'none';
+    }
   }
 
   function drawECG(){
@@ -468,6 +474,15 @@
     nextBtn.style.display = 'inline-flex'; // Ensure next button is visible
   }
   window.backToMenu = function(){ show('menu'); }
+
+  window.prevPage = function(){
+    if (state.index > 0){
+        state.index--;
+        render();
+        nextBtn.style.display = 'inline-flex'; // Ensure next button is visible after going back
+    }
+  }
+
   window.nextPage = function(){ const t = topics[state.topic]; if (!t) return; if (state.index < t.pages.length-1){ state.index++; render(); } else { 
         // End of lesson, show quiz button
         contentEl.innerHTML += `

@@ -32,57 +32,6 @@
 4. **อวัยวะภายใน** - เรียนรู้อวัยวะสำคัญภายในร่างกาย
 5. **ระบบไหลเวียนเลือด** - ทำความเข้าใจการไหลเวียนของเลือด
 
-## การแก้ไขข้อบกพร่อง (Bug Fixes)
-
-### ปัญหาที่พบในเวอร์ชันเดิม:
-1. **Layer Visibility Bug** - ชั้นของร่างกายในส่วน Hero ไม่แสดงผลอย่างถูกต้อง
-2. **Modal Function Errors** - ฟังก์ชันเปิด Modal มีการเรียกใช้ที่ไม่ถูกต้อง
-3. **Missing Error Handling** - ไม่มีการจัดการข้อผิดพลาด
-4. **Animation Conflicts** - Animation บางตัวทำงานซ้ำซ้อนกัน
-
-### การแก้ไข:
-
-#### 1. Fixed Body Layers Visibility
-```css
-.layer {
-    opacity: 0.6;
-    pointer-events: auto;
-    z-index: proper-stacking;
-}
-
-.layer:hover {
-    opacity: 1 !important;
-    transform: scale(1.02);
-    z-index: 10 !important;
-}
-```
-
-#### 2. Fixed Modal Functions
-```javascript
-// แก้ไขชื่อฟังก์ชันให้สอดคล้องกัน
-window.openSystemModal = function (systemType) {
-    // Fixed implementation with error handling
-}
-```
-
-#### 3. Added Error Handling
-```javascript
-try {
-    // Code execution
-} catch (error) {
-    console.error("Error:", error);
-    showErrorMessage("เกิดข้อผิดพลาด");
-}
-```
-
-#### 4. Improved Animation System
-```javascript
-// ปรับปรุงระบบ Animation ให้มี fallback
-if (typeof gsap === "undefined") {
-    initFallbackAnimations();
-}
-```
-
 ## ฟีเจอร์หลัก
 
 - **Interactive Body Layers** - คลิกและ hover เพื่อดูระบบต่างๆ
@@ -135,6 +84,8 @@ projgem/
 ├── js/
 │   ├── main.js          # JavaScript หลัก
 │   ├── systems.js       # ข้อมูลระบบร่างกาย
+│   ├── lessons.js       # ข้อมูลสื่อการสอน
+│   ├── quiz-*.js        # คำถามการเรียนรู้
 │   └── animations.js    # ระบบ Animation
 └── images/
     ├── human-body-outline.svg
@@ -191,5 +142,3 @@ MIT License - สามารถใช้งานและแก้ไขได
 พัฒนาโดยนักเรียนชั้นมัธยมศึกษา เพื่อการศึกษาและการเรียนรู้
 
 ---
-
-**หมายเหตุ:** นี่คือเวอร์ชันที่แก้ไขข้อบกพร่องแล้วจากตัวอย่างเดิม ทำงานได้อย่างสมบูรณ์และมีการจัดการข้อผิดพลาดที่ดีขึ้น
