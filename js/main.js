@@ -42,8 +42,17 @@ function initNavigation() {
             const targetId = link.getAttribute("href");
             const targetSection = document.querySelector(targetId);
             if (targetSection) {
-                if (targetId === '#menu') { if (window.goToMenu) window.goToMenu(); }
-                targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                if (targetId === '#menu') { 
+                    if (window.goToMenu) window.goToMenu(); 
+                } else {
+                    // For other links like #home, use standard scrollIntoView
+                    targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+                // Also ensure sections are displayed correctly
+                if (window.show) {
+                    if (targetId === '#home') window.show('home');
+                    else if (targetId === '#menu') window.show('menu');
+                }
             }
         });
     });

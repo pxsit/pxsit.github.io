@@ -462,7 +462,8 @@
     show('menu');
     const menuEl = document.getElementById('menu');
     if (menuEl && typeof menuEl.scrollIntoView === 'function') {
-      menuEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // No need to scroll here, main.js handles it.
+      // menuEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
   window.startLesson = function(key){ 
