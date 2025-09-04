@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nervous System - Outside In</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/animations.css" />
+    <title>Respiratory System - Outside In</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -94,7 +94,7 @@
       <div class="header-inner">
         <div class="brand">Outside In</div>
         <nav>
-          <a class="back-link" href="index.html#menu"
+          <a class="back-link" href="../index.html#menu"
             ><i class="fas fa-arrow-left"></i> Menu</a
           >
         </nav>
@@ -104,7 +104,7 @@
     <main class="system-hero">
       <div class="system-bg" aria-hidden="true"></div>
       <div class="system-content container">
-        <h1 class="section-title">Nervous System</h1>
+        <h1 class="section-title">Respiratory System</h1>
         <p class="section-description">
           เนื้อหาเดียวกับโหมดบทเรียน แต่ภาพพื้นหลังคงที่เต็มหน้า
         </p>
@@ -121,9 +121,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="js/lessons.js"></script>
-    <script src="js/quiz-handler.js"></script>
-    <script src="js/quiz-nervous.js"></script>
+    <script src="../js/lessons.js"></script>
+    <script src="../../js/quiz-handler.js"></script>
+    <script src="../js/quiz-respiratory.js"></script>
     <script>
       (function () {
         function ensureECG() {
@@ -157,12 +157,12 @@
         }
 
         function renderTopic() {
-          const topic = (window.lessonTopics || {}).nervous;
+          const topic = (window.lessonTopics || {}).respiratory;
           if (!topic) return;
           const container = document.querySelector(".system-content");
           container.innerHTML = `
-            <h1 class=\"section-title\">${topic.name}</h1>
-            <p class=\"section-description\">เนื้อหาเดียวกับโหมดบทเรียน แต่ภาพพื้นหลังคงที่เต็มหน้า</p>
+            <h1 class="section-title">${topic.name}</h1>
+            <p class="section-description">เนื้อหาเดียวกับโหมดบทเรียน แต่ภาพพื้นหลังคงที่เต็มหน้า</p>
             ${topic.pages
               .map(
                 (p, idx) => `
@@ -174,7 +174,7 @@
               )
               .join("")}
             <div style=\"display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:20px;\">
-              <button class=\"cta-button\" onclick=\"window.startTopicQuiz('nervous', (window.quizData||{})['nervous'])\">
+              <button class=\"cta-button\" onclick=\"window.startTopicQuiz('respiratory', (window.quizData||{})['respiratory'])\">
                 <i class=\"fas fa-award\"></i>
                 เริ่มแบบทดสอบสำหรับ ${topic.name}
               </button>
@@ -193,7 +193,7 @@
         }
       })();
       window.backToMenu = function () {
-        window.location.href = "index.html#menu";
+        window.location.href = "../index.html#menu";
       };
     </script>
   </body>
