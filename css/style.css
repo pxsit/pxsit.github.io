@@ -230,7 +230,7 @@ body {
 /* Ensure anchor cards look like buttons */
 a.menu-card { display: block; text-decoration: none; color: inherit; }
 .menu-bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: saturate(1.2) contrast(1.05) brightness(0.9); opacity: 0.45; }
-.menu-bg.circulatory { background-image: url('../images/circulatory-diagram.svg'); }
+.menu-bg.circulatory { background-image: url('../images/circulatory.jpg'); }
 .menu-bg.respiratory { background-image: url('../images/respiratory.jpg'); }
 .menu-bg.lymphatic { background-image: url('../images/lymphatic.jpg'); }
 .menu-bg.nervous { background-image: url('../images/nervous.jpg'); }
@@ -342,7 +342,7 @@ a.menu-card { display: block; text-decoration: none; color: inherit; }
 
 /* Simple animated backgrounds for topic pages */
 .bg-circulatory { 
-    background-image: url('../images/circulatory-diagram.svg'); 
+    background-image: url('../images/circulatory.jpg'); 
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: center center; 

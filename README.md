@@ -70,33 +70,6 @@ npx serve .
 npx live-server .
 ```
 
-## โครงสร้างไฟล์
-
-```
-projgem/
-├── index.html              # หน้าหลัก
-├── package.json           # ข้อมูลโปรเจค
-├── README.md             # คู่มือนี้
-├── css/
-│   ├── style.css         # สไตล์หลัก
-│   ├── modal.css         # สไตล์ Modal
-│   └── animations.css    # สไตล์ Animation
-├── js/
-│   ├── main.js          # JavaScript หลัก
-│   ├── systems.js       # ข้อมูลระบบร่างกาย
-│   ├── lessons.js       # ข้อมูลสื่อการสอน
-│   ├── quiz-*.js        # คำถามการเรียนรู้
-│   └── animations.js    # ระบบ Animation
-└── images/
-    ├── human-body-outline.svg
-    ├── skin-diagram.svg
-    ├── muscles-diagram.svg
-    ├── bones-diagram.svg
-    ├── organs-diagram.svg
-    ├── circulatory-diagram.svg
-    └── placeholder-diagram.svg
-```
-
 ## การใช้งาน
 
 1. **หน้าแรก** - ดูภาพรวมและคลิกเริ่มการสำรวจ
