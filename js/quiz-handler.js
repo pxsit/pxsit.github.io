@@ -114,7 +114,15 @@
     score = 0;
     if (window.show) {
       window.show("final-quiz");
+      // Render shortly after showing the section
       setTimeout(render, 50);
+      // Smooth scroll to the quiz so users see it immediately
+      setTimeout(() => {
+        const quizSection = document.getElementById("final-quiz");
+        if (quizSection && typeof quizSection.scrollIntoView === "function") {
+          quizSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 120);
     }
   };
 
