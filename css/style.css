@@ -457,6 +457,10 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Prevent fixed header from covering anchors */
+section { scroll-margin-top: 90px; }
+#home, #menu { scroll-margin-top: 100px; }
+
 /* Fade in sections animation */
 .fade-in-section {
     opacity: 0;

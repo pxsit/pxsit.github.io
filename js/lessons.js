@@ -460,10 +460,23 @@
 
   window.goToMenu = function(){
     show('menu');
+    // Close mobile menu if open
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    if (hamburger) hamburger.classList.remove('active');
+    if (navMenu) navMenu.classList.remove('active');
+
     const menuEl = document.getElementById('menu');
     if (menuEl && typeof menuEl.scrollIntoView === 'function') {
-      // No need to scroll here, main.js handles it.
-      // menuEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      requestAnimationFrame(() => {
+        menuEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+    // Update hash without jump
+    if (history && history.pushState) {
+      history.pushState(null, '', '#menu');
+    } else if (typeof location !== 'undefined') {
+      location.hash = '#menu';
     }
   }
   window.startLesson = function(key){ 

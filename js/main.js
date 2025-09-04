@@ -1,4 +1,3 @@
-// Main JavaScript functionality - Fixed Version
 document.addEventListener("DOMContentLoaded", function () {
     try {
         initNavigation();
@@ -10,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Navigation functionality
 function initNavigation() {
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
@@ -35,24 +33,38 @@ function initNavigation() {
         });
     });
 
-    // Smooth scrolling for navigation links
+    // Smooth, reliable scrolling for navigation links
     navLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
             const targetId = link.getAttribute("href");
+            if (!targetId || !targetId.startsWith('#')) return;
+
             const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-                if (targetId === '#menu') { 
-                    if (window.goToMenu) window.goToMenu(); 
-                } else {
-                    // For other links like #home, use standard scrollIntoView
+
+            // Toggle visibility first (so layout is correct before scrolling)
+            if (typeof window.show === 'function') {
+                if (targetId === '#home') window.show('home');
+                else if (targetId === '#menu') window.show('menu');
+                // Leave other sections (e.g., #about) as-is
+            }
+
+            // Close mobile menu immediately
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+
+            // Scroll after layout updates
+            if (targetSection && typeof targetSection.scrollIntoView === 'function') {
+                requestAnimationFrame(() => {
                     targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
-                }
-                // Also ensure sections are displayed correctly
-                if (window.show) {
-                    if (targetId === '#home') window.show('home');
-                    else if (targetId === '#menu') window.show('menu');
-                }
+                });
+            }
+
+            // Update hash for accessibility/history without triggering default jump
+            if (history && history.pushState) {
+                history.pushState(null, '', targetId);
+            } else if (typeof location !== 'undefined') {
+                location.hash = targetId;
             }
         });
     });
