@@ -455,10 +455,6 @@ a.menu-card { display: block; text-decoration: none; color: inherit; }
     .section-title {
         font-size: 2rem;
     }
-    
-    .system-card {
-        padding: 2rem;
-    }
 }
 
 /* Smooth scrolling */

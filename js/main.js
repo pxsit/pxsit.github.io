@@ -37,7 +37,7 @@ function initNavigation() {
     navLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
             const href = link.getAttribute("href");
-            if (!href || !href.startsWith('#')) {
+            if (!href || !href.startsWith("#")) {
                 // Non-hash link (e.g., separate page) → allow default navigation
                 return;
             }
@@ -46,9 +46,9 @@ function initNavigation() {
             const targetSection = document.querySelector(href);
 
             // Toggle visibility first (so layout is correct before scrolling)
-            if (typeof window.show === 'function') {
-                if (href === '#home') window.show('home');
-                else if (href === '#menu') window.show('menu');
+            if (typeof window.show === "function") {
+                if (href === "#home") window.show("home");
+                else if (href === "#menu") window.show("menu");
                 // Leave other sections (e.g., #about) as-is
             }
 
@@ -57,16 +57,22 @@ function initNavigation() {
             navMenu.classList.remove("active");
 
             // Scroll after layout updates
-            if (targetSection && typeof targetSection.scrollIntoView === 'function') {
+            if (
+                targetSection &&
+                typeof targetSection.scrollIntoView === "function"
+            ) {
                 requestAnimationFrame(() => {
-                    targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                    targetSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
                 });
             }
 
             // Update hash for accessibility/history without triggering default jump
             if (history && history.pushState) {
-                history.pushState(null, '', href);
-            } else if (typeof location !== 'undefined') {
+                history.pushState(null, "", href);
+            } else if (typeof location !== "undefined") {
                 location.hash = href;
             }
         });
@@ -137,7 +143,7 @@ function initAnimations() {
 // Fallback animations for when GSAP is not available
 function initFallbackAnimations() {
     const heroElements = document.querySelectorAll(
-        ".hero-title, .hero-subtitle, .hero-description, .cta-button, .human-body-container"
+        ".hero-title, .hero-subtitle, .hero-description, .cta-button"
     );
 
     heroElements.forEach((element, index) => {
@@ -241,12 +247,7 @@ function showErrorMessage(message) {
     }, 5000);
 }
 
-// Final quiz trigger
-function triggerFinalQuiz() {
-    // This function is now deprecated, as quizzes are topic-specific.
-    // You can leave it for now or remove it.
-    showErrorMessage("โปรดเลือกบทเรียนและทำแบบทดสอบท้ายบทเรียน");
-}
+// (removed) Deprecated global final quiz trigger; quizzes are topic-specific now
 
 // Utility functions
 function debounce(func, wait) {
