@@ -219,8 +219,6 @@ function createParticles() {
     }
 }
 
-// Removed unused goToMenuProxy helper
-
 // Error handling and user feedback
 function showErrorMessage(message) {
     // Create a simple toast notification
@@ -247,7 +245,6 @@ function showErrorMessage(message) {
     }, 5000);
 }
 
-// (removed) Deprecated global final quiz trigger; quizzes are topic-specific now
 
 // Utility functions
 function debounce(func, wait) {
@@ -275,13 +272,11 @@ function throttle(func, limit) {
     };
 }
 
-// Error handling
 window.addEventListener("error", (e) => {
     console.error("Application error:", e.error);
     showErrorMessage("เกิดข้อผิดพลาดในระบบ");
 });
 
-// Performance monitoring
 if ("performance" in window) {
     window.addEventListener("load", () => {
         setTimeout(() => {
@@ -296,6 +291,3 @@ if ("performance" in window) {
         }, 0);
     });
 }
-
-// Make functions globally available
-// Do not re-export; lessons.js provides goToMenu
