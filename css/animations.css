@@ -151,16 +151,7 @@
     animation-delay: 0.5s;
 }
 
-/* Loading spinner */
-.loading-spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #2c5aa0;
-    border-radius: 50%;
-    animation: rotate 1s linear infinite;
-    margin: 20px auto;
-}
+/* Loading spinner (use definition in style.css to avoid duplication) */
 
 /* Progress bar animation */
 @keyframes progressFill {
@@ -329,17 +320,7 @@
     animation: modalSlideIn 0.3s ease-out;
 }
 
-/* Intersection Observer classes */
-.fade-in-section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in-section.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+/* Intersection Observer classes are defined in style.css */
 
 /* Button hover animations */
 .btn-hover-bounce:hover {
@@ -384,47 +365,9 @@
     }
 }
 
-/* Particle animation for background */
-.particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-}
+/* Particle animation classes are defined in style.css */
 
-.particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    animation: particleFloat 10s infinite linear;
-}
-
-@keyframes particleFloat {
-    0% {
-        transform: translateY(100vh) translateX(0px);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100px) translateX(100px);
-        opacity: 0;
-    }
-}
-
-/* Smooth scroll behavior */
-html {
-    scroll-behavior: smooth;
-}
+/* Smooth scroll behavior is defined in style.css */
 
 /* Transition utilities */
 .transition-all {

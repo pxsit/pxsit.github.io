@@ -210,8 +210,7 @@ function createParticles() {
     }
 }
 
-// Scroll to menu helper (proxy)
-function goToMenuProxy(){ if (window.goToMenu) window.goToMenu(); }
+// Removed unused goToMenuProxy helper
 
 // Error handling and user feedback
 function showErrorMessage(message) {
