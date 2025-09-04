@@ -1,7 +1,7 @@
 {
-    "name": "outside-in-fixed",
-    "version": "1.0.0",
-    "description": "เว็บไซต์เพื่อการศึกษาระบบร่างกายมนุษย์แบบ Interactive (เวอร์ชันแก้ไขแล้ว)",
+    "name": "outside-in",
+    "version": "1.0.4",
+    "description": "เว็บไซต์เพื่อการศึกษาระบบร่างกายมนุษย์",
     "main": "index.html",
     "scripts": {
         "start": "python -m http.server 8000",
@@ -32,9 +32,9 @@
         "url": "local"
     },
     "bugs": {
-        "url": "https://github.com/issues"
+        "url": "https://github.com/pxsit/pxsit.github.io/issues"
     },
-    "homepage": ".",
+    "homepage": "https://github.com/pxsit/pxsit.github.io",
     "browser": {
         "main": "index.html"
     }
