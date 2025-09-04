@@ -33,19 +33,22 @@ function initNavigation() {
         });
     });
 
-    // Smooth, reliable scrolling for navigation links
+    // Smooth, reliable scrolling for hash navigation links; allow normal links
     navLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
+            const href = link.getAttribute("href");
+            if (!href || !href.startsWith('#')) {
+                // Non-hash link (e.g., separate page) → allow default navigation
+                return;
+            }
             e.preventDefault();
-            const targetId = link.getAttribute("href");
-            if (!targetId || !targetId.startsWith('#')) return;
 
-            const targetSection = document.querySelector(targetId);
+            const targetSection = document.querySelector(href);
 
             // Toggle visibility first (so layout is correct before scrolling)
             if (typeof window.show === 'function') {
-                if (targetId === '#home') window.show('home');
-                else if (targetId === '#menu') window.show('menu');
+                if (href === '#home') window.show('home');
+                else if (href === '#menu') window.show('menu');
                 // Leave other sections (e.g., #about) as-is
             }
 
@@ -62,9 +65,9 @@ function initNavigation() {
 
             // Update hash for accessibility/history without triggering default jump
             if (history && history.pushState) {
-                history.pushState(null, '', targetId);
+                history.pushState(null, '', href);
             } else if (typeof location !== 'undefined') {
-                location.hash = targetId;
+                location.hash = href;
             }
         });
     });

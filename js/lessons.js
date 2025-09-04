@@ -4,27 +4,27 @@
 // - nextPage(): advance within current lesson; when finished, start final quiz
 // - backToMenu(): go back to menu
 
-(function(){
-  const sectionLesson = document.getElementById('lesson');
-  const sectionMenu = document.getElementById('menu');
-  const sectionQuiz = document.getElementById('final-quiz');
-  const titleEl = document.getElementById('lesson-title');
-  const stepEl = document.getElementById('lesson-step');
-  const contentEl = document.getElementById('lesson-content');
-  const bgEl = document.getElementById('lesson-bg');
-  const nextBtn = document.getElementById('lesson-next');
-  const backBtn = document.getElementById('lesson-back');
+(function () {
+  const sectionLesson = document.getElementById("lesson");
+  const sectionMenu = document.getElementById("menu");
+  const sectionQuiz = document.getElementById("final-quiz");
+  const titleEl = document.getElementById("lesson-title");
+  const stepEl = document.getElementById("lesson-step");
+  const contentEl = document.getElementById("lesson-content");
+  const bgEl = document.getElementById("lesson-bg");
+  const nextBtn = document.getElementById("lesson-next");
+  const backBtn = document.getElementById("lesson-back");
 
   const state = { topic: null, index: 0 };
   const completed = new Set();
 
   const topics = {
     circulatory: {
-      name: 'CIRCULATORY SYSTEM',
-      bg: 'bg-circulatory',
+      name: "Circulatory System",
+      bg: "bg-circulatory",
       pages: [
         {
-          title: 'เลือดและองค์ประกอบของเลือด',
+          title: "เลือดและองค์ประกอบของเลือด",
           html: `
             <div class="panel">
               <div class="h3">เลือดคืออะไร?</div>
@@ -50,10 +50,10 @@
             </div>
             <div class="pill" style="margin-top:12px;">พื้นหลังจำลองการไหลของเลือดด้วยอนุภาคเคลื่อนไหว</div>
           `,
-          bgAnim: 'flow'
+          bgAnim: "flow",
         },
         {
-          title: 'หลอดเลือดและหมู่เลือด',
+          title: "หลอดเลือดและหมู่เลือด",
           html: `
             <div class="grid-2">
               <div class="panel">
@@ -90,10 +90,10 @@
                 </div>
               </div>
             </div>
-          `
+          `,
         },
         {
-          title: 'ความดันเลือดและอัตราการเต้นของหัวใจ',
+          title: "ความดันเลือดและอัตราการเต้นของหัวใจ",
           html: `
             <div class="grid-2">
               <div class="panel">
@@ -111,10 +111,10 @@
               </div>
             </div>
           `,
-          after: () => drawECG()
+          after: () => drawECG(),
         },
         {
-          title: 'การไหลเวียนของเลือดผ่านหัวใจ',
+          title: "การไหลเวียนของเลือดผ่านหัวใจ",
           html: `
             <div class="panel">
               <div class="h3">แผนภาพหัวใจ</div>
@@ -136,10 +136,10 @@
                 </svg>
               </div>
             </div>
-          `
+          `,
         },
         {
-          title: 'โรคที่เกี่ยวข้องกับระบบไหลเวียนเลือด',
+          title: "โรคที่เกี่ยวข้องกับระบบไหลเวียนเลือด",
           html: `
             <div class="panel">
                 <div class="h3">โรคที่พบบ่อย</div>
@@ -149,24 +149,24 @@
                     <li><strong>ภาวะหัวใจล้มเหลว (Heart Failure):</strong> ภาวะที่หัวใจไม่สามารถสูบฉีดเลือดไปเลี้ยงร่างกายได้เพียงพอ</li>
                 </ul>
             </div>
-          `
-        }
-      ]
+          `,
+        },
+      ],
     },
     nervous: {
-      name: 'NERVOUS SYSTEM',
-      bg: 'bg-nervous',
+      name: "Nervous System",
+      bg: "bg-nervous",
       pages: [
         {
-          title: 'ภาพรวมและหน้าที่',
+          title: "ภาพรวมและหน้าที่",
           html: `
             <div class="panel">
               <p class="muted">ระบบประสาททำหน้าที่รับข้อมูล ประมวลผล และสั่งการประกอบด้วย <strong>ระบบประสาทส่วนกลาง (CNS)</strong> คือ สมองและไขสันหลัง และ <strong>ระบบประสาทรอบนอก (PNS)</strong> คือ เส้นประสาทที่เชื่อมต่อทั่วร่างกาย</p>
             </div>
-          `
+          `,
         },
         {
-          title: 'เซลล์ประสาท (Neuron)',
+          title: "เซลล์ประสาท (Neuron)",
           html: `
             <div class="grid-2">
               <div class="panel">
@@ -201,10 +201,10 @@
                 </div>
               </div>
             </div>
-          `
+          `,
         },
         {
-          title: 'ระบบประสาทส่วนกลาง (CNS)',
+          title: "ระบบประสาทส่วนกลาง (CNS)",
           html: `
             <div class="panel">
               <div class="h3">สมองและไขสันหลัง</div>
@@ -215,10 +215,10 @@
                 <div class="panel"><div class="h3"><span style="display:inline-block;width:12px;height:12px;background:#f472b6;border-radius:3px;margin-right:6px;"></span>ก้านสมอง</div><p class="muted">การหายใจ ชีพจร รีเฟล็กซ์สำคัญ</p></div>
               </div>
             </div>
-          `
+          `,
         },
         {
-          title: 'ไขสันหลังและรีเฟล็กซ์',
+          title: "ไขสันหลังและรีเฟล็กซ์",
           html: `
             <div class="grid-2">
               <div class="panel">
@@ -226,10 +226,10 @@
               </div>
               <div class="panel"><img src="images/placeholder-diagram.svg" alt="spinal" style="width:100%; opacity:.6; border-radius:8px;"></div>
             </div>
-          `
+          `,
         },
         {
-          title: 'ระบบประสาทรอบนอก (PNS)',
+          title: "ระบบประสาทรอบนอก (PNS)",
           html: `
             <div class="panel">
               <div class="h3">การแบ่งตามการทำงาน</div>
@@ -238,11 +238,11 @@
                 <li><strong>ระบบประสาทอัตโนมัติ (Autonomic):</strong> ควบคุมอวัยวะภายในที่ทำงานนอกอำนาจจิตใจ เช่น หัวใจ ปอด กระเพาะอาหาร</li>
               </ul>
             </div>
-          `
+          `,
         },
         {
-            title: 'ระบบประสาทอัตโนมัติ: ซิมพาเทติก vs พาราซิมพาเทติก',
-            html: `
+          title: "ระบบประสาทอัตโนมัติ: ซิมพาเทติก vs พาราซิมพาเทติก",
+          html: `
             <div class="grid-2">
                 <div class="panel">
                     <div class="h3">ซิมพาเทติก (Sympathetic)</div>
@@ -253,16 +253,16 @@
                     <p class="muted">ทำงานในภาวะ "พักและย่อย" (Rest and Digest) เช่น ลดอัตราการเต้นของหัวใจ กระตุ้นการย่อยอาหาร</p>
                 </div>
             </div>
-            `
-        }
-      ]
+            `,
+        },
+      ],
     },
     respiratory: {
-      name: 'RESPIRATORY SYSTEM',
-      bg: 'bg-respiratory',
+      name: "Respiratory System",
+      bg: "bg-respiratory",
       pages: [
         {
-          title: 'ภาพรวมและขั้นตอนการหายใจ',
+          title: "ภาพรวมและขั้นตอนการหายใจ",
           html: `
             <div class="panel">
               <p class="muted">ระบบหายใจแลกเปลี่ยนแก๊ส O2 กับ CO2 ขั้นตอนหลัก 3 ขั้นตอน: (1) การระบายอากาศเข้าสู่ปอด (Ventilation) (2) การแลกเปลี่ยนแก๊สที่ถุงลม (External respiration) (3) การลำเลียงและแลกเปลี่ยนที่เนื้อเยื่อ (Internal respiration)</p>
@@ -272,19 +272,19 @@
               <div class="orb orb-blue" style="width:110px; height:110px; top:20px; left:20px; opacity:.6;"></div>
               <div class="orb orb-pink" style="width:120px; height:120px; top:30px; right:20px; opacity:.6;"></div>
             </div>
-          `
+          `,
         },
         {
-          title: 'การแลกเปลี่ยนแก๊สที่ปอด',
+          title: "การแลกเปลี่ยนแก๊สที่ปอด",
           html: `
             <div class="grid-2">
               <div class="panel"><div class="h3">ถุงลมปอด (Alveoli)</div><p class="muted">เป็นโครงสร้างเล็กๆ ในปอดที่มีผนังบางมาก และมีเส้นเลือดฝอยล้อมรอบ ทำให้ออกซิเจนสามารถแพร่เข้าสู่เลือด และคาร์บอนไดออกไซด์แพร่ออกจากเลือดได้อย่างมีประสิทธิภาพ</p></div>
               <div class="panel"><img src="images/placeholder-diagram.svg" style="width:100%; opacity:.6; border-radius:8px;"></div>
             </div>
-          `
+          `,
         },
         {
-          title: 'ตารางเปรียบเทียบ ระหว่างหายใจเข้า-ออก',
+          title: "ตารางเปรียบเทียบ ระหว่างหายใจเข้า-ออก",
           html: `
             <div class="panel" style="overflow-x:auto;">
               <table style="width:100%; border-collapse:collapse; color:#e6e6f0;">
@@ -297,11 +297,11 @@
                 </tbody>
               </table>
             </div>
-          `
+          `,
         },
         {
-            title: 'การควบคุมการหายใจ',
-            html: `
+          title: "การควบคุมการหายใจ",
+          html: `
             <div class="panel">
                 <p class="muted">การหายใจถูกควบคุมโดยศูนย์ควบคุมในสมองส่วนก้านสมอง (Brainstem) ซึ่งจะปรับอัตราการหายใจตามระดับคาร์บอนไดออกไซด์ในเลือดเป็นหลัก</p>
                 <ul class="list-dot muted" style="margin-top:1rem;">
@@ -309,24 +309,24 @@
                     <li><strong>ระดับ CO2 ต่ำ:</strong> ทำให้หายใจช้าลง</li>
                 </ul>
             </div>
-            `
-        }
-      ]
+            `,
+        },
+      ],
     },
     lymphatic: {
-      name: 'LYMPHATICS SYSTEM',
-      bg: 'bg-lymphatic',
+      name: "Lymphatics System",
+      bg: "bg-lymphatic",
       pages: [
         {
-          title: 'ภาพรวมและองค์ประกอบ',
+          title: "ภาพรวมและองค์ประกอบ",
           html: `
             <div class="panel">
               <p class="muted">ระบบน้ำเหลืองช่วยระบายน้ำส่วนเกินจากเนื้อเยื่อ กลับสู่กระแสเลือด และมีบทบาทในภูมิคุ้มกัน ประกอบด้วย หลอดน้ำเหลือง ต่อมน้ำเหลือง ม้าม ต่อมไธมัส และน้ำเหลือง</p>
             </div>
-          `
+          `,
         },
         {
-          title: 'การไหลของน้ำเหลืองและปัจจัย',
+          title: "การไหลของน้ำเหลืองและปัจจัย",
           html: `
             <div class="panel">
               <div class="h3">ปัจจัยที่ช่วยให้น้ำเหลืองไหลเวียน</div>
@@ -337,10 +337,10 @@
               </ul>
               <p class="muted" style="margin-top:1rem;">ระบบนี้ไม่มีปั๊มโดยตรงเหมือนหัวใจในระบบไหลเวียนเลือด</p>
             </div>
-          `
+          `,
         },
         {
-          title: 'อวัยวะในระบบน้ำเหลือง',
+          title: "อวัยวะในระบบน้ำเหลือง",
           html: `
             <div class="grid-3">
                 <div class="panel">
@@ -356,11 +356,11 @@
                     <p class="muted">อยู่บริเวณทรวงอก เป็นแหล่งที่เซลล์เม็ดเลือดขาว T-cell เจริญเติบโตและพัฒนาเต็มที่</p>
                 </div>
             </div>
-          `
+          `,
         },
         {
-            title: 'บทบาทในระบบภูมิคุ้มกัน',
-            html: `
+          title: "บทบาทในระบบภูมิคุ้มกัน",
+          html: `
             <div class="panel">
                 <p class="muted">ระบบน้ำเหลืองเป็นส่วนสำคัญของระบบภูมิคุ้มกัน โดยทำหน้าที่ผลิตและลำเลียงเซลล์เม็ดเลือดขาวเพื่อต่อสู้กับการติดเชื้อ</p>
                 <ul class="list-dot muted" style="margin-top:1rem;">
@@ -368,138 +368,167 @@
                     <li><strong>การทำงานของ T-cells:</strong> T-cells ที่พัฒนาในต่อมไธมัสจะทำลายเซลล์ที่ติดเชื้อหรือเซลล์ที่ผิดปกติโดยตรง</li>
                 </ul>
             </div>
-            `
+            `,
         },
         {
-            title: 'ความสัมพันธ์กับระบบไหลเวียนเลือด',
-            html: `
+          title: "ความสัมพันธ์กับระบบไหลเวียนเลือด",
+          html: `
             <div class="panel">
                 <p class="muted">ระบบน้ำเหลืองทำงานใกล้ชิดกับระบบไหลเวียนเลือด โดยจะรวบรวมของเหลว (น้ำเหลือง) ที่ซึมออกจากหลอดเลือดฝอยในเนื้อเยื่อ และนำกลับเข้าสู่กระแสเลือดอีกครั้ง ซึ่งช่วยรักษาสมดุลของเหลวในร่างกาย</p>
             </div>
-            `
-        }
-      ]
-    }
+            `,
+        },
+      ],
+    },
   };
 
-  function setBg(key){
-    bgEl.className = 'lesson-bg';
+  function setBg(key) {
+    bgEl.className = "lesson-bg";
     if (key) bgEl.classList.add(key);
   }
 
-  function render(){
+  function render() {
     const t = topics[state.topic];
     if (!t) return;
     const page = t.pages[state.index];
     titleEl.textContent = `${t.name}`;
-    stepEl.textContent = `หน้า ${state.index+1} / ${t.pages.length}`;
-    contentEl.innerHTML = `<h3 class="h3" style="margin-bottom:8px;">${page.title}</h3>` + page.html;
+    stepEl.textContent = `หน้า ${state.index + 1} / ${t.pages.length}`;
+    contentEl.innerHTML =
+      `<h3 class="h3" style="margin-bottom:8px;">${page.title}</h3>` +
+      page.html;
     // Reset any dynamic bg
     clearBloodFlow();
-    if (page.bgAnim === 'flow') mountBloodFlow();
-    if (typeof page.after === 'function') setTimeout(page.after, 0);
+    if (page.bgAnim === "flow") mountBloodFlow();
+    if (typeof page.after === "function") setTimeout(page.after, 0);
 
     // Show/hide back button
     if (backBtn) {
-      backBtn.style.display = state.index > 0 ? 'inline-flex' : 'none';
+      backBtn.style.display = state.index > 0 ? "inline-flex" : "none";
     }
   }
 
-  function drawECG(){
-    const el = document.getElementById('ecg');
+  function drawECG() {
+    const el = document.getElementById("ecg");
     if (!el) return;
-    const w = el.clientWidth || 600, h = el.clientHeight || 140;
+    const w = el.clientWidth || 600,
+      h = el.clientHeight || 140;
     el.innerHTML = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" width="100%" height="100%">
       <defs>
         <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ef4444"/><stop offset="1" stop-color="#f472b6"/></linearGradient>
       </defs>
       <path id="p" d="" fill="none" stroke="url(#g)" stroke-width="2"/>
     </svg>`;
-    const p = el.querySelector('#p');
+    const p = el.querySelector("#p");
     // Generate a simple heartbeat-like path
-    let d = "M0,"+(h/2);
+    let d = "M0," + h / 2;
     const period = 120; // px per beat
-    for(let x=0; x<w; x++){
-      let y = h/2 + Math.sin(x/8)*4;
-      if (x%period===20) { y = h*0.2; }
-      if (x%period===24) { y = h*0.8; }
-      if (x%period===28) { y = h*0.25; }
+    for (let x = 0; x < w; x++) {
+      let y = h / 2 + Math.sin(x / 8) * 4;
+      if (x % period === 20) {
+        y = h * 0.2;
+      }
+      if (x % period === 24) {
+        y = h * 0.8;
+      }
+      if (x % period === 28) {
+        y = h * 0.25;
+      }
       d += ` L${x},${y}`;
     }
-    p.setAttribute('d', d);
+    p.setAttribute("d", d);
   }
 
-  function show(id){
-    // Toggle section visibility
-    const homeEl = document.getElementById('home');
-    const menuEl = document.getElementById('menu');
-    homeEl.style.display = id==='home' ? 'flex' : 'none';
-    menuEl.style.display = id==='menu' ? 'block' : 'none';
-    sectionLesson.style.display = id==='lesson' ? 'block' : 'none';
-    sectionQuiz.style.display = id==='final-quiz' ? 'block' : 'none';
+  function show(id) {
+    // Toggle section visibility (guard if some sections don’t exist on this page)
+    const homeEl = document.getElementById("home");
+    const menuEl = document.getElementById("menu");
+    if (homeEl) homeEl.style.display = id === "home" ? "flex" : "none";
+    if (menuEl) menuEl.style.display = id === "menu" ? "block" : "none";
+    if (sectionLesson)
+      sectionLesson.style.display = id === "lesson" ? "block" : "none";
+    if (sectionQuiz)
+      sectionQuiz.style.display = id === "final-quiz" ? "block" : "none";
 
     // Force fade-in visibility when shown programmatically
-    const map = { home: homeEl, menu: menuEl, lesson: sectionLesson, 'final-quiz': sectionQuiz };
+    const map = {
+      home: homeEl,
+      menu: menuEl,
+      lesson: sectionLesson,
+      "final-quiz": sectionQuiz,
+    };
     const shown = map[id];
     if (shown) {
-      shown.classList.add('is-visible');
+      shown.classList.add("is-visible");
     }
 
     // If GSAP ScrollTrigger is available, refresh after layout changes
-    if (typeof window !== 'undefined' && window.gsap && window.ScrollTrigger && typeof window.ScrollTrigger.refresh === 'function') {
+    if (
+      typeof window !== "undefined" &&
+      window.gsap &&
+      window.ScrollTrigger &&
+      typeof window.ScrollTrigger.refresh === "function"
+    ) {
       // Delay to allow layout/style changes to apply before measuring
       window.gsap.delayedCall(0, () => window.ScrollTrigger.refresh());
-    } else if (id === 'menu') {
+    } else if (id === "menu") {
       // Non-GSAP fallback: ensure menu cards are visible
-      document.querySelectorAll('.menu-card').forEach((el) => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
+      document.querySelectorAll(".menu-card").forEach((el) => {
+        el.style.opacity = "1";
+        el.style.transform = "none";
       });
     }
   }
 
-  window.goToMenu = function(){
-    show('menu');
+  window.goToMenu = function () {
+    show("menu");
     // Close mobile menu if open
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    if (hamburger) hamburger.classList.remove('active');
-    if (navMenu) navMenu.classList.remove('active');
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+    if (hamburger) hamburger.classList.remove("active");
+    if (navMenu) navMenu.classList.remove("active");
 
-    const menuEl = document.getElementById('menu');
-    if (menuEl && typeof menuEl.scrollIntoView === 'function') {
+    const menuEl = document.getElementById("menu");
+    if (menuEl && typeof menuEl.scrollIntoView === "function") {
       requestAnimationFrame(() => {
-        menuEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        menuEl.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     }
     // Update hash without jump
     if (history && history.pushState) {
-      history.pushState(null, '', '#menu');
-    } else if (typeof location !== 'undefined') {
-      location.hash = '#menu';
+      history.pushState(null, "", "#menu");
+    } else if (typeof location !== "undefined") {
+      location.hash = "#menu";
     }
-  }
-  window.startLesson = function(key){ 
-    state.topic = key; 
-    state.index = 0; 
-    setBg(topics[key]?.bg); 
-    show('lesson'); 
-    render(); 
-    nextBtn.style.display = 'inline-flex'; // Ensure next button is visible
-  }
-  window.backToMenu = function(){ show('menu'); }
+  };
+  window.startLesson = function (key) {
+    state.topic = key;
+    state.index = 0;
+    setBg(topics[key]?.bg);
+    show("lesson");
+    render();
+    nextBtn.style.display = "inline-flex"; // Ensure next button is visible
+  };
+  window.backToMenu = function () {
+    show("menu");
+  };
 
-  window.prevPage = function(){
-    if (state.index > 0){
-        state.index--;
-        render();
-        nextBtn.style.display = 'inline-flex'; // Ensure next button is visible after going back
+  window.prevPage = function () {
+    if (state.index > 0) {
+      state.index--;
+      render();
+      nextBtn.style.display = "inline-flex"; // Ensure next button is visible after going back
     }
-  }
+  };
 
-  window.nextPage = function(){ const t = topics[state.topic]; if (!t) return; if (state.index < t.pages.length-1){ state.index++; render(); } else { 
-        // End of lesson, show quiz button
-        contentEl.innerHTML += `
+  window.nextPage = function () {
+    const t = topics[state.topic];
+    if (!t) return;
+    if (state.index < t.pages.length - 1) {
+      state.index++;
+      render();
+    } else {
+      // End of lesson, show quiz button
+      contentEl.innerHTML += `
             <div style="text-align: center; margin-top: 2rem;">
                 <button class="cta-button" onclick="window.startTopicQuiz('${state.topic}', window.quizData['${state.topic}'])">
                     <i class="fas fa-award"></i>
@@ -507,29 +536,33 @@
                 </button>
             </div>
         `;
-        nextBtn.style.display = 'none'; // Hide next button
+      nextBtn.style.display = "none"; // Hide next button
     }
-  }
+  };
   // Animated blood flow background
-  function mountBloodFlow(){
-    const wrap = document.createElement('div');
-    wrap.className = 'blood-flow';
-    for (let i=0;i<18;i++){
-      const cell = document.createElement('div');
+  function mountBloodFlow() {
+    const wrap = document.createElement("div");
+    wrap.className = "blood-flow";
+    for (let i = 0; i < 18; i++) {
+      const cell = document.createElement("div");
       const t = Math.random();
-      cell.className = 'cell ' + (t<0.6? 'rbc' : t<0.9? 'wbc' : 'platelet');
-      cell.style.top = (Math.random()*80+5) + '%';
-      cell.style.animationDuration = (Math.random()*8+6) + 's';
-      cell.style.animationDelay = (-Math.random()*8) + 's';
+      cell.className =
+        "cell " + (t < 0.6 ? "rbc" : t < 0.9 ? "wbc" : "platelet");
+      cell.style.top = Math.random() * 80 + 5 + "%";
+      cell.style.animationDuration = Math.random() * 8 + 6 + "s";
+      cell.style.animationDelay = -Math.random() * 8 + "s";
       wrap.appendChild(cell);
     }
-    contentEl.style.position = 'relative';
+    contentEl.style.position = "relative";
     contentEl.appendChild(wrap);
   }
-  function clearBloodFlow(){
-    const old = contentEl.querySelector('.blood-flow');
+  function clearBloodFlow() {
+    const old = contentEl.querySelector(".blood-flow");
     if (old) old.remove();
   }
+
+  // Expose topics so other pages (e.g., dedicated full pages) can reuse lesson content
+  window.lessonTopics = topics;
 
   window.show = show;
 })();

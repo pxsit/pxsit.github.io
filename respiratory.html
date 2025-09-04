@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Respiratory System - Outside In</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body.system-page {
+        margin: 0;
+        min-height: 100%;
+        background: #0b1020;
+      }
+      .system-hero {
+        position: relative;
+        min-height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .system-bg {
+        position: fixed;
+        inset: 0;
+        background-image: url("images/placeholder-diagram.svg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.22;
+        z-index: 0;
+      }
+      .system-content {
+        position: relative;
+        z-index: 1;
+        max-width: 1100px;
+        width: 100%;
+        padding: 100px 20px 40px;
+      }
+      .header-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 10;
+        background: rgba(5, 10, 25, 0.7);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+      }
+      .header-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        color: #e6e6f0;
+        font-weight: 700;
+      }
+      .back-link {
+        color: #c7cbe6;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 8px 12px;
+        border-radius: 10px;
+      }
+      .back-link:hover {
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+      .panel > * {
+        position: relative;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body class="system-page">
+    <header class="header-bar">
+      <div class="header-inner">
+        <div class="brand">Outside In</div>
+        <nav>
+          <a class="back-link" href="index.html#menu"
+            ><i class="fas fa-arrow-left"></i> Menu</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="system-hero">
+      <div class="system-bg" aria-hidden="true"></div>
+      <div class="system-content container">
+        <h1 class="section-title">Respiratory System</h1>
+        <p class="section-description">
+          เนื้อหาเดียวกับโหมดบทเรียน แต่ภาพพื้นหลังคงที่เต็มหน้า
+        </p>
+      </div>
+    </main>
+
+    <section id="final-quiz" class="quiz-section" style="display: none">
+      <div class="quiz-bg"></div>
+      <div class="quiz-container">
+        <h2 class="section-title center">Quiz</h2>
+        <div id="quiz-stage"></div>
+      </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/lessons.js"></script>
+    <script src="js/quiz-handler.js"></script>
+    <script src="js/quiz-respiratory.js"></script>
+    <script>
+      (function () {
+        function ensureECG() {
+          const el = document.getElementById("ecg");
+          if (!el) return;
+          const w = el.clientWidth || 600,
+            h = el.clientHeight || 140;
+          el.innerHTML = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" width="100%" height="100%">
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ef4444"/><stop offset="1" stop-color="#f472b6"/></linearGradient>
+            </defs>
+            <path id="p" d="" fill="none" stroke="url(#g)" stroke-width="2"/>
+          </svg>`;
+          const p = el.querySelector("#p");
+          let d = `M0,${h / 2}`;
+          const period = 120;
+          for (let x = 0; x < w; x++) {
+            let y = h / 2 + Math.sin(x / 8) * 4;
+            if (x % period === 20) {
+              y = h * 0.2;
+            }
+            if (x % period === 24) {
+              y = h * 0.8;
+            }
+            if (x % period === 28) {
+              y = h * 0.25;
+            }
+            d += ` L${x},${y}`;
+          }
+          p.setAttribute("d", d);
+        }
+
+        function renderTopic() {
+          const topic = (window.lessonTopics || {}).respiratory;
+          if (!topic) return;
+          const container = document.querySelector(".system-content");
+          container.innerHTML = `
+            <h1 class="section-title">${topic.name}</h1>
+            <p class="section-description">เนื้อหาเดียวกับโหมดบทเรียน แต่ภาพพื้นหลังคงที่เต็มหน้า</p>
+            ${topic.pages
+              .map(
+                (p, idx) => `
+              <section class=\"panel\" style=\"margin-top:16px;\">
+                <div class=\"h3\">${idx + 1}. ${p.title}</div>
+                ${p.html}
+              </section>
+            `
+              )
+              .join("")}
+            <div style=\"display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:20px;\">
+              <button class=\"cta-button\" onclick=\"window.startTopicQuiz('respiratory', (window.quizData||{})['respiratory'])\">
+                <i class=\"fas fa-award\"></i>
+                เริ่มแบบทดสอบสำหรับ ${topic.name}
+              </button>
+              <a class=\"btn ghost\" href=\"index.html#menu\"><i class=\"fas fa-bars\"></i> Menu</a>
+            </div>
+          `;
+          requestAnimationFrame(() => {
+            ensureECG();
+          });
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", renderTopic);
+        } else {
+          renderTopic();
+        }
+      })();
+      window.backToMenu = function () {
+        window.location.href = "index.html#menu";
+      };
+    </script>
+  </body>
+</html>
