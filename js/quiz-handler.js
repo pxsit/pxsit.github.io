@@ -44,10 +44,10 @@
 
           const fbColor = wasSkipped ? "#a3a3a3" : isCorrect ? "#34d399" : "#f87171";
           const fbText = wasSkipped
-            ? "คุณข้ามข้อนี้"
-            : isCorrect
-            ? "ถูกต้อง! " + (entry.why || "")
-            : "ผิด: " + (entry.why || "");
+              ? "คุณข้ามข้อนี้ เฉลยคือ: " + (entry.why || "")
+              : isCorrect
+              ? "ถูกต้อง! " + (entry.why || "")
+              : "ผิด: " + (entry.why || "");
 
           return `
             <div class="quiz-summary-item" style="margin:16px 0; padding:12px; border-radius:12px; background: rgba(0,0,0,0.25);">
