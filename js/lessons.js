@@ -120,7 +120,7 @@
               <div class="h3">แผนภาพหัวใจ</div>
               <p class="muted">แสดงทิศทางการไหล: เลือดดำจากร่างกาย → หัวใจขวา → ปอด → เลือดแดงกลับหัวใจซ้าย → ส่งไปเลี้ยงร่างกาย ลูกศรจะชี้ชื่อหลอดเลือดหลัก</p>
               <div style="height:260px; position:relative; margin-top:8px; background:rgba(255,255,255,0.04); border-radius:12px; overflow:hidden;">
-                <img alt="heart" src="images/placeholder-diagram.svg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:.4;">
+                <img alt="heart" src="images/circulatory-diagram.svg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:.4;">
                 <svg viewBox="0 0 600 300" style="position:absolute; inset:0;">
                   <defs>
                     <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -224,7 +224,7 @@
               <div class="panel">
                 <p class="muted">ไขสันหลังคือทางผ่านของสัญญาณระหว่างสมองและร่างกาย และควบคุมการตอบสนองอัตโนมัติที่เรียกว่า 'รีเฟล็กซ์' เช่น การกระตุกขาเมื่อถูกเคาะที่หัวเข่า</p>
               </div>
-              <div class="panel"><img src="images/placeholder-diagram.svg" alt="spinal" style="width:100%; opacity:.6; border-radius:8px;"></div>
+              <div class="panel"><img src="images/nervous.jpg" alt="spinal" style="width:100%; opacity:.6; border-radius:8px;"></div>
             </div>
           `,
         },
@@ -279,7 +279,7 @@
           html: `
             <div class="grid-2">
               <div class="panel"><div class="h3">ถุงลมปอด (Alveoli)</div><p class="muted">เป็นโครงสร้างเล็กๆ ในปอดที่มีผนังบางมาก และมีเส้นเลือดฝอยล้อมรอบ ทำให้ออกซิเจนสามารถแพร่เข้าสู่เลือด และคาร์บอนไดออกไซด์แพร่ออกจากเลือดได้อย่างมีประสิทธิภาพ</p></div>
-              <div class="panel"><img src="images/placeholder-diagram.svg" style="width:100%; opacity:.6; border-radius:8px;"></div>
+              <div class="panel"><img src="images/respiratory.jpg" alt="alveoli" style="width:100%; opacity:.6; border-radius:8px;"></div>
             </div>
           `,
         },

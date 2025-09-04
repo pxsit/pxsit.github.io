@@ -231,9 +231,9 @@ body {
 a.menu-card { display: block; text-decoration: none; color: inherit; }
 .menu-bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: saturate(1.2) contrast(1.05) brightness(0.9); opacity: 0.45; }
 .menu-bg.circulatory { background-image: url('../images/circulatory-diagram.svg'); }
-.menu-bg.respiratory { background-image: url('../images/placeholder-diagram.svg'); }
-.menu-bg.lymphatic { background-image: url('../images/placeholder-diagram.svg'); }
-.menu-bg.nervous { background-image: url('../images/placeholder-diagram.svg'); }
+.menu-bg.respiratory { background-image: url('../images/respiratory.jpg'); }
+.menu-bg.lymphatic { background-image: url('../images/lymphatic.jpg'); }
+.menu-bg.nervous { background-image: url('../images/nervous.jpg'); }
 .menu-text { position: relative; z-index: 2; padding: 16px; display: flex; flex-direction: column; gap: 4px; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(11,16,32,0.6) 55%, rgba(11,16,32,0.95) 100%); height: 100%; justify-content: flex-end; }
 .menu-text h3 { color: #fff; font-size: 1.1rem; letter-spacing: 0.5px; }
 .menu-text span { color: #ff9fc2; font-size: 0.95rem; opacity: 0.9; }
@@ -348,9 +348,9 @@ a.menu-card { display: block; text-decoration: none; color: inherit; }
     background-position: center center; 
     opacity: 0.2; 
 }
-.bg-respiratory { background-image: url('../images/placeholder-diagram.svg'); background-size: cover; opacity: 0.12; }
-.bg-lymphatic { background-image: url('../images/placeholder-diagram.svg'); background-size: cover; opacity: 0.12; }
-.bg-nervous { background-image: url('../images/placeholder-diagram.svg'); background-size: cover; opacity: 0.12; }
+.bg-respiratory { background-image: url('../images/respiratory.jpg'); background-size: cover; opacity: 0.12; }
+.bg-lymphatic { background-image: url('../images/lymphatic.jpg'); background-size: cover; opacity: 0.12; }
+.bg-nervous { background-image: url('../images/nervous.jpg'); background-size: cover; opacity: 0.12; }
 
 /* Quiz pages */
 .quiz-section { position: relative; padding: 100px 0; }
