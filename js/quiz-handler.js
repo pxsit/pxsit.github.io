@@ -1,4 +1,4 @@
-// Generic quiz handler
+// Generic quiz handler with shuffling and tags/difficulty support
 (function () {
     let currentQuestions = [];
     let i = 0;
@@ -11,6 +11,23 @@
 
     function getStage() {
         return document.getElementById("quiz-stage");
+    }
+
+    function shuffleArray(arr) {
+        for (let j = arr.length - 1; j > 0; j--) {
+            const k = Math.floor(Math.random() * (j + 1));
+            [arr[j], arr[k]] = [arr[k], arr[j]];
+        }
+        return arr;
+    }
+
+    function shuffleChoicesOnQuestion(q) {
+        if (!Array.isArray(q.choices)) return q;
+        const labeled = q.choices.map((c, idx) => ({ c, idx }));
+        shuffleArray(labeled);
+        q.choices = labeled.map((x) => x.c);
+        q.ans = labeled.findIndex((x) => x.idx === q.ans);
+        return q;
     }
 
     function render() {
@@ -36,16 +53,13 @@
                     const choiceHtml = entry.choices
                         .map((c, cIdx) => {
                             let cls = "quiz-choice";
-                            // highlight the correct answer
                             if (cIdx === entry.correctIndex) cls += " correct";
-                            // highlight the user's wrong selection
                             if (
                                 !isCorrect &&
                                 !wasSkipped &&
                                 cIdx === entry.selectedIndex
                             )
                                 cls += " incorrect";
-                            // keep selected style for visibility (optional)
                             if (!wasSkipped && cIdx === entry.selectedIndex)
                                 cls += " selected";
                             return `<div class="${cls}" style="pointer-events:none"><div class="quiz-choice-checkbox"></div><span>${c}</span></div>`;
@@ -63,6 +77,26 @@
                         ? "ถูกต้อง! " + (entry.why || "")
                         : "ผิด: " + (entry.why || "");
 
+                    const metaRow = `<div class="muted" style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:6px;">
+                        ${
+                            entry.difficulty
+                                ? `<span class=\"pill\" style=\"opacity:0.9;\">${String(
+                                      entry.difficulty
+                                  ).toUpperCase()}</span>`
+                                : ""
+                        }
+                        ${
+                            entry.tags && entry.tags.length
+                                ? entry.tags
+                                      .map(
+                                          (t) =>
+                                              `<span class=\"pill\" style=\"opacity:0.9;\">${t}</span>`
+                                      )
+                                      .join("")
+                                : ""
+                        }
+                    </div>`;
+
                     return `
             <div class="quiz-summary-item" style="margin:16px 0; padding:12px; border-radius:12px; background: rgba(0,0,0,0.25);">
               <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
@@ -74,6 +108,7 @@
               <h4 style="margin:8px 0 6px 0;">${entry.qText}</h4>
               <div class="quiz-choices">${choiceHtml}</div>
               <div class="quiz-feedback" style="margin-top:6px; color:${fbColor}">${fbText}</div>
+              ${metaRow}
             </div>`;
                 })
                 .join("");
@@ -107,19 +142,34 @@
 
         const q = currentQuestions[i];
         const bg = document.querySelector(".quiz-bg");
-        if (bg) {
-            bg.className = "quiz-bg " + (q.bg || "");
-        }
+        if (bg) bg.className = "quiz-bg " + (q.bg || "");
+
+        const tagsHtml =
+            q.tags && q.tags.length
+                ? `<div class="muted" style="display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 0 0;">${q.tags
+                      .map(
+                          (t) =>
+                              `<span class=\"pill\" style=\"opacity:0.9\">${t}</span>`
+                      )
+                      .join("")}</div>`
+                : "";
+        const difficultyHtml = q.difficulty
+            ? `<span class="pill" title="difficulty" style="background:rgba(255,255,255,0.14);">${String(
+                  q.difficulty
+              ).toUpperCase()}</span>`
+            : "";
 
         stage.innerHTML = `
             <div class="quiz-card animate-fadeInUp">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
                     <span class="pill">${currentTopic.toUpperCase()}</span>
+                    ${difficultyHtml}
                     <span class="muted">ข้อที่ ${i + 1} / ${
             currentQuestions.length
         }</span>
                 </div>
                 <h3 style="margin:8px 0 0 0;">${q.q}</h3>
+                ${tagsHtml}
                 <div class="quiz-choices" id="choices"></div>
                 <div class="quiz-feedback" id="fb"></div>
                 <div style="margin-top:8px; display:flex; justify-content:flex-end; gap:8px;">
@@ -139,14 +189,9 @@
 
     function select(idx, el) {
         if (submitted) return;
-
         selectedAnswer = idx;
-
-        // Update button text
         const nextBtn = document.getElementById("quiz-next-btn");
         if (nextBtn) nextBtn.textContent = "ส่งคำตอบ";
-
-        // Update visuals
         const allChoices = document.querySelectorAll(".quiz-choice");
         allChoices.forEach((c) => c.classList.remove("selected"));
         el.classList.add("selected");
@@ -170,7 +215,7 @@
             fb.textContent = "ผิด: " + q.why;
             fb.style.color = "#f87171";
             selectedEl.classList.add("incorrect");
-            allChoices[q.ans].classList.add("correct"); // Highlight correct answer
+            allChoices[q.ans].classList.add("correct");
         }
 
         // Log the answer for summary
@@ -180,6 +225,8 @@
             correctIndex: q.ans,
             selectedIndex: selectedAnswer,
             why: q.why,
+            difficulty: q.difficulty || null,
+            tags: q.tags || [],
         });
 
         const nextBtn = document.getElementById("quiz-next-btn");
@@ -188,7 +235,20 @@
 
     window.startTopicQuiz = function (topic, questions) {
         currentTopic = topic;
-        currentQuestions = questions;
+        // Deep-ish copy to avoid mutating original question banks
+        currentQuestions = (questions || []).map((q) => ({
+            ...q,
+            choices: Array.isArray(q.choices) ? q.choices.slice() : [],
+        }));
+        // Shuffle questions and choices for variety
+        shuffleArray(currentQuestions);
+        currentQuestions = currentQuestions.map((q) =>
+            shuffleChoicesOnQuestion(q)
+        );
+        // Cap at 10 questions
+        if (currentQuestions.length > 10)
+            currentQuestions = currentQuestions.slice(0, 10);
+
         i = 0;
         score = 0;
         answersLog = [];
@@ -214,8 +274,7 @@
             if (selectedAnswer !== null) {
                 submit();
             } else {
-                // Skip question
-                // Log skip for summary
+                // Skip question and log
                 const q = currentQuestions[i];
                 answersLog.push({
                     qText: q.q,
@@ -223,6 +282,8 @@
                     correctIndex: q.ans,
                     selectedIndex: null,
                     why: q.why,
+                    difficulty: q.difficulty || null,
+                    tags: q.tags || [],
                 });
                 i++;
                 render();

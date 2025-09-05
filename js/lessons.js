@@ -147,6 +147,24 @@
           `,
                 },
                 {
+                    title: "ระบบนำไฟฟ้าหัวใจ (Cardiac conduction) และ SA node (Pacemaker)",
+                    html: `
+            <div class="panel">
+              <div class="h3">ใครเป็นตัวกำหนดจังหวะหัวใจ?</div>
+              <p class="muted"><strong>SA node</strong> (sinoatrial node) คือ <em>ตัวกระตุ้นการเต้นของหัวใจตามธรรมชาติ (Natural pacemaker)</em> สร้างสัญญาณไฟฟ้าเริ่มต้นที่ห้องบนขวา แล้วแพร่ไปทั่วเอเทรียม</p>
+              <div class="h3" style="margin-top:8px;">ลำดับการนำสัญญาณ</div>
+              <ul class="list-dot muted">
+                <li><strong>SA node</strong> → กระจายทั่วเอเทรียม ทำให้ห้องบนบีบตัว</li>
+                <li>สัญญาณถึง <strong>AV node</strong> (หน่วงสั้นๆ เพื่อให้ห้องบนส่งเลือดลงห้องล่าง)</li>
+                <li>ผ่าน <strong>Bundle of His</strong> → แตกเป็น <strong>Right/Left bundle branches</strong></li>
+                <li>กระจายตาม <strong>Purkinje fibers</strong> ทำให้โพรงหัวใจบีบตัวพร้อมกัน</li>
+              </ul>
+              <div class="h3" style="margin-top:8px;">การควบคุมจากระบบประสาทอัตโนมัติ</div>
+              <p class="muted">ซิมพาเทติกทำให้เต้นเร็วขึ้น พาราซิมพาเทติกทำให้ช้าลง แต่ <strong>SA node</strong> ยังคงเป็นแหล่งจังหวะหลัก</p>
+            </div>
+          `,
+                },
+                {
                     title: "การควบคุมความดันโลหิต",
                     html: `
             <div class="panel">
@@ -563,6 +581,17 @@
                     html: `
             <div class="panel">
               <p class="muted">น้ำส่วนเกินซึมออกจากเส้นเลือดฝอยเข้าสู่ช่องว่างเนื้อเยื่อ กลายเป็นน้ำเนื้อเยื่อ และถูกดูดกลับเข้าหลอดน้ำเหลือง</p>
+            </div>
+          `,
+                },
+                {
+                    title: "การดูดซึมไขมันและ Chyle (แลคเทียล)",
+                    html: `
+            <div class="panel">
+              <div class="h3">แลคเทียล (Lacteals)</div>
+              <p class="muted">ภายในวิลลัสของลำไส้เล็กมีหลอดน้ำเหลืองขนาดเล็กเรียกว่า <strong>lacteals</strong> ทำหน้าที่ดูดซึมไขมัน (chylomicrons) ที่ดูดซึมจากเยื่อบุลำไส้</p>
+              <div class="h3" style="margin-top:8px;">Chyle คืออะไร?</div>
+              <p class="muted"><strong>Chyle</strong> คือ น้ำเหลืองที่มีไขมันสูง มีลักษณะขาวคล้ายน้ำนม ไหลจากลำไส้เข้าสู่ท่อน้ำเหลืองช่องท้อง รวมตัวที่ <em>cisterna chyli</em> แล้วไหลขึ้น <strong>thoracic duct</strong> ไปเปิดที่ <em>left venous angle</em></p>
             </div>
           `,
                 },
