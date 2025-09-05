@@ -349,16 +349,16 @@ a.menu-card {
     opacity: 0.45;
 }
 .menu-bg.circulatory {
-    background-image: url("../images/circulatory.jpg");
+    background-image: url("../assests/circulatory.jpg");
 }
 .menu-bg.respiratory {
-    background-image: url("../images/respiratory.jpg");
+    background-image: url("../assests/respiratory.jpg");
 }
 .menu-bg.lymphatic {
-    background-image: url("../images/lymphatic.jpg");
+    background-image: url("../assests/lymphatic.jpg");
 }
 .menu-bg.nervous {
-    background-image: url("../images/nervous.jpg");
+    background-image: url("../assests/nervous.jpg");
 }
 .menu-text {
     position: relative;
@@ -629,24 +629,24 @@ a.menu-card {
 
 /* Simple animated backgrounds for topic pages */
 .bg-circulatory {
-    background-image: url("../images/circulatory.jpg");
+    background-image: url("../assests/circulatory.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     opacity: 0.2;
 }
 .bg-respiratory {
-    background-image: url("../images/respiratory.jpg");
+    background-image: url("../assests/respiratory.jpg");
     background-size: cover;
     opacity: 0.12;
 }
 .bg-lymphatic {
-    background-image: url("../images/lymphatic.jpg");
+    background-image: url("../assests/lymphatic.jpg");
     background-size: cover;
     opacity: 0.12;
 }
 .bg-nervous {
-    background-image: url("../images/nervous.jpg");
+    background-image: url("../assests/nervous.jpg");
     background-size: cover;
     opacity: 0.12;
 }

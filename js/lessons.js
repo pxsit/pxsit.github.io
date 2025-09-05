@@ -120,7 +120,7 @@
               <div class="h3">แผนภาพหัวใจ</div>
               <p class="muted">แสดงทิศทางการไหล: เลือดดำจากร่างกาย → หัวใจขวา → ปอด → เลือดแดงกลับหัวใจซ้าย → ส่งไปเลี้ยงร่างกาย ลูกศรจะชี้ชื่อหลอดเลือดหลัก</p>
               <div style="height:260px; position:relative; margin-top:8px; border-radius:12px; overflow:hidden;">
-                <img alt="heart" src="/images/circulatory-diagram.png" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box;">
+                <img alt="heart" src="/assests/circulatory-diagram.png" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box;">
               </div>
             </div>
           `,
@@ -233,7 +233,7 @@
               <div class="panel">
                 <div class="h3">ภาพประกอบ</div>
                 <div style="height:200px; position:relative; border-radius:8px;">
-                  <img src="/images/neurons.jpg" alt="neuron" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box; padding:8px;">
+                  <img src="/assests/neurons.jpg" alt="neuron" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box; padding:8px;">
                 </div>
               </div>
             </div>
@@ -350,7 +350,7 @@
               <div class="panel">
                 <p class="muted">ไขสันหลังคือทางผ่านของสัญญาณระหว่างสมองและร่างกาย และควบคุมการตอบสนองอัตโนมัติที่เรียกว่า 'รีเฟล็กซ์' เช่น การกระตุกขาเมื่อถูกเคาะที่หัวเข่า</p>
               </div>
-              <div class="panel"><img src="/images/spinal-cord.png" alt="spinal" style="width:100%; border-radius:8px;"></div>
+              <div class="panel"><img src="/assests/spinal-cord.png" alt="spinal" style="width:100%; border-radius:8px;"></div>
             </div>
           `,
                 },
@@ -476,7 +476,7 @@
                     html: `
             <div class="grid-2">
               <div class="panel"><div class="h3">ถุงลมปอด (Alveoli)</div><p class="muted">ผนังบางมาก มีเส้นเลือดฝอยล้อมรอบ ทำให้ O2 แพร่เข้าสู่เลือด และ CO2 แพร่ออกจากเลือดได้ดี</p></div>
-              <div class="panel"><img src="/images/alveoli.jpg" alt="alveoli" style="width:100%; opacity:.6; border-radius:8px;"></div>
+              <div class="panel"><img src="/assests/alveoli.jpg" alt="alveoli" style="width:100%; opacity:.6; border-radius:8px;"></div>
             </div>
           `,
                 },
