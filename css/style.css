@@ -133,7 +133,10 @@ body {
 .hero {
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: stretch; /* right panel fills height */
+    justify-content: center;
+    flex-direction: row; /* text left, video right */
+    text-align: left;
     background: radial-gradient(
             60% 80% at 10% 10%,
             rgba(0, 102, 204, 0.35),
@@ -144,7 +147,7 @@ body {
             rgba(255, 51, 102, 0.35),
             transparent 60%
         ),
-        linear-gradient(135deg, #0b1020 0%, #0c1633 100%);
+        linear-gradient(90deg, #151515 0%, #0b0b0b 45%, #000 100%);
     padding: 100px 20px 50px;
     position: relative;
     overflow: hidden;
@@ -153,25 +156,36 @@ body {
 .hero::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="rgba(255,255,255,0.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="300" cy="700" r="120" fill="url(%23a)"/></svg>');
+    inset: 0;
+    pointer-events: none;
     opacity: 0.3;
+    background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.06) 0%,
+            rgba(0, 0, 0, 0) 40%
+        ),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="rgba(255,255,255,0.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="300" cy="700" r="120" fill="url(%23a)"/></svg>');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .hero-content {
-    flex: 1;
+    flex: 0 0 520px; /* left column width */
+    max-width: 560px;
     color: #f2f4ff;
     z-index: 2;
     position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
 }
 
 .hero-title {
     font-size: 3.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     letter-spacing: 1px;
     text-shadow: 0 8px 30px rgba(255, 0, 102, 0.25);
 }
@@ -202,14 +216,14 @@ body {
     background: linear-gradient(45deg, #ff6b9a, #e63b5b);
     color: white;
     border: none;
-    padding: 15px 30px;
-    font-size: 1.1rem;
+    padding: 12px 20px; /* smaller, matches .btn */
+    font-size: 1rem; /* slightly smaller */
     font-weight: 600;
     border-radius: 50px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(255, 0, 102, 0.35);
 }
@@ -226,13 +240,58 @@ body {
     box-shadow: 0 18px 40px rgba(255, 0, 102, 0.5);
 }
 
+/* Center Start button within hero's left column */
+.hero-content .cta-button {
+    align-self: center;
+}
+
 .hero-visual {
-    flex: 1;
+    flex: 1 1 auto;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    margin-top: 20px;
+    align-items: stretch; /* fill height */
+    min-width: 0;
 }
+/* Video hero */
+.hero-video-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.hero-video-fade {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease-in-out;
+}
+.hero-video-fade.show {
+    opacity: 1;
+}
+
+/* Hide fallback visuals when video is available */
+.fallback-visual {
+    display: none;
+}
+
+/* If video cannot load, we will reveal fallback via JS */
 
 /* New 3D-like hero visuals */
 .hero-3d {
@@ -821,17 +880,32 @@ a.menu-card {
     }
 
     .hero {
+        padding: 120px 20px 50px;
         flex-direction: column;
         text-align: center;
-        padding: 120px 20px 50px;
+        align-items: center;
     }
 
     .hero-title {
         font-size: 2.5rem;
     }
 
-    .hero-3d {
-        height: 300px;
+    .hero-content {
+        flex: 0 0 auto;
+        max-width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .hero-visual {
+        width: 100%;
+        align-items: center;
+        margin-top: 16px;
+    }
+    .hero-video-wrap {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
     }
 
     .about-content {

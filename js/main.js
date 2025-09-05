@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         initAnimations();
         initScrollEffects();
         createParticles();
+        initHeroVideo();
     } catch (error) {
         console.error("Init error", error);
     }
@@ -246,6 +247,61 @@ function createParticles() {
         particle.style.animationDuration = Math.random() * 10 + 5 + "s";
         particlesContainer.appendChild(particle);
     }
+}
+
+// Initialize hero video with fade-to-black loop
+function initHeroVideo() {
+    const video = document.getElementById("hero-video");
+    const fade = document.getElementById("hero-video-fade");
+    const fallback = document.querySelector(".fallback-visual");
+    if (!video || !fade) return;
+
+    // Try to play muted inline
+    const startPlayback = () => {
+        const p = video.play();
+        if (p && typeof p.catch === "function") {
+            p.catch((err) => {
+                console.warn(
+                    "Autoplay failed, will show controls fallback",
+                    err
+                );
+                video.setAttribute("controls", "controls");
+            });
+        }
+    };
+
+    // If metadata ready, attempt autoplay
+    if (video.readyState >= 1) startPlayback();
+    else
+        video.addEventListener("loadedmetadata", startPlayback, { once: true });
+
+    // Fade to black at end, then restart
+    video.addEventListener("ended", () => {
+        fade.classList.add("show");
+        // Small delay to ensure fade is visible
+        setTimeout(() => {
+            try {
+                video.currentTime = 0;
+            } catch (_) {}
+            // After resetting, wait a moment then fade out and play again
+            setTimeout(() => {
+                fade.classList.remove("show");
+                startPlayback();
+            }, 250);
+        }, 150);
+    });
+
+    // On error, reveal fallback visuals and hide video wrapper
+    const showFallback = () => {
+        if (fallback) fallback.style.display = "block";
+        const wrap = document.querySelector(".hero-video-wrap");
+        if (wrap) wrap.style.display = "none";
+    };
+    video.addEventListener("error", showFallback);
+    video.addEventListener("stalled", () => {
+        // If stalled at the beginning, fallback quickly
+        if (video.currentTime === 0) showFallback();
+    });
 }
 
 // Error handling and user feedback
