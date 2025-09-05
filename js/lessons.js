@@ -59,9 +59,9 @@
               <div class="panel">
                 <div class="h3">ชนิดของหลอดเลือด</div>
                 <ul class="list-dot muted">
-                  <li><strong>Arteries</strong> นำเลือดออกจากหัวใจ ผนังหนา มีความยืดหยุ่น ความดันสูง</li>
-                  <li><strong>Veins</strong> นำเลือดกลับสู่หัวใจ มีลิ้นกันเลือดไหลย้อน ความดันต่ำกว่าหลอดเลือดแดง</li>
-                  <li><strong>Capillaries</strong> เส้นเลือดฝอย ผนังบางมาก เหมาะกับการแลกเปลี่ยนแก๊สและสารอาหารกับเนื้อเยื่อ</li>
+                  <li><strong>Arteries</strong> นำเลือดออกจากหัวใจ ผนังหนา ยืดหยุ่น ความดันสูง</li>
+                  <li><strong>Veins</strong> นำเลือดกลับสู่หัวใจ มีลิ้นกันเลือดไหลย้อน ความดันต่ำกว่า</li>
+                  <li><strong>Capillaries</strong> เส้นเลือดฝอย ผนังบางมาก เหมาะกับการแลกเปลี่ยนแก๊ส/สารอาหาร</li>
                 </ul>
               </div>
               <div class="panel">
@@ -120,8 +120,41 @@
               <div class="h3">แผนภาพหัวใจ</div>
               <p class="muted">แสดงทิศทางการไหล: เลือดดำจากร่างกาย → หัวใจขวา → ปอด → เลือดแดงกลับหัวใจซ้าย → ส่งไปเลี้ยงร่างกาย ลูกศรจะชี้ชื่อหลอดเลือดหลัก</p>
               <div style="height:260px; position:relative; margin-top:8px; border-radius:12px; overflow:hidden;">
-                <img alt="heart" src="../images/circulatory-diagram.png" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box;">
+                <img alt="heart" src="/images/circulatory-diagram.png" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box;">
               </div>
+            </div>
+          `,
+                },
+                {
+                    title: "ระบบไหลเวียนเล็ก/ใหญ่ (Pulmonary/Systemic)",
+                    html: `
+            <div class="grid-2">
+              <div class="panel"><div class="h3">Pulmonary</div><p class="muted">หัวใจขวา → ปอด → หัวใจซ้าย เพื่อแลกเปลี่ยนแก๊ส</p></div>
+              <div class="panel"><div class="h3">Systemic</div><p class="muted">หัวใจซ้าย → ร่างกาย → หัวใจขวา เพื่อส่งออกซิเจนและรับของเสีย</p></div>
+            </div>
+          `,
+                },
+                {
+                    title: "วัฏจักรการเต้นของหัวใจ (Cardiac cycle)",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li><strong>Systole:</strong> การบีบตัวของหัวใจ ส่งเลือดออกจากโพรง</li>
+                <li><strong>Diastole:</strong> การคลายตัว รับเลือดเข้าสู่หัวใจ</li>
+                <li>เสียงหัวใจ S1/S2 เกี่ยวข้องกับการปิดลิ้นหัวใจ</li>
+              </ul>
+            </div>
+          `,
+                },
+                {
+                    title: "การควบคุมความดันโลหิต",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li><strong>Baroreceptor reflex:</strong> ปรับอัตราหัวใจและหลอดเลือดทันที</li>
+                <li><strong>Renin–Angiotensin–Aldosterone:</strong> ควบคุมปริมาตรเลือดระยะยาว</li>
+                <li>ระบบประสาทอัตโนมัติ: ซิมพาเทติกหดหลอดเลือด เพิ่มความดัน</li>
+              </ul>
             </div>
           `,
                 },
@@ -129,17 +162,30 @@
                     title: "โรคที่เกี่ยวข้องกับระบบไหลเวียนเลือด",
                     html: `
             <div class="panel">
-                <div class="h3">โรคที่พบบ่อย</div>
-                <ul class="list-dot muted">
-                    <li><strong>โรคความดันโลหิตสูง (Hypertension):</strong> ภาวะที่ความดันเลือดสูงกว่าปกติเรื้อรัง เสี่ยงต่อโรคหัวใจและหลอดเลือดสมอง</li>
-                    <li><strong>โรคหลอดเลือดหัวใจ (Coronary Artery Disease):</strong> เกิดจากหลอดเลือดที่ไปเลี้ยงหัวใจตีบหรือตัน ทำให้กล้ามเนื้อหัวใจขาดเลือด</li>
-                    <li><strong>ภาวะหัวใจล้มเหลว (Heart Failure):</strong> ภาวะที่หัวใจไม่สามารถสูบฉีดเลือดไปเลี้ยงร่างกายได้เพียงพอ</li>
-                </ul>
+              <div class="h3">โรคที่พบบ่อย</div>
+              <ul class="list-dot muted">
+                <li><strong>ความดันโลหิตสูง (Hypertension):</strong> เสี่ยงโรคหัวใจและหลอดเลือดสมอง</li>
+                <li><strong>โรคหลอดเลือดหัวใจ (CAD):</strong> หลอดเลือดตีบ/ตัน ทำให้กล้ามเนื้อหัวใจขาดเลือด</li>
+                <li><strong>ภาวะหัวใจล้มเหลว:</strong> สูบฉีดเลือดได้ไม่เพียงพอ</li>
+              </ul>
+            </div>
+          `,
+                },
+                {
+                    title: "การดูแลป้องกัน",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li>ออกกำลังกายสม่ำเสมอ เลือกรับประทานอาหารที่ดีต่อหัวใจ</li>
+                <li>ควบคุมน้ำหนัก ลดเค็ม เลิกสูบบุหรี่</li>
+                <li>ตรวจสุขภาพและวัดความดันอย่างสม่ำเสมอ</li>
+              </ul>
             </div>
           `,
                 },
             ],
         },
+
         nervous: {
             name: "Nervous System",
             bg: "bg-nervous",
@@ -148,7 +194,7 @@
                     title: "ภาพรวมและหน้าที่",
                     html: `
             <div class="panel">
-              <p class="muted">ระบบประสาททำหน้าที่รับข้อมูล ประมวลผล และสั่งการประกอบด้วย <strong>ระบบประสาทส่วนกลาง (CNS)</strong> คือ สมองและไขสันหลัง และ <strong>ระบบประสาทรอบนอก (PNS)</strong> คือ เส้นประสาทที่เชื่อมต่อทั่วร่างกาย</p>
+              <p class="muted">ระบบประสาททำหน้าที่รับข้อมูล ประมวลผล และสั่งการ ประกอบด้วย <strong>ระบบประสาทส่วนกลาง (CNS)</strong> คือ สมองและไขสันหลัง และ <strong>ระบบประสาทรอบนอก (PNS)</strong> คือ เส้นประสาททั่วร่างกาย</p>
             </div>
           `,
                 },
@@ -167,9 +213,9 @@
                 </ul>
               </div>
               <div class="panel">
-                <div class="h3">ภาพประกอบร</div>
+                <div class="h3">ภาพประกอบ</div>
                 <div style="height:200px; position:relative; border-radius:8px;">
-                  <img src="../images/neurons.jpg" alt="neuron" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box; padding:8px;">
+                  <img src="/images/neurons.jpg" alt="neuron" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box; padding:8px;">
                 </div>
               </div>
             </div>
@@ -190,13 +236,137 @@
           `,
                 },
                 {
+                    title: "ก้านสมอง (Brainstem): Midbrain / Pons / Medulla",
+                    html: `
+            <div class="grid-3">
+              <div class="panel">
+                <div class="h3">Midbrain (สมองส่วนกลาง)</div>
+                <ul class="list-dot muted">
+                  <li>ควบคุมรีเฟล็กซ์ด้านการมองเห็น/การได้ยิน (เช่น หันตามเสียง/แสง)</li>
+                  <li>เป็นทางผ่านของใยประสาทมอเตอร์สำคัญ</li>
+                  <li>เกี่ยวข้องกับการเริ่มการเคลื่อนไหว</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <div class="h3">Pons (พอนส์)</div>
+                <ul class="list-dot muted">
+                  <li>เป็น “สะพาน” เชื่อมสมองหลายส่วน</li>
+                  <li>ช่วยควบคุมจังหวะการหายใจ</li>
+                  <li>ที่มาของเส้นประสาทสมองบางคู่</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <div class="h3">Medulla oblongata (เมดัลลา)</div>
+                <ul class="list-dot muted">
+                  <li>ศูนย์ควบคุมสำคัญ: หัวใจ หลอดเลือด การหายใจ</li>
+                  <li>รีเฟล็กซ์: ไอ จาม อาเจียน กลืน</li>
+                  <li>จุดไขว้เส้นใยมอเตอร์หลัก (pyramidal decussation)</li>
+                </ul>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "ไดเอนเซฟาลอน (Diencephalon): Thalamus & Hypothalamus",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">Thalamus</div>
+                <p class="muted">ศูนย์ถ่ายทอดสัญญาณรับความรู้สึกส่วนใหญ่ไปยังซีรีบรัม มีบทบาทในการตื่นตัว/ความสนใจ</p>
+              </div>
+              <div class="panel">
+                <div class="h3">Hypothalamus</div>
+                <ul class="list-dot muted">
+                  <li>ควบคุมอุณหภูมิ หิว กระหาย นาฬิกาชีวภาพ</li>
+                  <li>เชื่อมโยงระบบประสาท-ต่อมไร้ท่อ (ควบคุมต่อมใต้สมอง)</li>
+                  <li>เกี่ยวข้องกับอารมณ์และแรงจูงใจ</li>
+                </ul>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "ซีรีบรัม: ตีความตามกลีบสมอง",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">กลีบหน้าผาก (Frontal)</div>
+                <p class="muted">การวางแผน เหตุผล บุคลิกภาพ มอเตอร์สมัครใจ</p>
+                <div class="h3" style="margin-top:8px;">กลีบข้าง (Parietal)</div>
+                <p class="muted">สัมผัส อุณหภูมิ ความเจ็บปวด การรับรู้ตำแหน่งร่างกาย</p>
+              </div>
+              <div class="panel">
+                <div class="h3">กลีบขมับ (Temporal)</div>
+                <p class="muted">การได้ยิน ความจำ ภาษา (เวอร์นิเก้)</p>
+                <div class="h3" style="margin-top:8px;">กลีบท้ายทอย (Occipital)</div>
+                <p class="muted">การมองเห็นและตีความภาพ</p>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "ระบบลิมบิก (Limbic) และปมประสาทฐาน (Basal ganglia)",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">Limbic system</div>
+                <ul class="list-dot muted">
+                  <li>เกี่ยวข้องกับอารมณ์ ความจำ แรงจูงใจ</li>
+                  <li>โครงสร้างสำคัญ: ฮิปโปแคมปัส อะมิกดะลา ซิงกูเลตไจรัส</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <div class="h3">Basal ganglia</div>
+                <ul class="list-dot muted">
+                  <li>ควบคุมการเริ่ม/ความราบรื่นของการเคลื่อนไหว</li>
+                  <li>ความผิดปกติเกี่ยวข้องกับพาร์กินสัน/ฮันติงตัน</li>
+                </ul>
+              </div>
+            </div>
+          `,
+                },
+                {
                     title: "ไขสันหลังและรีเฟล็กซ์",
                     html: `
             <div class="grid-2">
               <div class="panel">
                 <p class="muted">ไขสันหลังคือทางผ่านของสัญญาณระหว่างสมองและร่างกาย และควบคุมการตอบสนองอัตโนมัติที่เรียกว่า 'รีเฟล็กซ์' เช่น การกระตุกขาเมื่อถูกเคาะที่หัวเข่า</p>
               </div>
-              <div class="panel"><img src="../images/spinal-cord.png" alt="spinal" style="width:100%; border-radius:8px;"></div>
+              <div class="panel"><img src="/images/spinal-cord.png" alt="spinal" style="width:100%; border-radius:8px;"></div>
+            </div>
+          `,
+                },
+                {
+                    title: "เซลล์เกลีย (Glial cells)",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">ชนิดหลัก</div>
+                <ul class="list-dot muted">
+                  <li><strong>Astrocytes</strong> รองรับเซลล์ประสาท รักษาสมดุลสารเคมี</li>
+                  <li><strong>Oligodendrocytes / Schwann cells</strong> สร้างไมอีลินใน CNS/PNS</li>
+                  <li><strong>Microglia</strong> ภูมิคุ้มกันในสมอง เก็บกินเศษเซลล์</li>
+                  <li><strong>Ependymal cells</strong> บุโพรงสมอง เกี่ยวข้องกับน้ำไขสันหลัง</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <div class="h3">ความสำคัญ</div>
+                <p class="muted">เกลียมีบทบาทต่อการส่งสัญญาณ การฟื้นฟู และโรคทางระบบประสาทหลายชนิด</p>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "ศักย์ไฟฟ้าและไซแนปส์",
+                    html: `
+            <div class="panel">
+              <div class="h3">ศักย์ไฟฟ้า (Action potential)</div>
+              <ul class="list-dot muted">
+                <li>การไหลของ Na+/K+ ทำให้ขั้วเซลล์เปลี่ยนชั่วคราวตามแอกซอน</li>
+                <li>ไมอีลินช่วยให้ส่งสัญญาณแบบกระโดด (saltatory) เร็วขึ้น</li>
+              </ul>
+              <div class="h3" style="margin-top:8px;">ไซแนปส์เคมี</div>
+              <p class="muted">สัญญาณไฟฟ้าถูกแปลงเป็นสารสื่อประสาท ปล่อยในช่องไซแนปส์ไปจับตัวรับของเซลล์ถัดไป</p>
             </div>
           `,
                 },
@@ -206,8 +376,8 @@
             <div class="panel">
               <div class="h3">การแบ่งตามการทำงาน</div>
               <ul class="list-dot muted">
-                <li><strong>ระบบประสาทโซมาติก (Somatic):</strong> ควบคุมการเคลื่อนไหวของกล้ามเนื้อลายที่อยู่ใต้อำนาจจิตใจ เช่น การเดิน การหยิบของ</li>
-                <li><strong>ระบบประสาทอัตโนมัติ (Autonomic):</strong> ควบคุมอวัยวะภายในที่ทำงานนอกอำนาจจิตใจ เช่น หัวใจ ปอด กระเพาะอาหาร</li>
+                <li><strong>โซมาติก (Somatic):</strong> ควบคุมกล้ามเนื้อลาย ภายใต้อำนาจจิตใจ</li>
+                <li><strong>อัตโนมัติ (Autonomic):</strong> ควบคุมอวัยวะภายใน นอกอำนาจจิตใจ</li>
               </ul>
             </div>
           `,
@@ -216,19 +386,42 @@
                     title: "ระบบประสาทอัตโนมัติ: ซิมพาเทติก vs พาราซิมพาเทติก",
                     html: `
             <div class="grid-2">
-                <div class="panel">
-                    <div class="h3">ซิมพาเทติก (Sympathetic)</div>
-                    <p class="muted">ทำงานในภาวะ "สู้หรือหนี" (Fight or Flight) เช่น เพิ่มอัตราการเต้นของหัวใจ ขยายรูม่านตา</p>
-                </div>
-                <div class="panel">
-                    <div class="h3">พาราซิมพาเทติก (Parasympathetic)</div>
-                    <p class="muted">ทำงานในภาวะ "พักและย่อย" (Rest and Digest) เช่น ลดอัตราการเต้นของหัวใจ กระตุ้นการย่อยอาหาร</p>
-                </div>
+              <div class="panel">
+                <div class="h3">ซิมพาเทติก (Sympathetic)</div>
+                <p class="muted">สู้หรือหนี (Fight/Flight): หัวใจเต้นเร็ว รูม่านตาขยาย หลั่งอะดรีนาลีน</p>
+              </div>
+              <div class="panel">
+                <div class="h3">พาราซิมพาเทติก (Parasympathetic)</div>
+                <p class="muted">พักและย่อย (Rest/Digest): หัวใจช้าลง กระตุ้นการย่อย</p>
+              </div>
             </div>
-            `,
+          `,
+                },
+                {
+                    title: "สารสื่อประสาทสำคัญ",
+                    html: `
+            <div class="grid-3">
+              <div class="panel"><div class="h3">Acetylcholine</div><p class="muted">การหดตัวของกล้ามเนื้อ และพาราซิมพาเทติก</p></div>
+              <div class="panel"><div class="h3">Glutamate / GABA</div><p class="muted">กระตุ้นหลัก vs ยับยั้งหลักใน CNS</p></div>
+              <div class="panel"><div class="h3">Dopamine / Serotonin</div><p class="muted">อารมณ์ การให้รางวัล การนอนหลับ</p></div>
+            </div>
+          `,
+                },
+                {
+                    title: "การปกป้องสมอง: Meninges, CSF, BBB",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li><strong>Meninges:</strong> Dura, Arachnoid, Pia ป้องกันและรองรับ</li>
+                <li><strong>CSF:</strong> ลดแรงกระแทก ควบคุมสิ่งแวดล้อม</li>
+                <li><strong>Blood-brain barrier:</strong> คัดกรองสารที่จะเข้าสู่สมอง</li>
+              </ul>
+            </div>
+          `,
                 },
             ],
         },
+
         respiratory: {
             name: "Respiratory System",
             bg: "bg-respiratory",
@@ -237,7 +430,26 @@
                     title: "ภาพรวมและขั้นตอนการหายใจ",
                     html: `
             <div class="panel">
-              <p class="muted">ระบบหายใจแลกเปลี่ยนแก๊ส O2 กับ CO2 ขั้นตอนหลัก 3 ขั้นตอน: (1) การระบายอากาศเข้าสู่ปอด (Ventilation) (2) การแลกเปลี่ยนแก๊สที่ถุงลม (External respiration) (3) การลำเลียงและแลกเปลี่ยนที่เนื้อเยื่อ (Internal respiration)</p>
+              <p class="muted">ระบบหายใจแลกเปลี่ยนแก๊ส O2 กับ CO2 ขั้นตอนหลัก 3 ขั้นตอน: (1) Ventilation (2) การแลกเปลี่ยนที่ถุงลม (External) (3) การลำเลียง/แลกเปลี่ยนที่เนื้อเยื่อ (Internal)</p>
+            </div>
+          `,
+                },
+                {
+                    title: "กายวิภาคทางเดินหายใจ",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">โครงสร้างหลัก</div>
+                <ul class="list-dot muted">
+                  <li>โพรงจมูก คอหอย กล่องเสียง</li>
+                  <li>หลอดลม หลอดลมแขนง และหลอดลมฝอย</li>
+                  <li>ถุงลมปอด (Alveoli) และเส้นเลือดฝอย</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <div class="h3">หน้าที่</div>
+                <p class="muted">กรอง อุ่น ทำให้อากาศชื้น แลกเปลี่ยนแก๊สที่ผนังถุงลม-เส้นเลือดฝอย</p>
+              </div>
             </div>
           `,
                 },
@@ -245,8 +457,20 @@
                     title: "การแลกเปลี่ยนแก๊สที่ปอด",
                     html: `
             <div class="grid-2">
-              <div class="panel"><div class="h3">ถุงลมปอด (Alveoli)</div><p class="muted">เป็นโครงสร้างเล็กๆ ในปอดที่มีผนังบางมาก และมีเส้นเลือดฝอยล้อมรอบ ทำให้ออกซิเจนสามารถแพร่เข้าสู่เลือด และคาร์บอนไดออกไซด์แพร่ออกจากเลือดได้อย่างมีประสิทธิภาพ</p></div>
-              <div class="panel"><img src="../images/alveoli.jpg" alt="alveoli" style="width:100%; opacity:.6; border-radius:8px;"></div>
+              <div class="panel"><div class="h3">ถุงลมปอด (Alveoli)</div><p class="muted">ผนังบางมาก มีเส้นเลือดฝอยล้อมรอบ ทำให้ O2 แพร่เข้าสู่เลือด และ CO2 แพร่ออกจากเลือดได้ดี</p></div>
+              <div class="panel"><img src="/images/alveoli.jpg" alt="alveoli" style="width:100%; opacity:.6; border-radius:8px;"></div>
+            </div>
+          `,
+                },
+                {
+                    title: "กลไกการหายใจ: ความยืดหยุ่นและสารลดแรงตึงผิว",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li><strong>Compliance</strong> ความยืดหยุ่นของปอดและผนังทรวงอก</li>
+                <li><strong>Surfactant</strong> ลดแรงตึงผิวในถุงลม ช่วยป้องกันถุงลมแฟบ</li>
+                <li>แรงดันลบในช่องเยื่อหุ้มปอดช่วยให้ปอดขยายตัว</li>
+              </ul>
             </div>
           `,
                 },
@@ -270,16 +494,44 @@
                     title: "การควบคุมการหายใจ",
                     html: `
             <div class="panel">
-                <p class="muted">การหายใจถูกควบคุมโดยศูนย์ควบคุมในสมองส่วนก้านสมอง (Brainstem) ซึ่งจะปรับอัตราการหายใจตามระดับคาร์บอนไดออกไซด์ในเลือดเป็นหลัก</p>
-                <ul class="list-dot muted" style="margin-top:1rem;">
-                    <li><strong>ระดับ CO2 สูง:</strong> กระตุ้นให้หายใจเร็วและลึกขึ้นเพื่อขับ CO2 ออก</li>
-                    <li><strong>ระดับ CO2 ต่ำ:</strong> ทำให้หายใจช้าลง</li>
-                </ul>
+              <p class="muted">ก้านสมองควบคุมจังหวะหายใจ โดยระดับ CO2 เป็นตัวกระตุ้นหลัก</p>
+              <ul class="list-dot muted" style="margin-top:1rem;">
+                <li><strong>CO2 สูง:</strong> หายใจเร็ว/ลึกขึ้นเพื่อขับ CO2</li>
+                <li><strong>CO2 ต่ำ:</strong> หายใจช้าลง</li>
+              </ul>
             </div>
-            `,
+          `,
+                },
+                {
+                    title: "การขนส่งแก๊สในเลือด",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">ออกซิเจน</div>
+                <p class="muted">ส่วนใหญ่จับกับฮีโมโกลบิน (Hb) ที่เม็ดเลือดแดง</p>
+              </div>
+              <div class="panel">
+                <div class="h3">คาร์บอนไดออกไซด์</div>
+                <p class="muted">ส่วนใหญ่ขนส่งเป็นไบคาร์บอเนต (HCO3-) ในพลาสมา ส่วนหนึ่งจับกับ Hb</p>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "โรคระบบหายใจที่พบบ่อย",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li><strong>หืด (Asthma):</strong> หลอดลมหดเกร็งและอักเสบ หายใจลำบาก</li>
+                <li><strong>ปอดบวม (Pneumonia):</strong> การอักเสบติดเชื้อของถุงลม</li>
+                <li><strong>COPD:</strong> ถุงลมเสียหายเรื้อรัง การแลกเปลี่ยนแก๊สลดลง</li>
+              </ul>
+            </div>
+          `,
                 },
             ],
         },
+
         lymphatic: {
             name: "Lymphatics System",
             bg: "bg-lymphatic",
@@ -302,7 +554,24 @@
                 <li>ลิ้นในหลอดน้ำเหลืองป้องกันการไหลย้อน</li>
                 <li>ความดันจากการหายใจและการเคลื่อนไหวของร่างกาย</li>
               </ul>
-              <p class="muted" style="margin-top:1rem;">ระบบนี้ไม่มีปั๊มโดยตรงเหมือนหัวใจในระบบไหลเวียนเลือด</p>
+              <p class="muted" style="margin-top:1rem;">ระบบนี้ไม่มีปั๊มโดยตรงเหมือนหัวใจ</p>
+            </div>
+          `,
+                },
+                {
+                    title: "การก่อตัวของน้ำเหลือง",
+                    html: `
+            <div class="panel">
+              <p class="muted">น้ำส่วนเกินซึมออกจากเส้นเลือดฝอยเข้าสู่ช่องว่างเนื้อเยื่อ กลายเป็นน้ำเนื้อเยื่อ และถูกดูดกลับเข้าหลอดน้ำเหลือง</p>
+            </div>
+          `,
+                },
+                {
+                    title: "เส้นทางหลัก: Thoracic duct และ Right lymphatic duct",
+                    html: `
+            <div class="grid-2">
+              <div class="panel"><div class="h3">Thoracic duct</div><p class="muted">รับน้ำเหลืองจากส่วนใหญ่ของร่างกาย เทเข้าสู่หลอดเลือดดำใต้ไหปลาร้าซ้าย</p></div>
+              <div class="panel"><div class="h3">Right lymphatic duct</div><p class="muted">รับจากขวาส่วนบนของร่างกาย เทเข้าหลอดเลือดดำใต้ไหปลาร้าขวา</p></div>
             </div>
           `,
                 },
@@ -310,18 +579,26 @@
                     title: "อวัยวะในระบบน้ำเหลือง",
                     html: `
             <div class="grid-3">
-                <div class="panel">
-                    <div class="h3">ต่อมน้ำเหลือง (Lymph Nodes)</div>
-                    <p class="muted">ทำหน้าที่กรองน้ำเหลือง ดักจับเชื้อโรคและสิ่งแปลกปลอม มีเม็ดเลือดขาวชนิดลิมโฟไซต์อยู่เป็นจำนวนมาก</p>
-                </div>
-                <div class="panel">
-                    <div class="h3">ม้าม (Spleen)</div>
-                    <p class="muted">เป็นอวัยวะน้ำเหลืองที่ใหญ่ที่สุด กรองเลือด ทำลายเซลล์เม็ดเลือดแดงที่หมดอายุ และเป็นแหล่งสร้างลิมโฟไซต์</p>
-                </div>
-                <div class="panel">
-                    <div class="h3">ต่อมไธมัส (Thymus)</div>
-                    <p class="muted">อยู่บริเวณทรวงอก เป็นแหล่งที่เซลล์เม็ดเลือดขาว T-cell เจริญเติบโตและพัฒนาเต็มที่</p>
-                </div>
+              <div class="panel">
+                <div class="h3">ต่อมน้ำเหลือง (Lymph Nodes)</div>
+                <p class="muted">กรองน้ำเหลือง ดักจับเชื้อโรค มีลิมโฟไซต์จำนวนมาก</p>
+              </div>
+              <div class="panel">
+                <div class="h3">ม้าม (Spleen)</div>
+                <p class="muted">กรองเลือด ทำลาย RBC ที่หมดอายุ สร้างลิมโฟไซต์</p>
+              </div>
+              <div class="panel">
+                <div class="h3">ต่อมไธมัส (Thymus)</div>
+                <p class="muted">ที่ T-cell เจริญเติบโตและพัฒนา</p>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "เนื้อเยื่อน้ำเหลือง: Tonsils และ MALT",
+                    html: `
+            <div class="panel">
+              <p class="muted">เนื้อเยื่อน้ำเหลืองกระจาย (MALT) และทอนซิลช่วยดักจับเชื้อโรคที่เข้าสู่ร่างกายผ่านทางเดินอาหารและทางเดินหายใจ</p>
             </div>
           `,
                 },
@@ -329,21 +606,31 @@
                     title: "บทบาทในระบบภูมิคุ้มกัน",
                     html: `
             <div class="panel">
-                <p class="muted">ระบบน้ำเหลืองเป็นส่วนสำคัญของระบบภูมิคุ้มกัน โดยทำหน้าที่ผลิตและลำเลียงเซลล์เม็ดเลือดขาวเพื่อต่อสู้กับการติดเชื้อ</p>
-                <ul class="list-dot muted" style="margin-top:1rem;">
-                    <li><strong>การสร้างแอนติบอดี:</strong> B-cells ในต่อมน้ำเหลืองจะสร้างแอนติบอดีเพื่อต่อต้านเชื้อโรค</li>
-                    <li><strong>การทำงานของ T-cells:</strong> T-cells ที่พัฒนาในต่อมไธมัสจะทำลายเซลล์ที่ติดเชื้อหรือเซลล์ที่ผิดปกติโดยตรง</li>
-                </ul>
+              <ul class="list-dot muted">
+                <li><strong>การสร้างแอนติบอดี:</strong> B-cells ในต่อมน้ำเหลืองสร้างแอนติบอดี</li>
+                <li><strong>การทำงานของ T-cells:</strong> ทำลายเซลล์ติดเชื้อหรือผิดปกติโดยตรง</li>
+              </ul>
             </div>
-            `,
+          `,
                 },
                 {
                     title: "ความสัมพันธ์กับระบบไหลเวียนเลือด",
                     html: `
             <div class="panel">
-                <p class="muted">ระบบน้ำเหลืองทำงานใกล้ชิดกับระบบไหลเวียนเลือด โดยจะรวบรวมของเหลว (น้ำเหลือง) ที่ซึมออกจากหลอดเลือดฝอยในเนื้อเยื่อ และนำกลับเข้าสู่กระแสเลือดอีกครั้ง ซึ่งช่วยรักษาสมดุลของเหลวในร่างกาย</p>
+              <p class="muted">รวบรวมน้ำเหลืองจากเนื้อเยื่อกลับเข้าสู่กระแสเลือด ช่วยรักษาสมดุลของเหลว</p>
             </div>
-            `,
+          `,
+                },
+                {
+                    title: "ภาวะบวมน้ำ (Edema) และโรคที่เกี่ยวข้อง",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li><strong>Lymphedema:</strong> น้ำเหลืองระบายไม่ดี ทำให้บวมเรื้อรัง</li>
+                <li><strong>การติดเชื้อของต่อมน้ำเหลือง:</strong> ต่อมโต เจ็บ</li>
+              </ul>
+            </div>
+          `,
                 },
             ],
         },
@@ -386,20 +673,13 @@
       <path id="p" d="" fill="none" stroke="url(#g)" stroke-width="2"/>
     </svg>`;
         const p = el.querySelector("#p");
-        // Generate a simple heartbeat-like path
         let d = "M0," + h / 2;
         const period = 120; // px per beat
         for (let x = 0; x < w; x++) {
             let y = h / 2 + Math.sin(x / 8) * 4;
-            if (x % period === 20) {
-                y = h * 0.2;
-            }
-            if (x % period === 24) {
-                y = h * 0.8;
-            }
-            if (x % period === 28) {
-                y = h * 0.25;
-            }
+            if (x % period === 20) y = h * 0.2;
+            if (x % period === 24) y = h * 0.8;
+            if (x % period === 28) y = h * 0.25;
             d += ` L${x},${y}`;
         }
         p.setAttribute("d", d);
@@ -416,7 +696,6 @@
         if (sectionQuiz)
             sectionQuiz.style.display = id === "final-quiz" ? "block" : "none";
 
-        // Force fade-in visibility when shown programmatically
         const map = {
             home: homeEl,
             menu: menuEl,
@@ -424,21 +703,16 @@
             "final-quiz": sectionQuiz,
         };
         const shown = map[id];
-        if (shown) {
-            shown.classList.add("is-visible");
-        }
+        if (shown) shown.classList.add("is-visible");
 
-        // If GSAP ScrollTrigger is available, refresh after layout changes
         if (
             typeof window !== "undefined" &&
             window.gsap &&
             window.ScrollTrigger &&
             typeof window.ScrollTrigger.refresh === "function"
         ) {
-            // Delay to allow layout/style changes to apply before measuring
             window.gsap.delayedCall(0, () => window.ScrollTrigger.refresh());
         } else if (id === "menu") {
-            // Non-GSAP fallback: ensure menu cards are visible
             document.querySelectorAll(".menu-card").forEach((el) => {
                 el.style.opacity = "1";
                 el.style.transform = "none";
@@ -448,7 +722,6 @@
 
     window.goToMenu = function () {
         show("menu");
-        // Close mobile menu if open
         const hamburger = document.querySelector(".hamburger");
         const navMenu = document.querySelector(".nav-menu");
         if (hamburger) hamburger.classList.remove("active");
@@ -460,21 +733,22 @@
                 menuEl.scrollIntoView({ behavior: "smooth", block: "start" });
             });
         }
-        // Update hash without jump
         if (history && history.pushState) {
             history.pushState(null, "", "#menu");
         } else if (typeof location !== "undefined") {
             location.hash = "#menu";
         }
     };
+
     window.startLesson = function (key) {
         state.topic = key;
         state.index = 0;
         setBg(topics[key]?.bg);
         show("lesson");
         render();
-        nextBtn.style.display = "inline-flex"; // Ensure next button is visible
+        nextBtn.style.display = "inline-flex";
     };
+
     window.backToMenu = function () {
         show("menu");
     };
@@ -483,7 +757,7 @@
         if (state.index > 0) {
             state.index--;
             render();
-            nextBtn.style.display = "inline-flex"; // Ensure next button is visible after going back
+            nextBtn.style.display = "inline-flex";
         }
     };
 
@@ -494,19 +768,17 @@
             state.index++;
             render();
         } else {
-            // End of lesson, show quiz button
             contentEl.innerHTML += `
             <div style="text-align: center; margin-top: 2rem;">
-                <button class="cta-button" onclick="window.startTopicQuiz('${state.topic}', window.quizData['${state.topic}'])">
-                    <i class="fas fa-award"></i>
-                    เริ่มแบบทดสอบสำหรับ ${t.name}
-                </button>
-            </div>
-        `;
-            nextBtn.style.display = "none"; // Hide next button
+              <button class="cta-button" onclick="window.startTopicQuiz('${state.topic}', window.quizData['${state.topic}'])">
+                <i class="fas fa-award"></i>
+                เริ่มแบบทดสอบสำหรับ ${t.name}
+              </button>
+            </div>`;
+            nextBtn.style.display = "none";
         }
     };
-    // Animated blood flow background
+
     function mountBloodFlow() {
         const wrap = document.createElement("div");
         wrap.className = "blood-flow";
@@ -523,13 +795,12 @@
         contentEl.style.position = "relative";
         contentEl.appendChild(wrap);
     }
+
     function clearBloodFlow() {
         const old = contentEl.querySelector(".blood-flow");
         if (old) old.remove();
     }
 
-    // Expose topics so other pages (e.g., dedicated full pages) can reuse lesson content
     window.lessonTopics = topics;
-
     window.show = show;
 })();

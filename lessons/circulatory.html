@@ -1,256 +1,167 @@
 <!DOCTYPE html>
 <html lang="th">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Circulatory System - Outside In</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/animations.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <style>
-      /* Full-bleed fixed background page for circulatory */
-      html,
-      body {
-        height: 100%;
-      }
-      body.circulatory-page {
-        margin: 0;
-        min-height: 100%;
-        background: #0b1020;
-      }
-      .circulatory-hero {
-        position: relative;
-        min-height: 100vh;
-        width: 100%;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .circulatory-bg {
-        position: fixed;
-        inset: 0;
-        background-image: url("../images/circulatory.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        opacity: 0.25;
-        z-index: 0;
-      }
-      .circulatory-content {
-        position: relative;
-        z-index: 1;
-        max-width: 1100px;
-        width: 100%;
-        padding: 100px 20px 40px;
-      }
-      .card {
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 16px;
-        padding: 16px;
-        backdrop-filter: blur(6px);
-      }
-      /* Ensure overlay stays behind panel content */
-      .panel > * {
-        position: relative;
-        z-index: 1;
-      }
-      .header-bar {
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        z-index: 10;
-        background: rgba(5, 10, 25, 0.7);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(12px);
-      }
-      .header-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 12px 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .brand {
-        color: #e6e6f0;
-        font-weight: 700;
-      }
-      .back-link {
-        color: #c7cbe6;
-        text-decoration: none;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        padding: 8px 12px;
-        border-radius: 10px;
-      }
-      .back-link:hover {
-        color: #fff;
-        border-color: rgba(255, 255, 255, 0.3);
-      }
-    </style>
-  </head>
-  <body class="circulatory-page">
-    <header class="header-bar">
-      <div class="header-inner">
-        <div class="brand">Outside In</div>
-        <nav>
-          <a class="back-link" href="../index.html#menu"
-            ><i class="fas fa-arrow-left"></i> Menu</a
-          >
-        </nav>
-      </div>
-    </header>
-
-    <main class="circulatory-hero">
-      <div class="circulatory-bg" aria-hidden="true"></div>
-      <div class="circulatory-content container">
-        <h1 class="section-title">Circulatory System</h1>
-        <p class="section-description">
-          ภาพรวมระบบไหลเวียนเลือดแบบเต็มหน้าจอ (ภาพพื้นหลังคงที่
-          ไม่เปลี่ยนตามสไลด์)
-        </p>
-
-        <div class="grid-3" style="margin-top: 16px">
-          <div class="card">
-            <div class="h3">องค์ประกอบหลัก</div>
-            <ul class="list-dot muted">
-              <li>หัวใจ</li>
-              <li>เส้นเลือดแดง/ดำ/ฝอย</li>
-              <li>เลือด (RBC, WBC, เกล็ดเลือด)</li>
-            </ul>
-          </div>
-          <div class="card">
-            <div class="h3">การไหลเวียน</div>
-            <p class="muted">ปอด ↔ หัวใจ ↔ ร่างกาย</p>
-          </div>
-          <div class="card">
-            <div class="h3">ทิปส์</div>
-            <p class="muted">เลื่อนหน้าได้ ขณะที่ภาพพื้นหลังยังคงเต็มหน้าจอ</p>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <!-- Final Quiz Section for this standalone page -->
-    <section id="final-quiz" class="quiz-section" style="display: none">
-      <div class="quiz-bg"></div>
-      <div class="quiz-container">
-        <h2 class="section-title center">Quiz</h2>
-        <div id="quiz-stage"></div>
-      </div>
-    </section>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="../js/lessons.js"></script>
-  <script src="../js/quiz-handler.js"></script>
-  <script src="../js/quiz-circulatory.js"></script>
-    <script>
-      // Reuse from lessons.js
-      (function () {
-        function ensureECG() {
-          // drawECG is defined inside lessons.js closure; reimplement lightweight ECG if needed
-          const el = document.getElementById("ecg");
-          if (!el) return;
-          const w = el.clientWidth || 600,
-            h = el.clientHeight || 140;
-          el.innerHTML = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" width="100%" height="100%">
-            <defs>
-              <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ef4444"/><stop offset="1" stop-color="#f472b6"/></linearGradient>
-            </defs>
-            <path id="p" d="" fill="none" stroke="url(#g)" stroke-width="2"/>
-          </svg>`;
-          const p = el.querySelector("#p");
-          let d = `M0,${h / 2}`;
-          const period = 120;
-          for (let x = 0; x < w; x++) {
-            let y = h / 2 + Math.sin(x / 8) * 4;
-            if (x % period === 20) {
-              y = h * 0.2;
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Circulatory System - Outside In</title>
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/animations.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+        <style>
+            html,
+            body {
+                height: 100%;
             }
-            if (x % period === 24) {
-              y = h * 0.8;
+            body.system-page {
+                margin: 0;
+                min-height: 100%;
+                background: #0b1020;
             }
-            if (x % period === 28) {
-              y = h * 0.25;
+            .system-hero {
+                position: relative;
+                min-height: 100vh;
+                width: 100%;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
-            d += ` L${x},${y}`;
-          }
-          p.setAttribute("d", d);
-        }
-
-        function renderCirculatory() {
-          const topic = (window.lessonTopics || {}).circulatory;
-          if (!topic) return;
-          const container = document.querySelector(".circulatory-content");
-          container.innerHTML = `
-            <h1 class="section-title">${topic.name}</h1>
-            <p class="section-description">เนื้อหาเดียวกับโหมดบทเรียน แต่ภาพพื้นหลังคงที่เต็มหน้า</p>
-            ${topic.pages
-              .map(
-                (p, idx) => `
-              <section class="panel" style="margin-top:16px;">
-                <div class="h3">${idx + 1}. ${p.title}</div>
-                ${p.html}
-              </section>
-            `
-              )
-              .join("")}
-            <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:20px;">
-              <button class="cta-button" onclick="window.startTopicQuiz('circulatory', (window.quizData||{})['circulatory'])">
-                <i class="fas fa-award"></i>
-                เริ่มแบบทดสอบสำหรับ ${topic.name}
-              </button>
-              <a class="btn ghost" href="../index.html#menu"><i class="fas fa-bars"></i> Menu</a>
+            .system-bg {
+                position: fixed;
+                inset: 0;
+                background-image: url("../images/circulatory.jpg");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                opacity: 0.22;
+                z-index: 0;
+            }
+            .system-content {
+                position: relative;
+                z-index: 1;
+                max-width: 1100px;
+                width: 100%;
+                padding: 100px 20px 40px;
+            }
+            .header-bar {
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 0;
+                z-index: 10;
+                background: rgba(5, 10, 25, 0.7);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                backdrop-filter: blur(12px);
+            }
+            .header-inner {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 12px 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .brand {
+                color: #e6e6f0;
+                font-weight: 700;
+            }
+            .back-link {
+                color: #c7cbe6;
+                text-decoration: none;
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                padding: 8px 12px;
+                border-radius: 10px;
+            }
+            .back-link:hover {
+                color: #fff;
+                border-color: rgba(255, 255, 255, 0.3);
+            }
+            .panel > * {
+                position: relative;
+                z-index: 1;
+            }
+        </style>
+    </head>
+    <body class="system-page">
+        <header class="header-bar">
+            <div class="header-inner">
+                <div class="brand">Outside In</div>
+                <nav>
+                    <a class="back-link" href="../index.html#menu"
+                        ><i class="fas fa-arrow-left"></i> Menu</a
+                    >
+                </nav>
             </div>
-          `;
-          // Run any page-specific hooks
-          requestAnimationFrame(() => {
-            ensureECG();
-            // Add blood-flow overlay for the first page that requests it
-            const flowIndex = topic.pages.findIndex((p) => p.bgAnim === "flow");
-            if (flowIndex >= 0) {
-              const sections = container.querySelectorAll("section.panel");
-              const target = sections[flowIndex];
-              if (target) {
-                target.style.position = "relative";
-                const wrap = document.createElement("div");
-                wrap.className = "blood-flow";
-                for (let i = 0; i < 18; i++) {
-                  const cell = document.createElement("div");
-                  const t = Math.random();
-                  cell.className =
-                    "cell " + (t < 0.6 ? "rbc" : t < 0.9 ? "wbc" : "platelet");
-                  cell.style.top = Math.random() * 80 + 5 + "%";
-                  cell.style.animationDuration = Math.random() * 8 + 6 + "s";
-                  cell.style.animationDelay = -Math.random() * 8 + "s";
-                  wrap.appendChild(cell);
-                }
-                target.appendChild(wrap);
-              }
-            }
-          });
-        }
+        </header>
 
-        if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", renderCirculatory);
-        } else {
-          renderCirculatory();
-        }
-      })();
-      // Ensure the quiz's back-to-menu works when on standalone page
-      window.backToMenu = function () {
-        window.location.href = "../index.html#menu";
-      };
-    </script>
-  </body>
+        <main class="system-hero">
+            <div class="system-bg" aria-hidden="true"></div>
+            <div class="system-content container">
+                <h1 class="section-title">Circulatory System</h1>
+                <p class="section-description">
+                    เนื้อหาเดียวกับโหมดบทเรียน แต่ภาพพื้นหลังคงที่เต็มหน้า
+                </p>
+            </div>
+        </main>
+
+        <section id="final-quiz" class="quiz-section" style="display: none">
+            <div class="quiz-bg"></div>
+            <div class="quiz-container">
+                <h2 class="section-title center">Quiz</h2>
+                <div id="quiz-stage"></div>
+            </div>
+        </section>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        <script src="../js/lessons.js"></script>
+        <script src="../js/quiz-handler.js"></script>
+        <script src="../js/quiz-circulatory.js"></script>
+        <script>
+            (function () {
+                function renderTopic() {
+                    const topic = (window.lessonTopics || {}).circulatory;
+                    if (!topic) return;
+                    const container = document.querySelector(".system-content");
+                    container.innerHTML = `
+                        <h1 class="section-title">${topic.name}</h1>
+                        <p class="section-description">เนื้อหาเดียวกับโหมดบทเรียน แต่ภาพพื้นหลังคงที่เต็มหน้า</p>
+                        ${topic.pages
+                            .map(
+                                (p, idx) => `
+                            <section class=\"panel\" style=\"margin-top:16px;\">
+                                <div class=\"h3\">${idx + 1}. ${p.title}</div>
+                                ${p.html}
+                            </section>
+                        `
+                            )
+                            .join("")}
+                        <div style=\"display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:20px;\">
+                            <button class=\"cta-button\" onclick=\"window.startTopicQuiz('circulatory', (window.quizData||{})['circulatory'])\">
+                                <i class=\"fas fa-award\"></i>
+                                เริ่มแบบทดสอบสำหรับ ${topic.name}
+                            </button>
+                            <a class=\"btn ghost\" href=\"../index.html#menu\"><i class=\"fas fa-bars\"></i> Menu</a>
+                        </div>
+                    `;
+                }
+
+                if (document.readyState === "loading") {
+                    document.addEventListener("DOMContentLoaded", renderTopic);
+                } else {
+                    renderTopic();
+                }
+            })();
+            window.backToMenu = function () {
+                window.location.href = "../index.html#menu";
+            };
+        </script>
+    </body>
 </html>
