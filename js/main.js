@@ -1,24 +1,30 @@
 // Strip fbclid and other tracking parameters from URL
-; (function () {
-  try {
-    if (typeof window === "undefined" || typeof URL === "undefined") return;
-    const url = new URL(window.location.href);
-    const paramsToStrip = [
-      "fbclid", "gclid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"
-    ];
-    let changed = false;
-    for (const p of paramsToStrip) {
-      if (url.searchParams.has(p)) {
-        url.searchParams.delete(p);
-        changed = true;
-      }
-    }
-    if (changed) {
-      const newRelative = url.pathname + (url.search || "") + (url.hash || "");
-      window.history.replaceState(null, "", newRelative);
-    }
-  } catch (_) {
-  }
+(function () {
+    try {
+        if (typeof window === "undefined" || typeof URL === "undefined") return;
+        const url = new URL(window.location.href);
+        const paramsToStrip = [
+            "fbclid",
+            "gclid",
+            "utm_source",
+            "utm_medium",
+            "utm_campaign",
+            "utm_term",
+            "utm_content",
+        ];
+        let changed = false;
+        for (const p of paramsToStrip) {
+            if (url.searchParams.has(p)) {
+                url.searchParams.delete(p);
+                changed = true;
+            }
+        }
+        if (changed) {
+            const newRelative =
+                url.pathname + (url.search || "") + (url.hash || "");
+            window.history.replaceState(null, "", newRelative);
+        }
+    } catch (_) {}
 })();
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -31,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Init error", error);
     }
 });
-
 
 function initNavigation() {
     const hamburger = document.querySelector(".hamburger");
@@ -268,7 +273,6 @@ function showErrorMessage(message) {
         toast.remove();
     }, 5000);
 }
-
 
 // Utility functions
 function debounce(func, wait) {
