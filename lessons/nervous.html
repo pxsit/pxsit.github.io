@@ -130,27 +130,47 @@
                     const topic = (window.lessonTopics || {}).nervous;
                     if (!topic) return;
                     const container = document.querySelector(".system-content");
+
+                    // Build sections and inject an image placeholder just above the CNS topic
+                    const cnsIndex = topic.pages.findIndex(
+                        (p) =>
+                            p &&
+                            typeof p.title === "string" &&
+                            p.title.includes("ระบบประสาทส่วนกลาง (CNS)")
+                    );
+                    const sections = topic.pages
+                        .map((p, idx) => {
+                            const section = `
+                            <section class=\"panel\" style=\"margin-top:16px;\"> 
+                                <div class=\"h3\">${idx + 1}. ${p.title}</div>
+                                ${p.html}
+                            </section>`;
+                            if (idx === cnsIndex) {
+                                const placeholder = `
+                            <section class=\"panel\" style=\"margin-top:16px;\">
+                                <div class=\"h3\">ภาพสมอง</div>
+                                <div style=\"position:relative; border-radius:12px; overflow:hidden; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); min-height:220px; display:flex; align-items:center; justify-content:center;\">
+                                                        <img src=\"../images/brain.webp\" alt=\"Brain\" style=\"max-width:680px; max-height:360px; width:100%; height:auto; display:block; object-fit:contain; opacity:.95; padding:8px;\" onerror=\"this.style.display='none'; this.closest('div').innerHTML='<div class\\'muted\\'>วางไฟล์ brain.webp ในโฟลเดอร์ images เพื่อแสดงภาพนี้</div>';\">
+                                </div>
+                            </section>`;
+                                return placeholder + section;
+                            }
+                            return section;
+                        })
+                        .join("");
+
                     container.innerHTML = `
-            <h1 class=\"section-title\">${topic.name}</h1>
-            <p class=\"section-description\">เนื้อหาเดียวกับโหมดบทเรียน แต่ภาพพื้นหลังคงที่เต็มหน้า</p>
-            ${topic.pages
-                .map(
-                    (p, idx) => `
-              <section class=\"panel\" style=\"margin-top:16px;\">
-                <div class=\"h3\">${idx + 1}. ${p.title}</div>
-                ${p.html}
-              </section>
-            `
-                )
-                .join("")}
-            <div style=\"display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:20px;\">
-              <button class=\"cta-button\" onclick=\"window.startTopicQuiz('nervous', (window.quizData||{})['nervous'])\">
-                <i class=\"fas fa-award\"></i>
-                เริ่มแบบทดสอบสำหรับ ${topic.name}
-              </button>
-              <a class=\"btn ghost\" href=\"../index.html#menu\"><i class=\"fas fa-bars\"></i> Menu</a>
-            </div>
-          `;
+                        <h1 class=\"section-title\">${topic.name}</h1>
+                        <p class=\"section-description\">เนื้อหาเดียวกับโหมดบทเรียน แต่ภาพพื้นหลังคงที่เต็มหน้า</p>
+                        ${sections}
+                        <div style=\"display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:20px;\">
+                            <button class=\"cta-button\" onclick=\"window.startTopicQuiz('nervous', (window.quizData||{})['nervous'])\">
+                                <i class=\"fas fa-award\"></i>
+                                เริ่มแบบทดสอบสำหรับ ${topic.name}
+                            </button>
+                            <a class=\"btn ghost\" href=\"../index.html#menu\"><i class=\"fas fa-bars\"></i> Menu</a>
+                        </div>
+                    `;
                     // no ECG visualization needed on this topic page
                 }
 
