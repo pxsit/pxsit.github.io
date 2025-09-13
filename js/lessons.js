@@ -246,9 +246,15 @@
               <div class="h3">สมองและไขสันหลัง</div>
               <p class="muted">สมองแบ่งเป็นหลายส่วน เช่น ซีรีบรัม ซีรีเบลลัม ก้านสมอง แต่ละส่วนมีหน้าที่ต่างกัน</p>
               <div class="grid-3" style="margin-top:8px;">
-                <div class="panel"><div class="h3"><span style="display:inline-block;width:12px;height:12px;background:#60a5fa;border-radius:3px;margin-right:6px;"></span>ซีรีบรัม</div><p class="muted">คิด วิเคราะห์ รับรู้ความรู้สึก การเคลื่อนไหวสมัครใจ</p></div>
-                <div class="panel"><div class="h3"><span style="display:inline-block;width:12px;height:12px;background:#34d399;border-radius:3px;margin-right:6px;"></span>ซีรีเบลลัม</div><p class="muted">การทรงตัว ประสานงานการเคลื่อนไหว</p></div>
-                <div class="panel"><div class="h3"><span style="display:inline-block;width:12px;height:12px;background:#f472b6;border-radius:3px;margin-right:6px;"></span>ก้านสมอง</div><p class="muted">การหายใจ ชีพจร รีเฟล็กซ์สำคัญ</p></div>
+                <div class="panel">
+                  <div class="h3">
+                    <span style="display:inline-block;width:12px;height:12px;background:#60a5fa;border-radius:3px;margin-right:6px;">
+                      </span>ซีรีบรัม
+                        </div>
+                          <p class="muted">คิด วิเคราะห์ รับรู้ความรู้สึก การเคลื่อนไหวสมัครใจ</p>
+                        </div>
+                <div class="panel"><div class="h3"><span style="display:inline-block;width:12px;height:12px;background:#f472b6;border-radius:3px;margin-right:6px;"></span>ซีรีเบลลัม</div><p class="muted">การทรงตัว ประสานงานการเคลื่อนไหว</p></div>
+                <div class="panel"><div class="h3"><span style="display:inline-block;width:12px;height:12px;background:#805253;border-radius:3px;margin-right:6px;"></span>ก้านสมอง</div><p class="muted">การหายใจ ชีพจร รีเฟล็กซ์สำคัญ</p></div>
               </div>
             </div>
           `,
