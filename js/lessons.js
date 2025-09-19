@@ -105,13 +105,13 @@
               <div class="panel">
                 <div class="h3">กราฟการเต้นของหัวใจ</div>
                 <div style="height:140px; position:relative; background:rgba(255,255,255,0.06); border-radius:8px; overflow:hidden;">
-                  <div id="ecg" style="position:absolute; inset:0;"></div>
+                  <img src="/assests/ecg.png" alt="ECG graph" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain;" />
                 </div>
                 <p class="muted" style="margin-top:8px;">เส้นกราฟจำลองรูปแบบการเต้น (ไม่ใช่สัญญาณทางการแพทย์จริง)</p>
               </div>
             </div>
           `,
-                    after: () => drawECG(),
+                    
                 },
                 {
                     title: "การไหลเวียนของเลือดผ่านหัวใจ",
@@ -696,29 +696,7 @@
         }
     }
 
-    function drawECG() {
-        const el = document.getElementById("ecg");
-        if (!el) return;
-        const w = el.clientWidth || 600,
-            h = el.clientHeight || 140;
-        el.innerHTML = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" width="100%" height="100%">
-      <defs>
-        <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ef4444"/><stop offset="1" stop-color="#f472b6"/></linearGradient>
-      </defs>
-      <path id="p" d="" fill="none" stroke="url(#g)" stroke-width="2"/>
-    </svg>`;
-        const p = el.querySelector("#p");
-        let d = "M0," + h / 2;
-        const period = 120; // px per beat
-        for (let x = 0; x < w; x++) {
-            let y = h / 2 + Math.sin(x / 8) * 4;
-            if (x % period === 20) y = h * 0.2;
-            if (x % period === 24) y = h * 0.8;
-            if (x % period === 28) y = h * 0.25;
-            d += ` L${x},${y}`;
-        }
-        p.setAttribute("d", d);
-    }
+    
 
     function show(id) {
         // Toggle section visibility (guard if some sections don’t exist on this page)
