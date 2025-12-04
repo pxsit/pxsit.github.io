@@ -129,29 +129,13 @@ function initAnimations() {
     }
 
     try {
-        // Animate hero elements
-        gsap.timeline()
-            .from(".hero-title", {
-                duration: 1,
-                y: 50,
-                opacity: 0,
-                ease: "power3.out",
-            })
-            .from(
-                ".hero-subtitle",
-                { duration: 0.8, y: 30, opacity: 0, ease: "power3.out" },
-                "-=0.5"
-            )
-            .from(
-                ".hero-description",
-                { duration: 0.8, y: 30, opacity: 0, ease: "power3.out" },
-                "-=0.4"
-            )
-            .from(
-                ".cta-button",
-                { duration: 0.8, y: 30, opacity: 0, ease: "power3.out" },
-                "-=0.5"
-            );
+        // Animate hero title only (cta-button stays visible, no subtitle/description in HTML)
+        gsap.from(".hero-title", {
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: "power3.out",
+        });
 
         // Register ScrollTrigger plugin if available
         if (gsap.registerPlugin && typeof ScrollTrigger !== "undefined") {
@@ -182,20 +166,18 @@ function initAnimations() {
 
 // Fallback animations for when GSAP is not available
 function initFallbackAnimations() {
-    const heroElements = document.querySelectorAll(
-        ".hero-title, .hero-subtitle, .hero-description, .cta-button"
-    );
-
-    heroElements.forEach((element, index) => {
-        element.style.opacity = "0";
-        element.style.transform = "translateY(30px)";
+    const heroTitle = document.querySelector(".hero-title");
+    if (heroTitle) {
+        heroTitle.style.opacity = "0";
+        heroTitle.style.transform = "translateY(30px)";
 
         setTimeout(() => {
-            element.style.transition = "opacity 0.8s ease, transform 0.8s ease";
-            element.style.opacity = "1";
-            element.style.transform = "translateY(0)";
-        }, index * 200);
-    });
+            heroTitle.style.transition =
+                "opacity 0.8s ease, transform 0.8s ease";
+            heroTitle.style.opacity = "1";
+            heroTitle.style.transform = "translateY(0)";
+        }, 200);
+    }
 }
 
 // Remove legacy body layers and modal code (replaced by lesson flow)
@@ -218,8 +200,8 @@ function initScrollEffects() {
         });
     }, observerOptions);
 
-    // Observe all sections
-    document.querySelectorAll("section").forEach((section) => {
+    // Observe all sections except hero (GSAP handles hero animations)
+    document.querySelectorAll("section:not(.hero)").forEach((section) => {
         section.classList.add("fade-in-section");
         observer.observe(section);
     });
