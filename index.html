@@ -75,12 +75,15 @@
                         <video
                             id="hero-video"
                             class="hero-video"
-                            src="assests/video.mp4"
                             muted
-                            preload="auto"
+                            preload="metadata"
                             playsinline
+                            crossorigin="anonymous"
                             aria-label="Decorative intro video"
-                        ></video>
+                        >
+                            <source src="assests/video.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
                         <div
                             id="hero-video-fade"
                             class="hero-video-fade"
