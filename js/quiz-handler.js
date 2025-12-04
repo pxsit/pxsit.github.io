@@ -1,36 +1,70 @@
 // Generic quiz handler with shuffling and tags/difficulty support
 (function () {
+    // Constants
+    const MAX_QUESTIONS = 10;
+    const SCROLL_DELAY = 120;
+    const RENDER_DELAY = 50;
+
+    // State
     let currentQuestions = [];
-    let i = 0;
+    let currentIndex = 0;
     let score = 0;
     let selectedAnswer = null;
     let submitted = false;
     let currentTopic = "";
-    // Keep a log of each question, user's selection, and explanation for summary
     let answersLog = [];
 
     // Initialize quiz data
     window.quizData = window.quizData || {};
 
-    function getStage() {
-        return document.getElementById("quiz-stage");
-    }
+    // Cache DOM element getter
+    const getStage = () => document.getElementById("quiz-stage");
 
+    /**
+     * Fisher-Yates shuffle algorithm - O(n) time complexity
+     * Shuffles array in place
+     */
     function shuffleArray(arr) {
-        for (let j = arr.length - 1; j > 0; j--) {
-            const k = Math.floor(Math.random() * (j + 1));
-            [arr[j], arr[k]] = [arr[k], arr[j]];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
         }
         return arr;
     }
 
+    /**
+     * Shuffle choices while tracking the correct answer index
+     */
     function shuffleChoicesOnQuestion(q) {
-        if (!Array.isArray(q.choices)) return q;
+        if (!q || !Array.isArray(q.choices) || q.choices.length === 0) return q;
+        if (typeof q.ans !== "number" || q.ans < 0 || q.ans >= q.choices.length)
+            return q;
+
         const labeled = q.choices.map((c, idx) => ({ c, idx }));
         shuffleArray(labeled);
         q.choices = labeled.map((x) => x.c);
         q.ans = labeled.findIndex((x) => x.idx === q.ans);
         return q;
+    }
+
+    /**
+     * Escape HTML to prevent XSS
+     */
+    function escapeHtml(str) {
+        if (typeof str !== "string") return str;
+        const div = document.createElement("div");
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    /**
+     * Scroll to quiz section smoothly
+     */
+    function scrollToQuiz() {
+        const quizSection = document.getElementById("final-quiz");
+        if (quizSection?.scrollIntoView) {
+            quizSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
     }
 
     function render() {
@@ -43,7 +77,7 @@
         submitted = false;
         selectedAnswer = null;
 
-        if (i >= currentQuestions.length) {
+        if (currentIndex >= currentQuestions.length) {
             // Render detailed summary with all questions, selections, highlights, and explanations
             const summaryItems = answersLog
                 .map((entry, idx) => {
@@ -143,7 +177,7 @@
             return;
         }
 
-        const q = currentQuestions[i];
+        const q = currentQuestions[currentIndex];
         const bg = document.querySelector(".quiz-bg");
         if (bg) bg.className = "quiz-bg " + (q.bg || "");
 
@@ -152,26 +186,30 @@
                 ? `<div class="muted" style="display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 0 0;">${q.tags
                       .map(
                           (t) =>
-                              `<span class=\"pill\" style=\"opacity:0.9\">${t}</span>`
+                              `<span class="pill" style="opacity:0.9">${escapeHtml(
+                                  t
+                              )}</span>`
                       )
                       .join("")}</div>`
                 : "";
         const difficultyHtml = q.difficulty
-            ? `<span class="pill" title="difficulty" style="background:rgba(255,255,255,0.14);">${String(
-                  q.difficulty
-              ).toUpperCase()}</span>`
+            ? `<span class="pill" title="difficulty" style="background:rgba(255,255,255,0.14);">${escapeHtml(
+                  String(q.difficulty).toUpperCase()
+              )}</span>`
             : "";
 
         stage.innerHTML = `
             <div class="quiz-card animate-fadeInUp">
                 <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
-                    <span class="pill">${currentTopic.toUpperCase()}</span>
+                    <span class="pill">${escapeHtml(
+                        currentTopic.toUpperCase()
+                    )}</span>
                     ${difficultyHtml}
-                    <span class="muted">ข้อที่ ${i + 1} / ${
+                    <span class="muted">ข้อที่ ${currentIndex + 1} / ${
             currentQuestions.length
         }</span>
                 </div>
-                <h3 style="margin:8px 0 0 0;">${q.q}</h3>
+                <h3 style="margin:8px 0 0 0;">${escapeHtml(q.q)}</h3>
                 ${tagsHtml}
                 <div class="quiz-choices" id="choices"></div>
                 <div class="quiz-feedback" id="fb"></div>
@@ -181,11 +219,15 @@
             </div>`;
 
         const choicesEl = document.getElementById("choices");
+        if (!choicesEl) return;
+
         q.choices.forEach((c, idx) => {
             const div = document.createElement("div");
             div.className = "quiz-choice";
-            div.innerHTML = `<div class="quiz-choice-checkbox"></div><span>${c}</span>`;
-            div.onclick = () => select(idx, div);
+            div.innerHTML = `<div class="quiz-choice-checkbox"></div><span>${escapeHtml(
+                c
+            )}</span>`;
+            div.addEventListener("click", () => select(idx, div));
             choicesEl.appendChild(div);
         });
     }
@@ -193,10 +235,13 @@
     function select(idx, el) {
         if (submitted) return;
         selectedAnswer = idx;
+
         const nextBtn = document.getElementById("quiz-next-btn");
         if (nextBtn) nextBtn.textContent = "ส่งคำตอบ";
-        const allChoices = document.querySelectorAll(".quiz-choice");
-        allChoices.forEach((c) => c.classList.remove("selected"));
+
+        document
+            .querySelectorAll(".quiz-choice")
+            .forEach((c) => c.classList.remove("selected"));
         el.classList.add("selected");
     }
 
@@ -204,27 +249,29 @@
         if (submitted || selectedAnswer === null) return;
         submitted = true;
 
-        const q = currentQuestions[i];
+        const q = currentQuestions[currentIndex];
         const fb = document.getElementById("fb");
         const allChoices = document.querySelectorAll(".quiz-choice");
         const selectedEl = allChoices[selectedAnswer];
+        const isCorrect = selectedAnswer === q.ans;
 
-        if (selectedAnswer === q.ans) {
-            fb.textContent = "ถูกต้อง! " + q.why;
-            fb.style.color = "#34d399";
-            selectedEl.classList.add("correct");
-            score++;
-        } else {
-            fb.textContent = "ผิด: " + q.why;
-            fb.style.color = "#f87171";
-            selectedEl.classList.add("incorrect");
+        if (fb) {
+            fb.textContent = isCorrect ? `ถูกต้อง! ${q.why}` : `ผิด: ${q.why}`;
+            fb.style.color = isCorrect ? "#34d399" : "#f87171";
+        }
+
+        if (selectedEl) {
+            selectedEl.classList.add(isCorrect ? "correct" : "incorrect");
+        }
+        if (!isCorrect && allChoices[q.ans]) {
             allChoices[q.ans].classList.add("correct");
         }
+        if (isCorrect) score++;
 
         // Log the answer for summary
         answersLog.push({
             qText: q.q,
-            choices: q.choices.slice(),
+            choices: [...q.choices],
             correctIndex: q.ans,
             selectedIndex: selectedAnswer,
             why: q.why,
@@ -273,39 +320,42 @@
     };
 
     function initQuiz(topic, questions) {
-        currentTopic = topic;
-        // Deep-ish copy to avoid mutating original question banks
-        currentQuestions = (questions || []).map((q) => ({
-            ...q,
-            choices: Array.isArray(q.choices) ? q.choices.slice() : [],
-        }));
-        // Shuffle questions and choices for variety
-        shuffleArray(currentQuestions);
-        currentQuestions = currentQuestions.map((q) =>
-            shuffleChoicesOnQuestion(q)
-        );
-        // Cap at 10 questions
-        if (currentQuestions.length > 10)
-            currentQuestions = currentQuestions.slice(0, 10);
+        if (!Array.isArray(questions) || questions.length === 0) {
+            console.error("Invalid quiz questions");
+            return;
+        }
 
-        i = 0;
+        currentTopic = topic;
+        // Deep copy to avoid mutating original question banks
+        currentQuestions = questions.map((q) => ({
+            ...q,
+            choices: Array.isArray(q.choices) ? [...q.choices] : [],
+        }));
+
+        // Shuffle questions and choices
+        shuffleArray(currentQuestions);
+        currentQuestions = currentQuestions.map(shuffleChoicesOnQuestion);
+
+        // Cap at max questions
+        if (currentQuestions.length > MAX_QUESTIONS) {
+            currentQuestions = currentQuestions.slice(0, MAX_QUESTIONS);
+        }
+
+        // Reset state
+        currentIndex = 0;
         score = 0;
         answersLog = [];
+
+        // Show quiz section
         const quizSection = document.getElementById("final-quiz");
         if (window.show) {
             window.show("final-quiz");
         } else if (quizSection) {
             quizSection.style.display = "block";
         }
-        // Render shortly after showing the section
-        setTimeout(render, 50);
-        // Smooth scroll to the quiz so users see it immediately
-        setTimeout(() => {
-            const qs = document.getElementById("final-quiz");
-            if (qs && typeof qs.scrollIntoView === "function") {
-                qs.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-        }, 120);
+
+        setTimeout(render, RENDER_DELAY);
+        setTimeout(scrollToQuiz, SCROLL_DELAY);
     }
 
     window.nextQuizPage = function () {
@@ -314,21 +364,21 @@
                 submit();
             } else {
                 // Skip question and log
-                const q = currentQuestions[i];
+                const q = currentQuestions[currentIndex];
                 answersLog.push({
                     qText: q.q,
-                    choices: q.choices.slice(),
+                    choices: [...q.choices],
                     correctIndex: q.ans,
                     selectedIndex: null,
                     why: q.why,
                     difficulty: q.difficulty || null,
                     tags: q.tags || [],
                 });
-                i++;
+                currentIndex++;
                 render();
             }
         } else {
-            i++;
+            currentIndex++;
             render();
         }
     };

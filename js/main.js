@@ -1,17 +1,21 @@
-// Strip fbclid and other tracking parameters from URL
-(function () {
+// Strip tracking parameters from URL
+(async function () {
     try {
         if (typeof window === "undefined" || typeof URL === "undefined") return;
         const url = new URL(window.location.href);
-        const paramsToStrip = [
-            "fbclid",
-            "gclid",
-            "utm_source",
-            "utm_medium",
-            "utm_campaign",
-            "utm_term",
-            "utm_content",
-        ];
+
+        // Load trackers from JSON
+        const response = await fetch("data/trackers.json");
+        const TRACKERS = await response.json();
+
+        // Build list of all tracking params
+        const paramsToStrip = [];
+        for (const [prefix, suffixes] of Object.entries(TRACKERS)) {
+            for (const suffix of suffixes) {
+                paramsToStrip.push(prefix + suffix);
+            }
+        }
+
         let changed = false;
         for (const p of paramsToStrip) {
             if (url.searchParams.has(p)) {
@@ -28,15 +32,21 @@
 })();
 
 document.addEventListener("DOMContentLoaded", function () {
-    try {
-        initNavigation();
-        initAnimations();
-        initScrollEffects();
-        createParticles();
-        initHeroVideo();
-    } catch (error) {
-        console.error("Init error", error);
-    }
+    const initFunctions = [
+        ["Navigation", initNavigation],
+        ["Animations", initAnimations],
+        ["ScrollEffects", initScrollEffects],
+        ["Particles", createParticles],
+        ["HeroVideo", initHeroVideo],
+    ];
+
+    initFunctions.forEach(([name, fn]) => {
+        try {
+            fn();
+        } catch (error) {
+            console.error(`Init ${name} error:`, error);
+        }
+    });
 });
 
 function initNavigation() {
@@ -202,6 +212,8 @@ function initScrollEffects() {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("is-visible");
+                // Unobserve after animation to save resources
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -212,22 +224,21 @@ function initScrollEffects() {
         observer.observe(section);
     });
 
-    // Header background on scroll
-    window.addEventListener(
-        "scroll",
-        throttle(() => {
-            const header = document.querySelector(".header");
-            if (header) {
-                if (window.scrollY > 100) {
-                    header.style.background = "rgba(5, 10, 25, 0.9)";
-                    header.style.boxShadow = "0 10px 30px rgba(0,0,0,0.35)";
-                } else {
-                    header.style.background = "rgba(5, 10, 25, 0.7)";
-                    header.style.boxShadow = "0 10px 30px rgba(0,0,0,0.25)";
-                }
-            }
-        }, 100)
-    );
+    // Header background on scroll - cache header element
+    const header = document.querySelector(".header");
+    if (!header) return;
+
+    const handleScroll = throttle(() => {
+        const isScrolled = window.scrollY > 100;
+        header.style.background = isScrolled
+            ? "rgba(5, 10, 25, 0.9)"
+            : "rgba(5, 10, 25, 0.7)";
+        header.style.boxShadow = isScrolled
+            ? "0 10px 30px rgba(0,0,0,0.35)"
+            : "0 10px 30px rgba(0,0,0,0.25)";
+    }, 100);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
 }
 
 // Create floating particles
@@ -237,16 +248,24 @@ function createParticles() {
 
     const particlesContainer = document.createElement("div");
     particlesContainer.className = "particles";
-    hero.appendChild(particlesContainer);
 
-    for (let i = 0; i < 50; i++) {
+    // Use DocumentFragment for better performance
+    const fragment = document.createDocumentFragment();
+    const PARTICLE_COUNT = 50;
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
         const particle = document.createElement("div");
         particle.className = "particle";
-        particle.style.left = Math.random() * 100 + "%";
-        particle.style.animationDelay = Math.random() * 10 + "s";
-        particle.style.animationDuration = Math.random() * 10 + 5 + "s";
-        particlesContainer.appendChild(particle);
+        particle.style.cssText = `
+            left: ${Math.random() * 100}%;
+            animation-delay: ${Math.random() * 10}s;
+            animation-duration: ${5 + Math.random() * 10}s;
+        `;
+        fragment.appendChild(particle);
     }
+
+    particlesContainer.appendChild(fragment);
+    hero.appendChild(particlesContainer);
 }
 
 // Initialize hero video with fade-to-black loop
@@ -306,7 +325,9 @@ function initHeroVideo() {
 
 // Error handling and user feedback
 function showErrorMessage(message) {
-    // Create a simple toast notification
+    // Remove existing toasts to prevent stacking
+    document.querySelectorAll(".error-toast").forEach((t) => t.remove());
+
     const toast = document.createElement("div");
     toast.className = "error-toast";
     toast.style.cssText = `
@@ -316,17 +337,24 @@ function showErrorMessage(message) {
         background: #f44336;
         color: white;
         padding: 15px 20px;
-        border-radius: 5px;
+        border-radius: 8px;
         z-index: 10000;
         box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         animation: slideInRight 0.3s ease-out;
+        cursor: pointer;
     `;
     toast.textContent = message;
+    toast.setAttribute("role", "alert");
 
+    // Allow click to dismiss
+    toast.addEventListener("click", () => toast.remove());
     document.body.appendChild(toast);
 
     setTimeout(() => {
-        toast.remove();
+        if (toast.parentNode) {
+            toast.style.animation = "slideInRight 0.3s ease-out reverse";
+            setTimeout(() => toast.remove(), 300);
+        }
     }, 5000);
 }
 
@@ -344,14 +372,12 @@ function debounce(func, wait) {
 }
 
 function throttle(func, limit) {
-    let inThrottle;
-    return function () {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => (inThrottle = false), limit);
+    let lastCall = 0;
+    return function (...args) {
+        const now = Date.now();
+        if (now - lastCall >= limit) {
+            lastCall = now;
+            func.apply(this, args);
         }
     };
 }
@@ -360,18 +386,3 @@ window.addEventListener("error", (e) => {
     console.error("Application error:", e.error);
     showErrorMessage("เกิดข้อผิดพลาดในระบบ");
 });
-
-if ("performance" in window) {
-    window.addEventListener("load", () => {
-        setTimeout(() => {
-            const navigation = performance.getEntriesByType("navigation")[0];
-            if (navigation) {
-                console.log(
-                    "Page load time:",
-                    navigation.loadEventEnd - navigation.loadEventStart,
-                    "ms"
-                );
-            }
-        }, 0);
-    });
-}

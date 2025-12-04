@@ -1,0 +1,161 @@
+/* Shared styles for individual lesson pages */
+
+/* Page setup */
+html,
+body {
+    height: 100%;
+}
+
+body.system-page {
+    margin: 0;
+    min-height: 100%;
+    background: var(--color-bg-primary, #0b1020);
+}
+
+/* Hero section for system pages */
+.system-hero {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Background image */
+.system-bg {
+    position: fixed;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.22;
+    z-index: 0;
+}
+
+/* System-specific backgrounds */
+.system-bg.circulatory {
+    background-image: url("../assests/circulatory.jpg");
+}
+
+.system-bg.respiratory {
+    background-image: url("../assests/respiratory.jpg");
+}
+
+.system-bg.lymphatic {
+    background-image: url("../assests/lymphatic.jpg");
+}
+
+.system-bg.nervous {
+    background-image: url("../assests/nervous.jpg");
+}
+
+/* Content container */
+.system-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    width: 100%;
+    padding: 100px 20px 40px;
+}
+
+/* Fixed header bar */
+.header-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: var(--z-header, 1000);
+    background: var(--color-bg-secondary, rgba(5, 10, 25, 0.7));
+    border-bottom: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    color: var(--color-text-primary, #e6e6f0);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.back-link {
+    color: var(--color-text-secondary, #c7cbe6);
+    text-decoration: none;
+    border: 1px solid var(--color-border-hover, rgba(255, 255, 255, 0.18));
+    padding: 8px 12px;
+    border-radius: var(--radius-sm, 10px);
+    transition: all var(--transition-fast, 0.2s ease);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.back-link:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.back-link:focus-visible {
+    outline: 2px solid var(--color-accent-blue, #60a5fa);
+    outline-offset: 2px;
+}
+
+/* Ensure panel content is above any overlays */
+.panel > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Action buttons container */
+.lesson-actions-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .system-content {
+        padding: 80px 16px 32px;
+    }
+
+    .header-inner {
+        padding: 10px 16px;
+    }
+
+    .lesson-actions-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .lesson-actions-bar .cta-button,
+    .lesson-actions-bar .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand {
+        font-size: 1rem;
+    }
+
+    .back-link {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+}

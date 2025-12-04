@@ -5,18 +5,25 @@
 // - backToMenu(): go back to menu
 
 (function () {
-    const sectionLesson = document.getElementById("lesson");
-    const sectionMenu = document.getElementById("menu");
-    const sectionQuiz = document.getElementById("final-quiz");
-    const titleEl = document.getElementById("lesson-title");
-    const stepEl = document.getElementById("lesson-step");
-    const contentEl = document.getElementById("lesson-content");
-    const bgEl = document.getElementById("lesson-bg");
-    const nextBtn = document.getElementById("lesson-next");
-    const backBtn = document.getElementById("lesson-back");
+    // Cache DOM elements
+    const elements = {
+        lesson: document.getElementById("lesson"),
+        menu: document.getElementById("menu"),
+        quiz: document.getElementById("final-quiz"),
+        title: document.getElementById("lesson-title"),
+        step: document.getElementById("lesson-step"),
+        content: document.getElementById("lesson-content"),
+        bg: document.getElementById("lesson-bg"),
+        nextBtn: document.getElementById("lesson-next"),
+        backBtn: document.getElementById("lesson-back"),
+    };
 
+    // State management
     const state = { topic: null, index: 0 };
-    const completed = new Set();
+
+    // Helper function to safely set text content
+    const setText = (el, text) => el && (el.textContent = text);
+    const setHTML = (el, html) => el && (el.innerHTML = html);
 
     const topics = {
         circulatory: {
@@ -671,19 +678,24 @@
     };
 
     function setBg(key) {
-        bgEl.className = "lesson-bg";
-        if (key) bgEl.classList.add(key);
+        if (!elements.bg) return;
+        elements.bg.className = key ? `lesson-bg ${key}` : "lesson-bg";
     }
 
     function render() {
         const t = topics[state.topic];
         if (!t) return;
+
         const page = t.pages[state.index];
-        titleEl.textContent = `${t.name}`;
-        stepEl.textContent = `หน้า ${state.index + 1} / ${t.pages.length}`;
-        contentEl.innerHTML =
-            `<h3 class="h3" style="margin-bottom:8px;">${page.title}</h3>` +
-            page.html;
+        const { title, step, content, backBtn, nextBtn } = elements;
+
+        setText(title, t.name);
+        setText(step, `หน้า ${state.index + 1} / ${t.pages.length}`);
+        setHTML(
+            content,
+            `<h3 class="h3" style="margin-bottom:8px;">${page.title}</h3>${page.html}`
+        );
+
         // Reset any dynamic bg
         clearBloodFlow();
         if (page.bgAnim === "flow") mountBloodFlow();
@@ -696,24 +708,31 @@
     }
 
     function show(id) {
-        // Toggle section visibility (guard if some sections don’t exist on this page)
         const homeEl = document.getElementById("home");
-        const menuEl = document.getElementById("menu");
-        if (homeEl) homeEl.style.display = id === "home" ? "flex" : "none";
-        if (menuEl) menuEl.style.display = id === "menu" ? "block" : "none";
-        if (sectionLesson)
-            sectionLesson.style.display = id === "lesson" ? "block" : "none";
-        if (sectionQuiz)
-            sectionQuiz.style.display = id === "final-quiz" ? "block" : "none";
+        const {
+            menu: menuEl,
+            lesson: sectionLesson,
+            quiz: sectionQuiz,
+        } = elements;
 
-        const map = {
+        // Toggle section visibility
+        const sections = {
             home: homeEl,
             menu: menuEl,
             lesson: sectionLesson,
             "final-quiz": sectionQuiz,
         };
-        const shown = map[id];
-        if (shown) shown.classList.add("is-visible");
+
+        Object.entries(sections).forEach(([key, el]) => {
+            if (!el) return;
+            const shouldShow = key === id;
+            el.style.display = shouldShow
+                ? key === "home"
+                    ? "flex"
+                    : "block"
+                : "none";
+            if (shouldShow) el.classList.add("is-visible");
+        });
 
         if (
             typeof window !== "undefined" &&
@@ -751,12 +770,16 @@
     };
 
     window.startLesson = function (key) {
+        if (!topics[key]) {
+            console.error(`Topic '${key}' not found`);
+            return;
+        }
         state.topic = key;
         state.index = 0;
-        setBg(topics[key]?.bg);
+        setBg(topics[key].bg);
         show("lesson");
         render();
-        nextBtn.style.display = "inline-flex";
+        if (elements.nextBtn) elements.nextBtn.style.display = "inline-flex";
     };
 
     window.backToMenu = function () {
@@ -774,40 +797,67 @@
     window.nextPage = function () {
         const t = topics[state.topic];
         if (!t) return;
+
         if (state.index < t.pages.length - 1) {
             state.index++;
             render();
         } else {
-            contentEl.innerHTML += `
+            // Show quiz button at end of lesson
+            const quizButton = `
             <div style="text-align: center; margin-top: 2rem;">
               <button class="cta-button" onclick="window.startTopicQuiz('${state.topic}')">
                 <i class="fas fa-award"></i>
                 เริ่มแบบทดสอบสำหรับ ${t.name}
               </button>
             </div>`;
-            nextBtn.style.display = "none";
+            if (elements.content) {
+                elements.content.insertAdjacentHTML("beforeend", quizButton);
+            }
+            if (elements.nextBtn) elements.nextBtn.style.display = "none";
         }
     };
 
     function mountBloodFlow() {
+        const { content } = elements;
+        if (!content) return;
+
         const wrap = document.createElement("div");
         wrap.className = "blood-flow";
-        for (let i = 0; i < 18; i++) {
+
+        const fragment = document.createDocumentFragment();
+        const CELL_COUNT = 18;
+        const cellTypes = [
+            "rbc",
+            "rbc",
+            "rbc",
+            "rbc",
+            "rbc",
+            "rbc",
+            "wbc",
+            "wbc",
+            "wbc",
+            "platelet",
+        ];
+
+        for (let i = 0; i < CELL_COUNT; i++) {
             const cell = document.createElement("div");
-            const t = Math.random();
-            cell.className =
-                "cell " + (t < 0.6 ? "rbc" : t < 0.9 ? "wbc" : "platelet");
-            cell.style.top = Math.random() * 80 + 5 + "%";
-            cell.style.animationDuration = Math.random() * 8 + 6 + "s";
-            cell.style.animationDelay = -Math.random() * 8 + "s";
-            wrap.appendChild(cell);
+            const typeIndex = Math.floor(Math.random() * cellTypes.length);
+            cell.className = `cell ${cellTypes[typeIndex]}`;
+            cell.style.cssText = `
+                top: ${5 + Math.random() * 80}%;
+                animation-duration: ${6 + Math.random() * 8}s;
+                animation-delay: ${-Math.random() * 8}s;
+            `;
+            fragment.appendChild(cell);
         }
-        contentEl.style.position = "relative";
-        contentEl.appendChild(wrap);
+
+        wrap.appendChild(fragment);
+        content.style.position = "relative";
+        content.appendChild(wrap);
     }
 
     function clearBloodFlow() {
-        const old = contentEl.querySelector(".blood-flow");
+        const old = elements.content?.querySelector(".blood-flow");
         if (old) old.remove();
     }
 

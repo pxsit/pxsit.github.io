@@ -3,9 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#0b1020" />
         <title>Circulatory System - Outside In</title>
         <link rel="stylesheet" href="../css/style.css" />
         <link rel="stylesheet" href="../css/animations.css" />
+        <link rel="stylesheet" href="../css/lesson-page.css" />
         <link
             href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
@@ -14,96 +16,27 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         />
-        <style>
-            html,
-            body {
-                height: 100%;
-            }
-            body.system-page {
-                margin: 0;
-                min-height: 100%;
-                background: #0b1020;
-            }
-            .system-hero {
-                position: relative;
-                min-height: 100vh;
-                width: 100%;
-                overflow: hidden;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .system-bg {
-                position: fixed;
-                inset: 0;
-                background-image: url("../assests/circulatory.jpg");
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                opacity: 0.22;
-                z-index: 0;
-            }
-            .system-content {
-                position: relative;
-                z-index: 1;
-                max-width: 1100px;
-                width: 100%;
-                padding: 100px 20px 40px;
-            }
-            .header-bar {
-                position: fixed;
-                left: 0;
-                right: 0;
-                top: 0;
-                z-index: 10;
-                background: rgba(5, 10, 25, 0.7);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-                backdrop-filter: blur(12px);
-            }
-            .header-inner {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 12px 20px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-            .brand {
-                color: #e6e6f0;
-                font-weight: 700;
-            }
-            .back-link {
-                color: #c7cbe6;
-                text-decoration: none;
-                border: 1px solid rgba(255, 255, 255, 0.18);
-                padding: 8px 12px;
-                border-radius: 10px;
-            }
-            .back-link:hover {
-                color: #fff;
-                border-color: rgba(255, 255, 255, 0.3);
-            }
-            .panel > * {
-                position: relative;
-                z-index: 1;
-            }
-        </style>
     </head>
     <body class="system-page">
-        <header class="header-bar">
+        <header class="header-bar" role="banner">
             <div class="header-inner">
                 <div class="brand">Outside In</div>
                 <nav>
-                    <a class="back-link" href="../index.html#menu"
-                        ><i class="fas fa-arrow-left"></i> Menu</a
+                    <a
+                        class="back-link"
+                        href="../index.html#menu"
+                        aria-label="กลับไปหน้าเมนูหลัก"
                     >
+                        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                        Menu
+                    </a>
                 </nav>
             </div>
         </header>
 
         <main class="system-hero">
-            <div class="system-bg" aria-hidden="true"></div>
-            <div class="system-content container">
+            <div class="system-bg circulatory" aria-hidden="true"></div>
+            <div class="system-content container" role="article">
                 <h1 class="section-title">Circulatory System</h1>
                 <p class="section-description">
                     เนื้อหาเดียวกับโหมดบทเรียน แต่ภาพพื้นหลังคงที่เต็มหน้า

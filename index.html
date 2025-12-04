@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#0b1020" />
+
         <title>Outside In - Body System</title>
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/animations.css" />
@@ -18,165 +20,215 @@
     </head>
     <body>
         <!-- Header -->
-        <header class="header">
-            <nav class="navbar">
+        <header class="header" role="banner">
+            <nav class="navbar" aria-label="Main navigation">
                 <div class="nav-brand">
                     <h2>Outside In</h2>
                     <span>Body System</span>
                 </div>
-                <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#menu" class="nav-link">Menu</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
+                <ul class="nav-menu" role="menubar">
+                    <li role="none">
+                        <a href="#home" class="nav-link" role="menuitem"
+                            >Home</a
+                        >
+                    </li>
+                    <li role="none">
+                        <a href="#menu" class="nav-link" role="menuitem"
+                            >Menu</a
+                        >
+                    </li>
+                    <li role="none">
+                        <a href="#about" class="nav-link" role="menuitem"
+                            >About</a
+                        >
+                    </li>
                 </ul>
-                <div class="hamburger">
+                <button
+                    class="hamburger"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false"
+                    aria-controls="nav-menu"
+                >
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </nav>
         </header>
 
         <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1 class="hero-title mega">Outside In</h1>
-                <button class="cta-button" onclick="goToMenu()">
-                    <i class="fas fa-play"></i>
-                    Start
-                </button>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-video-wrap">
-                    <video
-                        id="hero-video"
-                        class="hero-video"
-                        src="assests/video.mp4"
-                        muted
-                        preload="auto"
-                        playsinline
-                        aria-label="Decorative intro video"
-                    ></video>
-                    <div
-                        id="hero-video-fade"
-                        class="hero-video-fade"
-                        aria-hidden="true"
-                    ></div>
+        <main>
+            <section id="home" class="hero" aria-labelledby="hero-title">
+                <div class="hero-content">
+                    <h1 id="hero-title" class="hero-title mega">Outside In</h1>
+                    <button
+                        class="cta-button"
+                        onclick="goToMenu()"
+                        aria-label="Start exploring body systems"
+                    >
+                        <i class="fas fa-play" aria-hidden="true"></i>
+                        Start
+                    </button>
                 </div>
-                <!-- Fallback visuals if the video fails to load -->
-                <div class="hero-3d fallback-visual">
-                    <div class="orb orb-blue"></div>
-                    <div class="orb orb-pink"></div>
-                    <div class="orb orb-red"></div>
-                    <div class="ring ring-1"></div>
-                    <div class="ring ring-2"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Menu Section -->
-        <section id="menu" class="menu-section">
-            <div class="container">
-                <h2 class="section-title center">Menu</h2>
-                <p class="section-description center">
-                    เลือกเนื้อหาที่ต้องการเรียนรู้
-                </p>
-
-                <div class="menu-grid">
-                    <a
-                        class="menu-card"
-                        href="lessons/circulatory.html"
-                        aria-label="Open Circulatory System full page"
-                    >
-                        <div class="menu-bg circulatory"></div>
-                        <div class="menu-text">
-                            <h3>Circulatory System</h3>
-                            <span>ระบบหมุนเวียนเลือด</span>
-                        </div>
-                    </a>
-                    <a
-                        class="menu-card"
-                        href="lessons/respiratory.html"
-                        aria-label="Open Respiratory System full page"
-                    >
-                        <div class="menu-bg respiratory"></div>
-                        <div class="menu-text">
-                            <h3>Respiratory System</h3>
-                            <span>ระบบหายใจ</span>
-                        </div>
-                    </a>
-                    <a
-                        class="menu-card"
-                        href="lessons/lymphatic.html"
-                        aria-label="Open Lymphatics System full page"
-                    >
-                        <div class="menu-bg lymphatic"></div>
-                        <div class="menu-text">
-                            <h3>Lymphatics System</h3>
-                            <span>ระบบน้ำเหลือง</span>
-                        </div>
-                    </a>
-                    <a
-                        class="menu-card"
-                        href="lessons/nervous.html"
-                        aria-label="Open Nervous System full page"
-                    >
-                        <div class="menu-bg nervous"></div>
-                        <div class="menu-text">
-                            <h3>Nervous System</h3>
-                            <span>ระบบประสาท</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Lesson Section (dynamic pages) -->
-        <section id="lesson" class="lesson-section" style="display: none">
-            <div class="lesson-bg" id="lesson-bg"></div>
-            <div class="lesson-container">
-                <div class="lesson-header">
-                    <h2 id="lesson-title"></h2>
-                    <div class="lesson-progress">
-                        <span id="lesson-step"></span>
+                <div class="hero-visual">
+                    <div class="hero-video-wrap">
+                        <video
+                            id="hero-video"
+                            class="hero-video"
+                            src="assests/video.mp4"
+                            muted
+                            preload="auto"
+                            playsinline
+                            aria-label="Decorative intro video"
+                        ></video>
+                        <div
+                            id="hero-video-fade"
+                            class="hero-video-fade"
+                            aria-hidden="true"
+                        ></div>
+                    </div>
+                    <!-- Fallback visuals if the video fails to load -->
+                    <div class="hero-3d fallback-visual">
+                        <div class="orb orb-blue"></div>
+                        <div class="orb orb-pink"></div>
+                        <div class="orb orb-red"></div>
+                        <div class="ring ring-1"></div>
+                        <div class="ring ring-2"></div>
                     </div>
                 </div>
-                <div id="lesson-content" class="lesson-content"></div>
-                <div class="lesson-actions">
-                    <button
-                        id="lesson-back"
-                        class="btn ghost"
-                        onclick="prevPage()"
-                    >
-                        <i class="fas fa-arrow-left"></i> Back
-                    </button>
-                    <button class="btn ghost" onclick="backToMenu()">
-                        <i class="fas fa-bars"></i> Menu
-                    </button>
-                    <button
-                        id="lesson-next"
-                        class="btn primary"
-                        onclick="nextPage()"
-                    >
-                        Next <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Final Quiz Section -->
-        <section id="final-quiz" class="quiz-section" style="display: none">
-            <div class="quiz-bg"></div>
-            <div class="quiz-container">
-                <h2 class="section-title center">Quiz</h2>
-                <div id="quiz-stage"></div>
-            </div>
-        </section>
+            <!-- Menu Section -->
+            <section
+                id="menu"
+                class="menu-section"
+                aria-labelledby="menu-title"
+            >
+                <div class="container">
+                    <h2 id="menu-title" class="section-title center">Menu</h2>
+                    <p class="section-description center">
+                        เลือกเนื้อหาที่ต้องการเรียนรู้
+                    </p>
+
+                    <div class="menu-grid" role="list">
+                        <a
+                            class="menu-card"
+                            href="lessons/circulatory.html"
+                            role="listitem"
+                            aria-label="Open Circulatory System full page"
+                        >
+                            <div
+                                class="menu-bg circulatory"
+                                aria-hidden="true"
+                            ></div>
+                            <div class="menu-text">
+                                <h3>Circulatory System</h3>
+                                <span>ระบบหมุนเวียนเลือด</span>
+                            </div>
+                        </a>
+                        <a
+                            class="menu-card"
+                            href="lessons/respiratory.html"
+                            role="listitem"
+                            aria-label="Open Respiratory System full page"
+                        >
+                            <div
+                                class="menu-bg respiratory"
+                                aria-hidden="true"
+                            ></div>
+                            <div class="menu-text">
+                                <h3>Respiratory System</h3>
+                                <span>ระบบหายใจ</span>
+                            </div>
+                        </a>
+                        <a
+                            class="menu-card"
+                            href="lessons/lymphatic.html"
+                            role="listitem"
+                            aria-label="Open Lymphatics System full page"
+                        >
+                            <div
+                                class="menu-bg lymphatic"
+                                aria-hidden="true"
+                            ></div>
+                            <div class="menu-text">
+                                <h3>Lymphatics System</h3>
+                                <span>ระบบน้ำเหลือง</span>
+                            </div>
+                        </a>
+                        <a
+                            class="menu-card"
+                            href="lessons/nervous.html"
+                            role="listitem"
+                            aria-label="Open Nervous System full page"
+                        >
+                            <div
+                                class="menu-bg nervous"
+                                aria-hidden="true"
+                            ></div>
+                            <div class="menu-text">
+                                <h3>Nervous System</h3>
+                                <span>ระบบประสาท</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lesson Section (dynamic pages) -->
+            <section id="lesson" class="lesson-section" style="display: none">
+                <div class="lesson-bg" id="lesson-bg"></div>
+                <div class="lesson-container">
+                    <div class="lesson-header">
+                        <h2 id="lesson-title"></h2>
+                        <div class="lesson-progress">
+                            <span id="lesson-step"></span>
+                        </div>
+                    </div>
+                    <div id="lesson-content" class="lesson-content"></div>
+                    <div class="lesson-actions">
+                        <button
+                            id="lesson-back"
+                            class="btn ghost"
+                            onclick="prevPage()"
+                        >
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <button class="btn ghost" onclick="backToMenu()">
+                            <i class="fas fa-bars"></i> Menu
+                        </button>
+                        <button
+                            id="lesson-next"
+                            class="btn primary"
+                            onclick="nextPage()"
+                        >
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Quiz Section -->
+            <section
+                id="final-quiz"
+                class="quiz-section"
+                style="display: none"
+                aria-labelledby="quiz-title"
+            >
+                <div class="quiz-bg" aria-hidden="true"></div>
+                <div class="quiz-container">
+                    <h2 id="quiz-title" class="section-title center">Quiz</h2>
+                    <div id="quiz-stage" role="region" aria-live="polite"></div>
+                </div>
+            </section>
+        </main>
 
         <!-- About Section -->
-        <section id="about" class="about-section">
+        <section id="about" class="about-section" aria-labelledby="about-title">
             <div class="container">
-                <h2 class="section-title">เกี่ยวกับโครงงาน Outside In</h2>
+                <h2 id="about-title" class="section-title">
+                    เกี่ยวกับโครงงาน Outside In
+                </h2>
                 <div class="about-content">
                     <div class="about-text">
                         <h3>วัตถุประสงค์</h3>
@@ -208,7 +260,7 @@
                                 <strong>ประเภท:</strong> เพื่อการศึกษา
                             </div>
                             <div class="info-item">
-                                <strong>ระยะเวลา:</strong> 4 เดือน
+                                <strong>ระยะเวลา:</strong> 6 เดือน
                             </div>
                             <div class="info-item">
                                 <strong>ผู้จัดทำ:</strong>
