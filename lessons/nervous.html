@@ -123,7 +123,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
         <script src="../js/lessons.js"></script>
         <script src="../js/quiz-handler.js"></script>
-        <script src="../js/quiz-nervous.js"></script>
         <script>
             (function () {
                 function renderTopic() {
@@ -164,7 +163,7 @@
                         <p class=\"section-description\">เนื้อหาเดียวกับโหมดบทเรียน แต่ภาพพื้นหลังคงที่เต็มหน้า</p>
                         ${sections}
                         <div style=\"display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:20px;\">
-                            <button class=\"cta-button\" onclick=\"window.startTopicQuiz('nervous', (window.quizData||{})['nervous'])\">
+                            <button class=\"cta-button\" onclick=\"window.startTopicQuiz('nervous')\">
                                 <i class=\"fas fa-award\"></i>
                                 เริ่มแบบทดสอบสำหรับ ${topic.name}
                             </button>

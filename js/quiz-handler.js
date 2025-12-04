@@ -9,6 +9,9 @@
     // Keep a log of each question, user's selection, and explanation for summary
     let answersLog = [];
 
+    // Initialize quiz data
+    window.quizData = window.quizData || {};
+
     function getStage() {
         return document.getElementById("quiz-stage");
     }
@@ -234,6 +237,42 @@
     }
 
     window.startTopicQuiz = function (topic, questions) {
+        // If questions are passed directly, use them (legacy support or manual override)
+        if (questions) {
+            initQuiz(topic, questions);
+            return;
+        }
+
+        // Check if data is already loaded
+        if (window.quizData && window.quizData[topic]) {
+            initQuiz(topic, window.quizData[topic]);
+            return;
+        }
+
+        // Fetch data for the topic
+        console.log(`Fetching quiz data for ${topic}...`);
+        fetch(`/data/quiz-${topic}.json`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                window.quizData[topic] = data;
+                initQuiz(topic, data);
+            })
+            .catch((err) => {
+                console.error(`Failed to load quiz data for ${topic}:`, err);
+                const stage = getStage();
+                if (stage) {
+                    stage.innerHTML = `<div class="quiz-card"><h3 style="color:#f87171">Error loading quiz</h3><p>ไม่สามารถโหลดข้อมูลแบบทดสอบได้ (${err.message})</p><button class="btn ghost" onclick="backToMenu()">กลับไปที่เมนู</button></div>`;
+                    if (window.show) window.show("final-quiz");
+                }
+            });
+    };
+
+    function initQuiz(topic, questions) {
         currentTopic = topic;
         // Deep-ish copy to avoid mutating original question banks
         currentQuestions = (questions || []).map((q) => ({
@@ -267,7 +306,7 @@
                 qs.scrollIntoView({ behavior: "smooth", block: "start" });
             }
         }, 120);
-    };
+    }
 
     window.nextQuizPage = function () {
         if (!submitted) {

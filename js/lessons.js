@@ -111,7 +111,6 @@
               </div>
             </div>
           `,
-                    
                 },
                 {
                     title: "การไหลเวียนของเลือดผ่านหัวใจ",
@@ -696,8 +695,6 @@
         }
     }
 
-    
-
     function show(id) {
         // Toggle section visibility (guard if some sections don’t exist on this page)
         const homeEl = document.getElementById("home");
@@ -783,7 +780,7 @@
         } else {
             contentEl.innerHTML += `
             <div style="text-align: center; margin-top: 2rem;">
-              <button class="cta-button" onclick="window.startTopicQuiz('${state.topic}', window.quizData['${state.topic}'])">
+              <button class="cta-button" onclick="window.startTopicQuiz('${state.topic}')">
                 <i class="fas fa-award"></i>
                 เริ่มแบบทดสอบสำหรับ ${t.name}
               </button>
