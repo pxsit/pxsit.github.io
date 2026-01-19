@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
     <head>
         <meta charset="UTF-8" />
@@ -28,19 +28,47 @@
                 </div>
                 <ul class="nav-menu" role="menubar">
                     <li role="none">
-                        <a href="#home" class="nav-link" role="menuitem"
+                        <a
+                            href="#home"
+                            class="nav-link"
+                            role="menuitem"
+                            data-i18n="nav_home"
                             >Home</a
                         >
                     </li>
                     <li role="none">
-                        <a href="#menu" class="nav-link" role="menuitem"
+                        <a
+                            href="#menu"
+                            class="nav-link"
+                            role="menuitem"
+                            data-i18n="nav_menu"
                             >Menu</a
                         >
                     </li>
                     <li role="none">
-                        <a href="#about" class="nav-link" role="menuitem"
+                        <a
+                            href="#about"
+                            class="nav-link"
+                            role="menuitem"
+                            data-i18n="nav_about"
                             >About</a
                         >
+                    </li>
+                    <!-- Language Toggle -->
+                    <li role="none">
+                        <button
+                            id="lang-toggle"
+                            class="nav-link"
+                            style="
+                                background: none;
+                                border: none;
+                                cursor: pointer;
+                            "
+                            aria-label="Toggle Language"
+                        >
+                            <i class="fas fa-globe"></i>
+                            <span id="current-lang">TH</span>
+                        </button>
                     </li>
                 </ul>
                 <button
@@ -108,8 +136,14 @@
                 aria-labelledby="menu-title"
             >
                 <div class="container">
-                    <h2 id="menu-title" class="section-title center">Menu</h2>
-                    <p class="section-description center">
+                    <h2
+                        id="menu-title"
+                        class="section-title center"
+                        data-i18n="menu_title"
+                    >
+                        Menu
+                    </h2>
+                    <p class="section-description center" data-i18n="menu_desc">
                         เลือกเนื้อหาที่ต้องการเรียนรู้
                     </p>
 
@@ -125,8 +159,12 @@
                                 aria-hidden="true"
                             ></div>
                             <div class="menu-text">
-                                <h3>Circulatory System</h3>
-                                <span>ระบบหมุนเวียนเลือด</span>
+                                <h3 data-i18n="sys_circulatory">
+                                    Circulatory System
+                                </h3>
+                                <span data-i18n="sys_circulatory_desc"
+                                    >ระบบหมุนเวียนเลือด</span
+                                >
                             </div>
                         </a>
                         <a
@@ -140,8 +178,12 @@
                                 aria-hidden="true"
                             ></div>
                             <div class="menu-text">
-                                <h3>Respiratory System</h3>
-                                <span>ระบบหายใจ</span>
+                                <h3 data-i18n="sys_respiratory">
+                                    Respiratory System
+                                </h3>
+                                <span data-i18n="sys_respiratory_desc"
+                                    >ระบบหายใจ</span
+                                >
                             </div>
                         </a>
                         <a
@@ -155,8 +197,12 @@
                                 aria-hidden="true"
                             ></div>
                             <div class="menu-text">
-                                <h3>Lymphatics System</h3>
-                                <span>ระบบน้ำเหลือง</span>
+                                <h3 data-i18n="sys_lymphatic">
+                                    Lymphatics System
+                                </h3>
+                                <span data-i18n="sys_lymphatic_desc"
+                                    >ระบบน้ำเหลือง</span
+                                >
                             </div>
                         </a>
                         <a
@@ -170,8 +216,10 @@
                                 aria-hidden="true"
                             ></div>
                             <div class="menu-text">
-                                <h3>Nervous System</h3>
-                                <span>ระบบประสาท</span>
+                                <h3 data-i18n="sys_nervous">Nervous System</h3>
+                                <span data-i18n="sys_nervous_desc"
+                                    >ระบบประสาท</span
+                                >
                             </div>
                         </a>
                     </div>
@@ -195,17 +243,20 @@
                             class="btn ghost"
                             onclick="prevPage()"
                         >
-                            <i class="fas fa-arrow-left"></i> Back
+                            <i class="fas fa-arrow-left"></i>
+                            <span data-i18n="lesson_back">Back</span>
                         </button>
                         <button class="btn ghost" onclick="backToMenu()">
-                            <i class="fas fa-bars"></i> Menu
+                            <i class="fas fa-bars"></i>
+                            <span data-i18n="lesson_menu">Menu</span>
                         </button>
                         <button
                             id="lesson-next"
                             class="btn primary"
                             onclick="nextPage()"
                         >
-                            Next <i class="fas fa-arrow-right"></i>
+                            <span data-i18n="lesson_next">Next</span>
+                            <i class="fas fa-arrow-right"></i>
                         </button>
                     </div>
                 </div>
@@ -220,7 +271,13 @@
             >
                 <div class="quiz-bg" aria-hidden="true"></div>
                 <div class="quiz-container">
-                    <h2 id="quiz-title" class="section-title center">Quiz</h2>
+                    <h2
+                        id="quiz-title"
+                        class="section-title center"
+                        data-i18n="quiz_title"
+                    >
+                        Quiz
+                    </h2>
                     <div id="quiz-stage" role="region" aria-live="polite"></div>
                 </div>
             </section>
@@ -229,44 +286,61 @@
         <!-- About Section -->
         <section id="about" class="about-section" aria-labelledby="about-title">
             <div class="container">
-                <h2 id="about-title" class="section-title">
+                <h2
+                    id="about-title"
+                    class="section-title"
+                    data-i18n="about_title"
+                >
                     เกี่ยวกับโครงงาน Outside In
                 </h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <h3>วัตถุประสงค์</h3>
+                        <h3 data-i18n="about_obj_title">วัตถุประสงค์</h3>
                         <ul>
-                            <li>
+                            <li data-i18n="about_obj_1">
                                 พัฒนาเว็บไซต์ที่นำเสนอองค์ความรู้เกี่ยวกับโครงสร้างของร่างกายมนุษย์
                             </li>
-                            <li>
+                            <li data-i18n="about_obj_2">
                                 ส่งเสริมการเรียนรู้ Anatomy
                                 ด้วยวิธีที่เข้าใจง่ายและน่าสนใจ
                             </li>
-                            <li>
+                            <li data-i18n="about_obj_3">
                                 ให้ผู้ใช้งานสามารถสำรวจระบบต่างๆ
                                 ในร่างกายอย่างมีลำดับขั้น
                             </li>
-                            <li>
+                            <li data-i18n="about_obj_4">
                                 ฝึกทักษะการออกแบบและพัฒนาเว็บไซต์ด้วย HTML, CSS
                                 และ JavaScript
                             </li>
                         </ul>
                     </div>
                     <div class="project-info">
-                        <h3>ข้อมูลโครงงาน</h3>
+                        <h3 data-i18n="about_info_title">ข้อมูลโครงงาน</h3>
                         <div class="info-grid">
                             <div class="info-item">
-                                <strong>ชื่อโครงงาน:</strong> Outside In
+                                <strong data-i18n="about_name"
+                                    >ชื่อโครงงาน:</strong
+                                >
+                                Outside In
                             </div>
                             <div class="info-item">
-                                <strong>ประเภท:</strong> เพื่อการศึกษา
+                                <strong data-i18n="about_type">ประเภท:</strong>
+                                <span data-i18n="about_type_val"
+                                    >เพื่อการศึกษา</span
+                                >
                             </div>
                             <div class="info-item">
-                                <strong>ระยะเวลา:</strong> 6 เดือน
+                                <strong data-i18n="about_duration"
+                                    >ระยะเวลา:</strong
+                                >
+                                <span data-i18n="about_duration_val"
+                                    >6 เดือน</span
+                                >
                             </div>
                             <div class="info-item">
-                                <strong>ผู้จัดทำ:</strong>
+                                <strong data-i18n="about_authors"
+                                    >ผู้จัดทำ:</strong
+                                >
                                 <ul>
                                     <li>
                                         ด.ช.พสิษฐ์ แสงประชาธนารักษ์ เลขที่ 13
@@ -276,8 +350,10 @@
                                 </ul>
                             </div>
                             <div class="info-item">
-                                <strong>อาจารย์ที่ปรึกษา:</strong> คุณครู ธีระพล
-                                พฤฑฒิกุล
+                                <strong data-i18n="about_advisor"
+                                    >อาจารย์ที่ปรึกษา:</strong
+                                >
+                                คุณครู ธีระพล พฤฑฒิกุล
                             </div>
                         </div>
                     </div>

@@ -25,7 +25,7 @@
     const setText = (el, text) => el && (el.textContent = text);
     const setHTML = (el, html) => el && (el.innerHTML = html);
 
-    const topics = {
+    const thTopics = {
         circulatory: {
             name: "Circulatory System",
             bg: "bg-circulatory",
@@ -509,7 +509,7 @@
                     html: `
             <div class="panel" style="overflow-x:auto;">
               <table style="width:100%; border-collapse:collapse; color:#e6e6f0;">
-                <thead><tr style="background:rgba(255,255,255,0.06)"><th style="padding:8px; border:1px solid rgba(255,255,255,0.1)">กลไก</th><th style="padding:8px; border:1px solid rgba(255,255,255,0.1)">หายใจเข้า (Inhalation)</th><th style="padding:8px; border:1px solid rgba(255,255,255,0.1)">หายใจออก (Exhalation)</th></tr></thead>
+                <thead><tr style="background:rgba(255,255,255,0.06)"><th style="padding:8px; border:1px solid rgba(255,255,255,0.1)">กลไก</th><th style="padding:8px; border:1px solid rgba(255,255,255,0.1)">หายใจเข้า (Inhalation)</th><th style="padding:8px; border="1px solid rgba(255,255,255,0.1)">หายใจออก (Exhalation)</th></tr></thead>
                 <tbody>
                   <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">กระบังลม</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">หดตัวและเลื่อนต่ำลง</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">คลายตัวและยกสูงขึ้น</td></tr>
                   <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">กระดูกซี่โครง</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">ยกตัวสูงขึ้น</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">ลดตัวต่ำลง</td></tr>
@@ -611,7 +611,7 @@
                     title: "เส้นทางหลัก: Thoracic duct และ Right lymphatic duct",
                     html: `
             <div class="grid-2">
-              <div class="panel"><div class="h3">Thoracic duct</div><p class="muted">รับน้ำเหลืองจากส่วนใหญ่ของร่างกาย เทเข้าสู่หลอดเลือดดำใต้ไหปลาร้าซ้าย</p></div>
+              <div class="panel"><div class="h3">Thoracic duct</div><p class="muted">รับน้ำเหลืองจากส่วนใหญ่ของร่างกาย เท่าสู่หลอดเลือดดำใต้ไหปลาร้าซ้าย</p></div>
               <div class="panel"><div class="h3">Right lymphatic duct</div><p class="muted">รับจากขวาส่วนบนของร่างกาย เทเข้าหลอดเลือดดำใต้ไหปลาร้าขวา</p></div>
             </div>
           `,
@@ -677,6 +677,678 @@
         },
     };
 
+    const enTopics = {
+        circulatory: {
+            name: "Circulatory System",
+            bg: "bg-circulatory",
+            pages: [
+                {
+                    title: "Blood and its Components",
+                    html: `
+            <div class="panel">
+              <div class="h3">What is blood?</div>
+              <p class="muted">Blood is a body fluid in the circulatory system that transports oxygen, nutrients, hormones, and metabolic waste products to relevant organs.</p>
+            </div>
+            <div class="grid-3" style="margin-top:12px;">
+              <div class="panel">
+                <div class="h3">Red Blood Cells (RBC)</div>
+                <p class="muted">Contain hemoglobin to carry oxygen from lungs to tissues and return carbon dioxide to lungs.</p>
+              </div>
+              <div class="panel">
+                <div class="h3">White Blood Cells (WBC)</div>
+                <p class="muted">Protect against and eliminate pathogens. Types include neutrophils, lymphocytes, etc.</p>
+              </div>
+              <div class="panel">
+                <div class="h3">Platelets</div>
+                <p class="muted">Components that help blood clot when injuries occur, preventing blood loss.</p>
+              </div>
+            </div>
+            <div class="panel" style="margin-top:12px;">
+              <div class="h3">Plasma</div>
+              <p class="muted">Liquid part of blood, mainly water, containing proteins like albumin and fibrinogen.</p>
+            </div>
+            <div class="pill" style="margin-top:12px;">Background simulates blood flow with moving particles</div>
+          `,
+                    bgAnim: "flow",
+                },
+                {
+                    title: "Blood Vessels and Blood Types",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">Types of Blood Vessels</div>
+                <ul class="list-dot muted">
+                  <li><strong>Arteries:</strong> Carry blood away from heart. Thick, elastic walls, high pressure.</li>
+                  <li><strong>Veins:</strong> Carry blood back to heart. Have valves to prevent backflow, lower pressure.</li>
+                  <li><strong>Capillaries:</strong> Very thin walls, suitable for gas/nutrient exchange.</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <div class="h3">Blood Types (ABO & Rh)</div>
+                <p class="muted">Transfusions must consider blood type and Rh to avoid immune reactions.</p>
+                <div class="panel" style="margin-top:8px; overflow-x:auto;">
+                  <table style="width:100%; border-collapse:collapse; color:#e6e6f0;">
+                    <thead>
+                      <tr style="background:rgba(255,255,255,0.06)">
+                        <th style="padding:6px; border:1px solid rgba(255,255,255,0.1)">Donor</th>
+                        <th style="padding:6px; border:1px solid rgba(255,255,255,0.1)">Can give to</th>
+                        <th style="padding:6px; border:1px solid rgba(255,255,255,0.1)">Can receive from</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">O-</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">All (universal donor)</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">O-</td></tr>
+                      <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">O+</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">O+, A+, B+, AB+</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">O+/O-</td></tr>
+                      <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">A+</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">A+, AB+</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">A+/A-/O+/O-</td></tr>
+                      <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">A-</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">A+, A-, AB+, AB-</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">A-/O-</td></tr>
+                      <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">B+</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">B+, AB+</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">B+/B-/O+/O-</td></tr>
+                      <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">B-</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">B+, B-, AB+, AB-</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">B-/O-</td></tr>
+                      <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">AB+</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">Only AB+</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">All (universal recipient)</td></tr>
+                      <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">AB-</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">AB+, AB-</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">A-/B-/AB-/O-</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+             `,
+                },
+                {
+                    title: "Blood Pressure & Heart Rate",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">What is Blood Pressure?</div>
+                <p class="muted">The force exerted by circulating blood upon the walls of blood vessels. Measured in mmHg, e.g., 120/80 (Systolic/Diastolic).</p>
+                <div class="h3" style="margin-top:8px;">Heart Rate</div>
+                <p class="muted">The number of times the heart beats per minute (bpm). Normal resting rate for adults is ~60–100 bpm.</p>
+              </div>
+              <div class="panel">
+                <div class="h3">ECG Graph</div>
+                <div style="height:140px; position:relative; background:rgba(255,255,255,0.06); border-radius:8px; overflow:hidden;">
+                  <img src="/assests/ecg.png" alt="ECG graph" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain;" />
+                </div>
+                <p class="muted" style="margin-top:8px;">Simulated heartbeat pattern (not real medical data).</p>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "Blood Flow Through the Heart",
+                    html: `
+            <div class="panel">
+              <div class="h3">Heart Diagram</div>
+              <p class="muted">Shows flow direction: Deoxygenated blood from body → Right Heart → Lungs → Oxygenated blood to Left Heart → Body. Arrows point to main vessels.</p>
+              <div style="height:260px; position:relative; margin-top:8px; border-radius:12px; overflow:hidden;">
+                <img alt="heart" src="/assests/circulatory-diagram.png" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box;">
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "Pulmonary & Systemic Circulation",
+                    html: `
+            <div class="grid-2">
+              <div class="panel"><div class="h3">Pulmonary</div><p class="muted">Right Heart → Lungs → Left Heart for gas exchange.</p></div>
+              <div class="panel"><div class="h3">Systemic</div><p class="muted">Left Heart → Body → Right Heart to deliver oxygen and collect waste.</p></div>
+            </div>
+          `,
+                },
+                {
+                    title: "Cardiac Cycle",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li><strong>Systole:</strong> Contraction phase, pumping blood out of the chambers.</li>
+                <li><strong>Diastole:</strong> Relaxation phase, filling with blood.</li>
+                <li>Heart sounds S1/S2 relate to the closing of heart valves.</li>
+              </ul>
+            </div>
+          `,
+                },
+                {
+                    title: "Cardiac Conduction & SA Node",
+                    html: `
+            <div class="panel">
+              <div class="h3">What sets the rhythm?</div>
+              <p class="muted">The <strong>SA node</strong> (sinoatrial node) is the <em>Natural Pacemaker</em>, generating electrical signals starting in the right atrium and spreading through the atria.</p>
+              <div class="h3" style="margin-top:8px;">Conduction Sequence</div>
+              <ul class="list-dot muted">
+                <li><strong>SA node</strong> → Spreads through atria, causing atrial contraction</li>
+                <li>Signals reach <strong>AV node</strong> (brief delay to allow atria to empty into ventricles)</li>
+                <li>To <strong>Bundle of His</strong> → Splits into <strong>Right/Left bundle branches</strong></li>
+                <li>Spreads via <strong>Purkinje fibers</strong> causing simultaneous ventricular contraction</li>
+              </ul>
+              <div class="h3" style="margin-top:8px;">Autonomic Control</div>
+              <p class="muted">Sympathetic speeds it up, Parasympathetic slows it down, but <strong>SA node</strong> remains the primary pacemaker.</p>
+            </div>
+          `,
+                },
+                {
+                    title: "Blood Pressure Regulation",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li><strong>Baroreceptor reflex:</strong> Immediate adjustment of heart rate and vessel diameter.</li>
+                <li><strong>Renin–Angiotensin–Aldosterone:</strong> Long-term blood volume regulation.</li>
+                <li>Autonomic nervous system: Sympathetic constricts vessels, increasing pressure.</li>
+              </ul>
+            </div>
+          `,
+                },
+                {
+                    title: "Circulatory Diseases",
+                    html: `
+            <div class="panel">
+              <div class="h3">Common Diseases</div>
+              <ul class="list-dot muted">
+                <li><strong>Hypertension:</strong> High blood pressure, risk of heart disease and stroke.</li>
+                <li><strong>Coronary Artery Disease (CAD):</strong> Narrowed/blocked arteries causing myocardial ischemia.</li>
+                <li><strong>Heart Failure:</strong> Heart cannot pump enough blood to meet body needs.</li>
+              </ul>
+            </div>
+          `,
+                },
+                {
+                    title: "Prevention & Care",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li>Regular exercise and heart-healthy diet.</li>
+                <li>Weight control, reduce sodium, stop smoking.</li>
+                <li>Regular health checkups and blood pressure monitoring.</li>
+              </ul>
+            </div>
+          `,
+                },
+            ],
+        },
+
+        nervous: {
+            name: "Nervous System",
+            bg: "bg-nervous",
+            pages: [
+                {
+                    title: "Overview and Functions",
+                    html: `
+            <div class="panel">
+              <p class="muted">The nervous system gathers information, processes it, and commands responses. It consists of the <strong>Central Nervous System (CNS)</strong>: Brain and Spinal Cord, and the <strong>Peripheral Nervous System (PNS)</strong>: Nerves throughout the body.</p>
+            </div>
+          `,
+                },
+                {
+                    title: "Neurons",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">Components</div>
+                <ul class="list-dot muted">
+                  <li><strong>Dendrites:</strong> Receive signals</li>
+                  <li><strong>Cell body:</strong> Processes signals</li>
+                  <li><strong>Axon:</strong> Sends signals out</li>
+                  <li><strong>Myelin sheath:</strong> Insulates axon, speeds up transmission</li>
+                  <li><strong>Synapse:</strong> Junction between neurons</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <div class="h3">Illustration</div>
+                <div style="height:200px; position:relative; border-radius:8px;">
+                  <img src="/assests/neurons.jpg" alt="neuron" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box; padding:8px;">
+                </div>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "Central Nervous System (CNS)",
+                    html: `
+            <div class="panel">
+              <div class="h3">Brain and Spinal Cord</div>
+              <p class="muted">The brain has major parts like Cerebrum, Cerebellum, and Brainstem, each with different functions.</p>
+              <div class="grid-3" style="margin-top:8px;">
+                <div class="panel">
+                  <div class="h3">
+                    <span style="display:inline-block;width:12px;height:12px;background:#60a5fa;border-radius:3px;margin-right:6px;">
+                      </span>Cerebrum
+                        </div>
+                          <p class="muted">Thinking, analysis, sensory perception, voluntary movement</p>
+                        </div>
+                <div class="panel"><div class="h3"><span style="display:inline-block;width:12px;height:12px;background:#f472b6;border-radius:3px;margin-right:6px;"></span>Cerebellum</div><p class="muted">Balance, coordination</p></div>
+                <div class="panel"><div class="h3"><span style="display:inline-block;width:12px;height:12px;background:#805253;border-radius:3px;margin-right:6px;"></span>Brainstem</div><p class="muted">Breathing, heart rate, reflexes</p></div>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "Brainstem: Midbrain / Pons / Medulla",
+                    html: `
+            <div class="grid-3">
+              <div class="panel">
+                <div class="h3">Midbrain</div>
+                <ul class="list-dot muted">
+                  <li>Visual/Auditory reflexes (e.g., turning towards sound/light)</li>
+                  <li>Pathway for motor fibers</li>
+                  <li>Involved in movement initiation</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <div class="h3">Pons</div>
+                <ul class="list-dot muted">
+                  <li>"Bridge" connecting brain parts</li>
+                  <li>Helps control breathing rhythm</li>
+                  <li>Origin of some cranial nerves</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <div class="h3">Medulla oblongata</div>
+                <ul class="list-dot muted">
+                  <li>Vital centers: Heart, Blood vessels, Breathing</li>
+                  <li>Reflexes: Coughing, Sneezing, Vomiting, Swallowing</li>
+                  <li>Pyramidal decussation (crossing of motor fibers)</li>
+                </ul>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "Diencephalon: Thalamus & Hypothalamus",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">Thalamus</div>
+                <p class="muted">Relay station for sensory impulses to the cerebrum. Role in alertness/attention.</p>
+              </div>
+              <div class="panel">
+                <div class="h3">Hypothalamus</div>
+                <ul class="list-dot muted">
+                  <li>Regulates Temperature, Hunger, Thirst, Biological clock</li>
+                  <li>Links Nervous and Endocrine systems (Controls Pituitary)</li>
+                  <li>Involved in emotion and motivation</li>
+                </ul>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "Cerebrum: Lobes",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">Frontal Lobe</div>
+                <p class="muted">Planning, Reasoning, Personality, Voluntary movement</p>
+                <div class="h3" style="margin-top:8px;">Parietal Lobe</div>
+                <p class="muted">Touch, Temperature, Pain, Spatial awareness</p>
+              </div>
+              <div class="panel">
+                <div class="h3">Temporal Lobe</div>
+                <p class="muted">Hearing, Memory, Language (Wernicke's)</p>
+                <div class="h3" style="margin-top:8px;">Occipital Lobe</div>
+                <p class="muted">Vision and visual interpretation</p>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "Limbic System & Basal Ganglia",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">Limbic System</div>
+                <ul class="list-dot muted">
+                  <li>Emotion, Memory, Motivation</li>
+                  <li>Key structures: Hippocampus, Amygdala, Cingulate gyrus</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <div class="h3">Basal Ganglia</div>
+                <ul class="list-dot muted">
+                  <li>Control movement initiation/smoothness</li>
+                  <li>Disorders linked to Parkinson's/Huntington's</li>
+                </ul>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "Spinal Cord and Reflexes",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <p class="muted">Path for signals between brain and body. Controls automatic responses called 'reflexes', like the knee-jerk reaction.</p>
+              </div>
+              <div class="panel"><img src="/assests/spinal-cord.png" alt="spinal" style="width:100%; border-radius:8px;"></div>
+            </div>
+          `,
+                },
+                {
+                    title: "Glial Cells",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">Major Types</div>
+                <ul class="list-dot muted">
+                  <li><strong>Astrocytes:</strong> Support neurons, chemical balance</li>
+                  <li><strong>Oligodendrocytes / Schwann cells:</strong> Create myelin in CNS/PNS</li>
+                  <li><strong>Microglia:</strong> Immune defense, cleanup debris</li>
+                  <li><strong>Ependymal cells:</strong> Line ventricles, produce CSF</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <div class="h3">Importance</div>
+                <p class="muted">Crucial for signal transmission, repair, and many neurological diseases.</p>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "Action Potential & Synapses",
+                    html: `
+            <div class="panel">
+              <div class="h3">Action Potential</div>
+              <ul class="list-dot muted">
+                <li>Flow of Na+/K+ changes cell polarity along axon</li>
+                <li>Myelin enables faster 'saltatory' conduction</li>
+              </ul>
+              <div class="h3" style="margin-top:8px;">Chemical Synapse</div>
+              <p class="muted">Electrical signal converted to neurotransmitters, released into gap to bind receptors on next cell.</p>
+            </div>
+          `,
+                },
+                {
+                    title: "Peripheral Nervous System (PNS)",
+                    html: `
+            <div class="panel">
+              <div class="h3">Functional Division</div>
+              <ul class="list-dot muted">
+                <li><strong>Somatic:</strong> Voluntary control of skeletal muscles</li>
+                <li><strong>Autonomic:</strong> Involuntary control of internal organs</li>
+              </ul>
+            </div>
+          `,
+                },
+                {
+                    title: "Autonomic: Sympathetic vs Parasympathetic",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">Sympathetic</div>
+                <p class="muted">Fight or Flight: Increased heart rate, dilated pupils, adrenaline release</p>
+              </div>
+              <div class="panel">
+                <div class="h3">Parasympathetic</div>
+                <p class="muted">Rest and Digest: Slower heart rate, digestion stimulation</p>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "Key Neurotransmitters",
+                    html: `
+            <div class="grid-3">
+              <div class="panel"><div class="h3">Acetylcholine</div><p class="muted">Muscle contraction, Parasympathetic</p></div>
+              <div class="panel"><div class="h3">Glutamate / GABA</div><p class="muted">Main Excitatory vs Main Inhibitory in CNS</p></div>
+              <div class="panel"><div class="h3">Dopamine / Serotonin</div><p class="muted">Mood, Reward, Sleep</p></div>
+            </div>
+          `,
+                },
+                {
+                    title: "Brain Protection: Meninges, CSF, BBB",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li><strong>Meninges:</strong> Dura, Arachnoid, Pia layers protect and support</li>
+                <li><strong>CSF:</strong> Shock absorber, chemical environment control</li>
+                <li><strong>Blood-brain barrier:</strong> Filters substances entering brain</li>
+              </ul>
+            </div>
+          `,
+                },
+            ],
+        },
+
+        respiratory: {
+            name: "Respiratory System",
+            bg: "bg-respiratory",
+            pages: [
+                {
+                    title: "Overview and Process",
+                    html: `
+            <div class="panel">
+              <p class="muted">The respiratory system exchanges O2 and CO2. 3 Main steps: (1) Ventilation (2) Alveolar Exchange (External) (3) Tissue Exchange (Internal)</p>
+            </div>
+          `,
+                },
+                {
+                    title: "Anatomy",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">Main Structures</div>
+                <ul class="list-dot muted">
+                  <li>Nasal cavity, Pharynx, Larynx</li>
+                  <li>Trachea, Bronchi, Bronchioles</li>
+                  <li>Alveoli and Capillaries</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <div class="h3">Functions</div>
+                <p class="muted">Filter, Warm, Moisten air; Exchange gas at alveoli-capillary interface.</p>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "Gas Exchange at Lungs",
+                    html: `
+            <div class="grid-2">
+              <div class="panel"><div class="h3">Alveoli</div><p class="muted">Very thin walls surrounded by capillaries, allowing efficient diffusion of O2 in and CO2 out.</p></div>
+              <div class="panel"><img src="/assests/alveoli.jpg" alt="alveoli" style="width:100%; opacity:.6; border-radius:8px;"></div>
+            </div>
+          `,
+                },
+                {
+                    title: "Mechanics of Breathing",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li><strong>Compliance:</strong> Elasticity of lungs/chest wall</li>
+                <li><strong>Surfactant:</strong> Reduces surface tension, prevents alveolar collapse</li>
+                <li>Negative pressure in pleural cavity helps lungs expand</li>
+              </ul>
+            </div>
+          `,
+                },
+                {
+                    title: "Comparison: Inhalation vs Exhalation",
+                    html: `
+            <div class="panel" style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; color:#e6e6f0;">
+                <thead><tr style="background:rgba(255,255,255,0.06)"><th style="padding:8px; border:1px solid rgba(255,255,255,0.1)">Mechanism</th><th style="padding:8px; border:1px solid rgba(255,255,255,0.1)">Inhalation</th><th style="padding:8px; border=1px solid rgba(255,255,255,0.1)">Exhalation</th></tr></thead>
+                <tbody>
+                  <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">Diaphragm</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">Contracts/Lowers</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">Relaxes/Raises</td></tr>
+                  <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">Ribs</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">Lift up</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">Lower down</td></tr>
+                  <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">Chest Volume</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">Increases</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">Decreases</td></tr>
+                  <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">Pressure</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">Decreases (Negative)</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">Increases (Positive)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          `,
+                },
+                {
+                    title: "Control of Breathing",
+                    html: `
+            <div class="panel">
+              <p class="muted">Brainstem controls rhythm. CO2 level is the main trigger.</p>
+              <ul class="list-dot muted" style="margin-top:1rem;">
+                <li><strong>High CO2:</strong> Faster/Deeper breathing to expel CO2</li>
+                <li><strong>Low CO2:</strong> Slower breathing</li>
+              </ul>
+            </div>
+          `,
+                },
+                {
+                    title: "Gas Transport",
+                    html: `
+            <div class="grid-2">
+              <div class="panel">
+                <div class="h3">Oxygen</div>
+                <p class="muted">Mostly bound to Hemoglobin (Hb) in RBCs.</p>
+              </div>
+              <div class="panel">
+                <div class="h3">Carbon Dioxide</div>
+                <p class="muted">Mostly as Bicarbonate (HCO3-) in plasma, partially bound to Hb.</p>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "Common Respiratory Diseases",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li><strong>Asthma:</strong> Airway constriction/inflammation, breathing difficulty</li>
+                <li><strong>Pneumonia:</strong> Infection/inflammation of alveoli</li>
+                <li><strong>COPD:</strong> Chronic alveolar damage, reduced gas exchange</li>
+              </ul>
+            </div>
+          `,
+                },
+            ],
+        },
+
+        lymphatic: {
+            name: "Lymphatic System",
+            bg: "bg-lymphatic",
+            pages: [
+                {
+                    title: "Overview and Components",
+                    html: `
+            <div class="panel">
+              <p class="muted">Drains excess tissue fluid back to blood, and plays key role in immunity. Includes Lymph vessels, Nodes, Spleen, Thymus, and Lymph.</p>
+            </div>
+          `,
+                },
+                {
+                    title: "Lymph Flow factors",
+                    html: `
+            <div class="panel">
+              <div class="h3">Flow Mechanics</div>
+              <ul class="list-dot muted">
+                <li>Skeletal muscle contraction</li>
+                <li>Valves prevent backflow</li>
+                <li>Breathing pressure changes</li>
+              </ul>
+              <p class="muted" style="margin-top:1rem;">No central pump like the heart.</p>
+            </div>
+          `,
+                },
+                {
+                    title: "Lymph Formation",
+                    html: `
+            <div class="panel">
+              <p class="muted">Fluid leaks from capillaries into tissue spaces (interstitial fluid), then enters lymph capillaries to become lymph.</p>
+            </div>
+          `,
+                },
+                {
+                    title: "Fat Absorption & Chyle",
+                    html: `
+            <div class="panel">
+              <div class="h3">Lacteals</div>
+              <p class="muted">Small lymph vessels in small intestine villi absorb fats (chylomicrons).</p>
+              <div class="h3" style="margin-top:8px;">What is Chyle?</div>
+              <p class="muted">Milky lymph rich in fat. Flows from intestine to <em>cisterna chyli</em>, up the <strong>thoracic duct</strong> to bloodstream.</p>
+            </div>
+          `,
+                },
+                {
+                    title: "Main Ducts",
+                    html: `
+            <div class="grid-2">
+              <div class="panel"><div class="h3">Thoracic duct</div><p class="muted">Drains most of body. Empties into Left Subclavian Vein.</p></div>
+              <div class="panel"><div class="h3">Right lymphatic duct</div><p class="muted">Drains upper right body. Empties into Right Subclavian Vein.</p></div>
+            </div>
+          `,
+                },
+                {
+                    title: "Lymphatic Organs",
+                    html: `
+            <div class="grid-3">
+              <div class="panel">
+                <div class="h3">Lymph Nodes</div>
+                <p class="muted">Filter lymph, trap pathogens. Rich in lymphocytes.</p>
+              </div>
+              <div class="panel">
+                <div class="h3">Spleen</div>
+                <p class="muted">Filters blood, destroys old RBCs, immune response.</p>
+              </div>
+              <div class="panel">
+                <div class="h3">Thymus</div>
+                <p class="muted">Site of T-cell maturation.</p>
+              </div>
+            </div>
+          `,
+                },
+                {
+                    title: "Lymphatic Tissues: MALT & Tonsils",
+                    html: `
+            <div class="panel">
+              <p class="muted">Tonsils and MALT (Mucosa-Associated Lymphoid Tissue) trap pathogens entering via nose/mouth.</p>
+            </div>
+          `,
+                },
+                {
+                    title: "Immune Role",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li><strong>Antibodies:</strong> Produced by B-cells</li>
+                <li><strong>T-cells:</strong> Directly destroy infected/abnormal cells</li>
+              </ul>
+            </div>
+          `,
+                },
+                {
+                    title: "Connection to Circulatory",
+                    html: `
+            <div class="panel">
+              <p class="muted">Returns fluid to bloodstream, maintaining fluid balance.</p>
+            </div>
+          `,
+                },
+                {
+                    title: "Conditions",
+                    html: `
+            <div class="panel">
+              <ul class="list-dot muted">
+                <li><strong>Lymphedema:</strong> Swelling due to blockage/damage</li>
+                <li><strong>Lymphadenitis:</strong> Swollen/infected nodes</li>
+              </ul>
+            </div>
+          `,
+                },
+            ],
+        },
+    };
+
+    const topics = new Proxy(
+        {},
+        {
+            get: function (target, prop) {
+                const lang = window.currentLang || "th";
+                const thData = thTopics[prop];
+                if (!thData) return undefined;
+
+                if (lang === "en" && enTopics[prop]) {
+                    return { ...thData, ...enTopics[prop] };
+                }
+                return thData;
+            },
+        },
+    );
+
+    window.addEventListener("languageChanged", () => {
+        if (state.topic) render();
+    });
+
     function setBg(key) {
         if (!elements.bg) return;
         elements.bg.className = key ? `lesson-bg ${key}` : "lesson-bg";
@@ -693,7 +1365,7 @@
         setText(step, `หน้า ${state.index + 1} / ${t.pages.length}`);
         setHTML(
             content,
-            `<h3 class="h3" style="margin-bottom:8px;">${page.title}</h3>${page.html}`
+            `<h3 class="h3" style="margin-bottom:8px;">${page.title}</h3>${page.html}`,
         );
 
         // Reset any dynamic bg
@@ -803,11 +1475,15 @@
             render();
         } else {
             // Show quiz button at end of lesson
+            const btnText =
+                window.currentLang === "en"
+                    ? "Start Quiz for "
+                    : "เริ่มแบบทดสอบสำหรับ ";
             const quizButton = `
             <div style="text-align: center; margin-top: 2rem;">
               <button class="cta-button" onclick="window.startTopicQuiz('${state.topic}')">
                 <i class="fas fa-award"></i>
-                เริ่มแบบทดสอบสำหรับ ${t.name}
+                ${btnText}${t.name}
               </button>
             </div>`;
             if (elements.content) {

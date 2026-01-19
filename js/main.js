@@ -4,8 +4,11 @@
         if (typeof window === "undefined" || typeof URL === "undefined") return;
         const url = new URL(window.location.href);
 
-        // Load trackers from JSON
-        const response = await fetch("data/trackers.json");
+        // Load trackers from JSON - Handle path relative to root or subdirectories
+        const pathPrefix = window.location.pathname.includes("/lessons/")
+            ? "../"
+            : "";
+        const response = await fetch(`${pathPrefix}data/trackers.json`);
         const TRACKERS = await response.json();
 
         // Build list of all tracking params
@@ -47,7 +50,63 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error(`Init ${name} error:`, error);
         }
     });
+
+    initLanguage(); // Add this call
 });
+
+// Language handling
+window.currentLang = localStorage.getItem("site_lang") || "th";
+let locales = {};
+
+async function initLanguage() {
+    try {
+        // Determine path to data/locales.json based on current page depth
+        const path = window.location.pathname.includes("/lessons/")
+            ? "../data/locales.json"
+            : "data/locales.json";
+        const response = await fetch(path);
+        locales = await response.json();
+
+        const toggleBtn = document.getElementById("lang-toggle");
+        if (toggleBtn) {
+            toggleBtn.addEventListener("click", () => {
+                const newLang = window.currentLang === "th" ? "en" : "th";
+                setLanguage(newLang);
+            });
+        }
+
+        // Apply initial language
+        setLanguage(window.currentLang);
+    } catch (e) {
+        console.error("Failed to load locales", e);
+    }
+}
+
+function setLanguage(lang) {
+    window.currentLang = lang;
+    localStorage.setItem("site_lang", lang);
+    document.documentElement.lang = lang;
+
+    // Update toggle button text
+    const langSpan = document.getElementById("current-lang");
+    if (langSpan) langSpan.textContent = lang.toUpperCase();
+
+    // Update static content
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (locales[lang] && locales[lang][key]) {
+            el.textContent = locales[lang][key];
+        }
+    });
+
+    // Notify other scripts if needed (e.g. re-render lesson)
+    if (typeof window.renderLesson === "function") {
+        window.renderLesson();
+    }
+
+    // Dispatch a custom event for other components
+    window.dispatchEvent(new CustomEvent("languageChanged", { detail: lang }));
+}
 
 function initNavigation() {
     const hamburger = document.querySelector(".hamburger");
@@ -264,7 +323,7 @@ function initHeroVideo() {
             p.catch((err) => {
                 console.warn(
                     "Autoplay failed, will show controls fallback",
-                    err
+                    err,
                 );
                 video.setAttribute("controls", "controls");
             });

@@ -1,122 +1,324 @@
-[
-    {
-        "q": "ข้อใดอธิบายบทบาทของเส้นเลือดฝอยได้ถูกต้องที่สุด?",
-        "choices": [
-            "ลำเลียงเลือดแรงดันสูงจากหัวใจไปยังอวัยวะ",
-            "เก็บเลือดและมีลิ้นป้องกันการไหลย้อน",
-            "เป็นจุดแลกเปลี่ยนแก๊สและสารอาหารกับเนื้อเยื่อ",
-            "ควบคุมอัตราการเต้นของหัวใจโดยตรง"
-        ],
-        "ans": 2,
-        "why": "เส้นเลือดฝอยมีผนังบางมาก เหมาะกับการแลกเปลี่ยน O2/CO2 และสารต่างๆ ระหว่างเลือดกับเนื้อเยื่อ",
-        "difficulty": "easy",
-        "tags": ["capillaries", "exchange"]
-    },
-    {
-        "q": "ส่วนประกอบใดของเลือดที่ทำหน้าที่เกี่ยวกับการแข็งตัวของเลือด?",
-        "choices": ["เม็ดเลือดแดง", "เม็ดเลือดขาว", "พลาสมา", "เกล็ดเลือด"],
-        "ans": 3,
-        "why": "เกล็ดเลือดมีหน้าที่สำคัญในการสร้างลิ่มเลือดเพื่อหยุดการไหลของเลือดเมื่อเกิดบาดแผล",
-        "difficulty": "easy",
-        "tags": ["blood", "hemostasis"]
-    },
-    {
-        "q": "หลอดเลือดใดที่นำเลือดออกจากหัวใจไปยังส่วนต่างๆ ของร่างกาย?",
-        "choices": [
-            "หลอดเลือดเวน (Vein)",
-            "หลอดเลือดอาร์เทอรี (Artery)",
-            "หลอดเลือดฝอย (Capillary)",
-            "หลอดน้ำเหลือง (Lymphatic vessel)"
-        ],
-        "ans": 1,
-        "why": "หลอดเลือดอาร์เทอรี (Artery) มีผนังหนาและแข็งแรงเพื่อทนต่อแรงดันสูงของเลือดที่ถูกสูบฉีดออกจากหัวใจ",
-        "difficulty": "easy",
-        "tags": ["arteries", "flow"]
-    },
-    {
-        "q": "ผู้ที่มีเลือดหมู่ O Rh- สามารถบริจาคเลือดให้ใครได้บ้าง?",
-        "choices": [
-            "เฉพาะหมู่ O",
-            "เฉพาะผู้ที่มี Rh-",
-            "ได้ทุกหมู่เลือด",
-            "เฉพาะหมู่ O และ AB"
-        ],
-        "ans": 2,
-        "why": "เลือดหมู่ O Rh- ไม่มีแอนติเจนทั้ง A, B และ Rh จึงสามารถให้ได้กับทุกหมู่เลือด (Universal Donor)",
-        "difficulty": "medium",
-        "tags": ["blood-type", "transfusion"]
-    },
-    {
-        "q": "เส้นเลือดใดมักมีลิ้นป้องกันการไหลย้อนของเลือด?",
-        "choices": [
-            "หลอดเลือดแดง",
-            "หลอดเลือดดำ",
-            "เส้นเลือดฝอย",
-            "หลอดเลือดฝอยและแดง"
-        ],
-        "ans": 1,
-        "why": "หลอดเลือดดำ (Veins) มักมีลิ้นเพื่อป้องกันเลือดไหลย้อนกลับ โดยเฉพาะที่แขนขา",
-        "difficulty": "easy",
-        "tags": ["veins", "valves"]
-    },
-    {
-        "q": "วัฏจักรหัวใจช่วงใดเป็นการบีบตัวส่งเลือดออกจากหัวใจ?",
-        "choices": [
-            "Diastole",
-            "Systole",
-            "Isovolumetric relaxation",
-            "Ventricular filling"
-        ],
-        "ans": 1,
-        "why": "Systole คือช่วงที่หัวใจบีบตัวเพื่อส่งเลือดออกไปยังปอดและร่างกาย",
-        "difficulty": "medium",
-        "tags": ["cardiac-cycle", "systole"]
-    },
-    {
-        "q": "การไหลเวียนแบบ Pulmonary มีเส้นทางใดถูกต้อง?",
-        "choices": [
-            "หัวใจซ้าย→ปอด→หัวใจขวา",
-            "หัวใจขวา→ปอด→หัวใจซ้าย",
-            "ปอด→หัวใจซ้าย→ร่างกาย→หัวใจขวา",
-            "หัวใจซ้าย→ร่างกาย→หัวใจขวา→ปอด→หัวใจซ้าย"
-        ],
-        "ans": 1,
-        "why": "Pulmonary circulation: หัวใจขวา→ปอด (แลกเปลี่ยนแก๊ส)→หัวใจซ้าย",
-        "difficulty": "medium",
-        "tags": ["circulation", "pulmonary"]
-    },
-    {
-        "q": "ผู้ที่มีหมู่เลือด AB+ มักเรียกว่าอะไรในฐานะผู้รับเลือด?",
-        "choices": [
-            "ผู้รับสากล (Universal recipient)",
-            "ผู้ให้สากล (Universal donor)",
-            "ผู้รับเฉพาะหมู่เดียวกัน",
-            "ไม่มีข้อถูก"
-        ],
-        "ans": 0,
-        "why": "AB+ รับได้ทุกหมู่เลือดเพราะไม่สร้างแอนติบอดีต้าน A/B และ Rh",
-        "difficulty": "easy",
-        "tags": ["blood-type", "recipient"]
-    },
-    {
-        "q": "หลอดเลือดใดลำเลียงเลือดที่มีออกซิเจนจากปอดกลับสู่หัวใจ?",
-        "choices": [
-            "หลอดเลือดแดงปอด (Pulmonary artery)",
-            "หลอดเลือดดำปอด (Pulmonary vein)",
-            "เอออร์ตา (Aorta)",
-            "เวนาคาวา (Vena cava)"
-        ],
-        "ans": 1,
-        "why": "หลอดเลือดดำปอด (Pulmonary vein) นำเลือดแดงจากปอดกลับเข้าสู่หัวใจซ้าย",
-        "difficulty": "easy",
-        "tags": ["pulmonary-vein"]
-    },
-    {
-        "q": "ตัวกระตุ้นการเต้นของหัวใจตามธรรมชาติ (Pacemaker) หลักคือโครงสร้างใด?",
-        "choices": ["AV node", "SA node", "Purkinje fibers", "Bundle of His"],
-        "ans": 1,
-        "why": "SA node เป็นตัวกำหนดจังหวะการเต้นของหัวใจหลัก ส่งสัญญาณเริ่มห้องบน",
-        "difficulty": "medium",
-        "tags": ["conduction", "SA-node"]
-    }
-]
+{
+    "en": [
+        {
+            "q": "Which statement best describes the role of capillaries?",
+            "choices": [
+                "Transport high pressure blood",
+                "Store blood and prevent backflow",
+                "Site of gas and nutrient exchange",
+                "Control heart rate directy"
+            ],
+            "ans": 2,
+            "why": "Capillaries have thin walls ideal for exchange between blood and tissues.",
+            "difficulty": "easy",
+            "tags": [
+                "capillaries",
+                "exchange"
+            ]
+        },
+        {
+            "q": "Which blood component is primarily responsible for clotting?",
+            "choices": [
+                "Red Blood Cells",
+                "White Blood Cells",
+                "Plasma",
+                "Platelets"
+            ],
+            "ans": 3,
+            "why": "Platelets form clots to stop bleeding.",
+            "difficulty": "easy",
+            "tags": [
+                "blood",
+                "hemostasis"
+            ]
+        },
+        {
+            "q": "Which vessels carry blood AWAY from the heart?",
+            "choices": [
+                "Veins",
+                "Arteries",
+                "Capillaries",
+                "Lymphatic vessels"
+            ],
+            "ans": 1,
+            "why": "Arteries carry blood away from the heart.",
+            "difficulty": "easy",
+            "tags": [
+                "arteries",
+                "flow"
+            ]
+        },
+        {
+            "q": "Who can a person with O Rh- blood donate to?",
+            "choices": [
+                "Only O",
+                "Only Rh-",
+                "Everyone (Universal Donor)",
+                "Only O and AB"
+            ],
+            "ans": 2,
+            "why": "O Rh- is the universal donor type.",
+            "difficulty": "medium",
+            "tags": [
+                "blood-type",
+                "transfusion"
+            ]
+        },
+        {
+            "q": "Which vessels typically contain valves?",
+            "choices": [
+                "Arteries",
+                "Veins",
+                "Capillaries",
+                "Both 1 and 3"
+            ],
+            "ans": 1,
+            "why": "Veins have valves to prevent backflow.",
+            "difficulty": "easy",
+            "tags": [
+                "veins",
+                "valves"
+            ]
+        },
+        {
+            "q": "Which cardiac cycle phase involves contraction?",
+            "choices": [
+                "Diastole",
+                "Systole",
+                "Relaxation",
+                "Filling"
+            ],
+            "ans": 1,
+            "why": "Systole is the phase of contraction.",
+            "difficulty": "medium",
+            "tags": [
+                "cardiac-cycle",
+                "systole"
+            ]
+        },
+        {
+            "q": "Correct path for Pulmonary Circulation?",
+            "choices": [
+                "Right Heart -> Lungs -> Left Heart",
+                "Right Heart -> Lungs -> Right Heart",
+                "Lungs -> Left Heart -> Body",
+                "Left Heart -> Body -> Right Heart"
+            ],
+            "ans": 0,
+            "why": "Pulmonary circulation is Right Heart to Lungs to Left Heart.",
+            "difficulty": "medium",
+            "tags": [
+                "circulation",
+                "pulmonary"
+            ]
+        },
+        {
+            "q": "A person with AB+ blood is known as:",
+            "choices": [
+                "Universal recipient",
+                "Universal donor",
+                "Type specific",
+                "None"
+            ],
+            "ans": 0,
+            "why": "AB+ is the universal recipient.",
+            "difficulty": "easy",
+            "tags": [
+                "blood-type",
+                "recipient"
+            ]
+        },
+        {
+            "q": "Which vessel carries oxygenated blood from lungs to heart?",
+            "choices": [
+                "Pulmonary artery",
+                "Pulmonary vein",
+                "Aorta",
+                "Vena cava"
+            ],
+            "ans": 1,
+            "why": "Pulmonary veins carry oxygenated blood to the heart.",
+            "difficulty": "easy",
+            "tags": [
+                "pulmonary-vein"
+            ]
+        },
+        {
+            "q": "Primary natural pacemaker of the heart?",
+            "choices": [
+                "AV node",
+                "SA node",
+                "Purkinje fibers",
+                "Bundle of His"
+            ],
+            "ans": 1,
+            "why": "SA node sets the rhythm.",
+            "difficulty": "medium",
+            "tags": [
+                "conduction",
+                "SA-node"
+            ]
+        }
+    ],
+    "th": [
+        {
+            "q": "ข้อใดอธิบายบทบาทของเส้นเลือดฝอยได้ถูกต้องที่สุด?",
+            "choices": [
+                "ลำเลียงเลือดแรงดันสูงจากหัวใจไปยังอวัยวะ",
+                "เก็บเลือดและมีลิ้นป้องกันการไหลย้อน",
+                "เป็นจุดแลกเปลี่ยนแก๊สและสารอาหารกับเนื้อเยื่อ",
+                "ควบคุมอัตราการเต้นของหัวใจโดยตรง"
+            ],
+            "ans": 2,
+            "why": "เส้นเลือดฝอยมีผนังบางมาก เหมาะกับการแลกเปลี่ยน O2/CO2 และสารต่างๆ ระหว่างเลือดกับเนื้อเยื่อ",
+            "difficulty": "easy",
+            "tags": [
+                "capillaries",
+                "exchange"
+            ]
+        },
+        {
+            "q": "ส่วนประกอบใดของเลือดที่ทำหน้าที่เกี่ยวกับการแข็งตัวของเลือด?",
+            "choices": [
+                "เม็ดเลือดแดง",
+                "เม็ดเลือดขาว",
+                "พลาสมา",
+                "เกล็ดเลือด"
+            ],
+            "ans": 3,
+            "why": "เกล็ดเลือดมีหน้าที่สำคัญในการสร้างลิ่มเลือดเพื่อหยุดการไหลของเลือดเมื่อเกิดบาดแผล",
+            "difficulty": "easy",
+            "tags": [
+                "blood",
+                "hemostasis"
+            ]
+        },
+        {
+            "q": "หลอดเลือดใดที่นำเลือดออกจากหัวใจไปยังส่วนต่างๆ ของร่างกาย?",
+            "choices": [
+                "หลอดเลือดเวน (Vein)",
+                "หลอดเลือดอาร์เทอรี (Artery)",
+                "หลอดเลือดฝอย (Capillary)",
+                "หลอดน้ำเหลือง (Lymphatic vessel)"
+            ],
+            "ans": 1,
+            "why": "หลอดเลือดอาร์เทอรี (Artery) มีผนังหนาและแข็งแรงเพื่อทนต่อแรงดันสูงของเลือดที่ถูกสูบฉีดออกจากหัวใจ",
+            "difficulty": "easy",
+            "tags": [
+                "arteries",
+                "flow"
+            ]
+        },
+        {
+            "q": "ผู้ที่มีเลือดหมู่ O Rh- สามารถบริจาคเลือดให้ใครได้บ้าง?",
+            "choices": [
+                "เฉพาะหมู่ O",
+                "เฉพาะผู้ที่มี Rh-",
+                "ได้ทุกหมู่เลือด",
+                "เฉพาะหมู่ O และ AB"
+            ],
+            "ans": 2,
+            "why": "เลือดหมู่ O Rh- ไม่มีแอนติเจนทั้ง A, B และ Rh จึงสามารถให้ได้กับทุกหมู่เลือด (Universal Donor)",
+            "difficulty": "medium",
+            "tags": [
+                "blood-type",
+                "transfusion"
+            ]
+        },
+        {
+            "q": "เส้นเลือดใดมักมีลิ้นป้องกันการไหลย้อนของเลือด?",
+            "choices": [
+                "หลอดเลือดแดง",
+                "หลอดเลือดดำ",
+                "เส้นเลือดฝอย",
+                "หลอดเลือดฝอยและแดง"
+            ],
+            "ans": 1,
+            "why": "หลอดเลือดดำ (Veins) มักมีลิ้นเพื่อป้องกันเลือดไหลย้อนกลับ โดยเฉพาะที่แขนขา",
+            "difficulty": "easy",
+            "tags": [
+                "veins",
+                "valves"
+            ]
+        },
+        {
+            "q": "วัฏจักรหัวใจช่วงใดเป็นการบีบตัวส่งเลือดออกจากหัวใจ?",
+            "choices": [
+                "Diastole",
+                "Systole",
+                "Isovolumetric relaxation",
+                "Ventricular filling"
+            ],
+            "ans": 1,
+            "why": "Systole คือช่วงที่หัวใจบีบตัวเพื่อส่งเลือดออกไปยังปอดและร่างกาย",
+            "difficulty": "medium",
+            "tags": [
+                "cardiac-cycle",
+                "systole"
+            ]
+        },
+        {
+            "q": "การไหลเวียนแบบ Pulmonary มีเส้นทางใดถูกต้อง?",
+            "choices": [
+                "หัวใจซ้าย→ปอด→หัวใจขวา",
+                "หัวใจขวา→ปอด→หัวใจซ้าย",
+                "ปอด→หัวใจซ้าย→ร่างกาย→หัวใจขวา",
+                "หัวใจซ้าย→ร่างกาย→หัวใจขวา→ปอด→หัวใจซ้าย"
+            ],
+            "ans": 1,
+            "why": "Pulmonary circulation: หัวใจขวา→ปอด (แลกเปลี่ยนแก๊ส)→หัวใจซ้าย",
+            "difficulty": "medium",
+            "tags": [
+                "circulation",
+                "pulmonary"
+            ]
+        },
+        {
+            "q": "ผู้ที่มีหมู่เลือด AB+ มักเรียกว่าอะไรในฐานะผู้รับเลือด?",
+            "choices": [
+                "ผู้รับสากล (Universal recipient)",
+                "ผู้ให้สากล (Universal donor)",
+                "ผู้รับเฉพาะหมู่เดียวกัน",
+                "ไม่มีข้อถูก"
+            ],
+            "ans": 0,
+            "why": "AB+ รับได้ทุกหมู่เลือดเพราะไม่สร้างแอนติบอดีต้าน A/B และ Rh",
+            "difficulty": "easy",
+            "tags": [
+                "blood-type",
+                "recipient"
+            ]
+        },
+        {
+            "q": "หลอดเลือดใดลำเลียงเลือดที่มีออกซิเจนจากปอดกลับสู่หัวใจ?",
+            "choices": [
+                "หลอดเลือดแดงปอด (Pulmonary artery)",
+                "หลอดเลือดดำปอด (Pulmonary vein)",
+                "เอออร์ตา (Aorta)",
+                "เวนาคาวา (Vena cava)"
+            ],
+            "ans": 1,
+            "why": "หลอดเลือดดำปอด (Pulmonary vein) นำเลือดแดงจากปอดกลับเข้าสู่หัวใจซ้าย",
+            "difficulty": "easy",
+            "tags": [
+                "pulmonary-vein"
+            ]
+        },
+        {
+            "q": "ตัวกระตุ้นการเต้นของหัวใจตามธรรมชาติ (Pacemaker) หลักคือโครงสร้างใด?",
+            "choices": [
+                "AV node",
+                "SA node",
+                "Purkinje fibers",
+                "Bundle of His"
+            ],
+            "ans": 1,
+            "why": "SA node เป็นตัวกำหนดจังหวะการเต้นของหัวใจหลัก ส่งสัญญาณเริ่มห้องบน",
+            "difficulty": "medium",
+            "tags": [
+                "conduction",
+                "SA-node"
+            ]
+        }
+    ]
+}
