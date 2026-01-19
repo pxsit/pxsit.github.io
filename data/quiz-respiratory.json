@@ -11,26 +11,15 @@
             "ans": 1,
             "why": "Inhalation: Diaphragm contracts/lowers, increasing chest volume.",
             "difficulty": "easy",
-            "tags": [
-                "mechanics",
-                "inspiration"
-            ]
+            "tags": ["mechanics", "inspiration"]
         },
         {
             "q": "Main site of gas exchange?",
-            "choices": [
-                "Bronchus",
-                "Bronchiole",
-                "Alveoli",
-                "Pleura"
-            ],
+            "choices": ["Bronchus", "Bronchiole", "Alveoli", "Pleura"],
             "ans": 2,
             "why": "Alveoli are efficient gas exchange sites.",
             "difficulty": "easy",
-            "tags": [
-                "anatomy",
-                "gas-exchange"
-            ]
+            "tags": ["anatomy", "gas-exchange"]
         },
         {
             "q": "Mechanics of Exhalation?",
@@ -43,25 +32,15 @@
             "ans": 2,
             "why": "Exhalation: Diaphragm relaxes, thoracic volume decreases.",
             "difficulty": "easy",
-            "tags": [
-                "mechanics",
-                "expiration"
-            ]
+            "tags": ["mechanics", "expiration"]
         },
         {
             "q": "Brain part controlling breathing?",
-            "choices": [
-                "Cerebrum",
-                "Cerebellum",
-                "Brainstem",
-                "Hypothalamus"
-            ],
+            "choices": ["Cerebrum", "Cerebellum", "Brainstem", "Hypothalamus"],
             "ans": 2,
             "why": "Brainstem controls autonomic functions including breathing.",
             "difficulty": "medium",
-            "tags": [
-                "control"
-            ]
+            "tags": ["control"]
         },
         {
             "q": "Role of Surfactant?",
@@ -74,10 +53,7 @@
             "ans": 1,
             "why": "Surfactant reduces surface tension to keep alveoli open.",
             "difficulty": "medium",
-            "tags": [
-                "physiology",
-                "surfactant"
-            ]
+            "tags": ["physiology", "surfactant"]
         },
         {
             "q": "How is most CO2 transported?",
@@ -90,25 +66,15 @@
             "ans": 2,
             "why": "Most CO2 is converted to Bicarbonate.",
             "difficulty": "medium",
-            "tags": [
-                "transport",
-                "chemistry"
-            ]
+            "tags": ["transport", "chemistry"]
         },
         {
             "q": "Disease with alveolar inflammation, fever, cough?",
-            "choices": [
-                "Asthma",
-                "Pneumonia",
-                "COPD",
-                "Tuberculosis"
-            ],
+            "choices": ["Asthma", "Pneumonia", "COPD", "Tuberculosis"],
             "ans": 1,
             "why": "Pneumonia involves alveolar infection/inflammation.",
             "difficulty": "easy",
-            "tags": [
-                "disease"
-            ]
+            "tags": ["disease"]
         },
         {
             "q": "Respiratory response to exercise (High CO2)?",
@@ -121,10 +87,7 @@
             "ans": 1,
             "why": "High CO2 triggers faster/deeper breathing to expel it.",
             "difficulty": "easy",
-            "tags": [
-                "control",
-                "exercise"
-            ]
+            "tags": ["control", "exercise"]
         },
         {
             "q": "How is most Oxygen transported?",
@@ -137,25 +100,15 @@
             "ans": 1,
             "why": "Most O2 binds to Hemoglobin in RBCs.",
             "difficulty": "easy",
-            "tags": [
-                "transport",
-                "oxygen"
-            ]
+            "tags": ["transport", "oxygen"]
         },
         {
             "q": "Structure that prevents alveolar collapse?",
-            "choices": [
-                "Cilia",
-                "Surfactant",
-                "Mucus",
-                "Muscles"
-            ],
+            "choices": ["Cilia", "Surfactant", "Mucus", "Muscles"],
             "ans": 1,
             "why": "Surfactant reduces tension preventing collapse.",
             "difficulty": "medium",
-            "tags": [
-                "surfactant"
-            ]
+            "tags": ["surfactant"]
         }
     ],
     "th": [
@@ -170,10 +123,7 @@
             "ans": 1,
             "why": "หายใจเข้า: กระบังลมหดตัวลงและซี่โครงยกขึ้น ทำให้ปริมาตรทรวงอกเพิ่มขึ้นและความดันลดลง อากาศจึงไหลเข้า",
             "difficulty": "easy",
-            "tags": [
-                "mechanics",
-                "inspiration"
-            ]
+            "tags": ["mechanics", "inspiration"]
         },
         {
             "q": "โครงสร้างใดในปอดที่เป็นจุดแลกเปลี่ยนแก๊สหลัก?",
@@ -186,10 +136,7 @@
             "ans": 2,
             "why": "ถุงลม (Alveoli) มีผนังบางมากและมีเส้นเลือดฝอยล้อมรอบ ทำให้เป็นจุดแลกเปลี่ยนออกซิเจนและคาร์บอนไดออกไซด์ที่มีประสิทธิภาพ",
             "difficulty": "easy",
-            "tags": [
-                "anatomy",
-                "gas-exchange"
-            ]
+            "tags": ["anatomy", "gas-exchange"]
         },
         {
             "q": "เมื่อเราหายใจออก กลไกใดเกิดขึ้น?",
@@ -202,10 +149,7 @@
             "ans": 2,
             "why": "การหายใจออกเกิดเมื่อกระบังลมคลายตัวและยกสูงขึ้น ทำให้ปริมาตรช่องอกลดลงและความดันเพิ่มขึ้นเพื่อดันอากาศออก",
             "difficulty": "easy",
-            "tags": [
-                "mechanics",
-                "expiration"
-            ]
+            "tags": ["mechanics", "expiration"]
         },
         {
             "q": "สมองส่วนใดที่ควบคุมอัตราการหายใจเป็นหลัก?",
@@ -218,9 +162,7 @@
             "ans": 2,
             "why": "ก้านสมอง (Brainstem) เป็นศูนย์ควบคุมการทำงานอัตโนมัติต่างๆ ของร่างกาย รวมถึงการหายใจ",
             "difficulty": "medium",
-            "tags": [
-                "control"
-            ]
+            "tags": ["control"]
         },
         {
             "q": "Surfactant มีบทบาทสำคัญอย่างไรในถุงลมปอด?",
@@ -233,10 +175,7 @@
             "ans": 1,
             "why": "Surfactant ลดแรงตึงผิว ทำให้ถุงลมเปิดอยู่ได้ง่าย ลดการแฟบของถุงลม",
             "difficulty": "medium",
-            "tags": [
-                "physiology",
-                "surfactant"
-            ]
+            "tags": ["physiology", "surfactant"]
         },
         {
             "q": "ส่วนใหญ่ของคาร์บอนไดออกไซด์ขนส่งในเลือดในรูปแบบใด?",
@@ -249,25 +188,15 @@
             "ans": 2,
             "why": "CO2 ส่วนใหญ่ถูกแปลงเป็นไบคาร์บอเนต (HCO3-) ในพลาสมา",
             "difficulty": "medium",
-            "tags": [
-                "transport",
-                "chemistry"
-            ]
+            "tags": ["transport", "chemistry"]
         },
         {
             "q": "โรคใดต่อไปนี้เกี่ยวข้องกับการอักเสบของถุงลมและมีอาการไข้ ไอ หายใจลำบาก?",
-            "choices": [
-                "Asthma",
-                "Pneumonia",
-                "COPD",
-                "Tuberculosis"
-            ],
+            "choices": ["Asthma", "Pneumonia", "COPD", "Tuberculosis"],
             "ans": 1,
             "why": "Pneumonia คือการอักเสบติดเชื้อของปอด/ถุงลม มีไข้ ไอ และหายใจลำบาก",
             "difficulty": "easy",
-            "tags": [
-                "disease"
-            ]
+            "tags": ["disease"]
         },
         {
             "q": "ระหว่างการออกกำลังกาย ระดับ CO2 ในเลือดเพิ่มขึ้น ส่งผลต่อการหายใจอย่างไร?",
@@ -280,10 +209,7 @@
             "ans": 1,
             "why": "CO2 เป็นตัวกระตุ้นหลักให้หายใจเร็ว/ลึกขึ้นเพื่อขับ CO2 ออก",
             "difficulty": "easy",
-            "tags": [
-                "control",
-                "exercise"
-            ]
+            "tags": ["control", "exercise"]
         },
         {
             "q": "ออกซิเจนส่วนใหญ่ในเลือดขนส่งอย่างไร?",
@@ -296,11 +222,7 @@
             "ans": 1,
             "why": "O2 ส่วนใหญ่จับกับฮีโมโกลบิน (Hb) ภายในเม็ดเลือดแดง ตามที่บทเรียนอธิบายไว้ในหัวข้อการขนส่งแก๊ส",
             "difficulty": "easy",
-            "tags": [
-                "transport",
-                "oxygen",
-                "hemoglobin"
-            ]
+            "tags": ["transport", "oxygen", "hemoglobin"]
         },
         {
             "q": "โครงสร้างใดช่วยลดแรงตึงผิวในถุงลมและป้องกันการแฟบ?",
@@ -313,11 +235,7 @@
             "ans": 1,
             "why": "Surfactant จากเซลล์ type II ลดแรงตึงผิวของถุงลม ทำให้เปิดอยู่ได้ง่าย สอดคล้องกับบทเรียนเรื่องกลไกการหายใจ",
             "difficulty": "medium",
-            "tags": [
-                "surfactant",
-                "physiology",
-                "type-II"
-            ]
+            "tags": ["surfactant", "physiology", "type-II"]
         }
     ]
 }

@@ -11,58 +11,31 @@
             "ans": 1,
             "why": "The cerebellum controls balance and coordination.",
             "difficulty": "easy",
-            "tags": [
-                "cerebellum",
-                "motor"
-            ]
+            "tags": ["cerebellum", "motor"]
         },
         {
             "q": "Which part of a neuron receives signals?",
-            "choices": [
-                "Axon",
-                "Dendrite",
-                "Cell Body",
-                "Synapse"
-            ],
+            "choices": ["Axon", "Dendrite", "Cell Body", "Synapse"],
             "ans": 1,
             "why": "Dendrites receive signals from other neurons.",
             "difficulty": "easy",
-            "tags": [
-                "neuron",
-                "structure"
-            ]
+            "tags": ["neuron", "structure"]
         },
         {
             "q": "Which system is active during \"Fight or Flight\"?",
-            "choices": [
-                "Somatic",
-                "Parasympathetic",
-                "Sympathetic",
-                "Central"
-            ],
+            "choices": ["Somatic", "Parasympathetic", "Sympathetic", "Central"],
             "ans": 2,
             "why": "The Sympathetic nervous system prepares the body for emergency.",
             "difficulty": "easy",
-            "tags": [
-                "ANS",
-                "sympathetic"
-            ]
+            "tags": ["ANS", "sympathetic"]
         },
         {
             "q": "Which brain part is responsible for thinking and reasoning?",
-            "choices": [
-                "Brainstem",
-                "Cerebellum",
-                "Cerebrum",
-                "Spinal Cord"
-            ],
+            "choices": ["Brainstem", "Cerebellum", "Cerebrum", "Spinal Cord"],
             "ans": 2,
             "why": "The Cerebrum handles complex cognitive processes.",
             "difficulty": "easy",
-            "tags": [
-                "cerebrum",
-                "cognition"
-            ]
+            "tags": ["cerebrum", "cognition"]
         },
         {
             "q": "What effect does myelin have on nerve impulses?",
@@ -75,26 +48,15 @@
             "ans": 2,
             "why": "Myelin enables saltatory conduction, increasing speed.",
             "difficulty": "medium",
-            "tags": [
-                "myelin",
-                "conduction"
-            ]
+            "tags": ["myelin", "conduction"]
         },
         {
             "q": "What type of neurotransmitter is GABA?",
-            "choices": [
-                "Excitatory",
-                "Inhibitory",
-                "Hormone",
-                "Enzyme"
-            ],
+            "choices": ["Excitatory", "Inhibitory", "Hormone", "Enzyme"],
             "ans": 1,
             "why": "GABA is the main inhibitory neurotransmitter.",
             "difficulty": "easy",
-            "tags": [
-                "neurotransmitter",
-                "GABA"
-            ]
+            "tags": ["neurotransmitter", "GABA"]
         },
         {
             "q": "Effect of Parasympathetic system on the heart?",
@@ -107,26 +69,15 @@
             "ans": 1,
             "why": "Parasympathetic slows the heart rate.",
             "difficulty": "easy",
-            "tags": [
-                "ANS",
-                "parasympathetic"
-            ]
+            "tags": ["ANS", "parasympathetic"]
         },
         {
             "q": "Which lobe involves vision?",
-            "choices": [
-                "Temporal",
-                "Occipital",
-                "Frontal",
-                "Hypothalamus"
-            ],
+            "choices": ["Temporal", "Occipital", "Frontal", "Hypothalamus"],
             "ans": 1,
             "why": "Occipital lobe is the visual processing center.",
             "difficulty": "easy",
-            "tags": [
-                "occipital",
-                "vision"
-            ]
+            "tags": ["occipital", "vision"]
         },
         {
             "q": "Main role of Pons?",
@@ -139,10 +90,7 @@
             "ans": 1,
             "why": "Pons connects brain parts and helps control breathing.",
             "difficulty": "medium",
-            "tags": [
-                "brainstem",
-                "pons"
-            ]
+            "tags": ["brainstem", "pons"]
         },
         {
             "q": "Function of Thalamus?",
@@ -155,10 +103,7 @@
             "ans": 1,
             "why": "Thalamus relays sensory signals to the cortex.",
             "difficulty": "medium",
-            "tags": [
-                "diencephalon",
-                "thalamus"
-            ]
+            "tags": ["diencephalon", "thalamus"]
         }
     ],
     "th": [
@@ -173,10 +118,7 @@
             "ans": 1,
             "why": "ซีรีเบลลัม (Cerebellum) มีหน้าที่สำคัญในการควบคุมการทรงตัวและการประสานงานของกล้ามเนื้อ",
             "difficulty": "easy",
-            "tags": [
-                "cerebellum",
-                "motor"
-            ]
+            "tags": ["cerebellum", "motor"]
         },
         {
             "q": "ส่วนใดของเซลล์ประสาทที่ทำหน้าที่รับสัญญาณจากเซลล์อื่น?",
@@ -189,10 +131,7 @@
             "ans": 1,
             "why": "เดนไดรต์ (Dendrite) เป็นแขนงที่ยื่นออกมาจากตัวเซลล์เพื่อรับกระแสประสาทจากเซลล์อื่น",
             "difficulty": "easy",
-            "tags": [
-                "neuron",
-                "structure"
-            ]
+            "tags": ["neuron", "structure"]
         },
         {
             "q": "ระบบประสาทส่วนใดที่ทำงานเมื่ออยู่ในภาวะ \"สู้หรือหนี\" (Fight or Flight)?",
@@ -205,10 +144,7 @@
             "ans": 2,
             "why": "ระบบประสาทซิมพาเทติก (Sympathetic) จะกระตุ้นร่างกายให้พร้อมตอบสนองต่อสถานการณ์ฉุกเฉิน",
             "difficulty": "easy",
-            "tags": [
-                "ANS",
-                "sympathetic"
-            ]
+            "tags": ["ANS", "sympathetic"]
         },
         {
             "q": "สมองส่วนใดที่รับผิดชอบเกี่ยวกับการคิด การใช้เหตุผล และความจำ?",
@@ -221,10 +157,7 @@
             "ans": 2,
             "why": "ซีรีบรัม (Cerebrum) เป็นสมองส่วนที่ใหญ่ที่สุดและเกี่ยวข้องกับกระบวนการคิดที่ซับซ้อน",
             "difficulty": "easy",
-            "tags": [
-                "cerebrum",
-                "cognition"
-            ]
+            "tags": ["cerebrum", "cognition"]
         },
         {
             "q": "ไมอีลิน (Myelin) มีผลต่อการนำกระแสประสาทอย่างไร?",
@@ -237,10 +170,7 @@
             "ans": 2,
             "why": "ไมอีลินช่วยให้การนำกระแสเกิดแบบ saltatory ระหว่าง nodes of Ranvier ทำให้เร็วขึ้น",
             "difficulty": "medium",
-            "tags": [
-                "myelin",
-                "conduction"
-            ]
+            "tags": ["myelin", "conduction"]
         },
         {
             "q": "สารสื่อประสาท GABA จัดเป็นชนิดใด?",
@@ -253,10 +183,7 @@
             "ans": 1,
             "why": "GABA เป็นสารสื่อประสาทชนิดยับยั้งหลักในระบบประสาทส่วนกลาง",
             "difficulty": "easy",
-            "tags": [
-                "neurotransmitter",
-                "GABA"
-            ]
+            "tags": ["neurotransmitter", "GABA"]
         },
         {
             "q": "ระบบประสาทพาราซิมพาเทติกมีผลใดต่อหัวใจ?",
@@ -269,10 +196,7 @@
             "ans": 1,
             "why": "พาราซิมพาเทติกลดอัตราการเต้นของหัวใจ ส่งเสริมสภาวะพักและย่อย",
             "difficulty": "easy",
-            "tags": [
-                "ANS",
-                "parasympathetic"
-            ]
+            "tags": ["ANS", "parasympathetic"]
         },
         {
             "q": "ส่วนใดของสมองเกี่ยวข้องเด่นชัดกับการมองเห็น?",
@@ -285,10 +209,7 @@
             "ans": 1,
             "why": "กลีบท้ายทอย (Occipital lobe) เป็นศูนย์ประมวลผลการมองเห็นหลัก",
             "difficulty": "easy",
-            "tags": [
-                "occipital",
-                "vision"
-            ]
+            "tags": ["occipital", "vision"]
         },
         {
             "q": "Pons ในก้านสมองมีบทบาทเด่นข้อใด?",
@@ -301,10 +222,7 @@
             "ans": 1,
             "why": "Pons ประสานศูนย์หายใจกับ medulla และเป็นสะพานเชื่อม cerebrum↔cerebellum",
             "difficulty": "medium",
-            "tags": [
-                "brainstem",
-                "pons"
-            ]
+            "tags": ["brainstem", "pons"]
         },
         {
             "q": "Thalamus ทำหน้าที่หลักใดในเส้นทางประสาทรับความรู้สึก?",
@@ -317,11 +235,7 @@
             "ans": 1,
             "why": "Thalamus เป็นสถานีถ่ายทอด (relay) สำคัญของ sensory pathways ก่อนถึง cerebral cortex",
             "difficulty": "medium",
-            "tags": [
-                "diencephalon",
-                "thalamus",
-                "sensory"
-            ]
+            "tags": ["diencephalon", "thalamus", "sensory"]
         }
     ]
 }

@@ -11,42 +11,23 @@
             "ans": 2,
             "why": "The lymphatic system lacks a central pump like the heart.",
             "difficulty": "easy",
-            "tags": [
-                "flow",
-                "mechanics"
-            ]
+            "tags": ["flow", "mechanics"]
         },
         {
             "q": "Where do T-cells mature?",
-            "choices": [
-                "Spleen",
-                "Lymph Nodes",
-                "Thymus",
-                "Liver"
-            ],
+            "choices": ["Spleen", "Lymph Nodes", "Thymus", "Liver"],
             "ans": 2,
             "why": "Thymus is the site of T-cell maturation.",
             "difficulty": "easy",
-            "tags": [
-                "primary-organs",
-                "thymus"
-            ]
+            "tags": ["primary-organs", "thymus"]
         },
         {
             "q": "Largest lymphatic organ that filters blood?",
-            "choices": [
-                "Tonsils",
-                "Spleen",
-                "Thymus",
-                "Lymph Node"
-            ],
+            "choices": ["Tonsils", "Spleen", "Thymus", "Lymph Node"],
             "ans": 1,
             "why": "Spleen filters blood and destroys old RBCs.",
             "difficulty": "medium",
-            "tags": [
-                "secondary-organs",
-                "spleen"
-            ]
+            "tags": ["secondary-organs", "spleen"]
         },
         {
             "q": "Function of Lymph Nodes?",
@@ -59,10 +40,7 @@
             "ans": 2,
             "why": "Lymph nodes act as filters for lymph.",
             "difficulty": "medium",
-            "tags": [
-                "lymph-nodes",
-                "filtration"
-            ]
+            "tags": ["lymph-nodes", "filtration"]
         },
         {
             "q": "Thoracic duct function?",
@@ -75,10 +53,7 @@
             "ans": 1,
             "why": "Thoracic duct drains the majority of the body.",
             "difficulty": "medium",
-            "tags": [
-                "ducts",
-                "thoracic-duct"
-            ]
+            "tags": ["ducts", "thoracic-duct"]
         },
         {
             "q": "Right lymphatic duct drains?",
@@ -91,10 +66,7 @@
             "ans": 2,
             "why": "It drains the upper right quadrant.",
             "difficulty": "medium",
-            "tags": [
-                "ducts",
-                "right-lymphatic-duct"
-            ]
+            "tags": ["ducts", "right-lymphatic-duct"]
         },
         {
             "q": "What is MALT?",
@@ -107,9 +79,7 @@
             "ans": 1,
             "why": "MALT is lymphoid tissue in mucous membranes.",
             "difficulty": "easy",
-            "tags": [
-                "MALT"
-            ]
+            "tags": ["MALT"]
         },
         {
             "q": "Main cause of Lymphedema?",
@@ -122,10 +92,7 @@
             "ans": 1,
             "why": "Poor drainage leads to fluid buildup.",
             "difficulty": "easy",
-            "tags": [
-                "disease",
-                "edema"
-            ]
+            "tags": ["disease", "edema"]
         },
         {
             "q": "Main function of Lymphatic System?",
@@ -138,10 +105,7 @@
             "ans": 1,
             "why": "It absorbs fats (lacteals) and maintains fluid balance.",
             "difficulty": "easy",
-            "tags": [
-                "function",
-                "fat-absorption"
-            ]
+            "tags": ["function", "fat-absorption"]
         },
         {
             "q": "Which duct drains the majority of the body?",
@@ -154,24 +118,15 @@
             "ans": 1,
             "why": "Thoracic duct drains the lower body and upper left.",
             "difficulty": "medium",
-            "tags": [
-                "ducts"
-            ]
+            "tags": ["ducts"]
         },
         {
             "q": "Organs that filter pathogens from lymph?",
-            "choices": [
-                "Spleen",
-                "Thymus",
-                "Lymph nodes",
-                "Tonsils"
-            ],
+            "choices": ["Spleen", "Thymus", "Lymph nodes", "Tonsils"],
             "ans": 2,
             "why": "Lymph nodes filter lymph.",
             "difficulty": "easy",
-            "tags": [
-                "lymph-nodes"
-            ]
+            "tags": ["lymph-nodes"]
         },
         {
             "q": "Role of Spleen?",
@@ -184,24 +139,15 @@
             "ans": 0,
             "why": "Spleen filters blood and manages RBCs.",
             "difficulty": "medium",
-            "tags": [
-                "spleen"
-            ]
+            "tags": ["spleen"]
         },
         {
             "q": "Blockage of lymph vessels causes?",
-            "choices": [
-                "Anemia",
-                "Lymphedema",
-                "Hypotension",
-                "Hypoxia"
-            ],
+            "choices": ["Anemia", "Lymphedema", "Hypotension", "Hypoxia"],
             "ans": 1,
             "why": "Blockage leads to swelling (lymphedema).",
             "difficulty": "easy",
-            "tags": [
-                "pathology"
-            ]
+            "tags": ["pathology"]
         },
         {
             "q": "Structures related to MALT?",
@@ -214,9 +160,7 @@
             "ans": 1,
             "why": "Tonsils and Peyer's patches are MALT.",
             "difficulty": "easy",
-            "tags": [
-                "MALT"
-            ]
+            "tags": ["MALT"]
         },
         {
             "q": "What is Chyle?",
@@ -229,9 +173,7 @@
             "ans": 1,
             "why": "Chyle is milky lymph rich in fats.",
             "difficulty": "medium",
-            "tags": [
-                "chyle"
-            ]
+            "tags": ["chyle"]
         },
         {
             "q": "Function of valves in lymph vessels?",
@@ -244,9 +186,7 @@
             "ans": 1,
             "why": "Valves ensure one-way flow.",
             "difficulty": "easy",
-            "tags": [
-                "valves"
-            ]
+            "tags": ["valves"]
         },
         {
             "q": "Where does Thoracic duct enter blood?",
@@ -259,9 +199,7 @@
             "ans": 1,
             "why": "It empties into the left venous angle.",
             "difficulty": "medium",
-            "tags": [
-                "ducts"
-            ]
+            "tags": ["ducts"]
         },
         {
             "q": "Primary Lymphoid Organs?",
@@ -274,9 +212,7 @@
             "ans": 1,
             "why": "Thymus and Bone Marrow are where cells are produced/matured.",
             "difficulty": "medium",
-            "tags": [
-                "primary-organs"
-            ]
+            "tags": ["primary-organs"]
         }
     ],
     "th": [
@@ -291,10 +227,7 @@
             "ans": 2,
             "why": "ระบบน้ำเหลืองไม่มีหัวใจปั๊มโดยตรง อาศัยการบีบตัวของกล้ามเนื้อ ลิ้น และแรงดันจากการหายใจ",
             "difficulty": "easy",
-            "tags": [
-                "flow",
-                "mechanics"
-            ]
+            "tags": ["flow", "mechanics"]
         },
         {
             "q": "อวัยวะใดทำหน้าที่เป็นที่เจริญเติบโตและพัฒนาของ T-cells?",
@@ -307,10 +240,7 @@
             "ans": 2,
             "why": "ต่อมไธมัสเป็นอวัยวะสำคัญที่ T-cells ซึ่งเป็นเซลล์ภูมิคุ้มกันชนิดหนึ่ง เจริญเติบโตและพัฒนาจนสมบูรณ์",
             "difficulty": "easy",
-            "tags": [
-                "primary-organs",
-                "thymus"
-            ]
+            "tags": ["primary-organs", "thymus"]
         },
         {
             "q": "อวัยวะน้ำเหลืองที่ใหญ่ที่สุดและทำหน้าที่กรองเลือดคือข้อใด?",
@@ -323,10 +253,7 @@
             "ans": 1,
             "why": "ม้าม (Spleen) เป็นอวัยวะน้ำเหลืองที่ใหญ่ที่สุด มีหน้าที่หลักในการกรองเลือดและทำลายเซลล์เม็ดเลือดแดงที่หมดอายุ",
             "difficulty": "medium",
-            "tags": [
-                "secondary-organs",
-                "spleen"
-            ]
+            "tags": ["secondary-organs", "spleen"]
         },
         {
             "q": "หน้าที่หลักของต่อมน้ำเหลือง (Lymph Nodes) คืออะไร?",
@@ -339,10 +266,7 @@
             "ans": 2,
             "why": "ต่อมน้ำเหลืองทำหน้าที่เป็นเหมือนด่านกรอง ดักจับและทำลายสิ่งแปลกปลอมหรือเชื้อโรคที่อยู่ในน้ำเหลือง",
             "difficulty": "medium",
-            "tags": [
-                "lymph-nodes",
-                "filtration"
-            ]
+            "tags": ["lymph-nodes", "filtration"]
         },
         {
             "q": "Thoracic duct ทำหน้าที่อย่างไร?",
@@ -355,10 +279,7 @@
             "ans": 1,
             "why": "Thoracic duct รับน้ำเหลืองจากส่วนใหญ่ของร่างกายและเทเข้าสู่เส้นเลือดดำใต้ไหปลาร้าซ้าย",
             "difficulty": "medium",
-            "tags": [
-                "ducts",
-                "thoracic-duct"
-            ]
+            "tags": ["ducts", "thoracic-duct"]
         },
         {
             "q": "Right lymphatic duct ระบายน้ำเหลืองจากบริเวณใด?",
@@ -371,10 +292,7 @@
             "ans": 2,
             "why": "Right lymphatic duct รับน้ำเหลืองจากด้านขวาส่วนบนของร่างกายก่อนเทเข้าสู่เส้นเลือดดำใต้ไหปลาร้าขวา",
             "difficulty": "medium",
-            "tags": [
-                "ducts",
-                "right-lymphatic-duct"
-            ]
+            "tags": ["ducts", "right-lymphatic-duct"]
         },
         {
             "q": "MALT คืออะไร?",
@@ -387,10 +305,7 @@
             "ans": 1,
             "why": "Mucosa-associated lymphoid tissue (MALT) เป็นเนื้อเยื่อภูมิคุ้มกันที่พบตามเยื่อเมือกต่างๆ",
             "difficulty": "easy",
-            "tags": [
-                "MALT",
-                "tonsils"
-            ]
+            "tags": ["MALT", "tonsils"]
         },
         {
             "q": "Lymphedema มีสาเหตุหลักจากอะไร?",
@@ -403,10 +318,7 @@
             "ans": 1,
             "why": "Lymphedema เกิดจากการระบายน้ำเหลืองไม่ดี ทำให้ของเหลวคั่งและเกิดอาการบวม",
             "difficulty": "easy",
-            "tags": [
-                "disease",
-                "edema"
-            ]
+            "tags": ["disease", "edema"]
         },
         {
             "q": "หน้าที่หลักข้อใดเป็นของระบบน้ำเหลือง?",
@@ -419,10 +331,7 @@
             "ans": 1,
             "why": "ระบบน้ำเหลืองช่วยดูดซึมไขมันผ่าน lacteals และระบายน้ำคั่งจากเนื้อเยื่อกลับสู่ระบบเลือด",
             "difficulty": "easy",
-            "tags": [
-                "function",
-                "fat-absorption"
-            ]
+            "tags": ["function", "fat-absorption"]
         },
         {
             "q": "ท่อน้ำเหลืองข้างใดระบายน้ำเหลืองส่วนใหญ่ของร่างกายเข้าสู่หลอดเลือดดำ?",
@@ -435,25 +344,15 @@
             "ans": 1,
             "why": "Thoracic duct ระบายน้ำเหลืองจากร่างกายส่วนล่างและซีกซ้ายส่วนบนเข้าสู่มุมหลอดเลือดดำซ้าย",
             "difficulty": "medium",
-            "tags": [
-                "ducts",
-                "drainage"
-            ]
+            "tags": ["ducts", "drainage"]
         },
         {
             "q": "อวัยวะน้ำเหลืองใดทำหน้าที่กรองเชื้อโรคตามท่อน้ำเหลืองก่อนเข้าสู่กระแสเลือด?",
-            "choices": [
-                "ม้าม",
-                "ต่อมไทมัส",
-                "ต่อมน้ำเหลือง",
-                "ต่อมทอนซิล"
-            ],
+            "choices": ["ม้าม", "ต่อมไทมัส", "ต่อมน้ำเหลือง", "ต่อมทอนซิล"],
             "ans": 2,
             "why": "ต่อมน้ำเหลือง (Lymph nodes) เป็นจุดกรองและกระตุ้นภูมิคุ้มกันตามทางเดินน้ำเหลือง",
             "difficulty": "easy",
-            "tags": [
-                "lymph-nodes"
-            ]
+            "tags": ["lymph-nodes"]
         },
         {
             "q": "ม้าม (Spleen) มีบทบาทสำคัญข้อใด?",
@@ -466,9 +365,7 @@
             "ans": 0,
             "why": "ม้ามช่วยกรองเลือด เก็บเม็ดเลือด และกำจัดเม็ดเลือดแดงเก่า รวมถึงสร้างภูมิคุ้มกัน",
             "difficulty": "medium",
-            "tags": [
-                "spleen"
-            ]
+            "tags": ["spleen"]
         },
         {
             "q": "การอุดตันของท่อน้ำเหลืองอาจทำให้เกิดภาวะใด?",
@@ -481,9 +378,7 @@
             "ans": 1,
             "why": "การระบายน้ำเหลืองบกพร่องทำให้ของเหลวคั่งในเนื้อเยื่อ เกิดบวมน้ำ",
             "difficulty": "easy",
-            "tags": [
-                "pathology"
-            ]
+            "tags": ["pathology"]
         },
         {
             "q": "โครงสร้างใดเกี่ยวข้องกับภูมิคุ้มกันเยื่อเมือก (MALT)?",
@@ -496,9 +391,7 @@
             "ans": 1,
             "why": "MALT รวมถึงต่อมทอนซิลและกลุ่มเนื้อเยื่อภูมิคุ้มกันในลำไส้ (Peyer's patches)",
             "difficulty": "easy",
-            "tags": [
-                "MALT"
-            ]
+            "tags": ["MALT"]
         },
         {
             "q": "Chyle คืออะไรในบริบทของระบบน้ำเหลือง?",
@@ -511,10 +404,7 @@
             "ans": 1,
             "why": "Chyle คือของเหลวสีขาวคล้ายน้ำนมซึ่งเป็นน้ำเหลืองที่มีไขมันไตรกลีเซอไรด์จากการดูดซึม",
             "difficulty": "medium",
-            "tags": [
-                "chyle",
-                "fat-absorption"
-            ]
+            "tags": ["chyle", "fat-absorption"]
         },
         {
             "q": "ลิ้นภายในท่อน้ำเหลืองมีหน้าที่ใด?",
@@ -527,10 +417,7 @@
             "ans": 1,
             "why": "ลิ้นช่วยให้น้ำเหลืองไหลทางเดียวกลับสู่หลอดเลือดดำ แม้แรงดันต่ำ",
             "difficulty": "easy",
-            "tags": [
-                "valves",
-                "flow"
-            ]
+            "tags": ["valves", "flow"]
         },
         {
             "q": "Thoracic duct ระบายน้ำเหลืองเข้าสู่ระบบเลือดที่ตำแหน่งใด?",
@@ -543,10 +430,7 @@
             "ans": 1,
             "why": "Thoracic duct เปิดเข้าสู่ left subclavian + left internal jugular junction (left venous angle)",
             "difficulty": "medium",
-            "tags": [
-                "ducts",
-                "venous-angle"
-            ]
+            "tags": ["ducts", "venous-angle"]
         },
         {
             "q": "อวัยวะน้ำเหลืองปฐมภูมิ (Primary lymphoid organs) คือข้อใด?",
@@ -559,11 +443,7 @@
             "ans": 1,
             "why": "Primary lymphoid organs ได้แก่ ไขกระดูก (สร้างเซลล์เม็ดเลือด) และต่อมไทมัส (ทำให้ T cells สุก)",
             "difficulty": "medium",
-            "tags": [
-                "primary-organs",
-                "bone-marrow",
-                "thymus"
-            ]
+            "tags": ["primary-organs", "bone-marrow", "thymus"]
         }
     ]
 }
