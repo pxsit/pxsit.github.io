@@ -8,12 +8,12 @@
     // State
     let currentQuestions = [];
     let currentIndex = 0;
-    let score = 0;
     let selectedAnswer = null;
-    let submitted = false;
-    let questionResolved = false; // true after submit/skip; enables Next
+    let score = 0;
     let currentTopic = "";
-    let answersLog = [];
+    // Per-question responses in the same order as `currentQuestions`
+    // Each entry: { selectedIndex: number|null, ts: number }
+    let responses = [];
 
     // Initialize quiz data
     window.quizData = window.quizData || {};
@@ -75,34 +75,59 @@
             return;
         }
 
-        submitted = false;
-        selectedAnswer = null;
-        questionResolved = false;
         const isEn = window.currentLang === "en"; // Define isEn at the start of render
+
+        // Guard
+        if (!Array.isArray(currentQuestions)) currentQuestions = [];
+
+        // Recompute score from responses (only depends on final selections)
+        score = 0;
+        for (let i = 0; i < currentQuestions.length; i++) {
+            const q = currentQuestions[i];
+            const r = responses[i];
+            if (
+                r &&
+                r.selectedIndex !== null &&
+                r.selectedIndex !== undefined
+            ) {
+                if (r.selectedIndex === q.ans) score++;
+            }
+        }
+
+        // Hydrate selectedAnswer from persisted responses
+        const currentResponse = responses[currentIndex];
+        selectedAnswer =
+            currentResponse &&
+            currentResponse.selectedIndex !== null &&
+            currentResponse.selectedIndex !== undefined
+                ? currentResponse.selectedIndex
+                : null;
 
         if (currentIndex >= currentQuestions.length) {
             // Render detailed summary with all questions, selections, highlights, and explanations
-            const summaryItems = answersLog
-                .map((entry, idx) => {
+            const summaryItems = currentQuestions
+                .map((q, idx) => {
+                    const r = responses[idx];
+                    const selectedIndex = r ? r.selectedIndex : null;
                     const wasSkipped =
-                        entry.selectedIndex === null ||
-                        entry.selectedIndex === undefined;
-                    const isCorrect =
-                        !wasSkipped &&
-                        entry.selectedIndex === entry.correctIndex;
-                    const choiceHtml = entry.choices
+                        selectedIndex === null || selectedIndex === undefined;
+                    const isCorrect = !wasSkipped && selectedIndex === q.ans;
+
+                    const choiceHtml = (q.choices || [])
                         .map((c, cIdx) => {
                             let cls = "quiz-choice";
-                            if (cIdx === entry.correctIndex) cls += " correct";
+                            if (cIdx === q.ans) cls += " correct";
+                            if (!wasSkipped && cIdx === selectedIndex)
+                                cls += " selected";
                             if (
-                                !isCorrect &&
                                 !wasSkipped &&
-                                cIdx === entry.selectedIndex
+                                !isCorrect &&
+                                cIdx === selectedIndex
                             )
                                 cls += " incorrect";
-                            if (!wasSkipped && cIdx === entry.selectedIndex)
-                                cls += " selected";
-                            return `<div class="${cls}" style="pointer-events:none"><div class="quiz-choice-checkbox"></div><span>${c}</span></div>`;
+                            return `<div class="${cls}" style="pointer-events:none"><div class="quiz-choice-checkbox"></div><span>${escapeHtml(
+                                String(c),
+                            )}</span></div>`;
                         })
                         .join("");
 
@@ -111,31 +136,30 @@
                         : isCorrect
                           ? "#34d399"
                           : "#f87171";
-                    const isEn = window.currentLang === "en";
                     const fbText = wasSkipped
                         ? (isEn
                               ? "Skipped. Answer: "
-                              : "คุณข้ามข้อนี้ เฉลยคือ: ") + (entry.why || "")
+                              : "คุณข้ามข้อนี้ เฉลยคือ: ") + (q.why || "")
                         : isCorrect
-                          ? (isEn ? "Correct! " : "ถูกต้อง! ") +
-                            (entry.why || "")
-                          : (isEn ? "Incorrect: " : "ผิด: ") +
-                            (entry.why || "");
+                          ? (isEn ? "Correct! " : "ถูกต้อง! ") + (q.why || "")
+                          : (isEn ? "Incorrect: " : "ผิด: ") + (q.why || "");
 
                     const metaRow = `<div class="muted" style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:6px;">
                         ${
-                            entry.difficulty
-                                ? `<span class=\"pill\" style=\"opacity:0.9;\">${String(
-                                      entry.difficulty,
-                                  ).toUpperCase()}</span>`
+                            q.difficulty
+                                ? `<span class=\"pill\" style=\"opacity:0.9;\">${escapeHtml(
+                                      String(q.difficulty).toUpperCase(),
+                                  )}</span>`
                                 : ""
                         }
                         ${
-                            entry.tags && entry.tags.length
-                                ? entry.tags
+                            q.tags && q.tags.length
+                                ? q.tags
                                       .map(
                                           (t) =>
-                                              `<span class=\"pill\" style=\"opacity:0.9;\">${t}</span>`,
+                                              `<span class=\"pill\" style=\"opacity:0.9;\">${escapeHtml(
+                                                  String(t),
+                                              )}</span>`,
                                       )
                                       .join("")
                                 : ""
@@ -160,18 +184,24 @@
                             : "ตอบผิด"
                 }</span>
               </div>
-              <h4 style="margin:8px 0 6px 0;">${entry.qText}</h4>
+              <h4 style="margin:8px 0 6px 0;">${escapeHtml(String(q.q))}</h4>
               <div class="quiz-choices">${choiceHtml}</div>
-              <div class="quiz-feedback" style="margin-top:6px; color:${fbColor}">${fbText}</div>
+              <div class="quiz-feedback" style="margin-top:6px; color:${fbColor}">${escapeHtml(
+                  String(fbText),
+              )}</div>
               ${metaRow}
             </div>`;
                 })
                 .join("");
 
-            const skippedEntries = answersLog.filter(
-                (e) =>
-                    e.selectedIndex === null || e.selectedIndex === undefined,
-            );
+            const skippedEntries = currentQuestions
+                .map((q, idx) => ({ q, idx, r: responses[idx] }))
+                .filter(
+                    (x) =>
+                        !x.r ||
+                        x.r.selectedIndex === null ||
+                        x.r.selectedIndex === undefined,
+                );
             const skippedCount = skippedEntries.length;
             const skippedSection =
                 skippedCount > 0
@@ -182,13 +212,12 @@
                         <div class="quiz-skipped-list" style="display:grid; gap:10px;">
                             ${skippedEntries
                                 .map((entry, sIdx) => {
+                                    const q = entry.q;
                                     const correctText =
-                                        typeof entry.correctIndex ===
-                                            "number" &&
-                                        entry.choices &&
-                                        entry.choices[entry.correctIndex] !==
-                                            undefined
-                                            ? entry.choices[entry.correctIndex]
+                                        typeof q.ans === "number" &&
+                                        q.choices &&
+                                        q.choices[q.ans] !== undefined
+                                            ? q.choices[q.ans]
                                             : "";
                                     return `
                                 <div class="quiz-skipped-item" style="padding:12px; border-radius:12px; background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
@@ -196,7 +225,7 @@
                                         <span class="pill">${isEn ? "Skipped" : "ข้าม"} ${sIdx + 1}</span>
                                         <span class="muted">${isEn ? "Answer:" : "เฉลย:"} <strong style="color:#e6e6f0;">${escapeHtml(String(correctText))}</strong></span>
                                     </div>
-                                    <div style="margin-top:6px; font-weight:700;">${entry.qText}</div>
+                                    <div style="margin-top:6px; font-weight:700;">${escapeHtml(String(q.q))}</div>
                                 </div>`;
                                 })
                                 .join("")}
@@ -271,10 +300,9 @@
                 <h3 style="margin:8px 0 0 0;">${escapeHtml(q.q)}</h3>
                 ${tagsHtml}
                 <div class="quiz-choices" id="choices"></div>
-                <div class="quiz-feedback" id="fb"></div>
-                <div style="margin-top:8px; display:flex; justify-content:flex-end; gap:8px;">
-                    <button id="quiz-skip-btn" class="btn ghost" onclick="skipQuestion()">${isEn ? "Skip" : "ข้าม"}</button>
-                    <button id="quiz-next-btn" class="btn primary" onclick="nextQuestion()" disabled aria-disabled="true">${isEn ? "Next" : "ถัดไป"}</button>
+                <div style="margin-top:8px; display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap;">
+                    <button id="quiz-prev-btn" class="btn ghost" onclick="prevQuestion()">${isEn ? "Previous" : "ก่อนหน้า"}</button>
+                    <button id="quiz-next-btn" class="btn primary" onclick="nextOrSkip()">${isEn ? "Skip" : "ข้าม"}</button>
                 </div>
             </div>`;
 
@@ -290,131 +318,92 @@
             div.addEventListener("click", () => select(idx, div));
             choicesEl.appendChild(div);
         });
+
+        // Restore previously selected answer visual state
+        if (selectedAnswer !== null && selectedAnswer !== undefined) {
+            const choiceEls = document.querySelectorAll(".quiz-choice");
+            const el = choiceEls[selectedAnswer];
+            if (el) el.classList.add("selected");
+        }
+
+        // Update buttons state/labels
+        updateNavButtons();
     }
 
     function select(idx, el) {
-        if (submitted || questionResolved) return;
         selectedAnswer = idx;
-        const isEn = window.currentLang === "en";
 
         document
             .querySelectorAll(".quiz-choice")
             .forEach((c) => c.classList.remove("selected"));
         el.classList.add("selected");
 
-        // Auto-submit on select (shows feedback), but do not advance until Next
-        submit();
-
-        // Enable Next button now that question is resolved
-        const nextBtn = document.getElementById("quiz-next-btn");
-        if (nextBtn) {
-            nextBtn.disabled = false;
-            nextBtn.setAttribute("aria-disabled", "false");
-            nextBtn.textContent = isEn ? "Next" : "ถัดไป";
-        }
-
-        // Disable Skip after answering
-        const skipBtn = document.getElementById("quiz-skip-btn");
-        if (skipBtn) skipBtn.disabled = true;
+        updateNavButtons();
     }
 
-    function submit() {
-        if (submitted || selectedAnswer === null) return;
-        submitted = true;
-        questionResolved = true;
+    function ensureResponseSlot(idx) {
+        while (responses.length < currentQuestions.length) {
+            responses.push({ selectedIndex: null, ts: Date.now() });
+        }
+        if (!responses[idx])
+            responses[idx] = { selectedIndex: null, ts: Date.now() };
+    }
+
+    function saveCurrentSelection() {
+        ensureResponseSlot(currentIndex);
+        responses[currentIndex].selectedIndex =
+            selectedAnswer === null || selectedAnswer === undefined
+                ? null
+                : selectedAnswer;
+        responses[currentIndex].ts = Date.now();
+    }
+
+    function updateNavButtons() {
         const isEn = window.currentLang === "en";
+        const prevBtn = document.getElementById("quiz-prev-btn");
+        const nextBtn = document.getElementById("quiz-next-btn");
 
-        const q = currentQuestions[currentIndex];
-        const fb = document.getElementById("fb");
-        const allChoices = document.querySelectorAll(".quiz-choice");
-        const selectedEl = allChoices[selectedAnswer];
-        const isCorrect = selectedAnswer === q.ans;
+        if (prevBtn) {
+            prevBtn.disabled = currentIndex <= 0;
+            prevBtn.setAttribute(
+                "aria-disabled",
+                currentIndex <= 0 ? "true" : "false",
+            );
+        }
 
-        if (fb) {
-            fb.textContent = isCorrect
-                ? isEn
-                    ? `Correct! ${q.why}`
-                    : `ถูกต้อง! ${q.why}`
+        if (nextBtn) {
+            // If no answer selected, show Skip. Otherwise show Next.
+            const hasAnswer =
+                selectedAnswer !== null && selectedAnswer !== undefined;
+            const isLastQuestion = currentIndex === currentQuestions.length - 1;
+            nextBtn.textContent = hasAnswer
+                ? isLastQuestion
+                    ? isEn
+                        ? "Submit"
+                        : "ส่งคำตอบ"
+                    : isEn
+                      ? "Next"
+                      : "ถัดไป"
                 : isEn
-                  ? `Incorrect: ${q.why}`
-                  : `ผิด: ${q.why}`;
-            fb.style.color = isCorrect ? "#34d399" : "#f87171";
+                  ? "Skip"
+                  : "ข้าม";
         }
-
-        if (selectedEl) {
-            selectedEl.classList.add(isCorrect ? "correct" : "incorrect");
-        }
-        if (!isCorrect && allChoices[q.ans]) {
-            allChoices[q.ans].classList.add("correct");
-        }
-        if (isCorrect) score++;
-
-        // Log the answer with details
-        answersLog.push({
-            qText: q.q,
-            selectedIndex: selectedAnswer,
-            correctIndex: q.ans,
-            why: q.why,
-            tags: q.tags,
-            difficulty: q.difficulty,
-            choices: q.choices,
-        });
-
-        // Do not auto-advance; user must click Next
     }
 
-    function logSkip() {
-        const q = currentQuestions[currentIndex];
-        // Record a skipped entry
-        answersLog.push({
-            qText: q.q,
-            selectedIndex: null,
-            correctIndex: q.ans,
-            why: q.why,
-            tags: q.tags,
-            difficulty: q.difficulty,
-            choices: q.choices,
-        });
-        questionResolved = true;
-    }
-
-    window.skipQuestion = function () {
-        if (questionResolved) return;
-        const isEn = window.currentLang === "en";
-
-        // Show feedback immediately, but don't advance
-        const q = currentQuestions[currentIndex];
-        const fb = document.getElementById("fb");
-        if (fb) {
-            fb.textContent = isEn
-                ? `Skipped. Answer: ${q.why}`
-                : `คุณข้ามข้อนี้ เฉลยคือ: ${q.why}`;
-            fb.style.color = "#a3a3a3";
-        }
-
-        // Highlight correct choice
-        const allChoices = document.querySelectorAll(".quiz-choice");
-        if (allChoices && allChoices[q.ans]) {
-            allChoices[q.ans].classList.add("correct");
-        }
-
-        logSkip();
-
-        // Enable Next; disable Skip
-        const nextBtn = document.getElementById("quiz-next-btn");
-        if (nextBtn) {
-            nextBtn.disabled = false;
-            nextBtn.setAttribute("aria-disabled", "false");
-            nextBtn.textContent = isEn ? "Next" : "ถัดไป";
-        }
-        const skipBtn = document.getElementById("quiz-skip-btn");
-        if (skipBtn) skipBtn.disabled = true;
-    };
-
-    window.nextQuestion = function () {
-        if (!questionResolved) return;
+    window.nextOrSkip = function () {
+        // Record selection (or null for skip) then advance
+        saveCurrentSelection();
         currentIndex++;
         render();
+    };
+
+    window.prevQuestion = function () {
+        // Save current selection before going back
+        saveCurrentSelection();
+        if (currentIndex > 0) {
+            currentIndex--;
+            render();
+        }
     };
 
     window.startQuiz = function (topic, questions) {
@@ -424,8 +413,7 @@
             .slice(0, MAX_QUESTIONS);
         currentIndex = 0;
         score = 0;
-        submitted = false;
-        answersLog = [];
+        responses = [];
 
         const stage = getStage();
         if (stage) {
@@ -436,9 +424,7 @@
 
     // Legacy alias (older HTML may still call nextQuizPage)
     window.nextQuizPage = function () {
-        // If question is resolved, behave like Next; otherwise behave like Skip.
-        if (questionResolved) window.nextQuestion();
-        else window.skipQuestion();
+        window.nextOrSkip();
     };
 
     window.backToMenu = function () {
@@ -551,7 +537,7 @@
         // Reset state
         currentIndex = 0;
         score = 0;
-        answersLog = [];
+        responses = [];
 
         // Show quiz section
         const quizSection = document.getElementById("final-quiz");
