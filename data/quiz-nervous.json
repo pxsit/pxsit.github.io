@@ -39,12 +39,7 @@
         },
         {
             "q": "What effect does myelin have on nerve impulses?",
-            "choices": [
-                "Slows them down",
-                "No effect",
-                "Speeds them up (saltatory)",
-                "Stops them"
-            ],
+            "choices": ["Slows them down", "No effect", "Speeds them up (saltatory)", "Stops them"],
             "ans": 2,
             "why": "Myelin enables saltatory conduction, increasing speed.",
             "difficulty": "medium",
@@ -174,12 +169,7 @@
         },
         {
             "q": "สารสื่อประสาท GABA จัดเป็นชนิดใด?",
-            "choices": [
-                "กระตุ้น (Excitatory)",
-                "ยับยั้ง (Inhibitory)",
-                "ฮอร์โมน",
-                "เอนไซม์"
-            ],
+            "choices": ["กระตุ้น (Excitatory)", "ยับยั้ง (Inhibitory)", "ฮอร์โมน", "เอนไซม์"],
             "ans": 1,
             "why": "GABA เป็นสารสื่อประสาทชนิดยับยั้งหลักในระบบประสาทส่วนกลาง",
             "difficulty": "easy",

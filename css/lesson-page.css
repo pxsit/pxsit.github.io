@@ -36,19 +36,19 @@ body.system-page {
 
 /* System-specific backgrounds */
 .system-bg.circulatory {
-    background-image: url("../assets/circulatory.jpg");
+    background-image: url('../assets/circulatory.jpg');
 }
 
 .system-bg.respiratory {
-    background-image: url("../assets/respiratory.jpg");
+    background-image: url('../assets/respiratory.jpg');
 }
 
 .system-bg.lymphatic {
-    background-image: url("../assets/lymphatic.jpg");
+    background-image: url('../assets/lymphatic.jpg');
 }
 
 .system-bg.nervous {
-    background-image: url("../assets/nervous.jpg");
+    background-image: url('../assets/nervous.jpg');
 }
 
 /* Content container */
@@ -69,6 +69,7 @@ body.system-page {
     z-index: var(--z-header, 1000);
     background: var(--color-bg-secondary, rgba(5, 10, 25, 0.7));
     border-bottom: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+    /* eslint-disable-next-line css/use-baseline -- has -webkit- fallback below */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
@@ -111,6 +112,37 @@ body.system-page {
     outline-offset: 2px;
 }
 
+/* Header navigation container */
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Language toggle button (lesson pages) */
+.lang-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm, 10px);
+    transition: all var(--transition-fast, 0.2s ease);
+}
+
+.lang-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.lang-toggle-btn:focus-visible {
+    outline: 2px solid var(--color-accent-blue, #60a5fa);
+    outline-offset: 2px;
+}
+
 /* Ensure panel content is above any overlays */
 .panel > * {
     position: relative;
@@ -118,13 +150,38 @@ body.system-page {
 }
 
 /* Action buttons container */
-.lesson-actions-bar {
+.lesson-actions-bar,
+.lesson-page-actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
     margin-top: 20px;
     flex-wrap: wrap;
+}
+
+/* Brain diagram container (nervous system page) */
+.brain-diagram-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brain-diagram-img {
+    max-width: 680px;
+    max-height: 360px;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    opacity: 0.95;
+    padding: 8px;
 }
 
 /* Responsive adjustments */

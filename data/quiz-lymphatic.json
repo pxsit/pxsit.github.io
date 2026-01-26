@@ -2,12 +2,7 @@
     "en": [
         {
             "q": "Which factor does NOT assist lymph flow?",
-            "choices": [
-                "Valves",
-                "Muscle contraction",
-                "Direct heart pump",
-                "Respiration"
-            ],
+            "choices": ["Valves", "Muscle contraction", "Direct heart pump", "Respiration"],
             "ans": 2,
             "why": "The lymphatic system lacks a central pump like the heart.",
             "difficulty": "easy",
@@ -57,12 +52,7 @@
         },
         {
             "q": "Right lymphatic duct drains?",
-            "choices": [
-                "Whole body",
-                "Left leg",
-                "Upper right body",
-                "Abdomen"
-            ],
+            "choices": ["Whole body", "Left leg", "Upper right body", "Abdomen"],
             "ans": 2,
             "why": "It drains the upper right quadrant.",
             "difficulty": "medium",
@@ -70,12 +60,7 @@
         },
         {
             "q": "What is MALT?",
-            "choices": [
-                "Hormone",
-                "Mucosa-associated lymphoid tissue",
-                "Lymph node",
-                "Antibody"
-            ],
+            "choices": ["Hormone", "Mucosa-associated lymphoid tissue", "Lymph node", "Antibody"],
             "ans": 1,
             "why": "MALT is lymphoid tissue in mucous membranes.",
             "difficulty": "easy",
@@ -109,12 +94,7 @@
         },
         {
             "q": "Which duct drains the majority of the body?",
-            "choices": [
-                "Right lymphatic duct",
-                "Thoracic duct",
-                "Carotid",
-                "Aortic"
-            ],
+            "choices": ["Right lymphatic duct", "Thoracic duct", "Carotid", "Aortic"],
             "ans": 1,
             "why": "Thoracic duct drains the lower body and upper left.",
             "difficulty": "medium",
@@ -151,12 +131,7 @@
         },
         {
             "q": "Structures related to MALT?",
-            "choices": [
-                "Salivary glands",
-                "Tonsils and Peyer's patches",
-                "Pancreas",
-                "Adrenal"
-            ],
+            "choices": ["Salivary glands", "Tonsils and Peyer's patches", "Pancreas", "Adrenal"],
             "ans": 1,
             "why": "Tonsils and Peyer's patches are MALT.",
             "difficulty": "easy",
@@ -164,12 +139,7 @@
         },
         {
             "q": "What is Chyle?",
-            "choices": [
-                "WBC",
-                "Lymph with fat from intestine",
-                "Pleural fluid",
-                "CSF"
-            ],
+            "choices": ["WBC", "Lymph with fat from intestine", "Pleural fluid", "CSF"],
             "ans": 1,
             "why": "Chyle is milky lymph rich in fats.",
             "difficulty": "medium",
@@ -190,12 +160,7 @@
         },
         {
             "q": "Where does Thoracic duct enter blood?",
-            "choices": [
-                "Right venous angle",
-                "Left venous angle",
-                "Vena cava",
-                "Aorta"
-            ],
+            "choices": ["Right venous angle", "Left venous angle", "Vena cava", "Aorta"],
             "ans": 1,
             "why": "It empties into the left venous angle.",
             "difficulty": "medium",
@@ -203,12 +168,7 @@
         },
         {
             "q": "Primary Lymphoid Organs?",
-            "choices": [
-                "Spleen/Tonsils",
-                "Thymus/Bone Marrow",
-                "Nodes/MALT",
-                "Spleen/Nodes"
-            ],
+            "choices": ["Spleen/Tonsils", "Thymus/Bone Marrow", "Nodes/MALT", "Spleen/Nodes"],
             "ans": 1,
             "why": "Thymus and Bone Marrow are where cells are produced/matured.",
             "difficulty": "medium",
@@ -335,12 +295,7 @@
         },
         {
             "q": "ท่อน้ำเหลืองข้างใดระบายน้ำเหลืองส่วนใหญ่ของร่างกายเข้าสู่หลอดเลือดดำ?",
-            "choices": [
-                "Right lymphatic duct",
-                "Thoracic duct",
-                "Carotid duct",
-                "Aortic duct"
-            ],
+            "choices": ["Right lymphatic duct", "Thoracic duct", "Carotid duct", "Aortic duct"],
             "ans": 1,
             "why": "Thoracic duct ระบายน้ำเหลืองจากร่างกายส่วนล่างและซีกซ้ายส่วนบนเข้าสู่มุมหลอดเลือดดำซ้าย",
             "difficulty": "medium",
@@ -382,12 +337,7 @@
         },
         {
             "q": "โครงสร้างใดเกี่ยวข้องกับภูมิคุ้มกันเยื่อเมือก (MALT)?",
-            "choices": [
-                "ต่อมน้ำลาย",
-                "ต่อมทอนซิลและ Peyer's patches",
-                "ตับอ่อน",
-                "ต่อมหมวกไต"
-            ],
+            "choices": ["ต่อมน้ำลาย", "ต่อมทอนซิลและ Peyer's patches", "ตับอ่อน", "ต่อมหมวกไต"],
             "ans": 1,
             "why": "MALT รวมถึงต่อมทอนซิลและกลุ่มเนื้อเยื่อภูมิคุ้มกันในลำไส้ (Peyer's patches)",
             "difficulty": "easy",

@@ -78,12 +78,7 @@
         },
         {
             "q": "Respiratory response to exercise (High CO2)?",
-            "choices": [
-                "Slower breathing",
-                "Faster and deeper breathing",
-                "No change",
-                "Apnea"
-            ],
+            "choices": ["Slower breathing", "Faster and deeper breathing", "No change", "Apnea"],
             "ans": 1,
             "why": "High CO2 triggers faster/deeper breathing to expel it.",
             "difficulty": "easy",
@@ -91,12 +86,7 @@
         },
         {
             "q": "How is most Oxygen transported?",
-            "choices": [
-                "Dissolved",
-                "Bound to Hemoglobin",
-                "Platelets",
-                "Free gas"
-            ],
+            "choices": ["Dissolved", "Bound to Hemoglobin", "Platelets", "Free gas"],
             "ans": 1,
             "why": "Most O2 binds to Hemoglobin in RBCs.",
             "difficulty": "easy",
@@ -200,12 +190,7 @@
         },
         {
             "q": "ระหว่างการออกกำลังกาย ระดับ CO2 ในเลือดเพิ่มขึ้น ส่งผลต่อการหายใจอย่างไร?",
-            "choices": [
-                "ช้าลง",
-                "เร็วขึ้นและลึกขึ้น",
-                "ไม่เปลี่ยนแปลง",
-                "หยุดหายใจชั่วขณะ"
-            ],
+            "choices": ["ช้าลง", "เร็วขึ้นและลึกขึ้น", "ไม่เปลี่ยนแปลง", "หยุดหายใจชั่วขณะ"],
             "ans": 1,
             "why": "CO2 เป็นตัวกระตุ้นหลักให้หายใจเร็ว/ลึกขึ้นเพื่อขับ CO2 ออก",
             "difficulty": "easy",

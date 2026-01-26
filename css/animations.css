@@ -351,11 +351,12 @@
 }
 
 /* Text animations */
+/* stylelint-disable-next-line -- background-clip:text needed for gradient text effect, has webkit fallback */
 .text-gradient {
     background: linear-gradient(45deg, #2c5aa0, #667eea, #764ba2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background-clip: text; /* eslint-disable-line css/use-baseline -- has -webkit- fallback above */
     animation: gradientShift 3s ease-in-out infinite;
 }
 
@@ -502,7 +503,7 @@
 }
 
 .ripple-effect::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;

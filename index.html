@@ -49,29 +49,17 @@
                 </div>
                 <ul class="nav-menu" role="menubar">
                     <li role="none">
-                        <a
-                            href="#home"
-                            class="nav-link"
-                            role="menuitem"
-                            data-i18n="nav_home"
+                        <a href="#home" class="nav-link" role="menuitem" data-i18n="nav_home"
                             >Home</a
                         >
                     </li>
                     <li role="none">
-                        <a
-                            href="#menu"
-                            class="nav-link"
-                            role="menuitem"
-                            data-i18n="nav_menu"
+                        <a href="#menu" class="nav-link" role="menuitem" data-i18n="nav_menu"
                             >Menu</a
                         >
                     </li>
                     <li role="none">
-                        <a
-                            href="#about"
-                            class="nav-link"
-                            role="menuitem"
-                            data-i18n="nav_about"
+                        <a href="#about" class="nav-link" role="menuitem" data-i18n="nav_about"
                             >About</a
                         >
                     </li>
@@ -90,12 +78,7 @@
                     <li role="none">
                         <button
                             id="lang-toggle"
-                            class="nav-link"
-                            style="
-                                background: none;
-                                border: none;
-                                cursor: pointer;
-                            "
+                            class="nav-link lang-toggle-btn"
                             aria-label="Toggle Language"
                         >
                             <i class="fas fa-globe"></i>
@@ -123,7 +106,7 @@
                     <h1 id="hero-title" class="hero-title mega">Outside In</h1>
                     <button
                         class="cta-button"
-                        onclick="goToMenu()"
+                        id="hero-start-btn"
                         aria-label="Start exploring body systems"
                     >
                         <i class="fas fa-play" aria-hidden="true"></i>
@@ -144,11 +127,7 @@
                             <source src="assets/video.mp4" type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
-                        <div
-                            id="hero-video-fade"
-                            class="hero-video-fade"
-                            aria-hidden="true"
-                        ></div>
+                        <div id="hero-video-fade" class="hero-video-fade" aria-hidden="true"></div>
                     </div>
                     <!-- Fallback visuals if the video fails to load -->
                     <div class="hero-3d fallback-visual">
@@ -162,17 +141,9 @@
             </section>
 
             <!-- Menu Section -->
-            <section
-                id="menu"
-                class="menu-section"
-                aria-labelledby="menu-title"
-            >
+            <section id="menu" class="menu-section" aria-labelledby="menu-title">
                 <div class="container">
-                    <h2
-                        id="menu-title"
-                        class="section-title center"
-                        data-i18n="menu_title"
-                    >
+                    <h2 id="menu-title" class="section-title center" data-i18n="menu_title">
                         Menu
                     </h2>
                     <p class="section-description center" data-i18n="menu_desc">
@@ -186,17 +157,10 @@
                             role="listitem"
                             aria-label="Open Circulatory System full page"
                         >
-                            <div
-                                class="menu-bg circulatory"
-                                aria-hidden="true"
-                            ></div>
+                            <div class="menu-bg circulatory" aria-hidden="true"></div>
                             <div class="menu-text">
-                                <h3 data-i18n="sys_circulatory">
-                                    Circulatory System
-                                </h3>
-                                <span data-i18n="sys_circulatory_desc"
-                                    >ระบบหมุนเวียนเลือด</span
-                                >
+                                <h3 data-i18n="sys_circulatory">Circulatory System</h3>
+                                <span data-i18n="sys_circulatory_desc">ระบบหมุนเวียนเลือด</span>
                             </div>
                         </a>
                         <a
@@ -205,17 +169,10 @@
                             role="listitem"
                             aria-label="Open Respiratory System full page"
                         >
-                            <div
-                                class="menu-bg respiratory"
-                                aria-hidden="true"
-                            ></div>
+                            <div class="menu-bg respiratory" aria-hidden="true"></div>
                             <div class="menu-text">
-                                <h3 data-i18n="sys_respiratory">
-                                    Respiratory System
-                                </h3>
-                                <span data-i18n="sys_respiratory_desc"
-                                    >ระบบหายใจ</span
-                                >
+                                <h3 data-i18n="sys_respiratory">Respiratory System</h3>
+                                <span data-i18n="sys_respiratory_desc">ระบบหายใจ</span>
                             </div>
                         </a>
                         <a
@@ -224,17 +181,10 @@
                             role="listitem"
                             aria-label="Open Lymphatics System full page"
                         >
-                            <div
-                                class="menu-bg lymphatic"
-                                aria-hidden="true"
-                            ></div>
+                            <div class="menu-bg lymphatic" aria-hidden="true"></div>
                             <div class="menu-text">
-                                <h3 data-i18n="sys_lymphatic">
-                                    Lymphatics System
-                                </h3>
-                                <span data-i18n="sys_lymphatic_desc"
-                                    >ระบบน้ำเหลือง</span
-                                >
+                                <h3 data-i18n="sys_lymphatic">Lymphatics System</h3>
+                                <span data-i18n="sys_lymphatic_desc">ระบบน้ำเหลือง</span>
                             </div>
                         </a>
                         <a
@@ -243,15 +193,10 @@
                             role="listitem"
                             aria-label="Open Nervous System full page"
                         >
-                            <div
-                                class="menu-bg nervous"
-                                aria-hidden="true"
-                            ></div>
+                            <div class="menu-bg nervous" aria-hidden="true"></div>
                             <div class="menu-text">
                                 <h3 data-i18n="sys_nervous">Nervous System</h3>
-                                <span data-i18n="sys_nervous_desc"
-                                    >ระบบประสาท</span
-                                >
+                                <span data-i18n="sys_nervous_desc">ระบบประสาท</span>
                             </div>
                         </a>
                     </div>
@@ -270,23 +215,15 @@
                     </div>
                     <div id="lesson-content" class="lesson-content"></div>
                     <div class="lesson-actions">
-                        <button
-                            id="lesson-back"
-                            class="btn ghost"
-                            onclick="prevPage()"
-                        >
+                        <button id="lesson-back" class="btn ghost">
                             <i class="fas fa-arrow-left"></i>
                             <span data-i18n="lesson_back">Back</span>
                         </button>
-                        <button class="btn ghost" onclick="backToMenu()">
+                        <button id="lesson-menu" class="btn ghost">
                             <i class="fas fa-bars"></i>
                             <span data-i18n="lesson_menu">Menu</span>
                         </button>
-                        <button
-                            id="lesson-next"
-                            class="btn primary"
-                            onclick="nextPage()"
-                        >
+                        <button id="lesson-next" class="btn primary">
                             <span data-i18n="lesson_next">Next</span>
                             <i class="fas fa-arrow-right"></i>
                         </button>
@@ -303,11 +240,7 @@
             >
                 <div class="quiz-bg" aria-hidden="true"></div>
                 <div class="quiz-container">
-                    <h2
-                        id="quiz-title"
-                        class="section-title center"
-                        data-i18n="quiz_title"
-                    >
+                    <h2 id="quiz-title" class="section-title center" data-i18n="quiz_title">
                         Quiz
                     </h2>
                     <div id="quiz-stage" role="region" aria-live="polite"></div>
@@ -318,11 +251,7 @@
         <!-- About Section -->
         <section id="about" class="about-section" aria-labelledby="about-title">
             <div class="container">
-                <h2
-                    id="about-title"
-                    class="section-title"
-                    data-i18n="about_title"
-                >
+                <h2 id="about-title" class="section-title" data-i18n="about_title">
                     เกี่ยวกับโครงงาน Outside In
                 </h2>
                 <div class="about-content">
@@ -333,16 +262,13 @@
                                 พัฒนาเว็บไซต์ที่นำเสนอองค์ความรู้เกี่ยวกับโครงสร้างของร่างกายมนุษย์
                             </li>
                             <li data-i18n="about_obj_2">
-                                ส่งเสริมการเรียนรู้ Anatomy
-                                ด้วยวิธีที่เข้าใจง่ายและน่าสนใจ
+                                ส่งเสริมการเรียนรู้ Anatomy ด้วยวิธีที่เข้าใจง่ายและน่าสนใจ
                             </li>
                             <li data-i18n="about_obj_3">
-                                ให้ผู้ใช้งานสามารถสำรวจระบบต่างๆ
-                                ในร่างกายอย่างมีลำดับขั้น
+                                ให้ผู้ใช้งานสามารถสำรวจระบบต่างๆ ในร่างกายอย่างมีลำดับขั้น
                             </li>
                             <li data-i18n="about_obj_4">
-                                ฝึกทักษะการออกแบบและพัฒนาเว็บไซต์ด้วย HTML, CSS
-                                และ JavaScript
+                                ฝึกทักษะการออกแบบและพัฒนาเว็บไซต์ด้วย HTML, CSS และ JavaScript
                             </li>
                         </ul>
                     </div>
@@ -350,38 +276,25 @@
                         <h3 data-i18n="about_info_title">ข้อมูลโครงงาน</h3>
                         <div class="info-grid">
                             <div class="info-item">
-                                <strong data-i18n="about_name"
-                                    >ชื่อโครงงาน:</strong
-                                >
+                                <strong data-i18n="about_name">ชื่อโครงงาน:</strong>
                                 Outside In
                             </div>
                             <div class="info-item">
                                 <strong data-i18n="about_type">ประเภท:</strong>
-                                <span data-i18n="about_type_val"
-                                    >เพื่อการศึกษา</span
-                                >
+                                <span data-i18n="about_type_val">เพื่อการศึกษา</span>
                             </div>
                             <div class="info-item">
-                                <strong data-i18n="about_duration"
-                                    >ระยะเวลา:</strong
-                                >
-                                <span data-i18n="about_duration_val"
-                                    >6 เดือน</span
-                                >
+                                <strong data-i18n="about_duration">ระยะเวลา:</strong>
+                                <span data-i18n="about_duration_val">6 เดือน</span>
                             </div>
                             <div class="info-item">
-                                <strong data-i18n="about_school"
-                                    >ระดับชั้นและโรงเรียน:</strong
-                                >
+                                <strong data-i18n="about_school">ระดับชั้นและโรงเรียน:</strong>
                                 <span data-i18n="about_school_val"
-                                    >มัธยมศึกษาปีที่ 3 โรงเรียนวิสุทธรังษี
-                                    จังหวัดกาญจนบุรี</span
+                                    >มัธยมศึกษาปีที่ 3 โรงเรียนวิสุทธรังษี จังหวัดกาญจนบุรี</span
                                 >
                             </div>
                             <div class="info-item">
-                                <strong data-i18n="about_authors"
-                                    >ผู้จัดทำ:</strong
-                                >
+                                <strong data-i18n="about_authors">ผู้จัดทำ:</strong>
                                 <ul>
                                     <li data-i18n="about_author_1">
                                         ด.ช.พสิษฐ์ แสงประชาธนารักษ์ เลขที่ 13
@@ -389,18 +302,12 @@
                                     <li data-i18n="about_author_2">
                                         ด.ญ.ดุษาร์กร พะณะงาม เลขที่ 27
                                     </li>
-                                    <li data-i18n="about_author_3">
-                                        ด.ญ.รมณ ชูทรัพย์ เลขที่ 31
-                                    </li>
+                                    <li data-i18n="about_author_3">ด.ญ.รมณ ชูทรัพย์ เลขที่ 31</li>
                                 </ul>
                             </div>
                             <div class="info-item">
-                                <strong data-i18n="about_advisor"
-                                    >อาจารย์ที่ปรึกษา:</strong
-                                >
-                                <span data-i18n="about_advisor_name">
-                                    คุณครู ธีระพล พฤฑฒิกุล
-                                </span>
+                                <strong data-i18n="about_advisor">อาจารย์ที่ปรึกษา:</strong>
+                                <span data-i18n="about_advisor_name"> คุณครู ธีระพล พฤฑฒิกุล </span>
                             </div>
                         </div>
                     </div>

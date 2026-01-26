@@ -7,15 +7,15 @@
 (function () {
     // Cache DOM elements
     const elements = {
-        lesson: document.getElementById("lesson"),
-        menu: document.getElementById("menu"),
-        quiz: document.getElementById("final-quiz"),
-        title: document.getElementById("lesson-title"),
-        step: document.getElementById("lesson-step"),
-        content: document.getElementById("lesson-content"),
-        bg: document.getElementById("lesson-bg"),
-        nextBtn: document.getElementById("lesson-next"),
-        backBtn: document.getElementById("lesson-back"),
+        lesson: document.getElementById('lesson'),
+        menu: document.getElementById('menu'),
+        quiz: document.getElementById('final-quiz'),
+        title: document.getElementById('lesson-title'),
+        step: document.getElementById('lesson-step'),
+        content: document.getElementById('lesson-content'),
+        bg: document.getElementById('lesson-bg'),
+        nextBtn: document.getElementById('lesson-next'),
+        backBtn: document.getElementById('lesson-back'),
     };
 
     // State management
@@ -27,11 +27,11 @@
 
     const thTopics = {
         circulatory: {
-            name: "Circulatory System",
-            bg: "bg-circulatory",
+            name: 'Circulatory System',
+            bg: 'bg-circulatory',
             pages: [
                 {
-                    title: "เลือดและองค์ประกอบของเลือด",
+                    title: 'เลือดและองค์ประกอบของเลือด',
                     html: `
             <div class="panel">
               <div class="h3">เลือดคืออะไร?</div>
@@ -57,10 +57,10 @@
             </div>
             <div class="pill" style="margin-top:12px;">พื้นหลังจำลองการไหลของเลือดด้วยอนุภาคเคลื่อนไหว</div>
           `,
-                    bgAnim: "flow",
+                    bgAnim: 'flow',
                 },
                 {
-                    title: "หลอดเลือดและหมู่เลือด",
+                    title: 'หลอดเลือดและหมู่เลือด',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -100,7 +100,7 @@
           `,
                 },
                 {
-                    title: "ความดันเลือดและอัตราการเต้นของหัวใจ",
+                    title: 'ความดันเลือดและอัตราการเต้นของหัวใจ',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -120,7 +120,7 @@
           `,
                 },
                 {
-                    title: "การไหลเวียนของเลือดผ่านหัวใจ",
+                    title: 'การไหลเวียนของเลือดผ่านหัวใจ',
                     html: `
             <div class="panel">
               <div class="h3">แผนภาพหัวใจ</div>
@@ -132,7 +132,7 @@
           `,
                 },
                 {
-                    title: "ระบบไหลเวียนเล็ก/ใหญ่ (Pulmonary/Systemic)",
+                    title: 'ระบบไหลเวียนเล็ก/ใหญ่ (Pulmonary/Systemic)',
                     html: `
             <div class="grid-2">
               <div class="panel"><div class="h3">Pulmonary</div><p class="muted">หัวใจขวา → ปอด → หัวใจซ้าย เพื่อแลกเปลี่ยนแก๊ส</p></div>
@@ -141,7 +141,7 @@
           `,
                 },
                 {
-                    title: "วัฏจักรการเต้นของหัวใจ (Cardiac cycle)",
+                    title: 'วัฏจักรการเต้นของหัวใจ (Cardiac cycle)',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -153,7 +153,7 @@
           `,
                 },
                 {
-                    title: "ระบบนำไฟฟ้าหัวใจ (Cardiac conduction) และ SA node (Pacemaker)",
+                    title: 'ระบบนำไฟฟ้าหัวใจ (Cardiac conduction) และ SA node (Pacemaker)',
                     html: `
             <div class="panel">
               <div class="h3">ใครเป็นตัวกำหนดจังหวะหัวใจ?</div>
@@ -171,7 +171,7 @@
           `,
                 },
                 {
-                    title: "การควบคุมความดันโลหิต",
+                    title: 'การควบคุมความดันโลหิต',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -183,7 +183,7 @@
           `,
                 },
                 {
-                    title: "โรคที่เกี่ยวข้องกับระบบไหลเวียนเลือด",
+                    title: 'โรคที่เกี่ยวข้องกับระบบไหลเวียนเลือด',
                     html: `
             <div class="panel">
               <div class="h3">โรคที่พบบ่อย</div>
@@ -196,7 +196,7 @@
           `,
                 },
                 {
-                    title: "การดูแลป้องกัน",
+                    title: 'การดูแลป้องกัน',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -211,11 +211,11 @@
         },
 
         nervous: {
-            name: "Nervous System",
-            bg: "bg-nervous",
+            name: 'Nervous System',
+            bg: 'bg-nervous',
             pages: [
                 {
-                    title: "ภาพรวมและหน้าที่",
+                    title: 'ภาพรวมและหน้าที่',
                     html: `
             <div class="panel">
               <p class="muted">ระบบประสาททำหน้าที่รับข้อมูล ประมวลผล และสั่งการ ประกอบด้วย <strong>ระบบประสาทส่วนกลาง (CNS)</strong> คือ สมองและไขสันหลัง และ <strong>ระบบประสาทรอบนอก (PNS)</strong> คือ เส้นประสาททั่วร่างกาย</p>
@@ -223,7 +223,7 @@
           `,
                 },
                 {
-                    title: "เซลล์ประสาท (Neuron)",
+                    title: 'เซลล์ประสาท (Neuron)',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -246,7 +246,7 @@
           `,
                 },
                 {
-                    title: "ระบบประสาทส่วนกลาง (CNS)",
+                    title: 'ระบบประสาทส่วนกลาง (CNS)',
                     html: `
             <div class="panel">
               <div class="h3">สมองและไขสันหลัง</div>
@@ -266,7 +266,7 @@
           `,
                 },
                 {
-                    title: "ก้านสมอง (Brainstem): Midbrain / Pons / Medulla",
+                    title: 'ก้านสมอง (Brainstem): Midbrain / Pons / Medulla',
                     html: `
             <div class="grid-3">
               <div class="panel">
@@ -297,7 +297,7 @@
           `,
                 },
                 {
-                    title: "ไดเอนเซฟาลอน (Diencephalon): Thalamus & Hypothalamus",
+                    title: 'ไดเอนเซฟาลอน (Diencephalon): Thalamus & Hypothalamus',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -316,7 +316,7 @@
           `,
                 },
                 {
-                    title: "ซีรีบรัม: ตีความตามกลีบสมอง",
+                    title: 'ซีรีบรัม: ตีความตามกลีบสมอง',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -335,7 +335,7 @@
           `,
                 },
                 {
-                    title: "ระบบลิมบิก (Limbic) และปมประสาทฐาน (Basal ganglia)",
+                    title: 'ระบบลิมบิก (Limbic) และปมประสาทฐาน (Basal ganglia)',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -356,7 +356,7 @@
           `,
                 },
                 {
-                    title: "ไขสันหลังและรีเฟล็กซ์",
+                    title: 'ไขสันหลังและรีเฟล็กซ์',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -367,7 +367,7 @@
           `,
                 },
                 {
-                    title: "เซลล์เกลีย (Glial cells)",
+                    title: 'เซลล์เกลีย (Glial cells)',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -387,7 +387,7 @@
           `,
                 },
                 {
-                    title: "ศักย์ไฟฟ้าและไซแนปส์",
+                    title: 'ศักย์ไฟฟ้าและไซแนปส์',
                     html: `
             <div class="panel">
               <div class="h3">ศักย์ไฟฟ้า (Action potential)</div>
@@ -401,7 +401,7 @@
           `,
                 },
                 {
-                    title: "ระบบประสาทรอบนอก (PNS)",
+                    title: 'ระบบประสาทรอบนอก (PNS)',
                     html: `
             <div class="panel">
               <div class="h3">การแบ่งตามการทำงาน</div>
@@ -413,7 +413,7 @@
           `,
                 },
                 {
-                    title: "ระบบประสาทอัตโนมัติ: ซิมพาเทติก vs พาราซิมพาเทติก",
+                    title: 'ระบบประสาทอัตโนมัติ: ซิมพาเทติก vs พาราซิมพาเทติก',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -428,7 +428,7 @@
           `,
                 },
                 {
-                    title: "สารสื่อประสาทสำคัญ",
+                    title: 'สารสื่อประสาทสำคัญ',
                     html: `
             <div class="grid-3">
               <div class="panel"><div class="h3">Acetylcholine</div><p class="muted">การหดตัวของกล้ามเนื้อ และพาราซิมพาเทติก</p></div>
@@ -438,7 +438,7 @@
           `,
                 },
                 {
-                    title: "การปกป้องสมอง: Meninges, CSF, BBB",
+                    title: 'การปกป้องสมอง: Meninges, CSF, BBB',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -453,11 +453,11 @@
         },
 
         respiratory: {
-            name: "Respiratory System",
-            bg: "bg-respiratory",
+            name: 'Respiratory System',
+            bg: 'bg-respiratory',
             pages: [
                 {
-                    title: "ภาพรวมและขั้นตอนการหายใจ",
+                    title: 'ภาพรวมและขั้นตอนการหายใจ',
                     html: `
             <div class="panel">
               <p class="muted">ระบบหายใจแลกเปลี่ยนแก๊ส O2 กับ CO2 ขั้นตอนหลัก 3 ขั้นตอน: (1) Ventilation (2) การแลกเปลี่ยนที่ถุงลม (External) (3) การลำเลียง/แลกเปลี่ยนที่เนื้อเยื่อ (Internal)</p>
@@ -465,7 +465,7 @@
           `,
                 },
                 {
-                    title: "กายวิภาคทางเดินหายใจ",
+                    title: 'กายวิภาคทางเดินหายใจ',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -484,7 +484,7 @@
           `,
                 },
                 {
-                    title: "การแลกเปลี่ยนแก๊สที่ปอด",
+                    title: 'การแลกเปลี่ยนแก๊สที่ปอด',
                     html: `
             <div class="grid-2">
               <div class="panel"><div class="h3">ถุงลมปอด (Alveoli)</div><p class="muted">ผนังบางมาก มีเส้นเลือดฝอยล้อมรอบ ทำให้ O2 แพร่เข้าสู่เลือด และ CO2 แพร่ออกจากเลือดได้ดี</p></div>
@@ -493,7 +493,7 @@
           `,
                 },
                 {
-                    title: "กลไกการหายใจ: ความยืดหยุ่นและสารลดแรงตึงผิว",
+                    title: 'กลไกการหายใจ: ความยืดหยุ่นและสารลดแรงตึงผิว',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -505,7 +505,7 @@
           `,
                 },
                 {
-                    title: "ตารางเปรียบเทียบ ระหว่างหายใจเข้า-ออก",
+                    title: 'ตารางเปรียบเทียบ ระหว่างหายใจเข้า-ออก',
                     html: `
             <div class="panel" style="overflow-x:auto;">
               <table style="width:100%; border-collapse:collapse; color:#e6e6f0;">
@@ -521,7 +521,7 @@
           `,
                 },
                 {
-                    title: "การควบคุมการหายใจ",
+                    title: 'การควบคุมการหายใจ',
                     html: `
             <div class="panel">
               <p class="muted">ก้านสมองควบคุมจังหวะหายใจ โดยระดับ CO2 เป็นตัวกระตุ้นหลัก</p>
@@ -533,7 +533,7 @@
           `,
                 },
                 {
-                    title: "การขนส่งแก๊สในเลือด",
+                    title: 'การขนส่งแก๊สในเลือด',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -548,7 +548,7 @@
           `,
                 },
                 {
-                    title: "โรคระบบหายใจที่พบบ่อย",
+                    title: 'โรคระบบหายใจที่พบบ่อย',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -563,11 +563,11 @@
         },
 
         lymphatic: {
-            name: "Lymphatics System",
-            bg: "bg-lymphatic",
+            name: 'Lymphatics System',
+            bg: 'bg-lymphatic',
             pages: [
                 {
-                    title: "ภาพรวมและองค์ประกอบ",
+                    title: 'ภาพรวมและองค์ประกอบ',
                     html: `
             <div class="panel">
               <p class="muted">ระบบน้ำเหลืองช่วยระบายน้ำส่วนเกินจากเนื้อเยื่อ กลับสู่กระแสเลือด และมีบทบาทในภูมิคุ้มกัน ประกอบด้วย หลอดน้ำเหลือง ต่อมน้ำเหลือง ม้าม ต่อมไธมัส และน้ำเหลือง</p>
@@ -575,7 +575,7 @@
           `,
                 },
                 {
-                    title: "การไหลของน้ำเหลืองและปัจจัย",
+                    title: 'การไหลของน้ำเหลืองและปัจจัย',
                     html: `
             <div class="panel">
               <div class="h3">ปัจจัยที่ช่วยให้น้ำเหลืองไหลเวียน</div>
@@ -589,7 +589,7 @@
           `,
                 },
                 {
-                    title: "การก่อตัวของน้ำเหลือง",
+                    title: 'การก่อตัวของน้ำเหลือง',
                     html: `
             <div class="panel">
               <p class="muted">น้ำส่วนเกินซึมออกจากเส้นเลือดฝอยเข้าสู่ช่องว่างเนื้อเยื่อ กลายเป็นน้ำเนื้อเยื่อ และถูกดูดกลับเข้าหลอดน้ำเหลือง</p>
@@ -597,7 +597,7 @@
           `,
                 },
                 {
-                    title: "การดูดซึมไขมันและ Chyle (แลคเทียล)",
+                    title: 'การดูดซึมไขมันและ Chyle (แลคเทียล)',
                     html: `
             <div class="panel">
               <div class="h3">แลคเทียล (Lacteals)</div>
@@ -608,7 +608,7 @@
           `,
                 },
                 {
-                    title: "เส้นทางหลัก: Thoracic duct และ Right lymphatic duct",
+                    title: 'เส้นทางหลัก: Thoracic duct และ Right lymphatic duct',
                     html: `
             <div class="grid-2">
               <div class="panel"><div class="h3">Thoracic duct</div><p class="muted">รับน้ำเหลืองจากส่วนใหญ่ของร่างกาย เท่าสู่หลอดเลือดดำใต้ไหปลาร้าซ้าย</p></div>
@@ -617,7 +617,7 @@
           `,
                 },
                 {
-                    title: "อวัยวะในระบบน้ำเหลือง",
+                    title: 'อวัยวะในระบบน้ำเหลือง',
                     html: `
             <div class="grid-3">
               <div class="panel">
@@ -636,7 +636,7 @@
           `,
                 },
                 {
-                    title: "เนื้อเยื่อน้ำเหลือง: Tonsils และ MALT",
+                    title: 'เนื้อเยื่อน้ำเหลือง: Tonsils และ MALT',
                     html: `
             <div class="panel">
               <p class="muted">เนื้อเยื่อน้ำเหลืองกระจาย (MALT) และทอนซิลช่วยดักจับเชื้อโรคที่เข้าสู่ร่างกายผ่านทางเดินอาหารและทางเดินหายใจ</p>
@@ -644,7 +644,7 @@
           `,
                 },
                 {
-                    title: "บทบาทในระบบภูมิคุ้มกัน",
+                    title: 'บทบาทในระบบภูมิคุ้มกัน',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -655,7 +655,7 @@
           `,
                 },
                 {
-                    title: "ความสัมพันธ์กับระบบไหลเวียนเลือด",
+                    title: 'ความสัมพันธ์กับระบบไหลเวียนเลือด',
                     html: `
             <div class="panel">
               <p class="muted">รวบรวมน้ำเหลืองจากเนื้อเยื่อกลับเข้าสู่กระแสเลือด ช่วยรักษาสมดุลของเหลว</p>
@@ -663,7 +663,7 @@
           `,
                 },
                 {
-                    title: "ภาวะบวมน้ำ (Edema) และโรคที่เกี่ยวข้อง",
+                    title: 'ภาวะบวมน้ำ (Edema) และโรคที่เกี่ยวข้อง',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -679,11 +679,11 @@
 
     const enTopics = {
         circulatory: {
-            name: "Circulatory System",
-            bg: "bg-circulatory",
+            name: 'Circulatory System',
+            bg: 'bg-circulatory',
             pages: [
                 {
-                    title: "Blood and its Components",
+                    title: 'Blood and its Components',
                     html: `
             <div class="panel">
               <div class="h3">What is blood?</div>
@@ -709,10 +709,10 @@
             </div>
             <div class="pill" style="margin-top:12px;">Background simulates blood flow with moving particles</div>
           `,
-                    bgAnim: "flow",
+                    bgAnim: 'flow',
                 },
                 {
-                    title: "Blood Vessels and Blood Types",
+                    title: 'Blood Vessels and Blood Types',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -752,7 +752,7 @@
              `,
                 },
                 {
-                    title: "Blood Pressure & Heart Rate",
+                    title: 'Blood Pressure & Heart Rate',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -772,7 +772,7 @@
           `,
                 },
                 {
-                    title: "Blood Flow Through the Heart",
+                    title: 'Blood Flow Through the Heart',
                     html: `
             <div class="panel">
               <div class="h3">Heart Diagram</div>
@@ -784,7 +784,7 @@
           `,
                 },
                 {
-                    title: "Pulmonary & Systemic Circulation",
+                    title: 'Pulmonary & Systemic Circulation',
                     html: `
             <div class="grid-2">
               <div class="panel"><div class="h3">Pulmonary</div><p class="muted">Right Heart → Lungs → Left Heart for gas exchange.</p></div>
@@ -793,7 +793,7 @@
           `,
                 },
                 {
-                    title: "Cardiac Cycle",
+                    title: 'Cardiac Cycle',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -805,7 +805,7 @@
           `,
                 },
                 {
-                    title: "Cardiac Conduction & SA Node",
+                    title: 'Cardiac Conduction & SA Node',
                     html: `
             <div class="panel">
               <div class="h3">What sets the rhythm?</div>
@@ -823,7 +823,7 @@
           `,
                 },
                 {
-                    title: "Blood Pressure Regulation",
+                    title: 'Blood Pressure Regulation',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -835,7 +835,7 @@
           `,
                 },
                 {
-                    title: "Circulatory Diseases",
+                    title: 'Circulatory Diseases',
                     html: `
             <div class="panel">
               <div class="h3">Common Diseases</div>
@@ -848,7 +848,7 @@
           `,
                 },
                 {
-                    title: "Prevention & Care",
+                    title: 'Prevention & Care',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -863,11 +863,11 @@
         },
 
         nervous: {
-            name: "Nervous System",
-            bg: "bg-nervous",
+            name: 'Nervous System',
+            bg: 'bg-nervous',
             pages: [
                 {
-                    title: "Overview and Functions",
+                    title: 'Overview and Functions',
                     html: `
             <div class="panel">
               <p class="muted">The nervous system gathers information, processes it, and commands responses. It consists of the <strong>Central Nervous System (CNS)</strong>: Brain and Spinal Cord, and the <strong>Peripheral Nervous System (PNS)</strong>: Nerves throughout the body.</p>
@@ -875,7 +875,7 @@
           `,
                 },
                 {
-                    title: "Neurons",
+                    title: 'Neurons',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -898,7 +898,7 @@
           `,
                 },
                 {
-                    title: "Central Nervous System (CNS)",
+                    title: 'Central Nervous System (CNS)',
                     html: `
             <div class="panel">
               <div class="h3">Brain and Spinal Cord</div>
@@ -918,7 +918,7 @@
           `,
                 },
                 {
-                    title: "Brainstem: Midbrain / Pons / Medulla",
+                    title: 'Brainstem: Midbrain / Pons / Medulla',
                     html: `
             <div class="grid-3">
               <div class="panel">
@@ -949,7 +949,7 @@
           `,
                 },
                 {
-                    title: "Diencephalon: Thalamus & Hypothalamus",
+                    title: 'Diencephalon: Thalamus & Hypothalamus',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -968,7 +968,7 @@
           `,
                 },
                 {
-                    title: "Cerebrum: Lobes",
+                    title: 'Cerebrum: Lobes',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -987,7 +987,7 @@
           `,
                 },
                 {
-                    title: "Limbic System & Basal Ganglia",
+                    title: 'Limbic System & Basal Ganglia',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -1008,7 +1008,7 @@
           `,
                 },
                 {
-                    title: "Spinal Cord and Reflexes",
+                    title: 'Spinal Cord and Reflexes',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -1019,7 +1019,7 @@
           `,
                 },
                 {
-                    title: "Glial Cells",
+                    title: 'Glial Cells',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -1039,7 +1039,7 @@
           `,
                 },
                 {
-                    title: "Action Potential & Synapses",
+                    title: 'Action Potential & Synapses',
                     html: `
             <div class="panel">
               <div class="h3">Action Potential</div>
@@ -1053,7 +1053,7 @@
           `,
                 },
                 {
-                    title: "Peripheral Nervous System (PNS)",
+                    title: 'Peripheral Nervous System (PNS)',
                     html: `
             <div class="panel">
               <div class="h3">Functional Division</div>
@@ -1065,7 +1065,7 @@
           `,
                 },
                 {
-                    title: "Autonomic: Sympathetic vs Parasympathetic",
+                    title: 'Autonomic: Sympathetic vs Parasympathetic',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -1080,7 +1080,7 @@
           `,
                 },
                 {
-                    title: "Key Neurotransmitters",
+                    title: 'Key Neurotransmitters',
                     html: `
             <div class="grid-3">
               <div class="panel"><div class="h3">Acetylcholine</div><p class="muted">Muscle contraction, Parasympathetic</p></div>
@@ -1090,7 +1090,7 @@
           `,
                 },
                 {
-                    title: "Brain Protection: Meninges, CSF, BBB",
+                    title: 'Brain Protection: Meninges, CSF, BBB',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -1105,11 +1105,11 @@
         },
 
         respiratory: {
-            name: "Respiratory System",
-            bg: "bg-respiratory",
+            name: 'Respiratory System',
+            bg: 'bg-respiratory',
             pages: [
                 {
-                    title: "Overview and Process",
+                    title: 'Overview and Process',
                     html: `
             <div class="panel">
               <p class="muted">The respiratory system exchanges O2 and CO2. 3 Main steps: (1) Ventilation (2) Alveolar Exchange (External) (3) Tissue Exchange (Internal)</p>
@@ -1117,7 +1117,7 @@
           `,
                 },
                 {
-                    title: "Anatomy",
+                    title: 'Anatomy',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -1136,7 +1136,7 @@
           `,
                 },
                 {
-                    title: "Gas Exchange at Lungs",
+                    title: 'Gas Exchange at Lungs',
                     html: `
             <div class="grid-2">
               <div class="panel"><div class="h3">Alveoli</div><p class="muted">Very thin walls surrounded by capillaries, allowing efficient diffusion of O2 in and CO2 out.</p></div>
@@ -1145,7 +1145,7 @@
           `,
                 },
                 {
-                    title: "Mechanics of Breathing",
+                    title: 'Mechanics of Breathing',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -1157,7 +1157,7 @@
           `,
                 },
                 {
-                    title: "Comparison: Inhalation vs Exhalation",
+                    title: 'Comparison: Inhalation vs Exhalation',
                     html: `
             <div class="panel" style="overflow-x:auto;">
               <table style="width:100%; border-collapse:collapse; color:#e6e6f0;">
@@ -1173,7 +1173,7 @@
           `,
                 },
                 {
-                    title: "Control of Breathing",
+                    title: 'Control of Breathing',
                     html: `
             <div class="panel">
               <p class="muted">Brainstem controls rhythm. CO2 level is the main trigger.</p>
@@ -1185,7 +1185,7 @@
           `,
                 },
                 {
-                    title: "Gas Transport",
+                    title: 'Gas Transport',
                     html: `
             <div class="grid-2">
               <div class="panel">
@@ -1200,7 +1200,7 @@
           `,
                 },
                 {
-                    title: "Common Respiratory Diseases",
+                    title: 'Common Respiratory Diseases',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -1215,11 +1215,11 @@
         },
 
         lymphatic: {
-            name: "Lymphatic System",
-            bg: "bg-lymphatic",
+            name: 'Lymphatic System',
+            bg: 'bg-lymphatic',
             pages: [
                 {
-                    title: "Overview and Components",
+                    title: 'Overview and Components',
                     html: `
             <div class="panel">
               <p class="muted">Drains excess tissue fluid back to blood, and plays key role in immunity. Includes Lymph vessels, Nodes, Spleen, Thymus, and Lymph.</p>
@@ -1227,7 +1227,7 @@
           `,
                 },
                 {
-                    title: "Lymph Flow factors",
+                    title: 'Lymph Flow factors',
                     html: `
             <div class="panel">
               <div class="h3">Flow Mechanics</div>
@@ -1241,7 +1241,7 @@
           `,
                 },
                 {
-                    title: "Lymph Formation",
+                    title: 'Lymph Formation',
                     html: `
             <div class="panel">
               <p class="muted">Fluid leaks from capillaries into tissue spaces (interstitial fluid), then enters lymph capillaries to become lymph.</p>
@@ -1249,7 +1249,7 @@
           `,
                 },
                 {
-                    title: "Fat Absorption & Chyle",
+                    title: 'Fat Absorption & Chyle',
                     html: `
             <div class="panel">
               <div class="h3">Lacteals</div>
@@ -1260,7 +1260,7 @@
           `,
                 },
                 {
-                    title: "Main Ducts",
+                    title: 'Main Ducts',
                     html: `
             <div class="grid-2">
               <div class="panel"><div class="h3">Thoracic duct</div><p class="muted">Drains most of body. Empties into Left Subclavian Vein.</p></div>
@@ -1269,7 +1269,7 @@
           `,
                 },
                 {
-                    title: "Lymphatic Organs",
+                    title: 'Lymphatic Organs',
                     html: `
             <div class="grid-3">
               <div class="panel">
@@ -1288,7 +1288,7 @@
           `,
                 },
                 {
-                    title: "Lymphatic Tissues: MALT & Tonsils",
+                    title: 'Lymphatic Tissues: MALT & Tonsils',
                     html: `
             <div class="panel">
               <p class="muted">Tonsils and MALT (Mucosa-Associated Lymphoid Tissue) trap pathogens entering via nose/mouth.</p>
@@ -1296,7 +1296,7 @@
           `,
                 },
                 {
-                    title: "Immune Role",
+                    title: 'Immune Role',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -1307,7 +1307,7 @@
           `,
                 },
                 {
-                    title: "Connection to Circulatory",
+                    title: 'Connection to Circulatory',
                     html: `
             <div class="panel">
               <p class="muted">Returns fluid to bloodstream, maintaining fluid balance.</p>
@@ -1315,7 +1315,7 @@
           `,
                 },
                 {
-                    title: "Conditions",
+                    title: 'Conditions',
                     html: `
             <div class="panel">
               <ul class="list-dot muted">
@@ -1333,25 +1333,25 @@
         {},
         {
             get: function (target, prop) {
-                const lang = window.currentLang || "th";
+                const lang = window.currentLang || 'th';
                 const thData = thTopics[prop];
                 if (!thData) return undefined;
 
-                if (lang === "en" && enTopics[prop]) {
+                if (lang === 'en' && enTopics[prop]) {
                     return { ...thData, ...enTopics[prop] };
                 }
                 return thData;
             },
-        },
+        }
     );
 
-    window.addEventListener("languageChanged", () => {
+    window.addEventListener('languageChanged', () => {
         if (state.topic) render();
     });
 
     function setBg(key) {
         if (!elements.bg) return;
-        elements.bg.className = key ? `lesson-bg ${key}` : "lesson-bg";
+        elements.bg.className = key ? `lesson-bg ${key}` : 'lesson-bg';
     }
 
     function render() {
@@ -1359,85 +1359,77 @@
         if (!t) return;
 
         const page = t.pages[state.index];
-        const { title, step, content, backBtn, nextBtn } = elements;
+        const { title, step, content, backBtn } = elements;
 
         setText(title, t.name);
         setText(step, `หน้า ${state.index + 1} / ${t.pages.length}`);
         setHTML(
             content,
-            `<h3 class="h3" style="margin-bottom:8px;">${page.title}</h3>${page.html}`,
+            `<h3 class="h3" style="margin-bottom:8px;">${page.title}</h3>${page.html}`
         );
 
         // Reset any dynamic bg
         clearBloodFlow();
-        if (page.bgAnim === "flow") mountBloodFlow();
-        if (typeof page.after === "function") setTimeout(page.after, 0);
+        if (page.bgAnim === 'flow') mountBloodFlow();
+        if (typeof page.after === 'function') setTimeout(page.after, 0);
 
         // Show/hide back button
         if (backBtn) {
-            backBtn.style.display = state.index > 0 ? "inline-flex" : "none";
+            backBtn.style.display = state.index > 0 ? 'inline-flex' : 'none';
         }
     }
 
     function show(id) {
-        const homeEl = document.getElementById("home");
-        const {
-            menu: menuEl,
-            lesson: sectionLesson,
-            quiz: sectionQuiz,
-        } = elements;
+        const homeEl = document.getElementById('home');
+        const { menu: menuEl, lesson: sectionLesson, quiz: sectionQuiz } = elements;
 
         // Toggle section visibility
         const sections = {
             home: homeEl,
             menu: menuEl,
             lesson: sectionLesson,
-            "final-quiz": sectionQuiz,
+            'final-quiz': sectionQuiz,
         };
 
         Object.entries(sections).forEach(([key, el]) => {
             if (!el) return;
             const shouldShow = key === id;
-            el.style.display = shouldShow
-                ? key === "home"
-                    ? "flex"
-                    : "block"
-                : "none";
-            if (shouldShow) el.classList.add("is-visible");
+            el.style.display = shouldShow ? (key === 'home' ? 'flex' : 'block') : 'none';
+            if (shouldShow) el.classList.add('is-visible');
         });
 
         if (
-            typeof window !== "undefined" &&
+            typeof window !== 'undefined' &&
             window.gsap &&
             window.ScrollTrigger &&
-            typeof window.ScrollTrigger.refresh === "function"
+            typeof window.ScrollTrigger.refresh === 'function'
         ) {
             window.gsap.delayedCall(0, () => window.ScrollTrigger.refresh());
-        } else if (id === "menu") {
-            document.querySelectorAll(".menu-card").forEach((el) => {
-                el.style.opacity = "1";
-                el.style.transform = "none";
+        } else if (id === 'menu') {
+            document.querySelectorAll('.menu-card').forEach((el) => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
             });
         }
     }
 
     window.goToMenu = function () {
-        show("menu");
-        const hamburger = document.querySelector(".hamburger");
-        const navMenu = document.querySelector(".nav-menu");
-        if (hamburger) hamburger.classList.remove("active");
-        if (navMenu) navMenu.classList.remove("active");
+        show('menu');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        if (hamburger) hamburger.classList.remove('active');
+        if (navMenu) navMenu.classList.remove('active');
 
-        const menuEl = document.getElementById("menu");
-        if (menuEl && typeof menuEl.scrollIntoView === "function") {
+        const menuEl = document.getElementById('menu');
+        if (menuEl && typeof menuEl.scrollIntoView === 'function') {
             requestAnimationFrame(() => {
-                menuEl.scrollIntoView({ behavior: "smooth", block: "start" });
+                menuEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         }
         if (history && history.pushState) {
-            history.pushState(null, "", "#menu");
-        } else if (typeof location !== "undefined") {
-            location.hash = "#menu";
+            history.pushState(null, '', '#menu');
+        } else if (typeof location !== 'undefined') {
+            location.hash = '#menu';
         }
     };
 
@@ -1449,20 +1441,20 @@
         state.topic = key;
         state.index = 0;
         setBg(topics[key].bg);
-        show("lesson");
+        show('lesson');
         render();
-        if (elements.nextBtn) elements.nextBtn.style.display = "inline-flex";
+        if (elements.nextBtn) elements.nextBtn.style.display = 'inline-flex';
     };
 
     window.backToMenu = function () {
-        show("menu");
+        show('menu');
     };
 
     window.prevPage = function () {
         if (state.index > 0) {
             state.index--;
             render();
-            nextBtn.style.display = "inline-flex";
+            elements.nextBtn.style.display = 'inline-flex';
         }
     };
 
@@ -1476,9 +1468,7 @@
         } else {
             // Show quiz button at end of lesson
             const btnText =
-                window.currentLang === "en"
-                    ? "Start Quiz for "
-                    : "เริ่มแบบทดสอบสำหรับ ";
+                window.currentLang === 'en' ? 'Start Quiz for ' : 'เริ่มแบบทดสอบสำหรับ ';
             const quizButton = `
             <div style="text-align: center; margin-top: 2rem;">
               <button class="cta-button" onclick="window.startTopicQuiz('${state.topic}')">
@@ -1487,9 +1477,9 @@
               </button>
             </div>`;
             if (elements.content) {
-                elements.content.insertAdjacentHTML("beforeend", quizButton);
+                elements.content.insertAdjacentHTML('beforeend', quizButton);
             }
-            if (elements.nextBtn) elements.nextBtn.style.display = "none";
+            if (elements.nextBtn) elements.nextBtn.style.display = 'none';
         }
     };
 
@@ -1497,26 +1487,26 @@
         const { content } = elements;
         if (!content) return;
 
-        const wrap = document.createElement("div");
-        wrap.className = "blood-flow";
+        const wrap = document.createElement('div');
+        wrap.className = 'blood-flow';
 
         const fragment = document.createDocumentFragment();
         const CELL_COUNT = 18;
         const cellTypes = [
-            "rbc",
-            "rbc",
-            "rbc",
-            "rbc",
-            "rbc",
-            "rbc",
-            "wbc",
-            "wbc",
-            "wbc",
-            "platelet",
+            'rbc',
+            'rbc',
+            'rbc',
+            'rbc',
+            'rbc',
+            'rbc',
+            'wbc',
+            'wbc',
+            'wbc',
+            'platelet',
         ];
 
         for (let i = 0; i < CELL_COUNT; i++) {
-            const cell = document.createElement("div");
+            const cell = document.createElement('div');
             const typeIndex = Math.floor(Math.random() * cellTypes.length);
             cell.className = `cell ${cellTypes[typeIndex]}`;
             cell.style.cssText = `
@@ -1528,12 +1518,12 @@
         }
 
         wrap.appendChild(fragment);
-        content.style.position = "relative";
+        content.style.position = 'relative';
         content.appendChild(wrap);
     }
 
     function clearBloodFlow() {
-        const old = elements.content?.querySelector(".blood-flow");
+        const old = elements.content?.querySelector('.blood-flow');
         if (old) old.remove();
     }
 

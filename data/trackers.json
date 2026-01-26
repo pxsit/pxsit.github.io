@@ -20,7 +20,7 @@
     "ns_": ["source", "mchannel", "campaign", "linkname", "fee"],
     "sr_": ["share"],
     "vero_": ["conv", "id"],
-    "": [
+    "_standalone": [
         "fbclid",
         "igshid",
         "srcid",

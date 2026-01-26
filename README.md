@@ -9,7 +9,7 @@
 
 **ชื่อโครงงาน:** Outside In  
 **ประเภท:** โครงงานเพื่อการศึกษา  
-**ระยะเวลา:** 6 เดือน  
+**ระยะเวลา:** 6 เดือน
 
 ## คณะผู้จัดทำ
 
@@ -57,9 +57,9 @@
 
 1. Clone โปรเจกต์นี้
 
-   ```bash
-   git clone https://github.com/pxsit/pxsit.github.io.git
-   ```
+    ```bash
+    git clone https://github.com/pxsit/pxsit.github.io.git
+    ```
 
 2. เปิดไฟล์ `index.html` ใน Browser ได้เลย!
 

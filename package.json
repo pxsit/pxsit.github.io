@@ -6,7 +6,11 @@
     "scripts": {
         "start": "python -m http.server 8000",
         "serve": "npx serve .",
-        "dev": "npx live-server ."
+        "dev": "npx live-server .",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier . --write",
+        "format:check": "prettier . --check"
     },
     "keywords": [
         "education",
@@ -37,5 +41,16 @@
     "homepage": "https://github.com/pxsit/pxsit.github.io",
     "browser": {
         "main": "index.html"
+    },
+    "devDependencies": {
+        "@eslint/css": "^0.14.1",
+        "@eslint/js": "^9.39.2",
+        "@eslint/json": "^0.14.0",
+        "@eslint/markdown": "^7.5.1",
+        "eslint": "^9.39.2",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-prettier": "^5.5.5",
+        "globals": "^17.1.0",
+        "prettier": "^3.8.1"
     }
 }

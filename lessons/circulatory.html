@@ -21,18 +21,8 @@
         <header class="header-bar" role="banner">
             <div class="header-inner">
                 <div class="brand">Outside In</div>
-                <nav style="display: flex; align-items: center; gap: 1rem">
-                    <button
-                        id="lang-toggle"
-                        style="
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            color: inherit;
-                            font-weight: 600;
-                        "
-                        aria-label="Toggle Language"
-                    >
+                <nav class="header-nav">
+                    <button id="lang-toggle" class="lang-toggle-btn" aria-label="Toggle Language">
                         <i class="fas fa-globe"></i>
                         <span id="current-lang">TH</span>
                     </button>
@@ -46,11 +36,7 @@
                         <i class="fas fa-comment-dots" aria-hidden="true"></i>
                         Feedback
                     </a>
-                    <a
-                        class="back-link"
-                        href="../index.html#menu"
-                        aria-label="กลับไปหน้าเมนูหลัก"
-                    >
+                    <a class="back-link" href="../index.html#menu" aria-label="กลับไปหน้าเมนูหลัก">
                         <i class="fas fa-arrow-left" aria-hidden="true"></i>
                         Menu
                     </a>
@@ -81,59 +67,6 @@
         <script src="../js/lessons.js"></script>
         <script src="../js/quiz-handler.js"></script>
         <script src="../js/main.js"></script>
-        <script>
-            (function () {
-                window.renderTopic = function () {
-                    const topic = (window.lessonTopics || {}).circulatory;
-                    if (!topic) return;
-
-                    const isEn = window.currentLang === "en";
-                    const descText = isEn
-                        ? "Same content as Lesson Mode, but with full fixed background."
-                        : "เนื้อหาเดียวกับโหมดบทเรียน แต่ภาพพื้นหลังคงที่เต็มหน้า";
-                    const startQuizText = isEn
-                        ? "Start Quiz for "
-                        : "เริ่มแบบทดสอบสำหรับ ";
-                    const menuText = isEn ? "Menu" : "Menu"; // Or "เมนู" but original had "Menu" text with icon
-
-                    const container = document.querySelector(".system-content");
-                    container.innerHTML = `
-                        <h1 class="section-title">${topic.name}</h1>
-                        <p class="section-description">${descText}</p>
-                        ${topic.pages
-                            .map(
-                                (p, idx) => `
-                            <section class=\"panel\" style=\"margin-top:16px;\">
-                                <div class=\"h3\">${idx + 1}. ${p.title}</div>
-                                ${p.html}
-                            </section>
-                        `,
-                            )
-                            .join("")}
-                        <div style=\"display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:20px;\">
-                            <button class=\"cta-button\" onclick=\"window.startTopicQuiz('circulatory')\">
-                                <i class=\"fas fa-award\"></i>
-                                ${startQuizText}${topic.name}
-                            </button>
-                            <a class=\"btn ghost\" href=\"../index.html#menu\"><i class=\"fas fa-bars\"></i> ${menuText}</a>
-                        </div>
-                    `;
-                };
-
-                if (document.readyState === "loading") {
-                    document.addEventListener(
-                        "DOMContentLoaded",
-                        window.renderTopic,
-                    );
-                } else {
-                    window.renderTopic();
-                }
-
-                window.addEventListener("languageChanged", window.renderTopic);
-            })();
-            window.backToMenu = function () {
-                window.location.href = "../index.html#menu";
-            };
-        </script>
+        <script src="../js/lesson-page.js"></script>
     </body>
 </html>
