@@ -11,6 +11,7 @@
     let score = 0;
     let selectedAnswer = null;
     let submitted = false;
+    let questionResolved = false; // true after submit/skip; enables Next
     let currentTopic = "";
     let answersLog = [];
 
@@ -76,6 +77,7 @@
 
         submitted = false;
         selectedAnswer = null;
+        questionResolved = false;
         const isEn = window.currentLang === "en"; // Define isEn at the start of render
 
         if (currentIndex >= currentQuestions.length) {
@@ -166,6 +168,46 @@
                 })
                 .join("");
 
+            const skippedEntries = answersLog.filter(
+                (e) =>
+                    e.selectedIndex === null || e.selectedIndex === undefined,
+            );
+            const skippedCount = skippedEntries.length;
+            const skippedSection =
+                skippedCount > 0
+                    ? `
+                    <div style="margin-top:18px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.08);">
+                        <h4 class="h3" style="margin:0 0 8px 0;">${isEn ? "Skipped Questions" : "ข้อที่ข้าม"}</h4>
+                        <p class="muted" style="margin:0 0 10px 0;">${isEn ? `You skipped ${skippedCount} question(s).` : `คุณข้ามไป ${skippedCount} ข้อ`}</p>
+                        <div class="quiz-skipped-list" style="display:grid; gap:10px;">
+                            ${skippedEntries
+                                .map((entry, sIdx) => {
+                                    const correctText =
+                                        typeof entry.correctIndex ===
+                                            "number" &&
+                                        entry.choices &&
+                                        entry.choices[entry.correctIndex] !==
+                                            undefined
+                                            ? entry.choices[entry.correctIndex]
+                                            : "";
+                                    return `
+                                <div class="quiz-skipped-item" style="padding:12px; border-radius:12px; background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
+                                    <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center;">
+                                        <span class="pill">${isEn ? "Skipped" : "ข้าม"} ${sIdx + 1}</span>
+                                        <span class="muted">${isEn ? "Answer:" : "เฉลย:"} <strong style="color:#e6e6f0;">${escapeHtml(String(correctText))}</strong></span>
+                                    </div>
+                                    <div style="margin-top:6px; font-weight:700;">${entry.qText}</div>
+                                </div>`;
+                                })
+                                .join("")}
+                        </div>
+                    </div>`
+                    : `
+                    <div style="margin-top:18px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.08);">
+                        <h4 class="h3" style="margin:0 0 8px 0;">${isEn ? "Skipped Questions" : "ข้อที่ข้าม"}</h4>
+                        <p class="muted" style="margin:0;">${isEn ? "No skipped questions — nice!" : "ไม่มีข้อที่ข้าม — เยี่ยมเลย!"}</p>
+                    </div>`;
+
             stage.innerHTML = `
         <div class="quiz-card animate-fadeInUp">
           <h3 class="h3">${isEn ? "Summary: " : "สรุปผล: "}${currentTopic.toUpperCase()}</h3>
@@ -173,6 +215,7 @@
           <div style="margin-top:12px;">
             ${summaryItems}
           </div>
+                    ${skippedSection}
           <div style="margin-top:1rem; display:flex; justify-content:flex-end; gap:8px;">
             <button class="btn ghost" onclick="backToMenu()">${isEn ? "Back to Menu" : "กลับไปที่เมนู"}</button>
           </div>
@@ -230,7 +273,8 @@
                 <div class="quiz-choices" id="choices"></div>
                 <div class="quiz-feedback" id="fb"></div>
                 <div style="margin-top:8px; display:flex; justify-content:flex-end; gap:8px;">
-                    <button id="quiz-next-btn" class="btn ghost" onclick="nextQuizPage()">${isEn ? "Skip" : "ข้าม"}</button>
+                    <button id="quiz-skip-btn" class="btn ghost" onclick="skipQuestion()">${isEn ? "Skip" : "ข้าม"}</button>
+                    <button id="quiz-next-btn" class="btn primary" onclick="nextQuestion()" disabled aria-disabled="true">${isEn ? "Next" : "ถัดไป"}</button>
                 </div>
             </div>`;
 
@@ -249,22 +293,35 @@
     }
 
     function select(idx, el) {
-        if (submitted) return;
+        if (submitted || questionResolved) return;
         selectedAnswer = idx;
         const isEn = window.currentLang === "en";
-
-        const nextBtn = document.getElementById("quiz-next-btn");
-        if (nextBtn) nextBtn.textContent = isEn ? "Submit" : "ส่งคำตอบ";
 
         document
             .querySelectorAll(".quiz-choice")
             .forEach((c) => c.classList.remove("selected"));
         el.classList.add("selected");
+
+        // Auto-submit on select (shows feedback), but do not advance until Next
+        submit();
+
+        // Enable Next button now that question is resolved
+        const nextBtn = document.getElementById("quiz-next-btn");
+        if (nextBtn) {
+            nextBtn.disabled = false;
+            nextBtn.setAttribute("aria-disabled", "false");
+            nextBtn.textContent = isEn ? "Next" : "ถัดไป";
+        }
+
+        // Disable Skip after answering
+        const skipBtn = document.getElementById("quiz-skip-btn");
+        if (skipBtn) skipBtn.disabled = true;
     }
 
     function submit() {
         if (submitted || selectedAnswer === null) return;
         submitted = true;
+        questionResolved = true;
         const isEn = window.currentLang === "en";
 
         const q = currentQuestions[currentIndex];
@@ -295,7 +352,7 @@
         // Log the answer with details
         answersLog.push({
             qText: q.q,
-            selectedIndex: isCorrect ? q.ans : selectedAnswer,
+            selectedIndex: selectedAnswer,
             correctIndex: q.ans,
             why: q.why,
             tags: q.tags,
@@ -303,11 +360,62 @@
             choices: q.choices,
         });
 
-        setTimeout(() => {
-            currentIndex++;
-            render();
-        }, 1000);
+        // Do not auto-advance; user must click Next
     }
+
+    function logSkip() {
+        const q = currentQuestions[currentIndex];
+        // Record a skipped entry
+        answersLog.push({
+            qText: q.q,
+            selectedIndex: null,
+            correctIndex: q.ans,
+            why: q.why,
+            tags: q.tags,
+            difficulty: q.difficulty,
+            choices: q.choices,
+        });
+        questionResolved = true;
+    }
+
+    window.skipQuestion = function () {
+        if (questionResolved) return;
+        const isEn = window.currentLang === "en";
+
+        // Show feedback immediately, but don't advance
+        const q = currentQuestions[currentIndex];
+        const fb = document.getElementById("fb");
+        if (fb) {
+            fb.textContent = isEn
+                ? `Skipped. Answer: ${q.why}`
+                : `คุณข้ามข้อนี้ เฉลยคือ: ${q.why}`;
+            fb.style.color = "#a3a3a3";
+        }
+
+        // Highlight correct choice
+        const allChoices = document.querySelectorAll(".quiz-choice");
+        if (allChoices && allChoices[q.ans]) {
+            allChoices[q.ans].classList.add("correct");
+        }
+
+        logSkip();
+
+        // Enable Next; disable Skip
+        const nextBtn = document.getElementById("quiz-next-btn");
+        if (nextBtn) {
+            nextBtn.disabled = false;
+            nextBtn.setAttribute("aria-disabled", "false");
+            nextBtn.textContent = isEn ? "Next" : "ถัดไป";
+        }
+        const skipBtn = document.getElementById("quiz-skip-btn");
+        if (skipBtn) skipBtn.disabled = true;
+    };
+
+    window.nextQuestion = function () {
+        if (!questionResolved) return;
+        currentIndex++;
+        render();
+    };
 
     window.startQuiz = function (topic, questions) {
         currentTopic = topic;
@@ -326,18 +434,11 @@
         }
     };
 
+    // Legacy alias (older HTML may still call nextQuizPage)
     window.nextQuizPage = function () {
-        const isEn = window.currentLang === "en";
-        const nextBtn = document.getElementById("quiz-next-btn");
-        if (
-            nextBtn &&
-            nextBtn.textContent.trim() === (isEn ? "Submit" : "ส่งคำตอบ")
-        ) {
-            submit();
-        } else {
-            currentIndex++;
-            render();
-        }
+        // If question is resolved, behave like Next; otherwise behave like Skip.
+        if (questionResolved) window.nextQuestion();
+        else window.skipQuestion();
     };
 
     window.backToMenu = function () {

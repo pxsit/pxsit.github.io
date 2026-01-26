@@ -36,19 +36,19 @@ body.system-page {
 
 /* System-specific backgrounds */
 .system-bg.circulatory {
-    background-image: url("../assests/circulatory.jpg");
+    background-image: url("../assets/circulatory.jpg");
 }
 
 .system-bg.respiratory {
-    background-image: url("../assests/respiratory.jpg");
+    background-image: url("../assets/respiratory.jpg");
 }
 
 .system-bg.lymphatic {
-    background-image: url("../assests/lymphatic.jpg");
+    background-image: url("../assets/lymphatic.jpg");
 }
 
 .system-bg.nervous {
-    background-image: url("../assests/nervous.jpg");
+    background-image: url("../assets/nervous.jpg");
 }
 
 /* Content container */

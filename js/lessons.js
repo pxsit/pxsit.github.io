@@ -112,7 +112,7 @@
               <div class="panel">
                 <div class="h3">กราฟการเต้นของหัวใจ</div>
                 <div style="height:140px; position:relative; background:rgba(255,255,255,0.06); border-radius:8px; overflow:hidden;">
-                  <img src="/assests/ecg.png" alt="ECG graph" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain;" />
+                  <img src="/assets/ecg.png" alt="ECG graph" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain;" />
                 </div>
                 <p class="muted" style="margin-top:8px;">เส้นกราฟจำลองรูปแบบการเต้น (ไม่ใช่สัญญาณทางการแพทย์จริง)</p>
               </div>
@@ -126,7 +126,7 @@
               <div class="h3">แผนภาพหัวใจ</div>
               <p class="muted">แสดงทิศทางการไหล: เลือดดำจากร่างกาย → หัวใจขวา → ปอด → เลือดแดงกลับหัวใจซ้าย → ส่งไปเลี้ยงร่างกาย ลูกศรจะชี้ชื่อหลอดเลือดหลัก</p>
               <div style="height:260px; position:relative; margin-top:8px; border-radius:12px; overflow:hidden;">
-                <img alt="heart" src="/assests/circulatory-diagram.png" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box;">
+                <img alt="heart" src="/assets/circulatory-diagram.png" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box;">
               </div>
             </div>
           `,
@@ -239,7 +239,7 @@
               <div class="panel">
                 <div class="h3">ภาพประกอบ</div>
                 <div style="height:200px; position:relative; border-radius:8px;">
-                  <img src="/assests/neurons.jpg" alt="neuron" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box; padding:8px;">
+                  <img src="/assets/neurons.jpg" alt="neuron" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box; padding:8px;">
                 </div>
               </div>
             </div>
@@ -362,7 +362,7 @@
               <div class="panel">
                 <p class="muted">ไขสันหลังคือทางผ่านของสัญญาณระหว่างสมองและร่างกาย และควบคุมการตอบสนองอัตโนมัติที่เรียกว่า 'รีเฟล็กซ์' เช่น การกระตุกขาเมื่อถูกเคาะที่หัวเข่า</p>
               </div>
-              <div class="panel"><img src="/assests/spinal-cord.png" alt="spinal" style="width:100%; border-radius:8px;"></div>
+              <div class="panel"><img src="/assets/spinal-cord.png" alt="spinal" style="width:100%; border-radius:8px;"></div>
             </div>
           `,
                 },
@@ -488,7 +488,7 @@
                     html: `
             <div class="grid-2">
               <div class="panel"><div class="h3">ถุงลมปอด (Alveoli)</div><p class="muted">ผนังบางมาก มีเส้นเลือดฝอยล้อมรอบ ทำให้ O2 แพร่เข้าสู่เลือด และ CO2 แพร่ออกจากเลือดได้ดี</p></div>
-              <div class="panel"><img src="/assests/alveoli.jpg" alt="alveoli" style="width:100%; opacity:.6; border-radius:8px;"></div>
+              <div class="panel"><img src="/assets/alveoli.jpg" alt="alveoli" style="width:100%; opacity:.6; border-radius:8px;"></div>
             </div>
           `,
                 },
@@ -509,7 +509,7 @@
                     html: `
             <div class="panel" style="overflow-x:auto;">
               <table style="width:100%; border-collapse:collapse; color:#e6e6f0;">
-                <thead><tr style="background:rgba(255,255,255,0.06)"><th style="padding:8px; border:1px solid rgba(255,255,255,0.1)">กลไก</th><th style="padding:8px; border:1px solid rgba(255,255,255,0.1)">หายใจเข้า (Inhalation)</th><th style="padding:8px; border="1px solid rgba(255,255,255,0.1)">หายใจออก (Exhalation)</th></tr></thead>
+                <thead><tr style="background:rgba(255,255,255,0.06)"><th style="padding:8px; border:1px solid rgba(255,255,255,0.1)">กลไก</th><th style="padding:8px; border:1px solid rgba(255,255,255,0.1)">หายใจเข้า (Inhalation)</th><th style="padding:8px; border:1px solid rgba(255,255,255,0.1)">หายใจออก (Exhalation)</th></tr></thead>
                 <tbody>
                   <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">กระบังลม</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">หดตัวและเลื่อนต่ำลง</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">คลายตัวและยกสูงขึ้น</td></tr>
                   <tr><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">กระดูกซี่โครง</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">ยกตัวสูงขึ้น</td><td style="padding:6px; border:1px solid rgba(255,255,255,0.08)">ลดตัวต่ำลง</td></tr>
@@ -764,7 +764,7 @@
               <div class="panel">
                 <div class="h3">ECG Graph</div>
                 <div style="height:140px; position:relative; background:rgba(255,255,255,0.06); border-radius:8px; overflow:hidden;">
-                  <img src="/assests/ecg.png" alt="ECG graph" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain;" />
+                  <img src="/assets/ecg.png" alt="ECG graph" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain;" />
                 </div>
                 <p class="muted" style="margin-top:8px;">Simulated heartbeat pattern (not real medical data).</p>
               </div>
@@ -778,7 +778,7 @@
               <div class="h3">Heart Diagram</div>
               <p class="muted">Shows flow direction: Deoxygenated blood from body → Right Heart → Lungs → Oxygenated blood to Left Heart → Body. Arrows point to main vessels.</p>
               <div style="height:260px; position:relative; margin-top:8px; border-radius:12px; overflow:hidden;">
-                <img alt="heart" src="/assests/circulatory-diagram.png" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box;">
+                <img alt="heart" src="/assets/circulatory-diagram.png" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box;">
               </div>
             </div>
           `,
@@ -891,7 +891,7 @@
               <div class="panel">
                 <div class="h3">Illustration</div>
                 <div style="height:200px; position:relative; border-radius:8px;">
-                  <img src="/assests/neurons.jpg" alt="neuron" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box; padding:8px;">
+                  <img src="/assets/neurons.jpg" alt="neuron" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; box-sizing:border-box; padding:8px;">
                 </div>
               </div>
             </div>
@@ -1014,7 +1014,7 @@
               <div class="panel">
                 <p class="muted">Path for signals between brain and body. Controls automatic responses called 'reflexes', like the knee-jerk reaction.</p>
               </div>
-              <div class="panel"><img src="/assests/spinal-cord.png" alt="spinal" style="width:100%; border-radius:8px;"></div>
+              <div class="panel"><img src="/assets/spinal-cord.png" alt="spinal" style="width:100%; border-radius:8px;"></div>
             </div>
           `,
                 },
@@ -1140,7 +1140,7 @@
                     html: `
             <div class="grid-2">
               <div class="panel"><div class="h3">Alveoli</div><p class="muted">Very thin walls surrounded by capillaries, allowing efficient diffusion of O2 in and CO2 out.</p></div>
-              <div class="panel"><img src="/assests/alveoli.jpg" alt="alveoli" style="width:100%; opacity:.6; border-radius:8px;"></div>
+              <div class="panel"><img src="/assets/alveoli.jpg" alt="alveoli" style="width:100%; opacity:.6; border-radius:8px;"></div>
             </div>
           `,
                 },
